@@ -1,0 +1,41 @@
+{
+  "generated_at": "2026-08-20T05:56:41.949353-07:00",
+  "seed": 20260820,
+  "work_faces": 40,
+  "activities": 328,
+  "precedences": 313,
+  "thermal_sensitive": 179,
+  "critical": 5,
+  "near_critical": 59,
+  "milestones": 2,
+  "hold_points": 9,
+  "cold_weather_swapped": 0,
+  "project_start": "2026-06-01T06:00:00-07:00",
+  "project_finish": "2027-02-02T09:24:00-07:00",
+  "demo_window": {
+    "start": "2026-08-24T00:00:00-07:00",
+    "end": "2026-08-27T00:00:00-07:00"
+  },
+  "in_demo_window": {
+    "activities": 45,
+    "thermal_sensitive": 12,
+    "work_faces_touched": 30,
+    "by_trade": {
+      "adhesive_anchor_epoxy": 1,
+      "coating_epoxy_structural_steel": 2,
+      "concrete_cip_hot_weather": 7,
+      "structural_welding_preheat": 2
+    }
+  },
+  "by_trade_whole_project": {
+    "adhesive_anchor_epoxy": 25,
+    "coating_epoxy_structural_steel": 25,
+    "concrete_cip_hot_weather": 50,
+    "hma_paving_surface_course": 2,
+    "masonry_cmu_hot_weather": 8,
+    "pavement_marking_waterborne": 7,
+    "sealant_silicone_weatherseal": 14,
+    "sfrm_spray_applied_fireproofing": 20,
+    "structural_welding_preheat": 28
+  }
+}
