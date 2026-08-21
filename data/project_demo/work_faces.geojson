@@ -1,0 +1,1892 @@
+{
+  "type": "FeatureCollection",
+  "name": "workface_work_faces",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-FAB2-01",
+        "name": "FAB2 L1 slab \u2014 bay A1",
+        "structure_id": "FAB2",
+        "level": "L1 slab",
+        "centroid_lon": -112.1669446,
+        "centroid_lat": 33.7857901,
+        "area_m2": 18757.8,
+        "elevation_m": 467.7,
+        "height_agl_m": 0.0,
+        "exposure_class": "ground_slab",
+        "surface_class": "bare_concrete",
+        "sky_view_factor": 0.88,
+        "orientation_deg": null,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1679146,
+              33.7853207
+            ],
+            [
+              -112.1659747,
+              33.7853207
+            ],
+            [
+              -112.1659747,
+              33.7862595
+            ],
+            [
+              -112.1679146,
+              33.7862595
+            ],
+            [
+              -112.1679146,
+              33.7853207
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-FAB2-02",
+        "name": "FAB2 L1 slab \u2014 bay B1",
+        "structure_id": "FAB2",
+        "level": "L1 slab",
+        "centroid_lon": -112.1649182,
+        "centroid_lat": 33.7857901,
+        "area_m2": 18757.8,
+        "elevation_m": 467.7,
+        "height_agl_m": 0.0,
+        "exposure_class": "ground_slab",
+        "surface_class": "bare_concrete",
+        "sky_view_factor": 0.88,
+        "orientation_deg": null,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1658882,
+              33.7853207
+            ],
+            [
+              -112.1639483,
+              33.7853207
+            ],
+            [
+              -112.1639483,
+              33.7862595
+            ],
+            [
+              -112.1658882,
+              33.7862595
+            ],
+            [
+              -112.1658882,
+              33.7853207
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-FAB2-03",
+        "name": "FAB2 L1 slab \u2014 bay C1",
+        "structure_id": "FAB2",
+        "level": "L1 slab",
+        "centroid_lon": -112.1628919,
+        "centroid_lat": 33.7857901,
+        "area_m2": 18757.8,
+        "elevation_m": 467.7,
+        "height_agl_m": 0.0,
+        "exposure_class": "ground_slab",
+        "surface_class": "bare_concrete",
+        "sky_view_factor": 0.88,
+        "orientation_deg": null,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1638618,
+              33.7853207
+            ],
+            [
+              -112.1619219,
+              33.7853207
+            ],
+            [
+              -112.1619219,
+              33.7862595
+            ],
+            [
+              -112.1638618,
+              33.7862595
+            ],
+            [
+              -112.1638618,
+              33.7853207
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-FAB2-04",
+        "name": "FAB2 L1 slab \u2014 bay D1",
+        "structure_id": "FAB2",
+        "level": "L1 slab",
+        "centroid_lon": -112.1608655,
+        "centroid_lat": 33.7857901,
+        "area_m2": 18757.8,
+        "elevation_m": 467.7,
+        "height_agl_m": 0.0,
+        "exposure_class": "ground_slab",
+        "surface_class": "bare_concrete",
+        "sky_view_factor": 0.88,
+        "orientation_deg": null,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1618355,
+              33.7853207
+            ],
+            [
+              -112.1598955,
+              33.7853207
+            ],
+            [
+              -112.1598955,
+              33.7862595
+            ],
+            [
+              -112.1618355,
+              33.7862595
+            ],
+            [
+              -112.1618355,
+              33.7853207
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-FAB2-05",
+        "name": "FAB2 L2 deck \u2014 bay A2",
+        "structure_id": "FAB2",
+        "level": "L2 deck",
+        "centroid_lon": -112.1669446,
+        "centroid_lat": 33.7868007,
+        "area_m2": 18757.8,
+        "elevation_m": 468.4,
+        "height_agl_m": 9.0,
+        "exposure_class": "open_deck",
+        "surface_class": "galvanised_steel",
+        "sky_view_factor": 0.97,
+        "orientation_deg": null,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1679146,
+              33.7863313
+            ],
+            [
+              -112.1659747,
+              33.7863313
+            ],
+            [
+              -112.1659747,
+              33.7872701
+            ],
+            [
+              -112.1679146,
+              33.7872701
+            ],
+            [
+              -112.1679146,
+              33.7863313
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-FAB2-06",
+        "name": "FAB2 L2 deck \u2014 bay B2",
+        "structure_id": "FAB2",
+        "level": "L2 deck",
+        "centroid_lon": -112.1649182,
+        "centroid_lat": 33.7868007,
+        "area_m2": 18757.8,
+        "elevation_m": 468.4,
+        "height_agl_m": 9.0,
+        "exposure_class": "shaded_by_steel",
+        "surface_class": "galvanised_steel",
+        "sky_view_factor": 0.45,
+        "orientation_deg": null,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1658882,
+              33.7863313
+            ],
+            [
+              -112.1639483,
+              33.7863313
+            ],
+            [
+              -112.1639483,
+              33.7872701
+            ],
+            [
+              -112.1658882,
+              33.7872701
+            ],
+            [
+              -112.1658882,
+              33.7863313
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-FAB2-07",
+        "name": "FAB2 L2 deck \u2014 bay C2",
+        "structure_id": "FAB2",
+        "level": "L2 deck",
+        "centroid_lon": -112.1628919,
+        "centroid_lat": 33.7868007,
+        "area_m2": 18757.8,
+        "elevation_m": 468.4,
+        "height_agl_m": 9.0,
+        "exposure_class": "open_deck",
+        "surface_class": "galvanised_steel",
+        "sky_view_factor": 0.97,
+        "orientation_deg": null,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1638618,
+              33.7863313
+            ],
+            [
+              -112.1619219,
+              33.7863313
+            ],
+            [
+              -112.1619219,
+              33.7872701
+            ],
+            [
+              -112.1638618,
+              33.7872701
+            ],
+            [
+              -112.1638618,
+              33.7863313
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-FAB2-08",
+        "name": "FAB2 L2 deck \u2014 bay D2",
+        "structure_id": "FAB2",
+        "level": "L2 deck",
+        "centroid_lon": -112.1608655,
+        "centroid_lat": 33.7868007,
+        "area_m2": 18757.8,
+        "elevation_m": 468.4,
+        "height_agl_m": 9.0,
+        "exposure_class": "shaded_by_steel",
+        "surface_class": "galvanised_steel",
+        "sky_view_factor": 0.45,
+        "orientation_deg": null,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1618355,
+              33.7863313
+            ],
+            [
+              -112.1598955,
+              33.7863313
+            ],
+            [
+              -112.1598955,
+              33.7872701
+            ],
+            [
+              -112.1618355,
+              33.7872701
+            ],
+            [
+              -112.1618355,
+              33.7863313
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-FAB2-09",
+        "name": "FAB2 L3 deck \u2014 bay A3",
+        "structure_id": "FAB2",
+        "level": "L3 deck",
+        "centroid_lon": -112.1669446,
+        "centroid_lat": 33.7878113,
+        "area_m2": 18757.8,
+        "elevation_m": 469.1,
+        "height_agl_m": 9.0,
+        "exposure_class": "open_deck",
+        "surface_class": "galvanised_steel",
+        "sky_view_factor": 0.97,
+        "orientation_deg": null,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1679146,
+              33.7873419
+            ],
+            [
+              -112.1659747,
+              33.7873419
+            ],
+            [
+              -112.1659747,
+              33.7882807
+            ],
+            [
+              -112.1679146,
+              33.7882807
+            ],
+            [
+              -112.1679146,
+              33.7873419
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-FAB2-10",
+        "name": "FAB2 L3 deck \u2014 bay B3",
+        "structure_id": "FAB2",
+        "level": "L3 deck",
+        "centroid_lon": -112.1649182,
+        "centroid_lat": 33.7878113,
+        "area_m2": 18757.8,
+        "elevation_m": 469.1,
+        "height_agl_m": 9.0,
+        "exposure_class": "shaded_by_steel",
+        "surface_class": "galvanised_steel",
+        "sky_view_factor": 0.45,
+        "orientation_deg": null,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1658882,
+              33.7873419
+            ],
+            [
+              -112.1639483,
+              33.7873419
+            ],
+            [
+              -112.1639483,
+              33.7882807
+            ],
+            [
+              -112.1658882,
+              33.7882807
+            ],
+            [
+              -112.1658882,
+              33.7873419
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-FAB2-11",
+        "name": "FAB2 L3 deck \u2014 bay C3",
+        "structure_id": "FAB2",
+        "level": "L3 deck",
+        "centroid_lon": -112.1628919,
+        "centroid_lat": 33.7878113,
+        "area_m2": 18757.8,
+        "elevation_m": 469.1,
+        "height_agl_m": 9.0,
+        "exposure_class": "open_deck",
+        "surface_class": "galvanised_steel",
+        "sky_view_factor": 0.97,
+        "orientation_deg": null,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1638618,
+              33.7873419
+            ],
+            [
+              -112.1619219,
+              33.7873419
+            ],
+            [
+              -112.1619219,
+              33.7882807
+            ],
+            [
+              -112.1638618,
+              33.7882807
+            ],
+            [
+              -112.1638618,
+              33.7873419
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-FAB2-12",
+        "name": "FAB2 L3 deck \u2014 bay D3",
+        "structure_id": "FAB2",
+        "level": "L3 deck",
+        "centroid_lon": -112.1608655,
+        "centroid_lat": 33.7878113,
+        "area_m2": 18757.8,
+        "elevation_m": 469.1,
+        "height_agl_m": 9.0,
+        "exposure_class": "shaded_by_steel",
+        "surface_class": "galvanised_steel",
+        "sky_view_factor": 0.45,
+        "orientation_deg": null,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1618355,
+              33.7873419
+            ],
+            [
+              -112.1598955,
+              33.7873419
+            ],
+            [
+              -112.1598955,
+              33.7882807
+            ],
+            [
+              -112.1618355,
+              33.7882807
+            ],
+            [
+              -112.1618355,
+              33.7873419
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-FAB2-13",
+        "name": "FAB2 Perimeter facade \u2014 bay A4",
+        "structure_id": "FAB2",
+        "level": "Perimeter facade",
+        "centroid_lon": -112.1669446,
+        "centroid_lat": 33.7888219,
+        "area_m2": 18757.8,
+        "elevation_m": 469.8,
+        "height_agl_m": 14.0,
+        "exposure_class": "elevated_facade",
+        "surface_class": "coated_steel",
+        "sky_view_factor": 0.58,
+        "orientation_deg": 0.0,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1679146,
+              33.7883525
+            ],
+            [
+              -112.1659747,
+              33.7883525
+            ],
+            [
+              -112.1659747,
+              33.7892913
+            ],
+            [
+              -112.1679146,
+              33.7892913
+            ],
+            [
+              -112.1679146,
+              33.7883525
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-FAB2-14",
+        "name": "FAB2 Perimeter facade \u2014 bay B4",
+        "structure_id": "FAB2",
+        "level": "Perimeter facade",
+        "centroid_lon": -112.1649182,
+        "centroid_lat": 33.7888219,
+        "area_m2": 18757.8,
+        "elevation_m": 469.8,
+        "height_agl_m": 14.0,
+        "exposure_class": "elevated_facade",
+        "surface_class": "coated_steel",
+        "sky_view_factor": 0.58,
+        "orientation_deg": 0.0,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1658882,
+              33.7883525
+            ],
+            [
+              -112.1639483,
+              33.7883525
+            ],
+            [
+              -112.1639483,
+              33.7892913
+            ],
+            [
+              -112.1658882,
+              33.7892913
+            ],
+            [
+              -112.1658882,
+              33.7883525
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-CUB-01",
+        "name": "CUB grade \u2014 bay A1",
+        "structure_id": "CUB",
+        "level": "grade",
+        "centroid_lon": -112.1587896,
+        "centroid_lat": 33.7861382,
+        "area_m2": 5630.7,
+        "elevation_m": 468.0,
+        "height_agl_m": 0.0,
+        "exposure_class": "ground_slab",
+        "surface_class": "bare_concrete",
+        "sky_view_factor": 0.92,
+        "orientation_deg": null,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1591606,
+              33.7857699
+            ],
+            [
+              -112.1584185,
+              33.7857699
+            ],
+            [
+              -112.1584185,
+              33.7865065
+            ],
+            [
+              -112.1591606,
+              33.7865065
+            ],
+            [
+              -112.1591606,
+              33.7857699
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-CUB-02",
+        "name": "CUB grade \u2014 bay B1",
+        "structure_id": "CUB",
+        "level": "grade",
+        "centroid_lon": -112.157961,
+        "centroid_lat": 33.7861382,
+        "area_m2": 5630.7,
+        "elevation_m": 468.0,
+        "height_agl_m": 0.0,
+        "exposure_class": "ground_slab",
+        "surface_class": "bare_concrete",
+        "sky_view_factor": 0.92,
+        "orientation_deg": null,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1583321,
+              33.7857699
+            ],
+            [
+              -112.15759,
+              33.7857699
+            ],
+            [
+              -112.15759,
+              33.7865065
+            ],
+            [
+              -112.1583321,
+              33.7865065
+            ],
+            [
+              -112.1583321,
+              33.7857699
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-CUB-03",
+        "name": "CUB grade \u2014 bay C1",
+        "structure_id": "CUB",
+        "level": "grade",
+        "centroid_lon": -112.1571325,
+        "centroid_lat": 33.7861382,
+        "area_m2": 5630.7,
+        "elevation_m": 468.0,
+        "height_agl_m": 0.0,
+        "exposure_class": "ground_slab",
+        "surface_class": "bare_concrete",
+        "sky_view_factor": 0.92,
+        "orientation_deg": null,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1575035,
+              33.7857699
+            ],
+            [
+              -112.1567614,
+              33.7857699
+            ],
+            [
+              -112.1567614,
+              33.7865065
+            ],
+            [
+              -112.1575035,
+              33.7865065
+            ],
+            [
+              -112.1575035,
+              33.7857699
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-CUB-04",
+        "name": "CUB L2 \u2014 bay A2",
+        "structure_id": "CUB",
+        "level": "L2",
+        "centroid_lon": -112.1587896,
+        "centroid_lat": 33.7869467,
+        "area_m2": 5630.7,
+        "elevation_m": 468.5,
+        "height_agl_m": 6.0,
+        "exposure_class": "open_deck",
+        "surface_class": "galvanised_steel",
+        "sky_view_factor": 0.95,
+        "orientation_deg": null,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1591606,
+              33.7865784
+            ],
+            [
+              -112.1584185,
+              33.7865784
+            ],
+            [
+              -112.1584185,
+              33.787315
+            ],
+            [
+              -112.1591606,
+              33.787315
+            ],
+            [
+              -112.1591606,
+              33.7865784
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-CUB-05",
+        "name": "CUB L2 \u2014 bay B2",
+        "structure_id": "CUB",
+        "level": "L2",
+        "centroid_lon": -112.157961,
+        "centroid_lat": 33.7869467,
+        "area_m2": 5630.7,
+        "elevation_m": 468.5,
+        "height_agl_m": 6.0,
+        "exposure_class": "open_deck",
+        "surface_class": "galvanised_steel",
+        "sky_view_factor": 0.95,
+        "orientation_deg": null,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1583321,
+              33.7865784
+            ],
+            [
+              -112.15759,
+              33.7865784
+            ],
+            [
+              -112.15759,
+              33.787315
+            ],
+            [
+              -112.1583321,
+              33.787315
+            ],
+            [
+              -112.1583321,
+              33.7865784
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-WHSE-01",
+        "name": "WHSE grade \u2014 bay A1",
+        "structure_id": "WHSE",
+        "level": "grade",
+        "centroid_lon": -112.1639591,
+        "centroid_lat": 33.7811526,
+        "area_m2": 9504.0,
+        "elevation_m": 464.6,
+        "height_agl_m": 0.0,
+        "exposure_class": "ground_slab",
+        "surface_class": "bare_concrete",
+        "sky_view_factor": 0.9,
+        "orientation_deg": null,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1646724,
+              33.7808292
+            ],
+            [
+              -112.1632458,
+              33.7808292
+            ],
+            [
+              -112.1632458,
+              33.781476
+            ],
+            [
+              -112.1646724,
+              33.781476
+            ],
+            [
+              -112.1646724,
+              33.7808292
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-WHSE-02",
+        "name": "WHSE grade \u2014 bay B1",
+        "structure_id": "WHSE",
+        "level": "grade",
+        "centroid_lon": -112.1624461,
+        "centroid_lat": 33.7811526,
+        "area_m2": 9504.0,
+        "elevation_m": 464.6,
+        "height_agl_m": 0.0,
+        "exposure_class": "ground_slab",
+        "surface_class": "bare_concrete",
+        "sky_view_factor": 0.9,
+        "orientation_deg": null,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1631593,
+              33.7808292
+            ],
+            [
+              -112.1617328,
+              33.7808292
+            ],
+            [
+              -112.1617328,
+              33.781476
+            ],
+            [
+              -112.1631593,
+              33.781476
+            ],
+            [
+              -112.1631593,
+              33.7808292
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-WHSE-03",
+        "name": "WHSE grade \u2014 bay A2",
+        "structure_id": "WHSE",
+        "level": "grade",
+        "centroid_lon": -112.1639591,
+        "centroid_lat": 33.7818712,
+        "area_m2": 9504.0,
+        "elevation_m": 465.1,
+        "height_agl_m": 8.0,
+        "exposure_class": "elevated_facade",
+        "surface_class": "bare_concrete",
+        "sky_view_factor": 0.6,
+        "orientation_deg": 0.0,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1646724,
+              33.7815478
+            ],
+            [
+              -112.1632458,
+              33.7815478
+            ],
+            [
+              -112.1632458,
+              33.7821946
+            ],
+            [
+              -112.1646724,
+              33.7821946
+            ],
+            [
+              -112.1646724,
+              33.7815478
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-WHSE-04",
+        "name": "WHSE grade \u2014 bay B2",
+        "structure_id": "WHSE",
+        "level": "grade",
+        "centroid_lon": -112.1624461,
+        "centroid_lat": 33.7818712,
+        "area_m2": 9504.0,
+        "elevation_m": 465.1,
+        "height_agl_m": 8.0,
+        "exposure_class": "elevated_facade",
+        "surface_class": "bare_concrete",
+        "sky_view_factor": 0.6,
+        "orientation_deg": 0.0,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1631593,
+              33.7815478
+            ],
+            [
+              -112.1617328,
+              33.7815478
+            ],
+            [
+              -112.1617328,
+              33.7821946
+            ],
+            [
+              -112.1631593,
+              33.7821946
+            ],
+            [
+              -112.1631593,
+              33.7815478
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-CT-01",
+        "name": "CT grade \u2014 bay A1",
+        "structure_id": "CT",
+        "level": "grade",
+        "centroid_lon": -112.1585554,
+        "centroid_lat": 33.7887658,
+        "area_m2": 7504.0,
+        "elevation_m": 469.7,
+        "height_agl_m": 0.0,
+        "exposure_class": "ground_slab",
+        "surface_class": "bare_concrete",
+        "sky_view_factor": 0.92,
+        "orientation_deg": null,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1591606,
+              33.7884648
+            ],
+            [
+              -112.1579502,
+              33.7884648
+            ],
+            [
+              -112.1579502,
+              33.7890667
+            ],
+            [
+              -112.1591606,
+              33.7890667
+            ],
+            [
+              -112.1591606,
+              33.7884648
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-CT-02",
+        "name": "CT grade \u2014 bay B1",
+        "structure_id": "CT",
+        "level": "grade",
+        "centroid_lon": -112.1572585,
+        "centroid_lat": 33.7887658,
+        "area_m2": 7504.0,
+        "elevation_m": 469.7,
+        "height_agl_m": 0.0,
+        "exposure_class": "ground_slab",
+        "surface_class": "bare_concrete",
+        "sky_view_factor": 0.92,
+        "orientation_deg": null,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1578638,
+              33.7884648
+            ],
+            [
+              -112.1566533,
+              33.7884648
+            ],
+            [
+              -112.1566533,
+              33.7890667
+            ],
+            [
+              -112.1578638,
+              33.7890667
+            ],
+            [
+              -112.1578638,
+              33.7884648
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-CT-03",
+        "name": "CT L2 \u2014 bay A2",
+        "structure_id": "CT",
+        "level": "L2",
+        "centroid_lon": -112.1585554,
+        "centroid_lat": 33.7894395,
+        "area_m2": 7504.0,
+        "elevation_m": 470.2,
+        "height_agl_m": 6.0,
+        "exposure_class": "open_deck",
+        "surface_class": "galvanised_steel",
+        "sky_view_factor": 0.95,
+        "orientation_deg": null,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1591606,
+              33.7891386
+            ],
+            [
+              -112.1579502,
+              33.7891386
+            ],
+            [
+              -112.1579502,
+              33.7897404
+            ],
+            [
+              -112.1591606,
+              33.7897404
+            ],
+            [
+              -112.1591606,
+              33.7891386
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-SUB-01",
+        "name": "SUB grade \u2014 bay A1",
+        "structure_id": "SUB",
+        "level": "grade",
+        "centroid_lon": -112.1552052,
+        "centroid_lat": 33.785689,
+        "area_m2": 9184.0,
+        "elevation_m": 467.7,
+        "height_agl_m": 0.0,
+        "exposure_class": "ground_slab",
+        "surface_class": "bare_concrete",
+        "sky_view_factor": 0.95,
+        "orientation_deg": null,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1558104,
+              33.7853207
+            ],
+            [
+              -112.1545999,
+              33.7853207
+            ],
+            [
+              -112.1545999,
+              33.7860573
+            ],
+            [
+              -112.1558104,
+              33.7860573
+            ],
+            [
+              -112.1558104,
+              33.7853207
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-SUB-02",
+        "name": "SUB grade \u2014 bay B1",
+        "structure_id": "SUB",
+        "level": "grade",
+        "centroid_lon": -112.1539083,
+        "centroid_lat": 33.785689,
+        "area_m2": 9184.0,
+        "elevation_m": 467.7,
+        "height_agl_m": 0.0,
+        "exposure_class": "ground_slab",
+        "surface_class": "bare_concrete",
+        "sky_view_factor": 0.95,
+        "orientation_deg": null,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1545135,
+              33.7853207
+            ],
+            [
+              -112.1533031,
+              33.7853207
+            ],
+            [
+              -112.1533031,
+              33.7860573
+            ],
+            [
+              -112.1545135,
+              33.7860573
+            ],
+            [
+              -112.1545135,
+              33.7853207
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-SUB-03",
+        "name": "SUB L2 \u2014 bay A2",
+        "structure_id": "SUB",
+        "level": "L2",
+        "centroid_lon": -112.1552052,
+        "centroid_lat": 33.7864975,
+        "area_m2": 9184.0,
+        "elevation_m": 468.2,
+        "height_agl_m": 4.0,
+        "exposure_class": "open_deck",
+        "surface_class": "galvanised_steel",
+        "sky_view_factor": 0.98,
+        "orientation_deg": null,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1558104,
+              33.7861292
+            ],
+            [
+              -112.1545999,
+              33.7861292
+            ],
+            [
+              -112.1545999,
+              33.7868658
+            ],
+            [
+              -112.1558104,
+              33.7868658
+            ],
+            [
+              -112.1558104,
+              33.7861292
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-BULK-01",
+        "name": "BULK grade \u2014 bay A1",
+        "structure_id": "BULK",
+        "level": "grade",
+        "centroid_lon": -112.1586635,
+        "centroid_lat": 33.7838026,
+        "area_m2": 5704.0,
+        "elevation_m": 466.4,
+        "height_agl_m": 0.0,
+        "exposure_class": "ground_slab",
+        "surface_class": "bare_concrete",
+        "sky_view_factor": 0.86,
+        "orientation_deg": null,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1591606,
+              33.7835241
+            ],
+            [
+              -112.1581664,
+              33.7835241
+            ],
+            [
+              -112.1581664,
+              33.7840811
+            ],
+            [
+              -112.1591606,
+              33.7840811
+            ],
+            [
+              -112.1591606,
+              33.7835241
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-BULK-02",
+        "name": "BULK grade \u2014 bay B1",
+        "structure_id": "BULK",
+        "level": "grade",
+        "centroid_lon": -112.1575828,
+        "centroid_lat": 33.7838026,
+        "area_m2": 5704.0,
+        "elevation_m": 466.4,
+        "height_agl_m": 0.0,
+        "exposure_class": "ground_slab",
+        "surface_class": "bare_concrete",
+        "sky_view_factor": 0.86,
+        "orientation_deg": null,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1580799,
+              33.7835241
+            ],
+            [
+              -112.1570856,
+              33.7835241
+            ],
+            [
+              -112.1570856,
+              33.7840811
+            ],
+            [
+              -112.1580799,
+              33.7840811
+            ],
+            [
+              -112.1580799,
+              33.7835241
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-BULK-03",
+        "name": "BULK L2 \u2014 bay A2",
+        "structure_id": "BULK",
+        "level": "L2",
+        "centroid_lon": -112.1586635,
+        "centroid_lat": 33.7844314,
+        "area_m2": 5704.0,
+        "elevation_m": 466.8,
+        "height_agl_m": 4.0,
+        "exposure_class": "elevated_facade",
+        "surface_class": "cmu_masonry",
+        "sky_view_factor": 0.62,
+        "orientation_deg": 0.0,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1591606,
+              33.7841529
+            ],
+            [
+              -112.1581664,
+              33.7841529
+            ],
+            [
+              -112.1581664,
+              33.7847099
+            ],
+            [
+              -112.1591606,
+              33.7847099
+            ],
+            [
+              -112.1591606,
+              33.7841529
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-CHEM-01",
+        "name": "CHEM grade \u2014 bay A1",
+        "structure_id": "CHEM",
+        "level": "grade",
+        "centroid_lon": -112.1672553,
+        "centroid_lat": 33.7830839,
+        "area_m2": 5084.0,
+        "elevation_m": 465.9,
+        "height_agl_m": 0.0,
+        "exposure_class": "ground_slab",
+        "surface_class": "bare_concrete",
+        "sky_view_factor": 0.86,
+        "orientation_deg": null,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1676984,
+              33.7828055
+            ],
+            [
+              -112.1668122,
+              33.7828055
+            ],
+            [
+              -112.1668122,
+              33.7833624
+            ],
+            [
+              -112.1676984,
+              33.7833624
+            ],
+            [
+              -112.1676984,
+              33.7828055
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-CHEM-02",
+        "name": "CHEM grade \u2014 bay B1",
+        "structure_id": "CHEM",
+        "level": "grade",
+        "centroid_lon": -112.1662827,
+        "centroid_lat": 33.7830839,
+        "area_m2": 5084.0,
+        "elevation_m": 465.9,
+        "height_agl_m": 0.0,
+        "exposure_class": "ground_slab",
+        "surface_class": "bare_concrete",
+        "sky_view_factor": 0.86,
+        "orientation_deg": null,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1667258,
+              33.7828055
+            ],
+            [
+              -112.1658396,
+              33.7828055
+            ],
+            [
+              -112.1658396,
+              33.7833624
+            ],
+            [
+              -112.1667258,
+              33.7833624
+            ],
+            [
+              -112.1667258,
+              33.7828055
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-CHEM-03",
+        "name": "CHEM L2 \u2014 bay A2",
+        "structure_id": "CHEM",
+        "level": "L2",
+        "centroid_lon": -112.1672553,
+        "centroid_lat": 33.7837128,
+        "area_m2": 5084.0,
+        "elevation_m": 466.4,
+        "height_agl_m": 4.0,
+        "exposure_class": "elevated_facade",
+        "surface_class": "cmu_masonry",
+        "sky_view_factor": 0.62,
+        "orientation_deg": 0.0,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1676984,
+              33.7834343
+            ],
+            [
+              -112.1668122,
+              33.7834343
+            ],
+            [
+              -112.1668122,
+              33.7839912
+            ],
+            [
+              -112.1676984,
+              33.7839912
+            ],
+            [
+              -112.1676984,
+              33.7834343
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-ADMIN-01",
+        "name": "ADMIN grade \u2014 bay A1",
+        "structure_id": "ADMIN",
+        "level": "grade",
+        "centroid_lon": -112.1680118,
+        "centroid_lat": 33.7794458,
+        "area_m2": 7544.0,
+        "elevation_m": 463.5,
+        "height_agl_m": 0.0,
+        "exposure_class": "ground_slab",
+        "surface_class": "bare_concrete",
+        "sky_view_factor": 0.86,
+        "orientation_deg": null,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1684549,
+              33.7790326
+            ],
+            [
+              -112.1675687,
+              33.7790326
+            ],
+            [
+              -112.1675687,
+              33.779859
+            ],
+            [
+              -112.1684549,
+              33.779859
+            ],
+            [
+              -112.1684549,
+              33.7790326
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-ADMIN-02",
+        "name": "ADMIN grade \u2014 bay B1",
+        "structure_id": "ADMIN",
+        "level": "grade",
+        "centroid_lon": -112.1670392,
+        "centroid_lat": 33.7794458,
+        "area_m2": 7544.0,
+        "elevation_m": 463.5,
+        "height_agl_m": 0.0,
+        "exposure_class": "ground_slab",
+        "surface_class": "bare_concrete",
+        "sky_view_factor": 0.86,
+        "orientation_deg": null,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1674823,
+              33.7790326
+            ],
+            [
+              -112.1665961,
+              33.7790326
+            ],
+            [
+              -112.1665961,
+              33.779859
+            ],
+            [
+              -112.1674823,
+              33.779859
+            ],
+            [
+              -112.1674823,
+              33.7790326
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-PARK-01",
+        "name": "PARK grade \u2014 bay A1",
+        "structure_id": "PARK",
+        "level": "grade",
+        "centroid_lon": -112.1516117,
+        "centroid_lat": 33.7808831,
+        "area_m2": 24804.0,
+        "elevation_m": 464.5,
+        "height_agl_m": 0.0,
+        "exposure_class": "ground_slab",
+        "surface_class": "bare_concrete",
+        "sky_view_factor": 0.9,
+        "orientation_deg": null,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.152244,
+              33.7799309
+            ],
+            [
+              -112.1509795,
+              33.7799309
+            ],
+            [
+              -112.1509795,
+              33.7818353
+            ],
+            [
+              -112.152244,
+              33.7818353
+            ],
+            [
+              -112.152244,
+              33.7799309
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-PARK-02",
+        "name": "PARK grade \u2014 bay B1",
+        "structure_id": "PARK",
+        "level": "grade",
+        "centroid_lon": -112.1502608,
+        "centroid_lat": 33.7808831,
+        "area_m2": 24804.0,
+        "elevation_m": 464.5,
+        "height_agl_m": 0.0,
+        "exposure_class": "ground_slab",
+        "surface_class": "bare_concrete",
+        "sky_view_factor": 0.9,
+        "orientation_deg": null,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.150893,
+              33.7799309
+            ],
+            [
+              -112.1496286,
+              33.7799309
+            ],
+            [
+              -112.1496286,
+              33.7818353
+            ],
+            [
+              -112.150893,
+              33.7818353
+            ],
+            [
+              -112.150893,
+              33.7799309
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "WF-ROAD-01",
+        "name": "ROAD grade \u2014 bay A1",
+        "structure_id": "ROAD",
+        "level": "grade",
+        "centroid_lon": -112.1587716,
+        "centroid_lat": 33.7912137,
+        "area_m2": 200704.0,
+        "elevation_m": 471.4,
+        "height_agl_m": 0.0,
+        "exposure_class": "paved_corridor",
+        "surface_class": "asphalt",
+        "sky_view_factor": 1.0,
+        "orientation_deg": null,
+        "tile_cluster_id": null,
+        "notes": null
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1684549,
+              33.7907106
+            ],
+            [
+              -112.1490882,
+              33.7907106
+            ],
+            [
+              -112.1490882,
+              33.7917167
+            ],
+            [
+              -112.1684549,
+              33.7917167
+            ],
+            [
+              -112.1684549,
+              33.7907106
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}
