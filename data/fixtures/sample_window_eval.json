@@ -1,0 +1,1121 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "fixture-2026-08-24-monsoon-dawn",
+  "generated_at": "2026-08-24T00:00:00-07:00",
+  "activity_id": "A-2009",
+  "activity_name": "Structural steel high-build coating — FAB2 L3 deck — bay C3",
+  "wbs": "FAB2.FAB.11",
+  "trade_id": "coating_epoxy_structural_steel",
+  "trade_display_name": "Structural steel — high-build epoxy coating",
+  "work_face_id": "WF-FAB2-11",
+  "work_face_name": "FAB2 L3 deck — bay C3",
+  "horizon": {
+    "start": "2026-08-24T00:00:00-07:00",
+    "end": "2026-08-26T00:00:00-07:00",
+    "step_minutes": 60,
+    "tz": "America/Phoenix",
+    "tier": "commit"
+  },
+  "scheduled": {
+    "start": "2026-08-24T02:00:00-07:00",
+    "finish": "2026-08-24T08:00:00-07:00",
+    "duration_h": 6.0,
+    "total_float_d": 1.5,
+    "is_critical": false,
+    "is_near_critical": true,
+    "milestone_date": null,
+    "hold_point": null,
+    "crew_size": 5
+  },
+  "hours": [
+    {
+      "ts": "2026-08-24T00:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 1.4,
+      "margin_unit": "C",
+      "reason": "Surface 23.0 C, 4.2 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 18.8 C dew point (margin +1.4 C).",
+      "productive_fraction": 1.0,
+      "values": {
+        "t_air_c": 34.0,
+        "t_surf_c": 23.0,
+        "t_dew_c": 18.8,
+        "t_base_material_c": null,
+        "rh_pct": 40.8,
+        "wbgt_c": null,
+        "wind_ms": 1.79,
+        "ghi_w_m2": 0.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-24T01:00:00-07:00",
+      "state": "marginal",
+      "binding_constraint_id": "offset_dew_point",
+      "margin": 0.0,
+      "margin_unit": "C",
+      "reason": "Surface 22.0 C, 2.8 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 19.2 C dew point (margin +0.0 C).",
+      "productive_fraction": 1.0,
+      "values": {
+        "t_air_c": 33.0,
+        "t_surf_c": 22.0,
+        "t_dew_c": 19.2,
+        "t_base_material_c": null,
+        "rh_pct": 44.2,
+        "wbgt_c": null,
+        "wind_ms": 1.56,
+        "ghi_w_m2": 0.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-24T02:00:00-07:00",
+      "state": "closed",
+      "binding_constraint_id": "offset_dew_point",
+      "margin": -0.5,
+      "margin_unit": "C",
+      "reason": "Surface 21.8 C, 2.3 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 19.5 C dew point (margin -0.5 C).",
+      "productive_fraction": 1.0,
+      "values": {
+        "t_air_c": 32.0,
+        "t_surf_c": 21.8,
+        "t_dew_c": 19.5,
+        "t_base_material_c": null,
+        "rh_pct": 47.6,
+        "wbgt_c": null,
+        "wind_ms": 1.12,
+        "ghi_w_m2": 0.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-24T03:00:00-07:00",
+      "state": "closed",
+      "binding_constraint_id": "offset_dew_point",
+      "margin": -0.9,
+      "margin_unit": "C",
+      "reason": "Surface 21.5 C, 1.9 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 19.6 C dew point (margin -0.9 C).",
+      "productive_fraction": 1.0,
+      "values": {
+        "t_air_c": 31.0,
+        "t_surf_c": 21.5,
+        "t_dew_c": 19.6,
+        "t_base_material_c": null,
+        "rh_pct": 50.7,
+        "wbgt_c": null,
+        "wind_ms": 0.89,
+        "ghi_w_m2": 0.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-24T04:00:00-07:00",
+      "state": "marginal",
+      "binding_constraint_id": "offset_dew_point",
+      "margin": 0.4,
+      "margin_unit": "C",
+      "reason": "Surface 22.6 C, 3.2 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 19.4 C dew point (margin +0.4 C).",
+      "productive_fraction": 1.0,
+      "values": {
+        "t_air_c": 30.0,
+        "t_surf_c": 22.6,
+        "t_dew_c": 19.4,
+        "t_base_material_c": null,
+        "rh_pct": 53.1,
+        "wbgt_c": null,
+        "wind_ms": 0.89,
+        "ghi_w_m2": 0.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-24T05:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 2.7,
+      "margin_unit": "C",
+      "reason": "Surface 24.5 C, 5.5 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 19.0 C dew point (margin +2.7 C).",
+      "productive_fraction": 1.0,
+      "values": {
+        "t_air_c": 29.0,
+        "t_surf_c": 24.5,
+        "t_dew_c": 19.0,
+        "t_base_material_c": null,
+        "rh_pct": 54.8,
+        "wbgt_c": null,
+        "wind_ms": 1.12,
+        "ghi_w_m2": 30.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-24T06:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 7.5,
+      "margin_unit": "C",
+      "reason": "Surface 29.0 C, 10.3 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 18.7 C dew point (margin +7.5 C).",
+      "productive_fraction": 1.0,
+      "values": {
+        "t_air_c": 30.0,
+        "t_surf_c": 29.0,
+        "t_dew_c": 18.7,
+        "t_base_material_c": null,
+        "rh_pct": 50.8,
+        "wbgt_c": null,
+        "wind_ms": 1.56,
+        "ghi_w_m2": 160.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-24T07:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 12.8,
+      "margin_unit": "C",
+      "reason": "Surface 34.0 C, 15.6 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 18.4 C dew point (margin +12.8 C).",
+      "productive_fraction": 1.0,
+      "values": {
+        "t_air_c": 32.0,
+        "t_surf_c": 34.0,
+        "t_dew_c": 18.4,
+        "t_base_material_c": null,
+        "rh_pct": 44.5,
+        "wbgt_c": null,
+        "wind_ms": 2.24,
+        "ghi_w_m2": 360.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-24T08:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 18.6,
+      "margin_unit": "C",
+      "reason": "Surface 39.5 C, 21.4 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 18.1 C dew point (margin +18.6 C).",
+      "productive_fraction": 1.0,
+      "values": {
+        "t_air_c": 34.5,
+        "t_surf_c": 39.5,
+        "t_dew_c": 18.1,
+        "t_base_material_c": null,
+        "rh_pct": 37.9,
+        "wbgt_c": null,
+        "wind_ms": 2.91,
+        "ghi_w_m2": 560.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-24T09:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 23.9,
+      "margin_unit": "C",
+      "reason": "Surface 44.5 C, 26.7 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 17.8 C dew point (margin +23.9 C).",
+      "productive_fraction": 1.0,
+      "values": {
+        "t_air_c": 36.5,
+        "t_surf_c": 44.5,
+        "t_dew_c": 17.8,
+        "t_base_material_c": null,
+        "rh_pct": 33.3,
+        "wbgt_c": null,
+        "wind_ms": 3.58,
+        "ghi_w_m2": 720.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-24T10:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 28.7,
+      "margin_unit": "C",
+      "reason": "Surface 49.0 C, 31.5 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 17.5 C dew point (margin +28.7 C).",
+      "productive_fraction": 0.75,
+      "values": {
+        "t_air_c": 38.0,
+        "t_surf_c": 49.0,
+        "t_dew_c": 17.5,
+        "t_base_material_c": null,
+        "rh_pct": 30.1,
+        "wbgt_c": null,
+        "wind_ms": 4.25,
+        "ghi_w_m2": 850.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-24T11:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 33.4,
+      "margin_unit": "C",
+      "reason": "Surface 53.5 C, 36.2 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 17.3 C dew point (margin +33.4 C).",
+      "productive_fraction": 0.75,
+      "values": {
+        "t_air_c": 39.5,
+        "t_surf_c": 53.5,
+        "t_dew_c": 17.3,
+        "t_base_material_c": null,
+        "rh_pct": 27.4,
+        "wbgt_c": null,
+        "wind_ms": 4.92,
+        "ghi_w_m2": 940.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-24T12:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 36.6,
+      "margin_unit": "C",
+      "reason": "Surface 56.5 C, 39.4 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 17.1 C dew point (margin +36.6 C).",
+      "productive_fraction": 0.5,
+      "values": {
+        "t_air_c": 40.5,
+        "t_surf_c": 56.5,
+        "t_dew_c": 17.1,
+        "t_base_material_c": null,
+        "rh_pct": 25.7,
+        "wbgt_c": null,
+        "wind_ms": 5.36,
+        "ghi_w_m2": 985.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-24T13:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 38.5,
+      "margin_unit": "C",
+      "reason": "Surface 58.3 C, 41.3 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 17.0 C dew point (margin +38.5 C).",
+      "productive_fraction": 0.5,
+      "values": {
+        "t_air_c": 41.3,
+        "t_surf_c": 58.3,
+        "t_dew_c": 17.0,
+        "t_base_material_c": null,
+        "rh_pct": 24.5,
+        "wbgt_c": null,
+        "wind_ms": 5.59,
+        "ghi_w_m2": 980.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-24T14:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 40.0,
+      "margin_unit": "C",
+      "reason": "Surface 59.8 C, 42.8 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 17.0 C dew point (margin +40.0 C).",
+      "productive_fraction": 0.5,
+      "values": {
+        "t_air_c": 41.8,
+        "t_surf_c": 59.8,
+        "t_dew_c": 17.0,
+        "t_base_material_c": null,
+        "rh_pct": 23.8,
+        "wbgt_c": null,
+        "wind_ms": 5.81,
+        "ghi_w_m2": 915.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-24T15:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 40.2,
+      "margin_unit": "C",
+      "reason": "Surface 60.0 C, 43.0 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 17.0 C dew point (margin +40.2 C).",
+      "productive_fraction": 0.5,
+      "values": {
+        "t_air_c": 42.0,
+        "t_surf_c": 60.0,
+        "t_dew_c": 17.0,
+        "t_base_material_c": null,
+        "rh_pct": 23.6,
+        "wbgt_c": null,
+        "wind_ms": 5.81,
+        "ghi_w_m2": 800.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-24T16:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 37.5,
+      "margin_unit": "C",
+      "reason": "Surface 57.5 C, 40.3 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 17.2 C dew point (margin +37.5 C).",
+      "productive_fraction": 0.5,
+      "values": {
+        "t_air_c": 41.5,
+        "t_surf_c": 57.5,
+        "t_dew_c": 17.2,
+        "t_base_material_c": null,
+        "rh_pct": 24.5,
+        "wbgt_c": null,
+        "wind_ms": 5.36,
+        "ghi_w_m2": 640.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-24T17:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 32.2,
+      "margin_unit": "C",
+      "reason": "Surface 52.5 C, 35.0 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 17.5 C dew point (margin +32.2 C).",
+      "productive_fraction": 0.5,
+      "values": {
+        "t_air_c": 40.5,
+        "t_surf_c": 52.5,
+        "t_dew_c": 17.5,
+        "t_base_material_c": null,
+        "rh_pct": 26.4,
+        "wbgt_c": null,
+        "wind_ms": 4.69,
+        "ghi_w_m2": 440.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-24T18:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 25.4,
+      "margin_unit": "C",
+      "reason": "Surface 46.0 C, 28.2 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 17.8 C dew point (margin +25.4 C).",
+      "productive_fraction": 0.75,
+      "values": {
+        "t_air_c": 39.0,
+        "t_surf_c": 46.0,
+        "t_dew_c": 17.8,
+        "t_base_material_c": null,
+        "rh_pct": 29.1,
+        "wbgt_c": null,
+        "wind_ms": 4.02,
+        "ghi_w_m2": 230.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-24T19:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 19.6,
+      "margin_unit": "C",
+      "reason": "Surface 40.5 C, 22.4 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 18.1 C dew point (margin +19.6 C).",
+      "productive_fraction": 1.0,
+      "values": {
+        "t_air_c": 37.5,
+        "t_surf_c": 40.5,
+        "t_dew_c": 18.1,
+        "t_base_material_c": null,
+        "rh_pct": 32.2,
+        "wbgt_c": null,
+        "wind_ms": 3.35,
+        "ghi_w_m2": 60.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-24T20:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 13.8,
+      "margin_unit": "C",
+      "reason": "Surface 35.0 C, 16.6 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 18.4 C dew point (margin +13.8 C).",
+      "productive_fraction": 1.0,
+      "values": {
+        "t_air_c": 36.0,
+        "t_surf_c": 35.0,
+        "t_dew_c": 18.4,
+        "t_base_material_c": null,
+        "rh_pct": 35.6,
+        "wbgt_c": null,
+        "wind_ms": 2.68,
+        "ghi_w_m2": 0.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-24T21:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 9.6,
+      "margin_unit": "C",
+      "reason": "Surface 31.0 C, 12.4 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 18.6 C dew point (margin +9.6 C).",
+      "productive_fraction": 1.0,
+      "values": {
+        "t_air_c": 35.0,
+        "t_surf_c": 31.0,
+        "t_dew_c": 18.6,
+        "t_base_material_c": null,
+        "rh_pct": 38.1,
+        "wbgt_c": null,
+        "wind_ms": 2.24,
+        "ghi_w_m2": 0.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-24T22:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 5.5,
+      "margin_unit": "C",
+      "reason": "Surface 27.0 C, 8.3 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 18.7 C dew point (margin +5.5 C).",
+      "productive_fraction": 1.0,
+      "values": {
+        "t_air_c": 34.0,
+        "t_surf_c": 27.0,
+        "t_dew_c": 18.7,
+        "t_base_material_c": null,
+        "rh_pct": 40.5,
+        "wbgt_c": null,
+        "wind_ms": 2.01,
+        "ghi_w_m2": 0.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-24T23:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 2.4,
+      "margin_unit": "C",
+      "reason": "Surface 24.0 C, 5.2 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 18.8 C dew point (margin +2.4 C).",
+      "productive_fraction": 1.0,
+      "values": {
+        "t_air_c": 33.0,
+        "t_surf_c": 24.0,
+        "t_dew_c": 18.8,
+        "t_base_material_c": null,
+        "rh_pct": 43.1,
+        "wbgt_c": null,
+        "wind_ms": 1.79,
+        "ghi_w_m2": 0.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-25T00:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 1.4,
+      "margin_unit": "C",
+      "reason": "Surface 23.0 C, 4.2 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 18.8 C dew point (margin +1.4 C).",
+      "productive_fraction": 1.0,
+      "values": {
+        "t_air_c": 34.0,
+        "t_surf_c": 23.0,
+        "t_dew_c": 18.8,
+        "t_base_material_c": null,
+        "rh_pct": 40.8,
+        "wbgt_c": null,
+        "wind_ms": 1.79,
+        "ghi_w_m2": 0.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-25T01:00:00-07:00",
+      "state": "marginal",
+      "binding_constraint_id": "offset_dew_point",
+      "margin": 0.0,
+      "margin_unit": "C",
+      "reason": "Surface 22.0 C, 2.8 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 19.2 C dew point (margin +0.0 C).",
+      "productive_fraction": 1.0,
+      "values": {
+        "t_air_c": 33.0,
+        "t_surf_c": 22.0,
+        "t_dew_c": 19.2,
+        "t_base_material_c": null,
+        "rh_pct": 44.2,
+        "wbgt_c": null,
+        "wind_ms": 1.56,
+        "ghi_w_m2": 0.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-25T02:00:00-07:00",
+      "state": "closed",
+      "binding_constraint_id": "offset_dew_point",
+      "margin": -0.5,
+      "margin_unit": "C",
+      "reason": "Surface 21.8 C, 2.3 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 19.5 C dew point (margin -0.5 C).",
+      "productive_fraction": 1.0,
+      "values": {
+        "t_air_c": 32.0,
+        "t_surf_c": 21.8,
+        "t_dew_c": 19.5,
+        "t_base_material_c": null,
+        "rh_pct": 47.6,
+        "wbgt_c": null,
+        "wind_ms": 1.12,
+        "ghi_w_m2": 0.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-25T03:00:00-07:00",
+      "state": "closed",
+      "binding_constraint_id": "offset_dew_point",
+      "margin": -0.9,
+      "margin_unit": "C",
+      "reason": "Surface 21.5 C, 1.9 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 19.6 C dew point (margin -0.9 C).",
+      "productive_fraction": 1.0,
+      "values": {
+        "t_air_c": 31.0,
+        "t_surf_c": 21.5,
+        "t_dew_c": 19.6,
+        "t_base_material_c": null,
+        "rh_pct": 50.7,
+        "wbgt_c": null,
+        "wind_ms": 0.89,
+        "ghi_w_m2": 0.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-25T04:00:00-07:00",
+      "state": "marginal",
+      "binding_constraint_id": "offset_dew_point",
+      "margin": 0.4,
+      "margin_unit": "C",
+      "reason": "Surface 22.6 C, 3.2 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 19.4 C dew point (margin +0.4 C).",
+      "productive_fraction": 1.0,
+      "values": {
+        "t_air_c": 30.0,
+        "t_surf_c": 22.6,
+        "t_dew_c": 19.4,
+        "t_base_material_c": null,
+        "rh_pct": 53.1,
+        "wbgt_c": null,
+        "wind_ms": 0.89,
+        "ghi_w_m2": 0.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-25T05:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 2.7,
+      "margin_unit": "C",
+      "reason": "Surface 24.5 C, 5.5 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 19.0 C dew point (margin +2.7 C).",
+      "productive_fraction": 1.0,
+      "values": {
+        "t_air_c": 29.0,
+        "t_surf_c": 24.5,
+        "t_dew_c": 19.0,
+        "t_base_material_c": null,
+        "rh_pct": 54.8,
+        "wbgt_c": null,
+        "wind_ms": 1.12,
+        "ghi_w_m2": 30.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-25T06:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 7.5,
+      "margin_unit": "C",
+      "reason": "Surface 29.0 C, 10.3 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 18.7 C dew point (margin +7.5 C).",
+      "productive_fraction": 1.0,
+      "values": {
+        "t_air_c": 30.0,
+        "t_surf_c": 29.0,
+        "t_dew_c": 18.7,
+        "t_base_material_c": null,
+        "rh_pct": 50.8,
+        "wbgt_c": null,
+        "wind_ms": 1.56,
+        "ghi_w_m2": 160.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-25T07:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 12.8,
+      "margin_unit": "C",
+      "reason": "Surface 34.0 C, 15.6 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 18.4 C dew point (margin +12.8 C).",
+      "productive_fraction": 1.0,
+      "values": {
+        "t_air_c": 32.0,
+        "t_surf_c": 34.0,
+        "t_dew_c": 18.4,
+        "t_base_material_c": null,
+        "rh_pct": 44.5,
+        "wbgt_c": null,
+        "wind_ms": 2.24,
+        "ghi_w_m2": 360.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-25T08:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 18.6,
+      "margin_unit": "C",
+      "reason": "Surface 39.5 C, 21.4 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 18.1 C dew point (margin +18.6 C).",
+      "productive_fraction": 1.0,
+      "values": {
+        "t_air_c": 34.5,
+        "t_surf_c": 39.5,
+        "t_dew_c": 18.1,
+        "t_base_material_c": null,
+        "rh_pct": 37.9,
+        "wbgt_c": null,
+        "wind_ms": 2.91,
+        "ghi_w_m2": 560.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-25T09:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 23.9,
+      "margin_unit": "C",
+      "reason": "Surface 44.5 C, 26.7 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 17.8 C dew point (margin +23.9 C).",
+      "productive_fraction": 1.0,
+      "values": {
+        "t_air_c": 36.5,
+        "t_surf_c": 44.5,
+        "t_dew_c": 17.8,
+        "t_base_material_c": null,
+        "rh_pct": 33.3,
+        "wbgt_c": null,
+        "wind_ms": 3.58,
+        "ghi_w_m2": 720.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-25T10:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 28.7,
+      "margin_unit": "C",
+      "reason": "Surface 49.0 C, 31.5 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 17.5 C dew point (margin +28.7 C).",
+      "productive_fraction": 0.75,
+      "values": {
+        "t_air_c": 38.0,
+        "t_surf_c": 49.0,
+        "t_dew_c": 17.5,
+        "t_base_material_c": null,
+        "rh_pct": 30.1,
+        "wbgt_c": null,
+        "wind_ms": 4.25,
+        "ghi_w_m2": 850.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-25T11:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 33.4,
+      "margin_unit": "C",
+      "reason": "Surface 53.5 C, 36.2 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 17.3 C dew point (margin +33.4 C).",
+      "productive_fraction": 0.75,
+      "values": {
+        "t_air_c": 39.5,
+        "t_surf_c": 53.5,
+        "t_dew_c": 17.3,
+        "t_base_material_c": null,
+        "rh_pct": 27.4,
+        "wbgt_c": null,
+        "wind_ms": 4.92,
+        "ghi_w_m2": 940.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-25T12:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 36.6,
+      "margin_unit": "C",
+      "reason": "Surface 56.5 C, 39.4 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 17.1 C dew point (margin +36.6 C).",
+      "productive_fraction": 0.5,
+      "values": {
+        "t_air_c": 40.5,
+        "t_surf_c": 56.5,
+        "t_dew_c": 17.1,
+        "t_base_material_c": null,
+        "rh_pct": 25.7,
+        "wbgt_c": null,
+        "wind_ms": 5.36,
+        "ghi_w_m2": 985.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-25T13:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 38.5,
+      "margin_unit": "C",
+      "reason": "Surface 58.3 C, 41.3 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 17.0 C dew point (margin +38.5 C).",
+      "productive_fraction": 0.5,
+      "values": {
+        "t_air_c": 41.3,
+        "t_surf_c": 58.3,
+        "t_dew_c": 17.0,
+        "t_base_material_c": null,
+        "rh_pct": 24.5,
+        "wbgt_c": null,
+        "wind_ms": 5.59,
+        "ghi_w_m2": 980.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-25T14:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 40.0,
+      "margin_unit": "C",
+      "reason": "Surface 59.8 C, 42.8 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 17.0 C dew point (margin +40.0 C).",
+      "productive_fraction": 0.5,
+      "values": {
+        "t_air_c": 41.8,
+        "t_surf_c": 59.8,
+        "t_dew_c": 17.0,
+        "t_base_material_c": null,
+        "rh_pct": 23.8,
+        "wbgt_c": null,
+        "wind_ms": 5.81,
+        "ghi_w_m2": 915.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-25T15:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 40.2,
+      "margin_unit": "C",
+      "reason": "Surface 60.0 C, 43.0 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 17.0 C dew point (margin +40.2 C).",
+      "productive_fraction": 0.5,
+      "values": {
+        "t_air_c": 42.0,
+        "t_surf_c": 60.0,
+        "t_dew_c": 17.0,
+        "t_base_material_c": null,
+        "rh_pct": 23.6,
+        "wbgt_c": null,
+        "wind_ms": 5.81,
+        "ghi_w_m2": 800.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-25T16:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 37.5,
+      "margin_unit": "C",
+      "reason": "Surface 57.5 C, 40.3 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 17.2 C dew point (margin +37.5 C).",
+      "productive_fraction": 0.5,
+      "values": {
+        "t_air_c": 41.5,
+        "t_surf_c": 57.5,
+        "t_dew_c": 17.2,
+        "t_base_material_c": null,
+        "rh_pct": 24.5,
+        "wbgt_c": null,
+        "wind_ms": 5.36,
+        "ghi_w_m2": 640.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-25T17:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 32.2,
+      "margin_unit": "C",
+      "reason": "Surface 52.5 C, 35.0 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 17.5 C dew point (margin +32.2 C).",
+      "productive_fraction": 0.5,
+      "values": {
+        "t_air_c": 40.5,
+        "t_surf_c": 52.5,
+        "t_dew_c": 17.5,
+        "t_base_material_c": null,
+        "rh_pct": 26.4,
+        "wbgt_c": null,
+        "wind_ms": 4.69,
+        "ghi_w_m2": 440.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-25T18:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 25.4,
+      "margin_unit": "C",
+      "reason": "Surface 46.0 C, 28.2 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 17.8 C dew point (margin +25.4 C).",
+      "productive_fraction": 0.75,
+      "values": {
+        "t_air_c": 39.0,
+        "t_surf_c": 46.0,
+        "t_dew_c": 17.8,
+        "t_base_material_c": null,
+        "rh_pct": 29.1,
+        "wbgt_c": null,
+        "wind_ms": 4.02,
+        "ghi_w_m2": 230.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-25T19:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 19.6,
+      "margin_unit": "C",
+      "reason": "Surface 40.5 C, 22.4 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 18.1 C dew point (margin +19.6 C).",
+      "productive_fraction": 1.0,
+      "values": {
+        "t_air_c": 37.5,
+        "t_surf_c": 40.5,
+        "t_dew_c": 18.1,
+        "t_base_material_c": null,
+        "rh_pct": 32.2,
+        "wbgt_c": null,
+        "wind_ms": 3.35,
+        "ghi_w_m2": 60.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-25T20:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 13.8,
+      "margin_unit": "C",
+      "reason": "Surface 35.0 C, 16.6 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 18.4 C dew point (margin +13.8 C).",
+      "productive_fraction": 1.0,
+      "values": {
+        "t_air_c": 36.0,
+        "t_surf_c": 35.0,
+        "t_dew_c": 18.4,
+        "t_base_material_c": null,
+        "rh_pct": 35.6,
+        "wbgt_c": null,
+        "wind_ms": 2.68,
+        "ghi_w_m2": 0.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-25T21:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 9.6,
+      "margin_unit": "C",
+      "reason": "Surface 31.0 C, 12.4 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 18.6 C dew point (margin +9.6 C).",
+      "productive_fraction": 1.0,
+      "values": {
+        "t_air_c": 35.0,
+        "t_surf_c": 31.0,
+        "t_dew_c": 18.6,
+        "t_base_material_c": null,
+        "rh_pct": 38.1,
+        "wbgt_c": null,
+        "wind_ms": 2.24,
+        "ghi_w_m2": 0.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-25T22:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 5.5,
+      "margin_unit": "C",
+      "reason": "Surface 27.0 C, 8.3 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 18.7 C dew point (margin +5.5 C).",
+      "productive_fraction": 1.0,
+      "values": {
+        "t_air_c": 34.0,
+        "t_surf_c": 27.0,
+        "t_dew_c": 18.7,
+        "t_base_material_c": null,
+        "rh_pct": 40.5,
+        "wbgt_c": null,
+        "wind_ms": 2.01,
+        "ghi_w_m2": 0.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    },
+    {
+      "ts": "2026-08-25T23:00:00-07:00",
+      "state": "open",
+      "binding_constraint_id": null,
+      "margin": 2.4,
+      "margin_unit": "C",
+      "reason": "Surface 24.0 C, 5.2 C above dew point; SSPC-PA 1 6.2 requires 2.8 C above the 18.8 C dew point (margin +2.4 C).",
+      "productive_fraction": 1.0,
+      "values": {
+        "t_air_c": 33.0,
+        "t_surf_c": 24.0,
+        "t_dew_c": 18.8,
+        "t_base_material_c": null,
+        "rh_pct": 43.1,
+        "wbgt_c": null,
+        "wind_ms": 1.79,
+        "ghi_w_m2": 0.0,
+        "cloud_octas": null,
+        "evap_rate_lb_ft2_hr": null
+      }
+    }
+  ],
+  "open_intervals": [
+    {
+      "start": "2026-08-24T00:00:00-07:00",
+      "end": "2026-08-24T02:00:00-07:00",
+      "duration_h": 2.0,
+      "productive_h": 2.0,
+      "includes_marginal": true,
+      "min_margin": 0.0,
+      "confidence": "medium"
+    },
+    {
+      "start": "2026-08-24T04:00:00-07:00",
+      "end": "2026-08-25T02:00:00-07:00",
+      "duration_h": 22.0,
+      "productive_h": 18.25,
+      "includes_marginal": true,
+      "min_margin": 0.0,
+      "confidence": "medium"
+    },
+    {
+      "start": "2026-08-25T04:00:00-07:00",
+      "end": "2026-08-26T00:00:00-07:00",
+      "duration_h": 20.0,
+      "productive_h": 16.25,
+      "includes_marginal": true,
+      "min_margin": 0.4,
+      "confidence": "medium"
+    }
+  ],
+  "constraints": [
+    {
+      "constraint_id": "offset_dew_point",
+      "type": "offset",
+      "label": "Surface >= dew point + 2.8 C (5 F)",
+      "governing_temp": "surface",
+      "satisfied_hours": 44,
+      "closed_hours": 4,
+      "first_open": "2026-08-24T00:00:00-07:00",
+      "last_open": "2026-08-25T23:00:00-07:00",
+      "worst_margin": -0.9,
+      "margin_unit": "C",
+      "citation_fragment": "SSPC-PA 1 6.2: coating shall not be applied when the steel surface temperature is less than 5 F (2.8 C) above the dew point. Macropoxy 646 PDS: at least 5 F above dew point."
+    }
+  ],
+  "binding_constraint": {
+    "constraint_id": "offset_dew_point",
+    "type": "offset",
+    "label": "Surface >= dew point + 2.8 C (5 F)",
+    "hours_lost": 4.0,
+    "would_extend_window_by_h": 4.0,
+    "mitigation_hint": "slip start to 05:00 once the deck warms, or dehumidified enclosure"
+  },
+  "margin": {
+    "value": -0.9,
+    "unit": "C",
+    "at": "2026-08-24T00:00:00-07:00"
+  },
+  "verdict": "at_risk",
+  "verdict_summary": "Structural steel — high-build epoxy coating: 6 h bar at 02:00 clips the closed/thin dawn hours on Surface >= dew point + 2.8 C (5 F). Slip start or mitigate.",
+  "citation": "Sherwin-Williams Macropoxy 646 PDS + SSPC-PA 1 (AMPP) 6.2: coating shall not be applied when the steel surface temperature is less than 5 F (2.8 C) above the dew point.",
+  "standard_ref": "SSPC-PA 1 (AMPP) 6.2; Sherwin-Williams Macropoxy 646 PDS",
+  "usd_exposure": {
+    "at_risk_usd": 456960.0,
+    "protected_usd": 0.0,
+    "basis": "quantity 4200 unit x $34/unit x rework multiplier 3.2"
+  },
+  "confidence": "high",
+  "confidence_reasons": [
+    "satellite + streetview twin present for FAB2 deck cluster"
+  ],
+  "advisory_notice": "Advisory and contractual. Does not replace the field measurement the referenced standard requires.",
+  "provenance": {
+    "fg_activity_ids": [
+      "fg-heatmap-FAB2DECK-0001",
+      "fg-envparams-FAB2DECK-0001"
+    ],
+    "series_digest": null,
+    "registry_version": "2026.08.20-a",
+    "twin_confidence": "high",
+    "replay": true
+  }
+}

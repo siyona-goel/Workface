@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-08-21T09:28:23.169980-07:00",
+  "seed": 20260820,
+  "work_faces": 40,
+  "activities": 328,
+  "precedences": 313,
+  "thermal_sensitive": 179,
+  "critical": 5,
+  "near_critical": 59,
+  "milestones": 2,
+  "hold_points": 9,
+  "cold_weather_swapped": 6,
+  "project_start": "2026-06-01T06:00:00-07:00",
+  "project_finish": "2027-01-14T13:24:00-07:00",
+  "demo_window": {
+    "start": "2026-08-24T00:00:00-07:00",
+    "end": "2026-08-27T00:00:00-07:00"
+  },
+  "in_demo_window": {
+    "activities": 62,
+    "thermal_sensitive": 37,
+    "work_faces_touched": 31,
+    "by_trade": {
+      "adhesive_anchor_epoxy": 3,
+      "coating_epoxy_structural_steel": 4,
+      "concrete_cip_hot_weather": 6,
+      "masonry_cmu_hot_weather": 6,
+      "pavement_marking_waterborne": 1,
+      "sealant_silicone_weatherseal": 3,
+      "sfrm_spray_applied_fireproofing": 8,
+      "structural_welding_preheat": 6
+    }
+  },
+  "by_trade_whole_project": {
+    "adhesive_anchor_epoxy": 25,
+    "coating_epoxy_structural_steel": 25,
+    "concrete_cip_cold_weather": 4,
+    "concrete_cip_hot_weather": 46,
+    "hma_paving_surface_course": 2,
+    "masonry_cmu_cold_weather": 2,
+    "masonry_cmu_hot_weather": 6,
+    "pavement_marking_waterborne": 7,
+    "sealant_silicone_weatherseal": 14,
+    "sfrm_spray_applied_fireproofing": 20,
+    "structural_welding_preheat": 28
+  },
+  "hero_pair": {
+    "bare": "WF-FAB2-07",
+    "shaded": "WF-FAB2-06",
+    "separation_m": 187.5,
+    "level": "L2 deck",
+    "bare_coating_day": "2026-08-25",
+    "shaded_coating_day": "2026-08-24",
+    "sky_view_factor": {
+      "bare": 0.97,
+      "shaded": 0.45
+    },
+    "coating_day_gap_d": 1,
+    "note": "Same L2 deck slab, coating on both (1 day apart). Separation is the 187.5 m FAB2 deck grid pitch \u2014 quote this number, not the plan's ~300 m prose."
+  }
+}

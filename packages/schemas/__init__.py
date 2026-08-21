@@ -22,6 +22,7 @@ from . import (  # noqa: F401
     window_eval,          # #5 T3 -> T1  the ribbon contract
     agent_trace,          # #6 T3 -> T1  the agent decision log
     record,               # #6/#7 T3 -> T1/T2  hash chain + thermal certificate
+    trade_window,         # registry: typed rows of data/trade_windows.json (T3, read by T1/T2)
 )
 
 __all__ = [
@@ -32,4 +33,5 @@ __all__ = [
     "window_eval",
     "agent_trace",
     "record",
+    "trade_window",
 ]
