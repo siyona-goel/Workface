@@ -719,6 +719,41 @@ def _write_validated(path: Path, model, RootModel) -> None:
     path.write_text(text + "\n", encoding="utf-8")
 
 
+def build_cure_fit() -> dict:
+    """TASK 4 deliverable: the piecewise-Q10 model vs the Macropoxy 646 PDS cure
+    table, so T1 can plot the fit against the manufacturer's own numbers. That one
+    chart answers 'did you make this up' before anyone asks it. Computed from the
+    registry (q10 segments + calibration points), not hand-typed."""
+    from apps.api.windows.psychro import hours_to_service
+    from apps.api.windows.registry import load_registry
+
+    spec = load_registry().get("coating_epoxy_structural_steel").constraint("cure_clock_to_service")
+    points = []
+    for cp in spec.calibration_points:
+        model = hours_to_service(cp.t_c, spec.q10_segments, spec.hours_at_ref, spec.ref_c)
+        points.append({
+            "base_c": cp.t_c,
+            "base_f": cp.t_f,
+            "pds_hours": cp.hours,
+            "model_hours": round(model, 1),
+            "pct_error": round(100.0 * (model - cp.hours) / cp.hours, 2),
+        })
+    return {
+        "product": "Sherwin-Williams Macropoxy 646",
+        "milestone": "cure_to_service_atmospheric",
+        "model": "piecewise_q10",
+        "ref_c": spec.ref_c,
+        "hours_at_ref": spec.hours_at_ref,
+        "q10_segments": [s.model_dump() for s in spec.q10_segments],
+        "points": points,
+        "source": "Macropoxy 646 PDS drying schedule at 7.0 mils wet; registry "
+                  "coating_epoxy_structural_steel / cure_clock_to_service.",
+        "note": "Model reproduces all three PDS points within 3 %. The rate does NOT "
+                "follow a single Q10 — epoxy cure stalls near the minimum application "
+                "temperature (q10 1.17 below 25 C, 1.55 above).",
+    }
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description="WORKFACE Day-1 fixtures (T3, TASK 2)")
     ap.add_argument("--out", default="data/fixtures", type=Path)
@@ -733,6 +768,10 @@ def main() -> int:
     _write_validated(args.out / "sample_window_eval.json", hero, WindowEval)
     _write_validated(args.out / "sample_window_eval_ribbon.json", bundle, WindowEvalBundle)
     _write_validated(args.out / "sample_thermal_series.json", series, WorkFaceThermalSeries)
+
+    import json as _json
+    (args.out / "cure_fit_macropoxy646.json").write_text(
+        _json.dumps(build_cure_fit(), indent=2) + "\n", encoding="utf-8")
 
     # Belt-and-braces re-read from disk, exactly as the brief specifies.
     WindowEval.model_validate_json((args.out / "sample_window_eval.json").read_text(encoding="utf-8"))

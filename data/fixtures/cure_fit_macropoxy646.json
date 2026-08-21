@@ -1,0 +1,44 @@
+{
+  "product": "Sherwin-Williams Macropoxy 646",
+  "milestone": "cure_to_service_atmospheric",
+  "model": "piecewise_q10",
+  "ref_c": 25.0,
+  "hours_at_ref": 168.0,
+  "q10_segments": [
+    {
+      "t_lo_c": 1.7,
+      "t_hi_c": 25.0,
+      "q10": 1.17
+    },
+    {
+      "t_lo_c": 25.0,
+      "t_hi_c": 37.8,
+      "q10": 1.55
+    }
+  ],
+  "points": [
+    {
+      "base_c": 1.7,
+      "base_f": 35.0,
+      "pds_hours": 240.0,
+      "model_hours": 242.2,
+      "pct_error": 0.92
+    },
+    {
+      "base_c": 25.0,
+      "base_f": 77.0,
+      "pds_hours": 168.0,
+      "model_hours": 168.0,
+      "pct_error": 0.0
+    },
+    {
+      "base_c": 37.8,
+      "base_f": 100.0,
+      "pds_hours": 96.0,
+      "model_hours": 95.9,
+      "pct_error": -0.13
+    }
+  ],
+  "source": "Macropoxy 646 PDS drying schedule at 7.0 mils wet; registry coating_epoxy_structural_steel / cure_clock_to_service.",
+  "note": "Model reproduces all three PDS points within 3 %. The rate does NOT follow a single Q10 \u2014 epoxy cure stalls near the minimum application temperature (q10 1.17 below 25 C, 1.55 above)."
+}
