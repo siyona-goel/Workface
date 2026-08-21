@@ -1,0 +1,22 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      # T2 owns apps/api/requirements.txt and may not have pushed it yet.
+      # Fall back so CI is green from the first commit rather than red until T2 lands.
+      - name: Install deps
+        run: |
+          if [ -f apps/api/requirements.txt ]; then
+            pip install -r apps/api/requirements.txt pytest
+          else
+            pip install pydantic pytest
+          fi
+      - name: Run tests
+        run: pytest tests/ -q
