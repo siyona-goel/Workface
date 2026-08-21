@@ -1,0 +1,87 @@
+{
+  "error": false,
+  "status_code": 200,
+  "message": "Completed",
+  "data": {
+    "activity_id": "a550dadd-65a1-426a-88bb-3f6ce6d7a254",
+    "status": "Completed",
+    "result": {
+      "metadata": {
+        "timezone": "GMT-5",
+        "timezone_offset_hours": -5,
+        "time_range": {
+          "start": "2024-07-15T14:00:00-05:00",
+          "end": "2024-07-15T14:00:00-05:00",
+          "interval": "1h",
+          "count": 1
+        },
+        "timestamps": [
+          "2024-07-15T14:00:00-05:00"
+        ]
+      },
+      "locations": [
+        {
+          "lat": 40.7128,
+          "lon": -74.006,
+          "elevation": 32.0,
+          "temperature": 32.5,
+          "parameters": {
+            "heat_index_celsius": [
+              36.8
+            ],
+            "apparent_temperature_celsius": [
+              38.4
+            ],
+            "relative_humidity_percent": [
+              55.3
+            ],
+            "precipitation_mm": [
+              0.0
+            ],
+            "cloud_cover_octas": [
+              31.0
+            ],
+            "wet_bulb_temperature_celsius": [
+              26.6
+            ],
+            "air_quality:idx": [
+              121.5
+            ],
+            "air_quality_pm2p5:idx": [
+              77.9
+            ],
+            "air_quality_pm10:idx": [
+              30.9
+            ],
+            "air_quality_no2:idx": [
+              3.5
+            ],
+            "aqi_us_co": [
+              2.9
+            ],
+            "air_quality_o3:idx": [
+              121.5
+            ],
+            "air_quality_so2:idx": [
+              5.1
+            ],
+            "methane_ppb": [
+              null
+            ],
+            "co2_ppm": [
+              null
+            ]
+          },
+          "solar_irradiance": {
+            "clear_sky": {
+              "ghi": 820.64,
+              "dni": 808.81,
+              "dhi": 131.41
+            },
+            "description": "The above values provide insights into the solar energy available at the specific location at 2024-07-15 14:00. GHI represents the total solar energy, DNI focuses on direct sunlight, and DHI accounts for scattered and diffuse radiation."
+          }
+        }
+      ]
+    }
+  }
+}

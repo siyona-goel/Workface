@@ -1,0 +1,12 @@
+{
+  "error": false,
+  "status_code": 200,
+  "message": "Completed",
+  "data": {
+    "activity_id": "d2387336-618e-4e6c-9a04-45ac818c3d79",
+    "status": "Completed",
+    "result": {
+      "download_link": "[REDACTED — PDF saved as heat_intelligence_report.pdf]"
+    }
+  }
+}
