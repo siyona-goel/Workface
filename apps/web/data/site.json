@@ -1,0 +1,24 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Day-1 sample AOI",
+        "note": "FortyGuard docs polygon (NYC). Swap for the Phoenix campus when T3 ships data/project_demo/site.geojson."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-74.017, 40.705],
+            [-74.003, 40.705],
+            [-74.003, 40.718],
+            [-74.017, 40.718],
+            [-74.017, 40.705]
+          ]
+        ]
+      }
+    }
+  ]
+}
