@@ -1,0 +1,19 @@
+{
+  "error": false,
+  "status_code": 200,
+  "message": "Completed",
+  "data": {
+    "activity_id": "e28385da-9437-4918-bfbd-07acfa51e533",
+    "status": "Completed",
+    "result": {
+      "download_link": "[REDACTED \u2014 fetched and stored as PDF]"
+    }
+  },
+  "_chain": {
+    "temperature_source": "heatmap_stats.mean",
+    "temperature_c": 39.9131,
+    "date": "2024-08-15",
+    "work_face_id": "WF-FAB2-07",
+    "hero": true
+  }
+}
