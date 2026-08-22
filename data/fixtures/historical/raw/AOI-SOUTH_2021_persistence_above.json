@@ -1,0 +1,17 @@
+{
+  "error": false,
+  "status_code": 200,
+  "message": "Completed",
+  "data": {
+    "activity_id": "replay-AOI-SOUTH-2021-persistence-above",
+    "status": "Completed",
+    "result": {
+      "map_data": {
+        "type": "FeatureCollection",
+        "features": []
+      },
+      "stats_data": {},
+      "_note": "REPLAY synthetic \u2014 replace with live capture via --live"
+    }
+  }
+}
