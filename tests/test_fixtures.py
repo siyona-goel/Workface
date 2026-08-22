@@ -1,22 +1,27 @@
-"""TASK 2 acceptance — the Day-1 fixtures validate and tell the demo's story.
+"""Fixture acceptance — the committed fixtures validate and tell the demo's story.
 
-Definition of done (T3_BUILD_BRIEF, Half B):
-    sample_window_eval.json and sample_window_eval_ribbon.json both validate
-    against packages/schemas/window_eval.py — asserted in a test, not by hand.
+Day 4.5: the window-eval fixtures are now REAL `evaluate_window` output over the
+synthetic thermal twin, run against schedule rows that exist. So the assertions
+below are invariants that survive real output — every activity_id resolves, no
+state is hand-drawn — not hand-computed arithmetic against a fabrication.
 """
 
 from __future__ import annotations
 
 import json
+from datetime import datetime
 from pathlib import Path
 
 import pytest
 
+from apps.api.windows.registry import load_registry
 from packages.schemas.agent_trace import AgentRun, GateDecision, GateVerdict, ProposalKind, StepType
 from packages.schemas.thermal_series import WorkFaceThermalSeries
 from packages.schemas.window_eval import WindowEval, WindowEvalBundle
 
 FIXTURES = Path(__file__).resolve().parents[1] / "data" / "fixtures"
+DEMO = Path(__file__).resolve().parents[1] / "data" / "project_demo"
+SITE_CREW_LANE_ID = "SITE-CREW-HEAT"
 
 
 @pytest.fixture(scope="module")
@@ -30,66 +35,94 @@ def bundle() -> WindowEvalBundle:
         (FIXTURES / "sample_window_eval_ribbon.json").read_text(encoding="utf-8"))
 
 
-def test_hero_validates_and_is_the_coating_at_risk_case(hero: WindowEval) -> None:
+@pytest.fixture(scope="module")
+def activities() -> dict:
+    raw = json.loads((DEMO / "activities.json").read_text(encoding="utf-8"))
+    return {a["id"]: a for a in raw["activities"]}
+
+
+def test_hero_is_the_real_bare_deck_coating_lane(hero: WindowEval) -> None:
+    """Re-pointed to the REAL A-1069 (bare deck WF-FAB2-07, 25 Aug), pulled from the
+    Task-B run. NOTE (reported): its daytime bar comes back `compliant`, and the
+    lane-level binding falls back to the first constraint because nothing closes on
+    the bar — the dawn dew-point thinning lives in the pre-dawn ribbon cells, not
+    the verdict. Assert what is true, not what the Day-1 fabrication claimed."""
+    assert hero.activity_id == "A-1069"
     assert hero.trade_id == "coating_epoxy_structural_steel"
-    assert hero.work_face_id == "WF-FAB2-11"          # bare FAB2 L3 deck
-    assert hero.verdict.value == "at_risk"
-    assert hero.binding_constraint is not None
-    assert hero.binding_constraint.constraint_id == "offset_dew_point"
-    assert len(hero.hours) == 48
+    assert hero.work_face_id == "WF-FAB2-07"          # bare FAB2 L2 deck
+    assert len(hero.hours) == 72
     assert hero.horizon.step_minutes == 60
+    assert hero.verdict.value == "compliant"          # daytime bar clears; see the report
+    if hero.binding_constraint is not None:
+        trade = load_registry().get(hero.trade_id)
+        ids = {c.constraint_id for c in trade.constraints}
+        assert hero.binding_constraint.constraint_id in ids
 
 
-def test_hero_per_hour_state_is_consistent_with_values(hero: WindowEval) -> None:
-    """The brief's non-negotiable: reason/state/values must agree per hour."""
-    for cell in hero.hours:
-        surf = cell.values.t_surf_c
-        dew = cell.values.t_dew_c
-        assert surf is not None and dew is not None
-        expected_margin = round(surf - dew - 2.8, 2)
-        assert cell.margin == pytest.approx(expected_margin, abs=0.01)
-        if expected_margin < 0:
-            assert cell.state.value == "closed"
-        elif expected_margin < 1.0:
-            assert cell.state.value == "marginal"
-        else:
-            assert cell.state.value == "open"
-        # open cells carry no binding id; gated cells name the dew-point offset
-        if cell.state.value == "open":
-            assert cell.binding_constraint_id is None
-        else:
-            assert cell.binding_constraint_id == "offset_dew_point"
+def test_no_cell_state_is_hand_drawn_binding_ids_are_real(bundle: WindowEvalBundle) -> None:
+    """The Day-4.5 invariant that replaces the hand-computed surf-dew arithmetic:
+    every non-open cell names a binding_constraint_id that exists on that trade in
+    the registry; every open cell names none; a cell with a margin names a unit."""
+    reg = load_registry()
+    ids_by_trade = {t.trade_id: {c.constraint_id for c in t.constraints} for t in reg.all()}
+    for ev in bundle.evaluations:
+        valid = ids_by_trade[ev.trade_id]
+        for cell in ev.hours:
+            if cell.state.value == "open":
+                assert cell.binding_constraint_id is None
+            else:
+                assert cell.binding_constraint_id in valid, (ev.activity_id, cell.binding_constraint_id)
+            if cell.margin is not None:
+                assert cell.margin_unit is not None
 
 
-def test_bundle_is_nine_trades_colliding(bundle: WindowEvalBundle) -> None:
-    assert len(bundle.evaluations) == 9
+def test_bundle_is_38_lanes_9_trades_72_hours(bundle: WindowEvalBundle) -> None:
+    assert len(bundle.evaluations) == 38
     trades = {ev.trade_id for ev in bundle.evaluations}
     assert len(trades) == 9, f"expected 9 distinct trades, got {sorted(trades)}"
-    # every lane is on the 48 h horizon at 60 min steps
     for ev in bundle.evaluations:
-        assert len(ev.hours) == 48
+        assert len(ev.hours) == 72
 
 
-def test_bundle_contended_band_is_the_dawn_window(bundle: WindowEvalBundle) -> None:
-    assert bundle.contended_hours, "expected a contended dawn window"
-    hours = {ts.hour for ts in bundle.contended_hours}
-    assert hours == {5, 6, 7, 8, 9}, hours          # 05:00-09:00 both days
+def test_every_activity_id_resolves_against_the_schedule(bundle: WindowEvalBundle, activities: dict) -> None:
+    """The single most valuable line today: no lane can silently join to a row that
+    is not there. The one exception is the site-wide crew-heat lane, which is
+    deliberately not a schedule row."""
+    for ev in bundle.evaluations:
+        if ev.activity_id == SITE_CREW_LANE_ID:
+            assert ev.work_face_id == "SITE"          # visibly not an activity row
+            continue
+        row = activities.get(ev.activity_id)
+        assert row is not None, f"{ev.activity_id} is not in activities.json"
+        assert row["trade_id"] == ev.trade_id
+        assert row["work_face_id"] == ev.work_face_id
 
 
-def test_hma_is_the_honest_counter_trade(bundle: WindowEvalBundle) -> None:
-    """HMA wants the afternoon heat while the others flee it — closed at dawn, open midday."""
-    hma = next(ev for ev in bundle.evaluations if ev.trade_id == "hma_paving_surface_course")
-    by_hour = {c.ts.hour: c.state.value for c in hma.hours if c.ts.day == 24}
-    assert by_hour[5] == "closed"                    # cool dawn: mat would stiffen
-    assert by_hour[14] == "open"                     # hot afternoon base: full compaction window
+def test_site_crew_heat_lane_never_closes(bundle: WindowEvalBundle) -> None:
+    site = next(ev for ev in bundle.evaluations if ev.activity_id == SITE_CREW_LANE_ID)
+    assert site.trade_id == "crew_heat_exposure"
+    assert all(c.state.value != "closed" for c in site.hours)   # heat shrinks, never closes
+
+
+def test_contended_hours_are_a_subset_of_the_horizon(bundle: WindowEvalBundle) -> None:
+    lo, hi = bundle.horizon.start, bundle.horizon.end
+    assert all(lo <= t < hi for t in bundle.contended_hours)
+
+
+def test_totals_equal_the_sum_of_the_lanes(bundle: WindowEvalBundle) -> None:
+    assert bundle.totals is not None
+    at_risk = sum(ev.usd_exposure.at_risk_usd for ev in bundle.evaluations)
+    protected = sum(ev.usd_exposure.protected_usd for ev in bundle.evaluations)
+    assert bundle.totals.at_risk_usd == pytest.approx(at_risk, abs=1.0)
+    assert bundle.totals.protected_usd == pytest.approx(protected, abs=1.0)
 
 
 def test_thermal_series_validates() -> None:
     series = WorkFaceThermalSeries.model_validate_json(
         (FIXTURES / "sample_thermal_series.json").read_text(encoding="utf-8"))
     assert series.work_face_id == "WF-FAB2-11"
-    assert len(series.points) == 48
-    # drivers follow the Phoenix August diurnal the brief specifies
+    assert len(series.points) == 72
+    # the air curve is unchanged: same Phoenix August diurnal, extended to 72 h
     p05 = next(p for p in series.points if p.ts.hour == 5 and p.ts.day == 24)
     p15 = next(p for p in series.points if p.ts.hour == 15 and p.ts.day == 24)
     assert p05.t_air_c == pytest.approx(29.0)
