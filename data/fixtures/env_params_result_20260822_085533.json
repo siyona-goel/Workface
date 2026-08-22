@@ -3,67 +3,67 @@
   "status_code": 200,
   "message": "Completed",
   "data": {
-    "activity_id": "a550dadd-65a1-426a-88bb-3f6ce6d7a254",
+    "activity_id": "f15e41fb-6adc-4166-ad8d-e9156c4da793",
     "status": "Completed",
     "result": {
       "metadata": {
-        "timezone": "GMT-5",
-        "timezone_offset_hours": -5,
+        "timezone": "GMT-7",
+        "timezone_offset_hours": -7,
         "time_range": {
-          "start": "2024-07-15T14:00:00-05:00",
-          "end": "2024-07-15T14:00:00-05:00",
+          "start": "2024-08-15T14:00:00-07:00",
+          "end": "2024-08-15T14:00:00-07:00",
           "interval": "1h",
           "count": 1
         },
         "timestamps": [
-          "2024-07-15T14:00:00-05:00"
+          "2024-08-15T14:00:00-07:00"
         ]
       },
       "locations": [
         {
-          "lat": 40.7128,
-          "lon": -74.006,
-          "elevation": 32.0,
-          "temperature": 32.5,
+          "lat": 33.777861,
+          "lon": -112.158778,
+          "elevation": 482.0,
+          "temperature": 40.0,
           "parameters": {
             "heat_index_celsius": [
-              36.8
+              38.2
             ],
             "apparent_temperature_celsius": [
-              38.4
+              41.0
             ],
             "relative_humidity_percent": [
-              55.3
+              15.8
             ],
             "precipitation_mm": [
               0.0
             ],
             "cloud_cover_octas": [
-              31.0
+              0.0
             ],
             "wet_bulb_temperature_celsius": [
-              26.6
+              21.9
             ],
             "air_quality:idx": [
-              121.5
+              36.3
             ],
             "air_quality_pm2p5:idx": [
-              77.9
+              34.2
             ],
             "air_quality_pm10:idx": [
-              30.9
+              16.8
             ],
             "air_quality_no2:idx": [
-              3.5
+              1.1
             ],
             "aqi_us_co": [
-              2.9
+              2.2
             ],
             "air_quality_o3:idx": [
-              121.5
+              36.3
             ],
             "air_quality_so2:idx": [
-              5.1
+              0.7
             ],
             "methane_ppb": [
               null
@@ -74,11 +74,11 @@
           },
           "solar_irradiance": {
             "clear_sky": {
-              "ghi": 820.64,
-              "dni": 808.81,
-              "dhi": 131.41
+              "ghi": 878.86,
+              "dni": 850.99,
+              "dhi": 128.6
             },
-            "description": "The above values provide insights into the solar energy available at the specific location at 2024-07-15 14:00. GHI represents the total solar energy, DNI focuses on direct sunlight, and DHI accounts for scattered and diffuse radiation."
+            "description": "The above values provide insights into the solar energy available at the specific location at 2024-08-15 14:00. GHI represents the total solar energy, DNI focuses on direct sunlight, and DHI accounts for scattered and diffuse radiation."
           }
         }
       ]

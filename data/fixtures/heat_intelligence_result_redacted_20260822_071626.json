@@ -1,0 +1,12 @@
+{
+  "error": false,
+  "status_code": 200,
+  "message": "Completed",
+  "data": {
+    "activity_id": "e28385da-9437-4918-bfbd-07acfa51e533",
+    "status": "Completed",
+    "result": {
+      "download_link": "[REDACTED \u2014 fetched and stored as PDF]"
+    }
+  }
+}
