@@ -1,11 +1,12 @@
 """
-WORKFACE — constraint evaluators: the band and the offset.  T3, TASK 5.
+WORKFACE — the seven constraint evaluators.  T3, TASK 5 (band/offset) + Day 4.
 
-Day-3 committed scope is TWO of the seven shapes — `band` and `offset` — plus the
+All seven shapes now evaluate: `band` and `offset` (Day 3), plus `continuity`,
+`cure_clock`, `composite_rate`, `decay_clock` and `human` (Day 4), alongside the
 interval algebra (extraction, intersection) and the leave-one-out
-`binding_constraint`. The other five evaluators are typed stubs raising
-NotImplementedError with a `# Day 4` marker; they need a full day and are not
-half-built here.
+`binding_constraint`. Every evaluator keeps the uniform signature
+`(series, spec, ts) -> ConstraintEvaluation`; anything extra is keyword-only with
+a default, so a generic dispatcher can call all seven identically.
 
 Pure functions over a hand-built `list[SeriesPoint]` + `list[datetime]`. No I/O,
 no LLM. The physics is unit-tested Python; the model only writes the rationale.
