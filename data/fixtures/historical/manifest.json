@@ -1,0 +1,44 @@
+{
+  "generated_at": "2026-08-22T17:32:38.349077+00:00",
+  "replay": true,
+  "n_calls": 140,
+  "n_aoi": 5,
+  "years": [
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "analytics": [
+    "exceedance_above",
+    "exceedance_below",
+    "persistence_above",
+    "persistence_below"
+  ],
+  "thresholds_c": {
+    "above": 35.0,
+    "below": 4.0
+  },
+  "registry_thresholds_c": [
+    -29.0,
+    -6.7,
+    -5.0,
+    1.7,
+    4.0,
+    4.4,
+    12.8,
+    35.0,
+    37.8,
+    40.0,
+    48.9,
+    50.0,
+    121.1
+  ],
+  "bundle": "data\\fixtures\\historical\\sweep_bundle.json",
+  "raw_dir": "data\\fixtures\\historical\\raw",
+  "cached_forever": true,
+  "note": "REPLAY synthetic values \u2014 run with --live once to replace with real FortyGuard captures. filter_type=4, one August month per year."
+}
