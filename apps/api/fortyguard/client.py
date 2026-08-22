@@ -19,6 +19,7 @@ import httpx
 
 from .activity_store import ActivityStore
 from .cache import FixtureCache, request_hash
+from .credits import CreditMeter
 
 Endpoint = Literal[
     "heatmap",
@@ -67,9 +68,12 @@ class FortyGuardClient:
         self.cache = FixtureCache(fixtures_dir)
         self.store = ActivityStore()
         self.max_poll_s = max_poll_s
-        self.max_calls_per_day = max_calls_per_day or int(
-            os.environ.get("MAX_FG_CALLS_PER_DAY", "200")
+        self.meter = CreditMeter(
+            api_key=self.api_key,
+            replay_mode=self.replay_mode,
+            max_calls_per_day=max_calls_per_day,
         )
+        self.max_calls_per_day = self.meter.max_calls_per_day
         self._calls_today = 0
 
         if not self.replay_mode and not self.api_key:
@@ -117,12 +121,9 @@ class FortyGuardClient:
                     f"(hash={key}). Run the Day-1 notebook once with live key."
                 )
 
-        # 2. Live path — hard daily budget
+        # 2. Live path — hard daily budget (fail loudly at 80%)
+        self.meter.check_budget(extra_calls=1)
         self._calls_today += 1
-        if self._calls_today > self.max_calls_per_day:
-            raise RuntimeError(
-                f"MAX_FG_CALLS_PER_DAY ({self.max_calls_per_day}) exceeded"
-            )
 
         fg_id = await self._submit(endpoint, body)
         # Persist *before* polling so a crash can resume
@@ -145,7 +146,12 @@ class FortyGuardClient:
         if endpoint == "heat_intelligence" and status == "Completed":
             result = await self._handle_heat_intel_pdf(result, key)
 
+        await self.meter.after_call(endpoint)
         return result
+
+    async def meter_after_batch(self, endpoints: list[str] | None = None):
+        """Poll the credit meter after a batch. Spec rule 5."""
+        return await self.meter.after_batch(endpoints)
 
     async def resume(self, fg_activity_id: str) -> dict:
         """Resume polling an ID that was already submitted (restart safety)."""

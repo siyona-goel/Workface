@@ -1,0 +1,281 @@
+{
+  "type": "FeatureCollection",
+  "name": "workface_tile_clusters",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "AOI-FAB2",
+        "name": "Fab 2 process module (hero 60 m cluster)",
+        "structure_ids": [
+          "FAB2"
+        ],
+        "work_face_ids": [
+          "WF-FAB2-01",
+          "WF-FAB2-02",
+          "WF-FAB2-03",
+          "WF-FAB2-04",
+          "WF-FAB2-05",
+          "WF-FAB2-06",
+          "WF-FAB2-07",
+          "WF-FAB2-08",
+          "WF-FAB2-09",
+          "WF-FAB2-10",
+          "WF-FAB2-11",
+          "WF-FAB2-12",
+          "WF-FAB2-13",
+          "WF-FAB2-14"
+        ],
+        "n_faces": 14,
+        "granularity_plan_m": 100,
+        "granularity_commit_m": 60,
+        "width_m": 921.9,
+        "height_m": 622.0,
+        "est_tiles_plan": 70,
+        "est_tiles_commit": 176
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.16888735253542,
+              33.784512219942506
+            ],
+            [
+              -112.15892274746459,
+              33.784512219942506
+            ],
+            [
+              -112.15892274746459,
+              33.790099780057496
+            ],
+            [
+              -112.16888735253542,
+              33.790099780057496
+            ],
+            [
+              -112.16888735253542,
+              33.784512219942506
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "AOI-UTIL",
+        "name": "Central utilities / yards (CUB, CT, SUB, BULK)",
+        "structure_ids": [
+          "BULK",
+          "CT",
+          "CUB",
+          "SUB"
+        ],
+        "work_face_ids": [
+          "WF-BULK-01",
+          "WF-BULK-02",
+          "WF-BULK-03",
+          "WF-CT-01",
+          "WF-CT-02",
+          "WF-CT-03",
+          "WF-CUB-01",
+          "WF-CUB-02",
+          "WF-CUB-03",
+          "WF-CUB-04",
+          "WF-CUB-05",
+          "WF-SUB-01",
+          "WF-SUB-02",
+          "WF-SUB-03"
+        ],
+        "n_faces": 14,
+        "granularity_plan_m": 100,
+        "granularity_commit_m": 100,
+        "width_m": 721.9,
+        "height_m": 872.0,
+        "est_tiles_plan": 72,
+        "est_tiles_commit": 72
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.16013335253542,
+              33.78271561994251
+            ],
+            [
+              -112.15233034746458,
+              33.78271561994251
+            ],
+            [
+              -112.15233034746458,
+              33.79054888005749
+            ],
+            [
+              -112.16013335253542,
+              33.79054888005749
+            ],
+            [
+              -112.16013335253542,
+              33.78271561994251
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "AOI-SOUTH",
+        "name": "South campus support buildings",
+        "structure_ids": [
+          "ADMIN",
+          "CHEM",
+          "WHSE"
+        ],
+        "work_face_ids": [
+          "WF-ADMIN-01",
+          "WF-ADMIN-02",
+          "WF-CHEM-01",
+          "WF-CHEM-02",
+          "WF-CHEM-03",
+          "WF-WHSE-01",
+          "WF-WHSE-02",
+          "WF-WHSE-03",
+          "WF-WHSE-04"
+        ],
+        "n_faces": 9,
+        "granularity_plan_m": 100,
+        "granularity_commit_m": 100,
+        "width_m": 801.9,
+        "height_m": 732.0,
+        "est_tiles_plan": 72,
+        "est_tiles_commit": 72
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.16942765253542,
+              33.77822411994251
+            ],
+            [
+              -112.16076004746458,
+              33.77822411994251
+            ],
+            [
+              -112.16076004746458,
+              33.784799680057496
+            ],
+            [
+              -112.16942765253542,
+              33.784799680057496
+            ],
+            [
+              -112.16942765253542,
+              33.77822411994251
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "AOI-PARK",
+        "name": "Employee parking structure",
+        "structure_ids": [
+          "PARK"
+        ],
+        "work_face_ids": [
+          "WF-PARK-01",
+          "WF-PARK-02"
+        ],
+        "n_faces": 2,
+        "granularity_plan_m": 100,
+        "granularity_commit_m": 100,
+        "width_m": 422.0,
+        "height_m": 392.0,
+        "est_tiles_plan": 20,
+        "est_tiles_commit": 20
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.15321675253541,
+              33.7791224199425
+            ],
+            [
+              -112.14865584746458,
+              33.7791224199425
+            ],
+            [
+              -112.14865584746458,
+              33.78264378005749
+            ],
+            [
+              -112.15321675253541,
+              33.78264378005749
+            ],
+            [
+              -112.15321675253541,
+              33.7791224199425
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "AOI-ROAD",
+        "name": "Perimeter haul road",
+        "structure_ids": [
+          "ROAD"
+        ],
+        "work_face_ids": [
+          "WF-ROAD-01"
+        ],
+        "n_faces": 1,
+        "granularity_plan_m": 100,
+        "granularity_commit_m": 100,
+        "width_m": 1971.8,
+        "height_m": 292.0,
+        "est_tiles_plan": 60,
+        "est_tiles_commit": 60
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.16942765253542,
+              33.789902119942504
+            ],
+            [
+              -112.14811544746458,
+              33.789902119942504
+            ],
+            [
+              -112.14811544746458,
+              33.792525180057496
+            ],
+            [
+              -112.16942765253542,
+              33.792525180057496
+            ],
+            [
+              -112.16942765253542,
+              33.789902119942504
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

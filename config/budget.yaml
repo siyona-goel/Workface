@@ -1,0 +1,26 @@
+# T2 — FortyGuard credit + AOI budget. Put this file on a slide.
+# Enforced in apps/api/fortyguard/credits.py and client.py.
+
+max_fg_calls_per_day: 120
+fail_at_fraction: 0.8          # fail loudly at 80% of the daily cap
+max_aoi_polygons: 5
+min_aoi_polygons: 3
+granularity_plan_m: 100        # Tier-0 climatology sweep
+granularity_commit_m: 60       # Tier-1 go/no-go on flagged / hero faces
+aoi_buffer_m: 90               # pad each cluster so 60 m tiles cover face edges
+
+# Per-endpoint credit burn from Day-1/2 captures (CREDITS.md). Used when
+# GET /v1/system/fetch-api-key-usage 405s — we still meter locally.
+estimated_credits_per_call:
+  heatmap: 4220
+  satellite: 14400
+  streetview: 8600
+  heat_intelligence: 8600
+  env_params: 2900
+
+starting_balance: 2000000
+ledger_remaining: 1901040      # last known remaining after Day-2 captures
+
+# Historical sweep shape (Day 4). Cached forever — not a daily cost.
+climatology_years: [2019, 2020, 2021, 2022, 2023, 2024, 2025]
+climatology_analytics_per_year: 4   # exceedance×2 directions + persistence×2
