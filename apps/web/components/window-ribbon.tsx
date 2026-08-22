@@ -4,21 +4,27 @@ import { useMemo, useState, type MouseEvent } from "react";
 
 import { WindowChip } from "@/components/window-chip";
 import {
+  HORIZON_HOURS,
   HOUR_STATE_FILL,
   HOUR_STATE_FILL_DIM,
   HOUR_STATE_LABEL,
+  contendedLabel,
   evalMatchesFilters,
   formatTick,
   formatTickHour,
+  heroRole,
+  isHeroLane,
   laneFromActivity,
   laneFromEval,
   mergeBands,
   ribbonData,
+  sortLanes,
   type HourState,
   type RibbonHour,
   type RibbonLane,
 } from "@/lib/ribbon-data";
 import {
+  consoleData,
   formatUsd,
   type Activity,
   type ConsoleFilters,
@@ -38,6 +44,8 @@ type Props = {
   onSelectLane: (activityId: string) => void;
   evalsOnly: boolean;
   onEvalsOnlyChange: (value: boolean) => void;
+  heroOnly: boolean;
+  onHeroOnlyChange: (value: boolean) => void;
 };
 
 type Hover = {
@@ -54,6 +62,8 @@ export function WindowRibbon({
   onSelectLane,
   evalsOnly,
   onEvalsOnlyChange,
+  heroOnly,
+  onHeroOnlyChange,
 }: Props) {
   const [hover, setHover] = useState<Hover | null>(null);
 
@@ -65,14 +75,19 @@ export function WindowRibbon({
   const lanes = useMemo(() => {
     const fromEvals = ribbonData.evaluations
       .filter((ev) => evalMatchesFilters(ev, filters))
+      .filter((ev) => !heroOnly || isHeroLane(ev.activity_id))
       .map(laneFromEval);
-    if (evalsOnly) return fromEvals;
+    if (evalsOnly) return sortLanes(fromEvals);
     const seen = new Set(fromEvals.map((l) => l.activity_id));
     const extras = activities
       .filter((a) => !seen.has(a.id))
+      .filter((a) => !heroOnly || isHeroLane(a.id))
       .map(laneFromActivity);
-    return [...fromEvals, ...extras];
-  }, [activities, evalsOnly, filters]);
+    return sortLanes([...fromEvals, ...extras]);
+  }, [activities, evalsOnly, filters, heroOnly]);
+
+  const contention = contendedLabel(ribbonData.contended_hours);
+  const heroVisible = lanes.filter((l) => isHeroLane(l.activity_id)).length;
 
   const ticks = useMemo(() => {
     const out: { t: number; label: string; major: boolean }[] = [];
@@ -122,9 +137,17 @@ export function WindowRibbon({
             Window ribbon
           </h2>
           <p className="text-[11px] text-muted-foreground">
-            48 h · {ribbonData.horizon.tz} · scheduled bar on the bands. If the
-            bar is not on green, that is the problem.
+            {HORIZON_HOURS} h · {ribbonData.horizon.tz} · scheduled bar on the
+            bands. If the bar is not on green, that is the problem.
           </p>
+          {heroVisible >= 2 ? (
+            <p className="mt-0.5 text-[11px] text-cyan-200/90">
+              Hero pair pinned at top — same coating,{" "}
+              {consoleData.hero_pair.separation_m} m apart,{" "}
+              {consoleData.hero_pair.level}. Shaded stays open at 04:00; bare
+              goes marginal.
+            </p>
+          ) : null}
         </div>
         <div className="flex flex-wrap items-center gap-3 text-[10px] text-muted-foreground">
           <button
@@ -140,9 +163,24 @@ export function WindowRibbon({
           >
             Evals only
           </button>
-          <span className="rounded-sm border border-violet-300/30 bg-violet-300/10 px-1.5 py-0.5 text-violet-200">
-            dawn contention 05–09
-          </span>
+          <button
+            type="button"
+            aria-pressed={heroOnly}
+            onClick={() => onHeroOnlyChange(!heroOnly)}
+            className={cn(
+              "h-6 rounded-md border px-2 text-[11px] font-medium",
+              heroOnly
+                ? "border-cyan-400/40 bg-cyan-400/15 text-cyan-100"
+                : "border-border text-muted-foreground",
+            )}
+          >
+            Hero pair
+          </button>
+          {contention ? (
+            <span className="rounded-sm border border-violet-300/30 bg-violet-300/10 px-1.5 py-0.5 text-violet-200">
+              contention {contention}
+            </span>
+          ) : null}
           <LegendSwatch state="open" />
           <LegendSwatch state="marginal" />
           <LegendSwatch state="closed" />
@@ -188,6 +226,9 @@ export function WindowRibbon({
 
             {lanes.map((lane) => {
               const selected = selectedId === lane.activity_id;
+              const hero = isHeroLane(lane.activity_id)
+                ? heroRole(lane.work_face_id)
+                : null;
               return (
                 <button
                   key={lane.activity_id}
@@ -196,6 +237,7 @@ export function WindowRibbon({
                   className={cn(
                     "flex w-full items-stretch text-left transition-colors",
                     selected ? "bg-primary/15" : "hover:bg-muted/25",
+                    hero && "border-l-2 border-cyan-300/70",
                   )}
                 >
                   <div className="flex w-56 shrink-0 flex-col justify-center px-3 py-1">
@@ -204,6 +246,11 @@ export function WindowRibbon({
                         {lane.activity_id}
                       </span>
                       <WindowChip verdict={lane.verdict} static />
+                      {hero ? (
+                        <span className="rounded-sm bg-cyan-400/15 px-1 font-mono text-[9px] tracking-wide text-cyan-200 uppercase">
+                          {hero}
+                        </span>
+                      ) : null}
                     </div>
                     <div className="truncate text-[11px] font-medium">
                       {lane.activity_name}

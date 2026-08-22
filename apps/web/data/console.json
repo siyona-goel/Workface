@@ -7090,162 +7090,762 @@
   ],
   "evaluations": [
     {
-      "activity_id": "A-2009",
-      "verdict": "at_risk",
-      "verdict_summary": "Structural steel — high-build epoxy coating: 6 h bar at 02:00 clips the closed/thin dawn hours on Surface >= dew point + 2.8 C (5 F). Slip start or mitigate.",
+      "activity_id": "A-1059",
+      "verdict": "compliant",
+      "verdict_summary": "Structural steel — high-build epoxy coating: 7 h bar at 10:18 sits inside the window 00:00–00:00 (72 h open). Binding constraint: Air 1.7–48.9 °C (35–120 °F).",
       "trade_id": "coating_epoxy_structural_steel",
       "trade_display_name": "Structural steel — high-build epoxy coating",
-      "work_face_id": "WF-FAB2-11",
-      "work_face_name": "FAB2 L3 deck — bay C3",
+      "work_face_id": "WF-FAB2-06",
+      "work_face_name": "FAB2 L2 deck — bay B2",
       "binding_constraint": {
-        "type": "offset",
-        "label": "Surface >= dew point + 2.8 C (5 F)",
-        "mitigation_hint": "slip start to 05:00 once the deck warms, or dehumidified enclosure"
+        "type": "band",
+        "label": "Air 1.7–48.9 °C (35–120 °F)",
+        "mitigation_hint": "dehumidified enclosure, surface preheat"
       },
       "usd_exposure": {
-        "at_risk_usd": 456960,
-        "protected_usd": 0,
-        "basis": "quantity 4200 unit x $34/unit x rework multiplier 3.2"
+        "at_risk_usd": 0,
+        "protected_usd": 456960,
+        "basis": "quantity 4200 m2 x $34/m2 x rework multiplier 3.2"
       },
       "confidence": "high"
     },
     {
-      "activity_id": "A-2003",
-      "verdict": "at_risk",
-      "verdict_summary": "Cast-in-place concrete — hot weather placement: 8 h bar at 06:00 clips the closed/thin dawn hours on ACI 305 evaporation rate <= 0.2 lb/ft2/hr. Slip start or mitigate.",
-      "trade_id": "concrete_cip_hot_weather",
-      "trade_display_name": "Cast-in-place concrete — hot weather placement",
+      "activity_id": "A-1069",
+      "verdict": "compliant",
+      "verdict_summary": "Structural steel — high-build epoxy coating: 6.1 h bar at 09:30 sits inside the window 00:00–00:00 (72 h open). Binding constraint: Air 1.7–48.9 °C (35–120 °F).",
+      "trade_id": "coating_epoxy_structural_steel",
+      "trade_display_name": "Structural steel — high-build epoxy coating",
+      "work_face_id": "WF-FAB2-07",
+      "work_face_name": "FAB2 L2 deck — bay C2",
+      "binding_constraint": {
+        "type": "band",
+        "label": "Air 1.7–48.9 °C (35–120 °F)",
+        "mitigation_hint": "dehumidified enclosure, surface preheat"
+      },
+      "usd_exposure": {
+        "at_risk_usd": 0,
+        "protected_usd": 456960,
+        "basis": "quantity 4200 m2 x $34/m2 x rework multiplier 3.2"
+      },
+      "confidence": "high"
+    },
+    {
+      "activity_id": "A-1079",
+      "verdict": "compliant",
+      "verdict_summary": "Structural steel — high-build epoxy coating: 5.2 h bar at 08:30 sits inside the window 00:00–00:00 (72 h open). Binding constraint: Air 1.7–48.9 °C (35–120 °F).",
+      "trade_id": "coating_epoxy_structural_steel",
+      "trade_display_name": "Structural steel — high-build epoxy coating",
+      "work_face_id": "WF-FAB2-08",
+      "work_face_name": "FAB2 L2 deck — bay D2",
+      "binding_constraint": {
+        "type": "band",
+        "label": "Air 1.7–48.9 °C (35–120 °F)",
+        "mitigation_hint": "dehumidified enclosure, surface preheat"
+      },
+      "usd_exposure": {
+        "at_risk_usd": 0,
+        "protected_usd": 456960,
+        "basis": "quantity 4200 m2 x $34/m2 x rework multiplier 3.2"
+      },
+      "confidence": "high"
+    },
+    {
+      "activity_id": "A-1088",
+      "verdict": "no_data",
+      "verdict_summary": "Sprayed fire-resistive material (SFRM) — commercial density: insufficient data over the scheduled bar — fail closed, no verdict issued. Binding: Substrate and ambient ≥ 4 °C (40 °F), maintained ≥ 24 h after application.",
+      "trade_id": "sfrm_spray_applied_fireproofing",
+      "trade_display_name": "Sprayed fire-resistive material (SFRM) — commercial density",
       "work_face_id": "WF-FAB2-09",
       "work_face_name": "FAB2 L3 deck — bay A3",
       "binding_constraint": {
-        "type": "composite_rate",
-        "label": "ACI 305 evaporation rate <= 0.2 lb/ft2/hr",
-        "mitigation_hint": "evaporative retarder, fog spray, windbreak, night placement"
+        "type": "continuity",
+        "label": "Substrate and ambient ≥ 4 °C (40 °F), maintained ≥ 24 h after application",
+        "mitigation_hint": "heated enclosure, temporary heat"
       },
       "usd_exposure": {
-        "at_risk_usd": 298350,
+        "at_risk_usd": 190960,
         "protected_usd": 0,
-        "basis": "quantity 340 unit x $195/unit x rework multiplier 4.5"
+        "basis": "quantity 3100 m2 x $22/m2 x rework multiplier 2.8"
       },
       "confidence": "high"
     },
     {
-      "activity_id": "A-2007",
-      "verdict": "non_compliant",
-      "verdict_summary": "Adhesive anchors — injection epoxy into concrete: bar sits on closed hours — Working time collapses from 120 min at 0 C to 10 min at 40 C violated.",
-      "trade_id": "adhesive_anchor_epoxy",
-      "trade_display_name": "Adhesive anchors — injection epoxy into concrete",
+      "activity_id": "A-1098",
+      "verdict": "no_data",
+      "verdict_summary": "Sprayed fire-resistive material (SFRM) — commercial density: insufficient data over the scheduled bar — fail closed, no verdict issued. Binding: Substrate and ambient ≥ 4 °C (40 °F), maintained ≥ 24 h after application.",
+      "trade_id": "sfrm_spray_applied_fireproofing",
+      "trade_display_name": "Sprayed fire-resistive material (SFRM) — commercial density",
+      "work_face_id": "WF-FAB2-10",
+      "work_face_name": "FAB2 L3 deck — bay B3",
+      "binding_constraint": {
+        "type": "continuity",
+        "label": "Substrate and ambient ≥ 4 °C (40 °F), maintained ≥ 24 h after application",
+        "mitigation_hint": "heated enclosure, temporary heat"
+      },
+      "usd_exposure": {
+        "at_risk_usd": 190960,
+        "protected_usd": 0,
+        "basis": "quantity 3100 m2 x $22/m2 x rework multiplier 2.8"
+      },
+      "confidence": "high"
+    },
+    {
+      "activity_id": "A-1108",
+      "verdict": "no_data",
+      "verdict_summary": "Sprayed fire-resistive material (SFRM) — commercial density: insufficient data over the scheduled bar — fail closed, no verdict issued. Binding: Substrate and ambient ≥ 4 °C (40 °F), maintained ≥ 24 h after application.",
+      "trade_id": "sfrm_spray_applied_fireproofing",
+      "trade_display_name": "Sprayed fire-resistive material (SFRM) — commercial density",
       "work_face_id": "WF-FAB2-11",
       "work_face_name": "FAB2 L3 deck — bay C3",
       "binding_constraint": {
-        "type": "decay_clock",
-        "label": "Working time collapses from 120 min at 0 C to 10 min at 40 C",
-        "mitigation_hint": "shade the substrate, chill cartridges, shorter injection runs, night install"
+        "type": "continuity",
+        "label": "Substrate and ambient ≥ 4 °C (40 °F), maintained ≥ 24 h after application",
+        "mitigation_hint": "heated enclosure, temporary heat"
       },
       "usd_exposure": {
-        "at_risk_usd": 120960,
+        "at_risk_usd": 190960,
         "protected_usd": 0,
-        "basis": "quantity 420 unit x $48/unit x rework multiplier 6"
+        "basis": "quantity 3100 m2 x $22/m2 x rework multiplier 2.8"
       },
       "confidence": "high"
     },
     {
-      "activity_id": "A-1042",
-      "verdict": "at_risk",
-      "verdict_summary": "Concrete masonry — hot weather construction: 9 h bar at 06:00 clips the closed/thin dawn hours on Hot-weather procedures triggered above 37.8 C (100 F). Slip start or mitigate.",
-      "trade_id": "masonry_cmu_hot_weather",
-      "trade_display_name": "Concrete masonry — hot weather construction",
-      "work_face_id": "WF-BULK-02",
-      "work_face_name": "BULK L2 — bay B2",
-      "binding_constraint": null,
+      "activity_id": "A-1118",
+      "verdict": "no_data",
+      "verdict_summary": "Sprayed fire-resistive material (SFRM) — commercial density: insufficient data over the scheduled bar — fail closed, no verdict issued. Binding: Substrate and ambient ≥ 4 °C (40 °F), maintained ≥ 24 h after application.",
+      "trade_id": "sfrm_spray_applied_fireproofing",
+      "trade_display_name": "Sprayed fire-resistive material (SFRM) — commercial density",
+      "work_face_id": "WF-FAB2-12",
+      "work_face_name": "FAB2 L3 deck — bay D3",
+      "binding_constraint": {
+        "type": "continuity",
+        "label": "Substrate and ambient ≥ 4 °C (40 °F), maintained ≥ 24 h after application",
+        "mitigation_hint": "heated enclosure, temporary heat"
+      },
       "usd_exposure": {
-        "at_risk_usd": 548625,
+        "at_risk_usd": 190960,
         "protected_usd": 0,
-        "basis": "quantity 950 unit x $165/unit x rework multiplier 3.5"
+        "basis": "quantity 3100 m2 x $22/m2 x rework multiplier 2.8"
       },
       "confidence": "high"
     },
     {
-      "activity_id": "A-1047",
-      "verdict": "compliant",
-      "verdict_summary": "Elastomeric joint sealant — silicone weatherseal: bar sits inside an open interval on Substrate above dew point, clean, dry and frost-free.",
-      "trade_id": "sealant_silicone_weatherseal",
-      "trade_display_name": "Elastomeric joint sealant — silicone weatherseal",
-      "work_face_id": "WF-BULK-02",
-      "work_face_name": "BULK L2 — bay B2",
-      "binding_constraint": null,
+      "activity_id": "A-1181",
+      "verdict": "no_data",
+      "verdict_summary": "Sprayed fire-resistive material (SFRM) — commercial density: insufficient data over the scheduled bar — fail closed, no verdict issued. Binding: Substrate and ambient ≥ 4 °C (40 °F), maintained ≥ 24 h after application.",
+      "trade_id": "sfrm_spray_applied_fireproofing",
+      "trade_display_name": "Sprayed fire-resistive material (SFRM) — commercial density",
+      "work_face_id": "WF-WHSE-01",
+      "work_face_name": "WHSE grade — bay A1",
+      "binding_constraint": {
+        "type": "continuity",
+        "label": "Substrate and ambient ≥ 4 °C (40 °F), maintained ≥ 24 h after application",
+        "mitigation_hint": "heated enclosure, temporary heat"
+      },
       "usd_exposure": {
-        "at_risk_usd": 0,
-        "protected_usd": 96140,
-        "basis": "quantity 2300 unit x $19/unit x rework multiplier 2.2"
+        "at_risk_usd": 190960,
+        "protected_usd": 0,
+        "basis": "quantity 3100 m2 x $22/m2 x rework multiplier 2.8"
       },
       "confidence": "high"
     },
     {
-      "activity_id": "A-6205",
-      "verdict": "compliant",
-      "verdict_summary": "Waterborne pavement marking — traffic paint: bar sits inside an open interval on Pavement >= 12.8 C (55 F) and rising; never below 7.2 C (45 F).",
+      "activity_id": "A-1182",
+      "verdict": "non_compliant",
+      "verdict_summary": "Waterborne pavement marking — traffic paint: the 5.3 h bar at 13:06 sits on closed hours. Binding constraint: Pavement and air ≥ 12.8 °C (55 °F) and rising; never below 7.2 °C (45 °F).",
       "trade_id": "pavement_marking_waterborne",
       "trade_display_name": "Waterborne pavement marking — traffic paint",
       "work_face_id": "WF-WHSE-01",
       "work_face_name": "WHSE grade — bay A1",
-      "binding_constraint": null,
+      "binding_constraint": {
+        "type": "band",
+        "label": "Pavement and air ≥ 12.8 °C (55 °F) and rising; never below 7.2 °C (45 °F)",
+        "mitigation_hint": "defer to afternoon, heat the paint to 100F"
+      },
       "usd_exposure": {
-        "at_risk_usd": 0,
-        "protected_usd": 63360,
-        "basis": "quantity 11000 unit x $3.2/unit x rework multiplier 1.8"
+        "at_risk_usd": 63360,
+        "protected_usd": 0,
+        "basis": "quantity 11000 lf x $3.2/lf x rework multiplier 1.8"
       },
       "confidence": "high"
     },
     {
-      "activity_id": "A-2006",
-      "verdict": "compliant",
-      "verdict_summary": "Structural welding — preheat and interpass: bar sits inside an open interval on Minimum preheat/interpass by thickness — a trigger, not a hard stop.",
+      "activity_id": "A-1186",
+      "verdict": "at_risk",
+      "verdict_summary": "Structural welding — preheat and interpass: 7.1 h bar at 09:06 clips the window 00:00–00:00 (72 h open). Binding constraint: Minimum preheat/interpass by thickness — a preheat trigger, not a hard stop.",
       "trade_id": "structural_welding_preheat",
       "trade_display_name": "Structural welding — preheat and interpass",
-      "work_face_id": "WF-FAB2-11",
-      "work_face_name": "FAB2 L3 deck — bay C3",
-      "binding_constraint": null,
+      "work_face_id": "WF-WHSE-02",
+      "work_face_name": "WHSE grade — bay B1",
+      "binding_constraint": {
+        "type": "band",
+        "label": "Minimum preheat/interpass by thickness — a preheat trigger, not a hard stop",
+        "mitigation_hint": "torch preheat, induction preheat"
+      },
+      "usd_exposure": {
+        "at_risk_usd": 130500,
+        "protected_usd": 0,
+        "basis": "quantity 180 ea x $145/ea x rework multiplier 5"
+      },
+      "confidence": "high"
+    },
+    {
+      "activity_id": "A-1187",
+      "verdict": "at_risk",
+      "verdict_summary": "Elastomeric joint sealant — silicone weatherseal: 6.1 h bar at 06:12 clips the window 17:00–10:00 (17 h open). Binding constraint: Substrate −29 to +50 °C (−20 to +122 °F) during installation.",
+      "trade_id": "sealant_silicone_weatherseal",
+      "trade_display_name": "Elastomeric joint sealant — silicone weatherseal",
+      "work_face_id": "WF-WHSE-02",
+      "work_face_name": "WHSE grade — bay B1",
+      "binding_constraint": {
+        "type": "band",
+        "label": "Substrate −29 to +50 °C (−20 to +122 °F) during installation",
+        "mitigation_hint": "dry the joint, defer to afternoon"
+      },
+      "usd_exposure": {
+        "at_risk_usd": 96140,
+        "protected_usd": 0,
+        "basis": "quantity 2300 lf x $19/lf x rework multiplier 2.2"
+      },
+      "confidence": "high"
+    },
+    {
+      "activity_id": "A-1188",
+      "verdict": "no_data",
+      "verdict_summary": "Sprayed fire-resistive material (SFRM) — commercial density: insufficient data over the scheduled bar — fail closed, no verdict issued. Binding: Substrate and ambient ≥ 4 °C (40 °F), maintained ≥ 24 h after application.",
+      "trade_id": "sfrm_spray_applied_fireproofing",
+      "trade_display_name": "Sprayed fire-resistive material (SFRM) — commercial density",
+      "work_face_id": "WF-WHSE-02",
+      "work_face_name": "WHSE grade — bay B1",
+      "binding_constraint": {
+        "type": "continuity",
+        "label": "Substrate and ambient ≥ 4 °C (40 °F), maintained ≥ 24 h after application",
+        "mitigation_hint": "heated enclosure, temporary heat"
+      },
+      "usd_exposure": {
+        "at_risk_usd": 190960,
+        "protected_usd": 0,
+        "basis": "quantity 3100 m2 x $22/m2 x rework multiplier 2.8"
+      },
+      "confidence": "high"
+    },
+    {
+      "activity_id": "A-1194",
+      "verdict": "at_risk",
+      "verdict_summary": "Elastomeric joint sealant — silicone weatherseal: 6.4 h bar at 14:12 clips the window 15:00–12:00 (21 h open). Binding constraint: Substrate −29 to +50 °C (−20 to +122 °F) during installation.",
+      "trade_id": "sealant_silicone_weatherseal",
+      "trade_display_name": "Elastomeric joint sealant — silicone weatherseal",
+      "work_face_id": "WF-WHSE-03",
+      "work_face_name": "WHSE grade — bay A2",
+      "binding_constraint": {
+        "type": "band",
+        "label": "Substrate −29 to +50 °C (−20 to +122 °F) during installation",
+        "mitigation_hint": "dry the joint, defer to afternoon"
+      },
+      "usd_exposure": {
+        "at_risk_usd": 96140,
+        "protected_usd": 0,
+        "basis": "quantity 2300 lf x $19/lf x rework multiplier 2.2"
+      },
+      "confidence": "high"
+    },
+    {
+      "activity_id": "A-1195",
+      "verdict": "no_data",
+      "verdict_summary": "Sprayed fire-resistive material (SFRM) — commercial density: insufficient data over the scheduled bar — fail closed, no verdict issued. Binding: Substrate and ambient ≥ 4 °C (40 °F), maintained ≥ 24 h after application.",
+      "trade_id": "sfrm_spray_applied_fireproofing",
+      "trade_display_name": "Sprayed fire-resistive material (SFRM) — commercial density",
+      "work_face_id": "WF-WHSE-03",
+      "work_face_name": "WHSE grade — bay A2",
+      "binding_constraint": {
+        "type": "continuity",
+        "label": "Substrate and ambient ≥ 4 °C (40 °F), maintained ≥ 24 h after application",
+        "mitigation_hint": "heated enclosure, temporary heat"
+      },
+      "usd_exposure": {
+        "at_risk_usd": 190960,
+        "protected_usd": 0,
+        "basis": "quantity 3100 m2 x $22/m2 x rework multiplier 2.8"
+      },
+      "confidence": "high"
+    },
+    {
+      "activity_id": "A-1201",
+      "verdict": "at_risk",
+      "verdict_summary": "Elastomeric joint sealant — silicone weatherseal: 8.1 h bar at 12:12 clips the window 15:00–12:00 (21 h open). Binding constraint: Substrate −29 to +50 °C (−20 to +122 °F) during installation.",
+      "trade_id": "sealant_silicone_weatherseal",
+      "trade_display_name": "Elastomeric joint sealant — silicone weatherseal",
+      "work_face_id": "WF-WHSE-04",
+      "work_face_name": "WHSE grade — bay B2",
+      "binding_constraint": {
+        "type": "band",
+        "label": "Substrate −29 to +50 °C (−20 to +122 °F) during installation",
+        "mitigation_hint": "dry the joint, defer to afternoon"
+      },
+      "usd_exposure": {
+        "at_risk_usd": 96140,
+        "protected_usd": 0,
+        "basis": "quantity 2300 lf x $19/lf x rework multiplier 2.2"
+      },
+      "confidence": "high"
+    },
+    {
+      "activity_id": "A-1202",
+      "verdict": "no_data",
+      "verdict_summary": "Sprayed fire-resistive material (SFRM) — commercial density: insufficient data over the scheduled bar — fail closed, no verdict issued. Binding: Substrate and ambient ≥ 4 °C (40 °F), maintained ≥ 24 h after application.",
+      "trade_id": "sfrm_spray_applied_fireproofing",
+      "trade_display_name": "Sprayed fire-resistive material (SFRM) — commercial density",
+      "work_face_id": "WF-WHSE-04",
+      "work_face_name": "WHSE grade — bay B2",
+      "binding_constraint": {
+        "type": "continuity",
+        "label": "Substrate and ambient ≥ 4 °C (40 °F), maintained ≥ 24 h after application",
+        "mitigation_hint": "heated enclosure, temporary heat"
+      },
+      "usd_exposure": {
+        "at_risk_usd": 190960,
+        "protected_usd": 0,
+        "basis": "quantity 3100 m2 x $22/m2 x rework multiplier 2.8"
+      },
+      "confidence": "high"
+    },
+    {
+      "activity_id": "A-1205",
+      "verdict": "at_risk",
+      "verdict_summary": "Cast-in-place concrete — hot weather placement: 9.2 h bar at 07:42 clips the window 20:00–07:00 (11 h open). Binding constraint: ACI 305 evaporation rate ≤ 0.2 lb/ft²/hr.",
+      "trade_id": "concrete_cip_hot_weather",
+      "trade_display_name": "Cast-in-place concrete — hot weather placement",
+      "work_face_id": "WF-CT-01",
+      "work_face_name": "CT grade — bay A1",
+      "binding_constraint": {
+        "type": "composite_rate",
+        "label": "ACI 305 evaporation rate ≤ 0.2 lb/ft²/hr",
+        "mitigation_hint": "chilled mix water, ice substitution"
+      },
+      "usd_exposure": {
+        "at_risk_usd": 298350,
+        "protected_usd": 0,
+        "basis": "quantity 340 m3 x $195/m3 x rework multiplier 4.5"
+      },
+      "confidence": "high"
+    },
+    {
+      "activity_id": "A-1206",
+      "verdict": "at_risk",
+      "verdict_summary": "Adhesive anchors — injection epoxy into concrete: 5.1 h bar at 10:54 clips the window 19:00–08:00 (13 h open). Binding constraint: Base material −5 to +40 °C (23–104 °F) at installation.",
+      "trade_id": "adhesive_anchor_epoxy",
+      "trade_display_name": "Adhesive anchors — injection epoxy into concrete",
+      "work_face_id": "WF-CT-01",
+      "work_face_name": "CT grade — bay A1",
+      "binding_constraint": {
+        "type": "band",
+        "label": "Base material −5 to +40 °C (23–104 °F) at installation",
+        "mitigation_hint": "shade the substrate, chill cartridges"
+      },
+      "usd_exposure": {
+        "at_risk_usd": 120960,
+        "protected_usd": 0,
+        "basis": "quantity 420 ea x $48/ea x rework multiplier 6"
+      },
+      "confidence": "high"
+    },
+    {
+      "activity_id": "A-1213",
+      "verdict": "at_risk",
+      "verdict_summary": "Adhesive anchors — injection epoxy into concrete: 5.9 h bar at 14:30 clips the window 19:00–08:00 (13 h open). Binding constraint: Base material −5 to +40 °C (23–104 °F) at installation.",
+      "trade_id": "adhesive_anchor_epoxy",
+      "trade_display_name": "Adhesive anchors — injection epoxy into concrete",
+      "work_face_id": "WF-CT-02",
+      "work_face_name": "CT grade — bay B1",
+      "binding_constraint": {
+        "type": "band",
+        "label": "Base material −5 to +40 °C (23–104 °F) at installation",
+        "mitigation_hint": "shade the substrate, chill cartridges"
+      },
+      "usd_exposure": {
+        "at_risk_usd": 120960,
+        "protected_usd": 0,
+        "basis": "quantity 420 ea x $48/ea x rework multiplier 6"
+      },
+      "confidence": "high"
+    },
+    {
+      "activity_id": "A-1220",
+      "verdict": "at_risk",
+      "verdict_summary": "Adhesive anchors — injection epoxy into concrete: 4.5 h bar at 11:30 clips the window 18:00–09:00 (15 h open). Binding constraint: Base material −5 to +40 °C (23–104 °F) at installation.",
+      "trade_id": "adhesive_anchor_epoxy",
+      "trade_display_name": "Adhesive anchors — injection epoxy into concrete",
+      "work_face_id": "WF-CT-03",
+      "work_face_name": "CT L2 — bay A2",
+      "binding_constraint": {
+        "type": "band",
+        "label": "Base material −5 to +40 °C (23–104 °F) at installation",
+        "mitigation_hint": "shade the substrate, chill cartridges"
+      },
+      "usd_exposure": {
+        "at_risk_usd": 120960,
+        "protected_usd": 0,
+        "basis": "quantity 420 ea x $48/ea x rework multiplier 6"
+      },
+      "confidence": "high"
+    },
+    {
+      "activity_id": "A-1237",
+      "verdict": "at_risk",
+      "verdict_summary": "Structural steel — high-build epoxy coating: 6.3 h bar at 14:30 clips the window 05:00–04:00 (23 h open). Binding constraint: Surface ≥ dew point + 2.8 °C (5 °F).",
+      "trade_id": "coating_epoxy_structural_steel",
+      "trade_display_name": "Structural steel — high-build epoxy coating",
+      "work_face_id": "WF-SUB-02",
+      "work_face_name": "SUB grade — bay B1",
+      "binding_constraint": {
+        "type": "offset",
+        "label": "Surface ≥ dew point + 2.8 °C (5 °F)",
+        "mitigation_hint": "dehumidified enclosure, surface preheat"
+      },
+      "usd_exposure": {
+        "at_risk_usd": 456960,
+        "protected_usd": 0,
+        "basis": "quantity 4200 m2 x $34/m2 x rework multiplier 3.2"
+      },
+      "confidence": "high"
+    },
+    {
+      "activity_id": "A-1248",
+      "verdict": "at_risk",
+      "verdict_summary": "Concrete masonry — hot weather construction: 9.4 h bar at 12:12 clips the window 00:00–00:00 (72 h open). Binding constraint: Hot-weather procedures triggered above 37.8 °C (100 °F).",
+      "trade_id": "masonry_cmu_hot_weather",
+      "trade_display_name": "Concrete masonry — hot weather construction",
+      "work_face_id": "WF-BULK-01",
+      "work_face_name": "BULK grade — bay A1",
+      "binding_constraint": {
+        "type": "band",
+        "label": "Hot-weather procedures triggered above 37.8 °C (100 °F)",
+        "mitigation_hint": "shade materials, cool mixing water"
+      },
+      "usd_exposure": {
+        "at_risk_usd": 548625,
+        "protected_usd": 0,
+        "basis": "quantity 950 m2 x $165/m2 x rework multiplier 3.5"
+      },
+      "confidence": "high"
+    },
+    {
+      "activity_id": "A-1249",
+      "verdict": "at_risk",
+      "verdict_summary": "Cast-in-place concrete — hot weather placement: 8.6 h bar at 11:36 clips the window 20:00–07:00 (11 h open). Binding constraint: Concrete temperature at discharge ≤ 35 °C (95 °F).",
+      "trade_id": "concrete_cip_hot_weather",
+      "trade_display_name": "Cast-in-place concrete — hot weather placement",
+      "work_face_id": "WF-BULK-01",
+      "work_face_name": "BULK grade — bay A1",
+      "binding_constraint": {
+        "type": "band",
+        "label": "Concrete temperature at discharge ≤ 35 °C (95 °F)",
+        "mitigation_hint": "chilled mix water, ice substitution"
+      },
+      "usd_exposure": {
+        "at_risk_usd": 298350,
+        "protected_usd": 0,
+        "basis": "quantity 340 m3 x $195/m3 x rework multiplier 4.5"
+      },
+      "confidence": "high"
+    },
+    {
+      "activity_id": "A-1250",
+      "verdict": "at_risk",
+      "verdict_summary": "Structural welding — preheat and interpass: 7.2 h bar at 10:12 clips the window 00:00–00:00 (72 h open). Binding constraint: Minimum preheat/interpass by thickness — a preheat trigger, not a hard stop.",
+      "trade_id": "structural_welding_preheat",
+      "trade_display_name": "Structural welding — preheat and interpass",
+      "work_face_id": "WF-BULK-01",
+      "work_face_name": "BULK grade — bay A1",
+      "binding_constraint": {
+        "type": "band",
+        "label": "Minimum preheat/interpass by thickness — a preheat trigger, not a hard stop",
+        "mitigation_hint": "torch preheat, induction preheat"
+      },
+      "usd_exposure": {
+        "at_risk_usd": 130500,
+        "protected_usd": 0,
+        "basis": "quantity 180 ea x $145/ea x rework multiplier 5"
+      },
+      "confidence": "high"
+    },
+    {
+      "activity_id": "A-1256",
+      "verdict": "at_risk",
+      "verdict_summary": "Concrete masonry — hot weather construction: 8.5 h bar at 10:12 clips the window 00:00–00:00 (72 h open). Binding constraint: Hot-weather procedures triggered above 37.8 °C (100 °F).",
+      "trade_id": "masonry_cmu_hot_weather",
+      "trade_display_name": "Concrete masonry — hot weather construction",
+      "work_face_id": "WF-BULK-02",
+      "work_face_name": "BULK grade — bay B1",
+      "binding_constraint": {
+        "type": "band",
+        "label": "Hot-weather procedures triggered above 37.8 °C (100 °F)",
+        "mitigation_hint": "shade materials, cool mixing water"
+      },
+      "usd_exposure": {
+        "at_risk_usd": 548625,
+        "protected_usd": 0,
+        "basis": "quantity 950 m2 x $165/m2 x rework multiplier 3.5"
+      },
+      "confidence": "high"
+    },
+    {
+      "activity_id": "A-1257",
+      "verdict": "at_risk",
+      "verdict_summary": "Cast-in-place concrete — hot weather placement: 8.8 h bar at 08:42 clips the window 20:00–07:00 (11 h open). Binding constraint: Concrete temperature at discharge ≤ 35 °C (95 °F).",
+      "trade_id": "concrete_cip_hot_weather",
+      "trade_display_name": "Cast-in-place concrete — hot weather placement",
+      "work_face_id": "WF-BULK-02",
+      "work_face_name": "BULK grade — bay B1",
+      "binding_constraint": {
+        "type": "band",
+        "label": "Concrete temperature at discharge ≤ 35 °C (95 °F)",
+        "mitigation_hint": "chilled mix water, ice substitution"
+      },
+      "usd_exposure": {
+        "at_risk_usd": 298350,
+        "protected_usd": 0,
+        "basis": "quantity 340 m3 x $195/m3 x rework multiplier 4.5"
+      },
+      "confidence": "high"
+    },
+    {
+      "activity_id": "A-1258",
+      "verdict": "compliant",
+      "verdict_summary": "Structural welding — preheat and interpass: 7.2 h bar at 07:30 sits inside the window 00:00–00:00 (72 h open). Binding constraint: Minimum preheat/interpass by thickness — a preheat trigger, not a hard stop.",
+      "trade_id": "structural_welding_preheat",
+      "trade_display_name": "Structural welding — preheat and interpass",
+      "work_face_id": "WF-BULK-02",
+      "work_face_name": "BULK grade — bay B1",
+      "binding_constraint": {
+        "type": "band",
+        "label": "Minimum preheat/interpass by thickness — a preheat trigger, not a hard stop",
+        "mitigation_hint": "torch preheat, induction preheat"
+      },
       "usd_exposure": {
         "at_risk_usd": 0,
         "protected_usd": 130500,
-        "basis": "quantity 180 unit x $145/unit x rework multiplier 5"
+        "basis": "quantity 180 ea x $145/ea x rework multiplier 5"
       },
       "confidence": "high"
     },
     {
-      "activity_id": "A-2008",
+      "activity_id": "A-1264",
+      "verdict": "at_risk",
+      "verdict_summary": "Concrete masonry — hot weather construction: 10.1 h bar at 06:30 clips the window 00:00–00:00 (72 h open). Binding constraint: Hot-weather procedures triggered above 37.8 °C (100 °F).",
+      "trade_id": "masonry_cmu_hot_weather",
+      "trade_display_name": "Concrete masonry — hot weather construction",
+      "work_face_id": "WF-BULK-03",
+      "work_face_name": "BULK L2 — bay A2",
+      "binding_constraint": {
+        "type": "band",
+        "label": "Hot-weather procedures triggered above 37.8 °C (100 °F)",
+        "mitigation_hint": "shade materials, cool mixing water"
+      },
+      "usd_exposure": {
+        "at_risk_usd": 548625,
+        "protected_usd": 0,
+        "basis": "quantity 950 m2 x $165/m2 x rework multiplier 3.5"
+      },
+      "confidence": "high"
+    },
+    {
+      "activity_id": "A-1265",
+      "verdict": "non_compliant",
+      "verdict_summary": "Cast-in-place concrete — hot weather placement: the 9.3 h bar at 06:36 sits on closed hours. Binding constraint: Concrete temperature at discharge ≤ 35 °C (95 °F).",
+      "trade_id": "concrete_cip_hot_weather",
+      "trade_display_name": "Cast-in-place concrete — hot weather placement",
+      "work_face_id": "WF-BULK-03",
+      "work_face_name": "BULK L2 — bay A2",
+      "binding_constraint": {
+        "type": "band",
+        "label": "Concrete temperature at discharge ≤ 35 °C (95 °F)",
+        "mitigation_hint": "chilled mix water, ice substitution"
+      },
+      "usd_exposure": {
+        "at_risk_usd": 298350,
+        "protected_usd": 0,
+        "basis": "quantity 340 m3 x $195/m3 x rework multiplier 4.5"
+      },
+      "confidence": "high"
+    },
+    {
+      "activity_id": "A-1266",
       "verdict": "compliant",
-      "verdict_summary": "Sprayed fire-resistive material (SFRM): bar sits inside an open interval on Substrate and ambient >= 4 C (40 F), maintained >= 24 h after application.",
-      "trade_id": "sfrm_spray_applied_fireproofing",
-      "trade_display_name": "Sprayed fire-resistive material (SFRM)",
-      "work_face_id": "WF-FAB2-08",
-      "work_face_name": "FAB2 L2 deck — bay D2",
-      "binding_constraint": null,
+      "verdict_summary": "Structural welding — preheat and interpass: 7.1 h bar at 15:54 sits inside the window 00:00–00:00 (72 h open). Binding constraint: Minimum preheat/interpass by thickness — a preheat trigger, not a hard stop.",
+      "trade_id": "structural_welding_preheat",
+      "trade_display_name": "Structural welding — preheat and interpass",
+      "work_face_id": "WF-BULK-03",
+      "work_face_name": "BULK L2 — bay A2",
+      "binding_constraint": {
+        "type": "band",
+        "label": "Minimum preheat/interpass by thickness — a preheat trigger, not a hard stop",
+        "mitigation_hint": "torch preheat, induction preheat"
+      },
       "usd_exposure": {
         "at_risk_usd": 0,
-        "protected_usd": 190960,
-        "basis": "quantity 3100 unit x $22/unit x rework multiplier 2.8"
+        "protected_usd": 130500,
+        "basis": "quantity 180 ea x $145/ea x rework multiplier 5"
       },
       "confidence": "high"
     },
     {
-      "activity_id": "A-6103",
+      "activity_id": "A-1272",
       "verdict": "at_risk",
-      "verdict_summary": "Hot-mix asphalt paving — surface course: 9 h bar at 13:00 clips the closed/thin dawn hours on Available compaction minutes = f(base surface temperature, lift). Slip start or mitigate.",
-      "trade_id": "hma_paving_surface_course",
-      "trade_display_name": "Hot-mix asphalt paving — surface course",
-      "work_face_id": "WF-ROAD-01",
-      "work_face_name": "ROAD grade — haul corridor",
+      "verdict_summary": "Concrete masonry — hot weather construction: 8.9 h bar at 10:54 clips the window 00:00–00:00 (72 h open). Binding constraint: Hot-weather procedures triggered above 37.8 °C (100 °F).",
+      "trade_id": "masonry_cmu_hot_weather",
+      "trade_display_name": "Concrete masonry — hot weather construction",
+      "work_face_id": "WF-CHEM-01",
+      "work_face_name": "CHEM grade — bay A1",
       "binding_constraint": {
-        "type": "decay_clock",
-        "label": "Available compaction minutes = f(base surface temperature, lift)",
-        "mitigation_hint": "increase lift thickness, add a roller, shift to the afternoon peak base temp"
+        "type": "band",
+        "label": "Hot-weather procedures triggered above 37.8 °C (100 °F)",
+        "mitigation_hint": "shade materials, cool mixing water"
       },
       "usd_exposure": {
-        "at_risk_usd": 559000,
+        "at_risk_usd": 548625,
         "protected_usd": 0,
-        "basis": "quantity 8600 unit x $26/unit x rework multiplier 2.5"
+        "basis": "quantity 950 m2 x $165/m2 x rework multiplier 3.5"
+      },
+      "confidence": "high"
+    },
+    {
+      "activity_id": "A-1273",
+      "verdict": "at_risk",
+      "verdict_summary": "Cast-in-place concrete — hot weather placement: 9.6 h bar at 09:48 clips the window 20:00–07:00 (11 h open). Binding constraint: Concrete temperature at discharge ≤ 35 °C (95 °F).",
+      "trade_id": "concrete_cip_hot_weather",
+      "trade_display_name": "Cast-in-place concrete — hot weather placement",
+      "work_face_id": "WF-CHEM-01",
+      "work_face_name": "CHEM grade — bay A1",
+      "binding_constraint": {
+        "type": "band",
+        "label": "Concrete temperature at discharge ≤ 35 °C (95 °F)",
+        "mitigation_hint": "chilled mix water, ice substitution"
+      },
+      "usd_exposure": {
+        "at_risk_usd": 298350,
+        "protected_usd": 0,
+        "basis": "quantity 340 m3 x $195/m3 x rework multiplier 4.5"
+      },
+      "confidence": "high"
+    },
+    {
+      "activity_id": "A-1274",
+      "verdict": "compliant",
+      "verdict_summary": "Structural welding — preheat and interpass: 7.7 h bar at 09:24 sits inside the window 00:00–00:00 (72 h open). Binding constraint: Minimum preheat/interpass by thickness — a preheat trigger, not a hard stop.",
+      "trade_id": "structural_welding_preheat",
+      "trade_display_name": "Structural welding — preheat and interpass",
+      "work_face_id": "WF-CHEM-01",
+      "work_face_name": "CHEM grade — bay A1",
+      "binding_constraint": {
+        "type": "band",
+        "label": "Minimum preheat/interpass by thickness — a preheat trigger, not a hard stop",
+        "mitigation_hint": "torch preheat, induction preheat"
+      },
+      "usd_exposure": {
+        "at_risk_usd": 0,
+        "protected_usd": 130500,
+        "basis": "quantity 180 ea x $145/ea x rework multiplier 5"
+      },
+      "confidence": "high"
+    },
+    {
+      "activity_id": "A-1280",
+      "verdict": "at_risk",
+      "verdict_summary": "Concrete masonry — hot weather construction: 9.9 h bar at 12:06 clips the window 00:00–00:00 (72 h open). Binding constraint: Hot-weather procedures triggered above 37.8 °C (100 °F).",
+      "trade_id": "masonry_cmu_hot_weather",
+      "trade_display_name": "Concrete masonry — hot weather construction",
+      "work_face_id": "WF-CHEM-02",
+      "work_face_name": "CHEM grade — bay B1",
+      "binding_constraint": {
+        "type": "band",
+        "label": "Hot-weather procedures triggered above 37.8 °C (100 °F)",
+        "mitigation_hint": "shade materials, cool mixing water"
+      },
+      "usd_exposure": {
+        "at_risk_usd": 548625,
+        "protected_usd": 0,
+        "basis": "quantity 950 m2 x $165/m2 x rework multiplier 3.5"
+      },
+      "confidence": "high"
+    },
+    {
+      "activity_id": "A-1281",
+      "verdict": "at_risk",
+      "verdict_summary": "Cast-in-place concrete — hot weather placement: 9.3 h bar at 12:00 clips the window 20:00–07:00 (11 h open). Binding constraint: Concrete temperature at discharge ≤ 35 °C (95 °F).",
+      "trade_id": "concrete_cip_hot_weather",
+      "trade_display_name": "Cast-in-place concrete — hot weather placement",
+      "work_face_id": "WF-CHEM-02",
+      "work_face_name": "CHEM grade — bay B1",
+      "binding_constraint": {
+        "type": "band",
+        "label": "Concrete temperature at discharge ≤ 35 °C (95 °F)",
+        "mitigation_hint": "chilled mix water, ice substitution"
+      },
+      "usd_exposure": {
+        "at_risk_usd": 298350,
+        "protected_usd": 0,
+        "basis": "quantity 340 m3 x $195/m3 x rework multiplier 4.5"
+      },
+      "confidence": "high"
+    },
+    {
+      "activity_id": "A-1282",
+      "verdict": "compliant",
+      "verdict_summary": "Structural welding — preheat and interpass: 9.1 h bar at 11:18 sits inside the window 00:00–00:00 (72 h open). Binding constraint: Minimum preheat/interpass by thickness — a preheat trigger, not a hard stop.",
+      "trade_id": "structural_welding_preheat",
+      "trade_display_name": "Structural welding — preheat and interpass",
+      "work_face_id": "WF-CHEM-02",
+      "work_face_name": "CHEM grade — bay B1",
+      "binding_constraint": {
+        "type": "band",
+        "label": "Minimum preheat/interpass by thickness — a preheat trigger, not a hard stop",
+        "mitigation_hint": "torch preheat, induction preheat"
+      },
+      "usd_exposure": {
+        "at_risk_usd": 0,
+        "protected_usd": 130500,
+        "basis": "quantity 180 ea x $145/ea x rework multiplier 5"
+      },
+      "confidence": "high"
+    },
+    {
+      "activity_id": "A-1288",
+      "verdict": "at_risk",
+      "verdict_summary": "Concrete masonry — hot weather construction: 8.3 h bar at 07:48 clips the window 00:00–00:00 (72 h open). Binding constraint: Hot-weather procedures triggered above 37.8 °C (100 °F).",
+      "trade_id": "masonry_cmu_hot_weather",
+      "trade_display_name": "Concrete masonry — hot weather construction",
+      "work_face_id": "WF-CHEM-03",
+      "work_face_name": "CHEM L2 — bay A2",
+      "binding_constraint": {
+        "type": "band",
+        "label": "Hot-weather procedures triggered above 37.8 °C (100 °F)",
+        "mitigation_hint": "shade materials, cool mixing water"
+      },
+      "usd_exposure": {
+        "at_risk_usd": 548625,
+        "protected_usd": 0,
+        "basis": "quantity 950 m2 x $165/m2 x rework multiplier 3.5"
+      },
+      "confidence": "high"
+    },
+    {
+      "activity_id": "SITE-CREW-HEAT",
+      "verdict": "at_risk",
+      "verdict_summary": "Crew heat exposure — WBGT work/rest and OSHA triggers: 72 h bar at 00:00 clips the window 00:00–00:00 (72 h open, 51.75 h productive after the WBGT haircut). Binding constraint: OSHA proposed initial heat trigger — heat index 80 °F.",
+      "trade_id": "crew_heat_exposure",
+      "trade_display_name": "Crew heat exposure — WBGT work/rest and OSHA triggers",
+      "work_face_id": "SITE",
+      "work_face_name": "Site-wide",
+      "binding_constraint": {
+        "type": "human",
+        "label": "OSHA proposed initial heat trigger — heat index 80 °F",
+        "mitigation_hint": "shade structures, cooling break areas"
+      },
+      "usd_exposure": {
+        "at_risk_usd": 0,
+        "protected_usd": 0,
+        "basis": "quantity 0 crew_hour x $78/crew_hour x rework multiplier 1"
       },
       "confidence": "high"
     }

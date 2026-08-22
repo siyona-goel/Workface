@@ -32,6 +32,8 @@ export function SiteConsole() {
     null,
   );
   const [evalsOnly, setEvalsOnly] = useState(true);
+  const [heroOnly, setHeroOnly] = useState(false);
+  const [focusedFaceId, setFocusedFaceId] = useState<string | null>(null);
 
   const preVerdict = useMemo(
     () =>
@@ -77,17 +79,24 @@ export function SiteConsole() {
   }, [preVerdict]);
 
   function selectWorkFace(id: string | null) {
+    setFocusedFaceId(id);
     setFilters((f) => ({ ...f, workFaceId: id }));
   }
 
   function selectActivity(activity: Activity) {
     setSelectedActivityId(activity.id);
+    setFocusedFaceId(activity.work_face_id);
     setFilters((f) => ({ ...f, workFaceId: activity.work_face_id }));
   }
 
   function selectLane(activityId: string) {
     setSelectedActivityId(activityId);
+    const activity = consoleData.activities.find((a) => a.id === activityId);
+    const ev = consoleData.evaluations.find((e) => e.activity_id === activityId);
+    setFocusedFaceId(activity?.work_face_id ?? ev?.work_face_id ?? null);
   }
+
+  const mapFaceId = filters.workFaceId ?? focusedFaceId;
 
   return (
     <div className="flex h-dvh min-h-0 flex-col bg-background text-foreground">
@@ -125,13 +134,13 @@ export function SiteConsole() {
 
       <div className="grid min-h-0 flex-[0.9] grid-cols-1 lg:grid-cols-[minmax(0,1fr)_280px]">
         <SiteMapLoader
-          selectedWorkFaceId={filters.workFaceId}
+          selectedWorkFaceId={mapFaceId}
           onSelectWorkFace={selectWorkFace}
           faceVerdict={faceVerdict}
         />
         <div className="hidden min-h-0 lg:block">
           <WorkFaceList
-            selectedId={filters.workFaceId}
+            selectedId={mapFaceId}
             onSelect={selectWorkFace}
             counts={faceCounts}
             faceVerdict={faceVerdict}
@@ -147,6 +156,8 @@ export function SiteConsole() {
           onSelectLane={selectLane}
           evalsOnly={evalsOnly}
           onEvalsOnlyChange={setEvalsOnly}
+          heroOnly={heroOnly}
+          onHeroOnlyChange={setHeroOnly}
         />
       </section>
 

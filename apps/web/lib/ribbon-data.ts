@@ -1,6 +1,7 @@
 import ribbonJson from "@/data/ribbon.json";
 import {
   consoleData,
+  VERDICT_RANK,
   type Activity,
   type ConsoleFilters,
   type Verdict,
@@ -89,6 +90,44 @@ export const HOUR_STATE_FILL_DIM: Record<HourState, string> = {
 const activityById = new Map(consoleData.activities.map((a) => [a.id, a]));
 const evalById = new Map(ribbonData.evaluations.map((e) => [e.activity_id, e]));
 
+const HERO_FACES = new Set([
+  consoleData.hero_pair.shaded,
+  consoleData.hero_pair.bare,
+]);
+
+/** Coating lanes on the hero pair (shaded WF-FAB2-06, bare WF-FAB2-07). */
+export const HERO_EVALS = ribbonData.evaluations.filter(
+  (ev) =>
+    HERO_FACES.has(ev.work_face_id) &&
+    ev.trade_id === "coating_epoxy_structural_steel",
+);
+
+export const HERO_ACTIVITY_IDS = new Set(HERO_EVALS.map((e) => e.activity_id));
+
+export const HORIZON_HOURS = Math.round(
+  (Date.parse(ribbonData.horizon.end) - Date.parse(ribbonData.horizon.start)) /
+    3_600_000,
+);
+
+export function isHeroLane(activityId: string) {
+  return HERO_ACTIVITY_IDS.has(activityId);
+}
+
+export function heroRole(workFaceId: string): "shaded" | "bare" | null {
+  if (workFaceId === consoleData.hero_pair.shaded) return "shaded";
+  if (workFaceId === consoleData.hero_pair.bare) return "bare";
+  return null;
+}
+
+export function contendedLabel(hours: string[]) {
+  if (hours.length === 0) return null;
+  const first = formatTickHour(hours[0]);
+  const lastMs = Date.parse(hours[hours.length - 1]) + 60 * 60 * 1000;
+  const last = formatTickHour(new Date(lastMs).toISOString());
+  const day = formatTick(hours[0]).replace(/\s+\d{2}:\d{2}$/, "");
+  return `${day} ${first}–${last}`;
+}
+
 export function ribbonEvalFor(activityId: string) {
   return evalById.get(activityId);
 }
@@ -101,12 +140,30 @@ export type RibbonLane = {
   activity_id: string;
   activity_name: string;
   trade_display_name: string;
+  work_face_id: string;
   work_face_name: string;
   verdict: Verdict;
   scheduled: { start: string; finish: string };
   hours: RibbonHour[];
   hasEval: boolean;
 };
+
+export function sortLanes(lanes: RibbonLane[]) {
+  return [...lanes].sort((a, b) => {
+    const ha = isHeroLane(a.activity_id) ? 0 : 1;
+    const hb = isHeroLane(b.activity_id) ? 0 : 1;
+    if (ha !== hb) return ha - hb;
+    if (ha === 0) {
+      const ra = heroRole(a.work_face_id) === "shaded" ? 0 : 1;
+      const rb = heroRole(b.work_face_id) === "shaded" ? 0 : 1;
+      return ra - rb;
+    }
+    const va = VERDICT_RANK[a.verdict];
+    const vb = VERDICT_RANK[b.verdict];
+    if (va !== vb) return va - vb;
+    return a.scheduled.start.localeCompare(b.scheduled.start);
+  });
+}
 
 export function buildPlaceholderHours(): RibbonHour[] {
   const template = ribbonData.evaluations[0]?.hours ?? [];
@@ -136,6 +193,7 @@ export function laneFromEval(ev: RibbonEval): RibbonLane {
     activity_id: ev.activity_id,
     activity_name: ev.activity_name,
     trade_display_name: ev.trade_display_name,
+    work_face_id: ev.work_face_id,
     work_face_name: ev.work_face_name,
     verdict: ev.verdict,
     scheduled: { start: ev.scheduled.start, finish: ev.scheduled.finish },
@@ -151,6 +209,7 @@ export function laneFromActivity(activity: Activity): RibbonLane {
       activity_id: ev.activity_id,
       activity_name: ev.activity_name,
       trade_display_name: ev.trade_display_name,
+      work_face_id: ev.work_face_id,
       work_face_name: ev.work_face_name,
       verdict: ev.verdict,
       scheduled: { start: ev.scheduled.start, finish: ev.scheduled.finish },
@@ -162,7 +221,10 @@ export function laneFromActivity(activity: Activity): RibbonLane {
     activity_id: activity.id,
     activity_name: activity.name,
     trade_display_name: activity.trade_id ?? "—",
-    work_face_name: activity.work_face_id,
+    work_face_id: activity.work_face_id,
+    work_face_name:
+      consoleData.work_faces.find((f) => f.id === activity.work_face_id)
+        ?.name ?? activity.work_face_id,
     verdict: "no_data",
     scheduled: {
       start: activity.planned_start,
