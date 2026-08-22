@@ -1,0 +1,82 @@
+{
+  "n_aoi_polygons": 5,
+  "max_aoi_polygons": 5,
+  "n_work_faces": 40,
+  "clusters": [
+    {
+      "id": "AOI-FAB2",
+      "n_faces": 14,
+      "structure_ids": [
+        "FAB2"
+      ],
+      "granularity_plan_m": 100,
+      "granularity_commit_m": 60
+    },
+    {
+      "id": "AOI-UTIL",
+      "n_faces": 14,
+      "structure_ids": [
+        "BULK",
+        "CT",
+        "CUB",
+        "SUB"
+      ],
+      "granularity_plan_m": 100,
+      "granularity_commit_m": 100
+    },
+    {
+      "id": "AOI-SOUTH",
+      "n_faces": 9,
+      "structure_ids": [
+        "ADMIN",
+        "CHEM",
+        "WHSE"
+      ],
+      "granularity_plan_m": 100,
+      "granularity_commit_m": 100
+    },
+    {
+      "id": "AOI-PARK",
+      "n_faces": 2,
+      "structure_ids": [
+        "PARK"
+      ],
+      "granularity_plan_m": 100,
+      "granularity_commit_m": 100
+    },
+    {
+      "id": "AOI-ROAD",
+      "n_faces": 1,
+      "structure_ids": [
+        "ROAD"
+      ],
+      "granularity_plan_m": 100,
+      "granularity_commit_m": 100
+    }
+  ],
+  "daily_commit_calls": {
+    "clustered": 15,
+    "naive_per_face": 120,
+    "note": "heatmap tcm (filter_type 2) + time_of_measure (filter_type 3) + env_params, per AOI not per face."
+  },
+  "climatology_sweep_calls_once": {
+    "clustered": 140,
+    "naive_per_face": 1120,
+    "years": [
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "analytics_per_year": 4,
+    "note": "filter_type 4, one August window per year. Cached forever. Not a daily cost."
+  },
+  "max_fg_calls_per_day": 120,
+  "fail_at_fraction": 0.8,
+  "headroom_vs_daily_cap": 105,
+  "site_lat": 33.785406,
+  "aoi_buffer_m": 90.0
+}

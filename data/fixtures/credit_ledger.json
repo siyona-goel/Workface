@@ -1,0 +1,9 @@
+{
+  "remaining": 1901040,
+  "starting_balance": 2000000,
+  "note": "FortyGuard /v1/system/fetch-api-key-usage returned 405 on Day 1. Remaining is the CREDITS.md ledger after Day-2 captures. The meter still increments estimated burn per live call and fails at 80% of MAX_FG_CALLS_PER_DAY.",
+  "days": {},
+  "last_api_raw": {
+    "detail": "Method Not Allowed"
+  }
+}
