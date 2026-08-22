@@ -1,0 +1,379 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "agent-2026-08-22-0400-commit",
+  "site_id": "NPX-FAB-P2",
+  "started_at": "2026-08-22T04:00:00-07:00",
+  "finished_at": "2026-08-22T04:10:00-07:00",
+  "status": "completed",
+  "model_name": "llama-3.3-70b-instruct-turbo",
+  "lookahead_h": 72,
+  "tier": "commit",
+  "scanned_count": 328,
+  "flagged_count": 41,
+  "conflicts_count": 2,
+  "resolved_count": 1,
+  "escalated_count": 1,
+  "conflicts": [
+    {
+      "id": "C1",
+      "work_face_id": "WF-FAB2-11",
+      "shift_date": "2026-08-24",
+      "competing_activity_ids": [
+        "A-2003",
+        "A-2009"
+      ],
+      "compliant_hours": 5.0,
+      "demanded_hours": 12.0,
+      "description": "Slab pour (A-2003, 8 h) and epoxy coating (A-2009, 6 h) both want the 05:00-10:00 compliant band on the FAB2 L3 deck — 5 open hours, 12 demanded.",
+      "resolved_by_step_seq": 6
+    },
+    {
+      "id": "C2",
+      "work_face_id": "WF-FAB2-11",
+      "shift_date": "2026-08-25",
+      "competing_activity_ids": [
+        "A-2009",
+        "A-2006"
+      ],
+      "compliant_hours": 4.0,
+      "demanded_hours": 6.0,
+      "description": "Slipping the coating (A-2009) to the next clean window would push the near-critical deck weld (A-2006) and consume four days of its float.",
+      "resolved_by_step_seq": 10
+    }
+  ],
+  "steps": [
+    {
+      "seq": 0,
+      "type": "scan",
+      "at": "2026-08-22T04:00:00-07:00",
+      "title": "Scanned 328 activities in the 72 h lookahead",
+      "detail": "Listed every activity whose planned window falls inside the rolling 72 h horizon for site NPX-FAB-P2.",
+      "activity_ids": [],
+      "conflict_id": null,
+      "tool_calls": [
+        {
+          "tool": "list_activities_in_lookahead",
+          "args": {
+            "lookahead_h": 72
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "328 activities in horizon",
+          "fg_activity_ids": [],
+          "latency_ms": 140
+        }
+      ],
+      "proposal": null,
+      "gate": null,
+      "record_seq": null
+    },
+    {
+      "seq": 1,
+      "type": "evaluate",
+      "at": "2026-08-22T04:03:00-07:00",
+      "title": "Flagged 41 of 328 as at-risk",
+      "detail": "Ran the deterministic window engine on each activity (thermal twin -> evaluate_window). 41 are at_risk, non_compliant or insufficient_window.",
+      "activity_ids": [
+        "A-2009",
+        "A-2003",
+        "A-2006"
+      ],
+      "conflict_id": null,
+      "tool_calls": [
+        {
+          "tool": "get_work_face_thermal",
+          "args": {
+            "work_face_id": "WF-FAB2-11"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "48 h series, confidence high",
+          "fg_activity_ids": [
+            "fg-heatmap-FAB2DECK-0001",
+            "fg-envparams-FAB2DECK-0001"
+          ],
+          "latency_ms": 95
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-2009"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict at_risk; binding offset_dew_point",
+          "fg_activity_ids": [],
+          "latency_ms": 12
+        }
+      ],
+      "proposal": null,
+      "gate": null,
+      "record_seq": null
+    },
+    {
+      "seq": 2,
+      "type": "conflict",
+      "at": "2026-08-22T04:04:00-07:00",
+      "title": "2 conflicts on the FAB2 L3 deck",
+      "detail": "Grouped the flagged activities by work face and shift; two sets compete for the same compliant hours on WF-FAB2-11.",
+      "activity_ids": [
+        "A-2003",
+        "A-2009",
+        "A-2006"
+      ],
+      "conflict_id": null,
+      "tool_calls": [],
+      "proposal": null,
+      "gate": null,
+      "record_seq": null
+    },
+    {
+      "seq": 3,
+      "type": "propose",
+      "at": "2026-08-22T04:06:00-07:00",
+      "title": "Propose: split the coating around the pour",
+      "detail": "The pour cannot move (hold point: city inspector). Split the 6 h coating into 2 h before the pour crew arrives and 4 h after the deck clears, both inside the dew-point-compliant band.",
+      "activity_ids": [
+        "A-2003",
+        "A-2009"
+      ],
+      "conflict_id": "C1",
+      "tool_calls": [
+        {
+          "tool": "propose_resequence",
+          "args": {
+            "activity_id": "A-2009",
+            "strategy": "split"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "feasible: 2 h + 4 h, 0.5 d float consumed",
+          "fg_activity_ids": [],
+          "latency_ms": 8
+        }
+      ],
+      "proposal": {
+        "kind": "split",
+        "activity_ids": [
+          "A-2009"
+        ],
+        "rationale": "The pour holds a city-inspector hold point and cannot move, but the coating can run in two passes without breaching recoat limits. Splitting keeps both inside the 05:00-10:00 window and spends only half a day of float.",
+        "solver_payload": {
+          "segments": [
+            {
+              "start": "2026-08-24T05:00:00-07:00",
+              "hours": 2.0
+            },
+            {
+              "start": "2026-08-24T08:00:00-07:00",
+              "hours": 4.0
+            }
+          ],
+          "feasible": true
+        },
+        "float_days_consumed": 0.5,
+        "projected_verdict": "compliant"
+      },
+      "gate": null,
+      "record_seq": null
+    },
+    {
+      "seq": 4,
+      "type": "gate",
+      "at": "2026-08-22T04:06:12-07:00",
+      "title": "Gate: approve the split",
+      "detail": "Policy engine approved — float consumed is under the near-critical cap.",
+      "activity_ids": [
+        "A-2009"
+      ],
+      "conflict_id": "C1",
+      "tool_calls": [],
+      "proposal": null,
+      "gate": {
+        "decision": "approve",
+        "rule_id": "split_within_float_ok",
+        "reason": "Split keeps both activities inside their compliant windows and consumes 0.5 d of float, under the 3.0 d cap for a near-critical activity.",
+        "escalated": false,
+        "modified_params": null
+      },
+      "record_seq": null
+    },
+    {
+      "seq": 5,
+      "type": "act",
+      "at": "2026-08-22T04:06:24-07:00",
+      "title": "Split A-2009 into two passes",
+      "detail": "Applied the approved split via the gated tool.",
+      "activity_ids": [
+        "A-2009"
+      ],
+      "conflict_id": "C1",
+      "tool_calls": [
+        {
+          "tool": "split_activity",
+          "args": {
+            "activity_id": "A-2009",
+            "segments": 2
+          },
+          "ok": true,
+          "gated": true,
+          "result_summary": "A-2009 split into A-2009a (2 h) + A-2009b (4 h)",
+          "fg_activity_ids": [],
+          "latency_ms": 22
+        }
+      ],
+      "proposal": null,
+      "gate": null,
+      "record_seq": 101
+    },
+    {
+      "seq": 6,
+      "type": "verify",
+      "at": "2026-08-22T04:06:36-07:00",
+      "title": "Verify: both activities now compliant",
+      "detail": "Re-evaluated A-2003 and both coating segments against the new plan — all sit inside compliant windows.",
+      "activity_ids": [
+        "A-2003",
+        "A-2009"
+      ],
+      "conflict_id": "C1",
+      "tool_calls": [
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-2009b"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict compliant",
+          "fg_activity_ids": [],
+          "latency_ms": 11
+        }
+      ],
+      "proposal": null,
+      "gate": null,
+      "record_seq": null
+    },
+    {
+      "seq": 7,
+      "type": "propose",
+      "at": "2026-08-22T04:09:00-07:00",
+      "title": "Propose: slip the coating to the next clean window",
+      "detail": "The cheapest fix for C2 is to shift the coating a day to the next dew-point-compliant window. The solver reports it would push near-critical A-2006 and consume four days of its float.",
+      "activity_ids": [
+        "A-2009",
+        "A-2006"
+      ],
+      "conflict_id": "C2",
+      "tool_calls": [
+        {
+          "tool": "propose_resequence",
+          "args": {
+            "activity_id": "A-2009",
+            "strategy": "shift"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "feasible but 4.0 d float consumed on near-critical A-2006",
+          "fg_activity_ids": [],
+          "latency_ms": 9
+        }
+      ],
+      "proposal": {
+        "kind": "shift",
+        "activity_ids": [
+          "A-2009"
+        ],
+        "rationale": "A one-day slip clears the dew-point conflict cleanly, but it cascades onto the near-critical deck weld and burns four days of float — more than policy allows an unattended agent to spend. Flagging the tradeoff rather than taking it.",
+        "solver_payload": {
+          "new_start": "2026-08-25T05:00:00-07:00",
+          "cascade": [
+            "A-2006"
+          ],
+          "feasible": true
+        },
+        "float_days_consumed": 4.0,
+        "projected_verdict": "compliant"
+      },
+      "gate": null,
+      "record_seq": null
+    },
+    {
+      "seq": 8,
+      "type": "gate",
+      "at": "2026-08-22T04:09:12-07:00",
+      "title": "Gate: deny — over the float cap",
+      "detail": "Policy rule max_float_days_consumed caps float consumption at 3.0 d for a near-critical activity; this proposal spends 4.0 d. Denied and routed to a human.",
+      "activity_ids": [
+        "A-2009",
+        "A-2006"
+      ],
+      "conflict_id": "C2",
+      "tool_calls": [],
+      "proposal": null,
+      "gate": {
+        "decision": "deny",
+        "rule_id": "max_float_days_consumed",
+        "reason": "Denied: the shift would spend 4.0 d of float on near-critical A-2006, over the 3.0 d cap. No compliant sequence preserves the milestone — escalating to the superintendent with the tradeoff.",
+        "escalated": true,
+        "modified_params": null
+      },
+      "record_seq": null
+    },
+    {
+      "seq": 9,
+      "type": "escalate",
+      "at": "2026-08-22T04:09:30-07:00",
+      "title": "Escalate to the superintendent",
+      "detail": "No compliant sequence preserves the milestone without spending more float than policy permits. Options handed up: (1) accept the 4 d float hit, (2) authorise a dehumidified enclosure to coat in place, (3) an RFI to relax the recoat window. Rule cited: max_float_days_consumed.",
+      "activity_ids": [
+        "A-2009",
+        "A-2006"
+      ],
+      "conflict_id": "C2",
+      "tool_calls": [
+        {
+          "tool": "escalate_to_superintendent",
+          "args": {
+            "conflict_id": "C2",
+            "options": 3
+          },
+          "ok": true,
+          "gated": true,
+          "result_summary": "escalation drafted with three costed options and the rule cited",
+          "fg_activity_ids": [],
+          "latency_ms": 18
+        }
+      ],
+      "proposal": null,
+      "gate": null,
+      "record_seq": 102
+    },
+    {
+      "seq": 10,
+      "type": "record",
+      "at": "2026-08-22T04:09:42-07:00",
+      "title": "Appended the run to the record",
+      "detail": "Two record entries written to the hash chain: the approved split and the escalation. A claims consultant can re-derive both from the FortyGuard handles.",
+      "activity_ids": [],
+      "conflict_id": null,
+      "tool_calls": [
+        {
+          "tool": "write_record",
+          "args": {
+            "entries": 2
+          },
+          "ok": true,
+          "gated": true,
+          "result_summary": "record seq 101, 102 appended",
+          "fg_activity_ids": [],
+          "latency_ms": 6
+        }
+      ],
+      "proposal": null,
+      "gate": null,
+      "record_seq": 102
+    }
+  ],
+  "replay": true
+}
