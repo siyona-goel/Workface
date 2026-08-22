@@ -1,0 +1,97 @@
+{
+  "error": false,
+  "status_code": 200,
+  "message": "Completed",
+  "data": {
+    "activity_id": "f15e41fb-6adc-4166-ad8d-e9156c4da793",
+    "status": "Completed",
+    "result": {
+      "metadata": {
+        "timezone": "GMT-7",
+        "timezone_offset_hours": -7,
+        "time_range": {
+          "start": "2024-08-15T14:00:00-07:00",
+          "end": "2024-08-15T14:00:00-07:00",
+          "interval": "1h",
+          "count": 1
+        },
+        "timestamps": [
+          "2024-08-15T14:00:00-07:00"
+        ]
+      },
+      "locations": [
+        {
+          "lat": 33.7868007,
+          "lon": -112.1628919,
+          "elevation": 482.0,
+          "temperature": 39.9131,
+          "parameters": {
+            "heat_index_celsius": [
+              38.2
+            ],
+            "apparent_temperature_celsius": [
+              41.0
+            ],
+            "relative_humidity_percent": [
+              15.8
+            ],
+            "precipitation_mm": [
+              0.0
+            ],
+            "cloud_cover_octas": [
+              0.0
+            ],
+            "wet_bulb_temperature_celsius": [
+              21.9
+            ],
+            "air_quality:idx": [
+              36.3
+            ],
+            "air_quality_pm2p5:idx": [
+              34.2
+            ],
+            "air_quality_pm10:idx": [
+              16.8
+            ],
+            "air_quality_no2:idx": [
+              1.1
+            ],
+            "aqi_us_co": [
+              2.2
+            ],
+            "air_quality_o3:idx": [
+              36.3
+            ],
+            "air_quality_so2:idx": [
+              0.7
+            ],
+            "methane_ppb": [
+              null
+            ],
+            "co2_ppm": [
+              null
+            ]
+          },
+          "solar_irradiance": {
+            "clear_sky": {
+              "ghi": 878.86,
+              "dni": 850.99,
+              "dhi": 128.6
+            },
+            "description": "The above values provide insights into the solar energy available at the specific location at 2024-08-15 14:00. GHI represents the total solar energy, DNI focuses on direct sunlight, and DHI accounts for scattered and diffuse radiation."
+          }
+        }
+      ]
+    }
+  },
+  "_chain": {
+    "temperature_source": "heatmap_stats.mean",
+    "temperature_c": 39.9131,
+    "date_time": {
+      "start_date": "2024-08-15",
+      "start_time": "14:00",
+      "filter_type": 1
+    },
+    "work_face_id": "WF-FAB2-07"
+  }
+}

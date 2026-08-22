@@ -1,0 +1,4964 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "91e703f4-9985-4c65-a068-0fdf82e12e92",
+  "generated_at": "2026-08-22T17:44:23.189221+00:00",
+  "site_id": "NPX-FAB-P2",
+  "captures": [
+    {
+      "work_face_id": "WF-FAB2-01",
+      "centroid_lon": -112.1669446,
+      "centroid_lat": 33.7857901,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7857901,
+          "longitude": -112.1669446
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-FAB2-01_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "concrete": 62.83,
+            "bare_soil": 13.94,
+            "asphalt": 9.29,
+            "vegetation": 9.29,
+            "metal": 4.65
+          },
+          "legend": {
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "bare_soil": [
+              160,
+              120,
+              80
+            ],
+            "asphalt": [
+              40,
+              40,
+              40
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "metal": [
+              200,
+              200,
+              210
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-FAB2-01_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.389,
+          "request_id": "a1510b1a"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-FAB2-01"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7857901,
+          "longitude": -112.1669446
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-FAB2-01_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 88.0,
+              "building": 5.04,
+              "ground": 2.52,
+              "vegetation": 3.6
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-FAB2-01_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.352,
+            "request_id": "2147cee9"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-FAB2-01"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-FAB2-02",
+      "centroid_lon": -112.1649182,
+      "centroid_lat": 33.7857901,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7857901,
+          "longitude": -112.1649182
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-FAB2-02_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "concrete": 60.32,
+            "bare_soil": 14.88,
+            "asphalt": 9.92,
+            "vegetation": 9.92,
+            "metal": 4.96
+          },
+          "legend": {
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "bare_soil": [
+              160,
+              120,
+              80
+            ],
+            "asphalt": [
+              40,
+              40,
+              40
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "metal": [
+              200,
+              200,
+              210
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-FAB2-02_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.287,
+          "request_id": "4a7b7ebf"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-FAB2-02"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7857901,
+          "longitude": -112.1649182
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-FAB2-02_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 88.0,
+              "building": 5.04,
+              "ground": 2.52,
+              "vegetation": 3.6
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-FAB2-02_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.435,
+            "request_id": "568e1129"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-FAB2-02"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-FAB2-03",
+      "centroid_lon": -112.1628919,
+      "centroid_lat": 33.7857901,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7857901,
+          "longitude": -112.1628919
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-FAB2-03_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "concrete": 62.48,
+            "bare_soil": 14.07,
+            "asphalt": 9.38,
+            "vegetation": 9.38,
+            "metal": 4.69
+          },
+          "legend": {
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "bare_soil": [
+              160,
+              120,
+              80
+            ],
+            "asphalt": [
+              40,
+              40,
+              40
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "metal": [
+              200,
+              200,
+              210
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-FAB2-03_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.374,
+          "request_id": "9488563d"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-FAB2-03"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7857901,
+          "longitude": -112.1628919
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-FAB2-03_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 88.0,
+              "building": 5.04,
+              "ground": 2.52,
+              "vegetation": 3.6
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-FAB2-03_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.373,
+            "request_id": "2e7a5543"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-FAB2-03"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-FAB2-04",
+      "centroid_lon": -112.1608655,
+      "centroid_lat": 33.7857901,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7857901,
+          "longitude": -112.1608655
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-FAB2-04_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "concrete": 64.22,
+            "bare_soil": 13.42,
+            "asphalt": 8.94,
+            "vegetation": 8.94,
+            "metal": 4.47
+          },
+          "legend": {
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "bare_soil": [
+              160,
+              120,
+              80
+            ],
+            "asphalt": [
+              40,
+              40,
+              40
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "metal": [
+              200,
+              200,
+              210
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-FAB2-04_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.452,
+          "request_id": "d72639f2"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-FAB2-04"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7857901,
+          "longitude": -112.1608655
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-FAB2-04_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 88.0,
+              "building": 5.04,
+              "ground": 2.52,
+              "vegetation": 3.6
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-FAB2-04_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.318,
+            "request_id": "0ba553a1"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-FAB2-04"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-FAB2-05",
+      "centroid_lon": -112.1669446,
+      "centroid_lat": 33.7868007,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7868007,
+          "longitude": -112.1669446
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-FAB2-05_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "metal": 54.58,
+            "concrete": 20.19,
+            "shadow": 15.14,
+            "vegetation": 5.05,
+            "other": 5.05
+          },
+          "legend": {
+            "metal": [
+              200,
+              200,
+              210
+            ],
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "shadow": [
+              30,
+              30,
+              30
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "other": [
+              120,
+              120,
+              120
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-FAB2-05_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.282,
+          "request_id": "4591eb61"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-FAB2-05"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7868007,
+          "longitude": -112.1669446
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-FAB2-05_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 97.0,
+              "building": 3.0,
+              "ground": 1.5,
+              "vegetation": 0
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-FAB2-05_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.448,
+            "request_id": "5e7e639f"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-FAB2-05"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-FAB2-06",
+      "centroid_lon": -112.1649182,
+      "centroid_lat": 33.7868007,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7868007,
+          "longitude": -112.1649182
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-FAB2-06_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "metal": 53.27,
+            "concrete": 20.77,
+            "shadow": 15.58,
+            "vegetation": 5.19,
+            "other": 5.19
+          },
+          "legend": {
+            "metal": [
+              200,
+              200,
+              210
+            ],
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "shadow": [
+              30,
+              30,
+              30
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "other": [
+              120,
+              120,
+              120
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-FAB2-06_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.226,
+          "request_id": "16146d56"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-FAB2-06"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7868007,
+          "longitude": -112.1649182
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-FAB2-06_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 45.0,
+              "building": 23.1,
+              "ground": 11.55,
+              "vegetation": 16.5
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-FAB2-06_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.574,
+            "request_id": "af8a1ccd"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-FAB2-06"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-FAB2-07",
+      "centroid_lon": -112.1628919,
+      "centroid_lat": 33.7868007,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7868007,
+          "longitude": -112.1628919
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-FAB2-07_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "metal": 52.9,
+            "concrete": 20.93,
+            "shadow": 15.7,
+            "vegetation": 5.23,
+            "other": 5.23
+          },
+          "legend": {
+            "metal": [
+              200,
+              200,
+              210
+            ],
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "shadow": [
+              30,
+              30,
+              30
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "other": [
+              120,
+              120,
+              120
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-FAB2-07_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.211,
+          "request_id": "092a748c"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-FAB2-07"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7868007,
+          "longitude": -112.1628919
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-FAB2-07_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 97.0,
+              "building": 3.0,
+              "ground": 1.5,
+              "vegetation": 0
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-FAB2-07_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.515,
+            "request_id": "89ca1e5e"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-FAB2-07"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-FAB2-08",
+      "centroid_lon": -112.1608655,
+      "centroid_lat": 33.7868007,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7868007,
+          "longitude": -112.1608655
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-FAB2-08_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "metal": 58.54,
+            "concrete": 18.43,
+            "shadow": 13.82,
+            "vegetation": 4.61,
+            "other": 4.61
+          },
+          "legend": {
+            "metal": [
+              200,
+              200,
+              210
+            ],
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "shadow": [
+              30,
+              30,
+              30
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "other": [
+              120,
+              120,
+              120
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-FAB2-08_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.471,
+          "request_id": "e7034f37"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-FAB2-08"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7868007,
+          "longitude": -112.1608655
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-FAB2-08_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 45.0,
+              "building": 23.1,
+              "ground": 11.55,
+              "vegetation": 16.5
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-FAB2-08_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.493,
+            "request_id": "7b682231"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-FAB2-08"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-FAB2-09",
+      "centroid_lon": -112.1669446,
+      "centroid_lat": 33.7878113,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7878113,
+          "longitude": -112.1669446
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-FAB2-09_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "metal": 57.9,
+            "concrete": 18.71,
+            "shadow": 14.03,
+            "vegetation": 4.68,
+            "other": 4.68
+          },
+          "legend": {
+            "metal": [
+              200,
+              200,
+              210
+            ],
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "shadow": [
+              30,
+              30,
+              30
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "other": [
+              120,
+              120,
+              120
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-FAB2-09_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.438,
+          "request_id": "cb16a716"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-FAB2-09"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7878113,
+          "longitude": -112.1669446
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-FAB2-09_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 97.0,
+              "building": 3.0,
+              "ground": 1.5,
+              "vegetation": 0
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-FAB2-09_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.442,
+            "request_id": "5ab65b06"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-FAB2-09"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-FAB2-10",
+      "centroid_lon": -112.1649182,
+      "centroid_lat": 33.7878113,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7878113,
+          "longitude": -112.1649182
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-FAB2-10_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "metal": 57.18,
+            "concrete": 19.03,
+            "shadow": 14.27,
+            "vegetation": 4.76,
+            "other": 4.76
+          },
+          "legend": {
+            "metal": [
+              200,
+              200,
+              210
+            ],
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "shadow": [
+              30,
+              30,
+              30
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "other": [
+              120,
+              120,
+              120
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-FAB2-10_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.402,
+          "request_id": "ac3ed269"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-FAB2-10"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7878113,
+          "longitude": -112.1649182
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-FAB2-10_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 45.0,
+              "building": 23.1,
+              "ground": 11.55,
+              "vegetation": 16.5
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-FAB2-10_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.381,
+            "request_id": "33aab2da"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-FAB2-10"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-FAB2-11",
+      "centroid_lon": -112.1628919,
+      "centroid_lat": 33.7878113,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7878113,
+          "longitude": -112.1628919
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-FAB2-11_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "metal": 54.41,
+            "concrete": 20.26,
+            "shadow": 15.2,
+            "vegetation": 5.07,
+            "other": 5.07
+          },
+          "legend": {
+            "metal": [
+              200,
+              200,
+              210
+            ],
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "shadow": [
+              30,
+              30,
+              30
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "other": [
+              120,
+              120,
+              120
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-FAB2-11_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.274,
+          "request_id": "3f605d79"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-FAB2-11"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7878113,
+          "longitude": -112.1628919
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-FAB2-11_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 97.0,
+              "building": 3.0,
+              "ground": 1.5,
+              "vegetation": 0
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-FAB2-11_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.434,
+            "request_id": "55745c76"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-FAB2-11"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-FAB2-12",
+      "centroid_lon": -112.1608655,
+      "centroid_lat": 33.7878113,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7878113,
+          "longitude": -112.1608655
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-FAB2-12_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "metal": 54.99,
+            "concrete": 20.01,
+            "shadow": 15.0,
+            "vegetation": 5.0,
+            "other": 5.0
+          },
+          "legend": {
+            "metal": [
+              200,
+              200,
+              210
+            ],
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "shadow": [
+              30,
+              30,
+              30
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "other": [
+              120,
+              120,
+              120
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-FAB2-12_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.299,
+          "request_id": "54e4753e"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-FAB2-12"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7878113,
+          "longitude": -112.1608655
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-FAB2-12_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 45.0,
+              "building": 23.1,
+              "ground": 11.55,
+              "vegetation": 16.5
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-FAB2-12_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.65,
+            "request_id": "e03cb5f7"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-FAB2-12"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-FAB2-13",
+      "centroid_lon": -112.1669446,
+      "centroid_lat": 33.7888219,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7888219,
+          "longitude": -112.1669446
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-FAB2-13_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "concrete": 40.0,
+            "bare_soil": 25.0,
+            "vegetation": 20.0,
+            "asphalt": 10.0,
+            "other": 5.0
+          },
+          "legend": {
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "bare_soil": [
+              160,
+              120,
+              80
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "asphalt": [
+              40,
+              40,
+              40
+            ],
+            "other": [
+              120,
+              120,
+              120
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-FAB2-13_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.241,
+          "request_id": "233ca661"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-FAB2-13"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7888219,
+          "longitude": -112.1669446
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-FAB2-13_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 58.0,
+              "building": 17.64,
+              "ground": 8.82,
+              "vegetation": 12.6
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-FAB2-13_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.508,
+            "request_id": "8526fe59"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-FAB2-13"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-FAB2-14",
+      "centroid_lon": -112.1649182,
+      "centroid_lat": 33.7888219,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7888219,
+          "longitude": -112.1649182
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-FAB2-14_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "concrete": 40.0,
+            "bare_soil": 25.0,
+            "vegetation": 20.0,
+            "asphalt": 10.0,
+            "other": 5.0
+          },
+          "legend": {
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "bare_soil": [
+              160,
+              120,
+              80
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "asphalt": [
+              40,
+              40,
+              40
+            ],
+            "other": [
+              120,
+              120,
+              120
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-FAB2-14_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.29,
+          "request_id": "4cfd26f5"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-FAB2-14"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7888219,
+          "longitude": -112.1649182
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-FAB2-14_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 58.0,
+              "building": 17.64,
+              "ground": 8.82,
+              "vegetation": 12.6
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-FAB2-14_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.417,
+            "request_id": "4aeef7ac"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-FAB2-14"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-CUB-01",
+      "centroid_lon": -112.1587896,
+      "centroid_lat": 33.7861382,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7861382,
+          "longitude": -112.1587896
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-CUB-01_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "concrete": 61.36,
+            "bare_soil": 14.49,
+            "asphalt": 9.66,
+            "vegetation": 9.66,
+            "metal": 4.83
+          },
+          "legend": {
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "bare_soil": [
+              160,
+              120,
+              80
+            ],
+            "asphalt": [
+              40,
+              40,
+              40
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "metal": [
+              200,
+              200,
+              210
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-CUB-01_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.328,
+          "request_id": "6d21d9d2"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-CUB-01"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7861382,
+          "longitude": -112.1587896
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-CUB-01_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 92.0,
+              "building": 3.36,
+              "ground": 1.68,
+              "vegetation": 2.4
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-CUB-01_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.524,
+            "request_id": "8f656378"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-CUB-01"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-CUB-02",
+      "centroid_lon": -112.157961,
+      "centroid_lat": 33.7861382,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7861382,
+          "longitude": -112.157961
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-CUB-02_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "concrete": 63.11,
+            "bare_soil": 13.83,
+            "asphalt": 9.22,
+            "vegetation": 9.22,
+            "metal": 4.61
+          },
+          "legend": {
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "bare_soil": [
+              160,
+              120,
+              80
+            ],
+            "asphalt": [
+              40,
+              40,
+              40
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "metal": [
+              200,
+              200,
+              210
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-CUB-02_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.401,
+          "request_id": "abe4271b"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-CUB-02"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7861382,
+          "longitude": -112.157961
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-CUB-02_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 92.0,
+              "building": 3.36,
+              "ground": 1.68,
+              "vegetation": 2.4
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-CUB-02_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.527,
+            "request_id": "9194a66c"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-CUB-02"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-CUB-03",
+      "centroid_lon": -112.1571325,
+      "centroid_lat": 33.7861382,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7861382,
+          "longitude": -112.1571325
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-CUB-03_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "concrete": 62.5,
+            "bare_soil": 14.06,
+            "asphalt": 9.38,
+            "vegetation": 9.38,
+            "metal": 4.69
+          },
+          "legend": {
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "bare_soil": [
+              160,
+              120,
+              80
+            ],
+            "asphalt": [
+              40,
+              40,
+              40
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "metal": [
+              200,
+              200,
+              210
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-CUB-03_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.375,
+          "request_id": "954c40cf"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-CUB-03"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7861382,
+          "longitude": -112.1571325
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-CUB-03_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 92.0,
+              "building": 3.36,
+              "ground": 1.68,
+              "vegetation": 2.4
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-CUB-03_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.572,
+            "request_id": "adde2b58"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-CUB-03"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-CUB-04",
+      "centroid_lon": -112.1587896,
+      "centroid_lat": 33.7869467,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7869467,
+          "longitude": -112.1587896
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-CUB-04_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "metal": 57.57,
+            "concrete": 18.86,
+            "shadow": 14.14,
+            "vegetation": 4.71,
+            "other": 4.71
+          },
+          "legend": {
+            "metal": [
+              200,
+              200,
+              210
+            ],
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "shadow": [
+              30,
+              30,
+              30
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "other": [
+              120,
+              120,
+              120
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-CUB-04_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.421,
+          "request_id": "bccf5e60"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-CUB-04"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7869467,
+          "longitude": -112.1587896
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-CUB-04_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 95.0,
+              "building": 3.0,
+              "ground": 1.5,
+              "vegetation": 0
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-CUB-04_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.484,
+            "request_id": "75a7bf28"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-CUB-04"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-CUB-05",
+      "centroid_lon": -112.157961,
+      "centroid_lat": 33.7869467,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7869467,
+          "longitude": -112.157961
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-CUB-05_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "metal": 57.94,
+            "concrete": 18.69,
+            "shadow": 14.02,
+            "vegetation": 4.67,
+            "other": 4.67
+          },
+          "legend": {
+            "metal": [
+              200,
+              200,
+              210
+            ],
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "shadow": [
+              30,
+              30,
+              30
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "other": [
+              120,
+              120,
+              120
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-CUB-05_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.44,
+          "request_id": "cc82e4cc"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-CUB-05"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7869467,
+          "longitude": -112.157961
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-CUB-05_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 95.0,
+              "building": 3.0,
+              "ground": 1.5,
+              "vegetation": 0
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-CUB-05_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.314,
+            "request_id": "08ab30f3"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-CUB-05"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-WHSE-01",
+      "centroid_lon": -112.1639591,
+      "centroid_lat": 33.7811526,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7811526,
+          "longitude": -112.1639591
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-WHSE-01_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "concrete": 62.11,
+            "bare_soil": 14.21,
+            "asphalt": 9.47,
+            "vegetation": 9.47,
+            "metal": 4.74
+          },
+          "legend": {
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "bare_soil": [
+              160,
+              120,
+              80
+            ],
+            "asphalt": [
+              40,
+              40,
+              40
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "metal": [
+              200,
+              200,
+              210
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-WHSE-01_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.358,
+          "request_id": "871e6bc5"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-WHSE-01"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7811526,
+          "longitude": -112.1639591
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-WHSE-01_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 90.0,
+              "building": 4.2,
+              "ground": 2.1,
+              "vegetation": 3.0
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-WHSE-01_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.553,
+            "request_id": "a1ebc751"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-WHSE-01"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-WHSE-02",
+      "centroid_lon": -112.1624461,
+      "centroid_lat": 33.7811526,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7811526,
+          "longitude": -112.1624461
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-WHSE-02_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "concrete": 64.96,
+            "bare_soil": 13.14,
+            "asphalt": 8.76,
+            "vegetation": 8.76,
+            "metal": 4.38
+          },
+          "legend": {
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "bare_soil": [
+              160,
+              120,
+              80
+            ],
+            "asphalt": [
+              40,
+              40,
+              40
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "metal": [
+              200,
+              200,
+              210
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-WHSE-02_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.487,
+          "request_id": "f54761a2"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-WHSE-02"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7811526,
+          "longitude": -112.1624461
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-WHSE-02_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 90.0,
+              "building": 4.2,
+              "ground": 2.1,
+              "vegetation": 3.0
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-WHSE-02_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.313,
+            "request_id": "084e9b81"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-WHSE-02"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-WHSE-03",
+      "centroid_lon": -112.1639591,
+      "centroid_lat": 33.7818712,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7818712,
+          "longitude": -112.1639591
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-WHSE-03_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "concrete": 60.12,
+            "bare_soil": 14.95,
+            "asphalt": 9.97,
+            "vegetation": 9.97,
+            "metal": 4.98
+          },
+          "legend": {
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "bare_soil": [
+              160,
+              120,
+              80
+            ],
+            "asphalt": [
+              40,
+              40,
+              40
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "metal": [
+              200,
+              200,
+              210
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-WHSE-03_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.28,
+          "request_id": "43ebf7ba"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-WHSE-03"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7818712,
+          "longitude": -112.1639591
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-WHSE-03_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 60.0,
+              "building": 16.8,
+              "ground": 8.4,
+              "vegetation": 12.0
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-WHSE-03_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.371,
+            "request_id": "2d6ef7e6"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-WHSE-03"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-WHSE-04",
+      "centroid_lon": -112.1624461,
+      "centroid_lat": 33.7818712,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7818712,
+          "longitude": -112.1624461
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-WHSE-04_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "concrete": 59.25,
+            "bare_soil": 15.28,
+            "asphalt": 10.19,
+            "vegetation": 10.19,
+            "metal": 5.09
+          },
+          "legend": {
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "bare_soil": [
+              160,
+              120,
+              80
+            ],
+            "asphalt": [
+              40,
+              40,
+              40
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "metal": [
+              200,
+              200,
+              210
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-WHSE-04_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.247,
+          "request_id": "28572ad6"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-WHSE-04"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7818712,
+          "longitude": -112.1624461
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-WHSE-04_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 60.0,
+              "building": 16.8,
+              "ground": 8.4,
+              "vegetation": 12.0
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-WHSE-04_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.369,
+            "request_id": "2c5a9b81"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-WHSE-04"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-CT-01",
+      "centroid_lon": -112.1585554,
+      "centroid_lat": 33.7887658,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7887658,
+          "longitude": -112.1585554
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-CT-01_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "concrete": 63.14,
+            "bare_soil": 13.82,
+            "asphalt": 9.22,
+            "vegetation": 9.22,
+            "metal": 4.61
+          },
+          "legend": {
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "bare_soil": [
+              160,
+              120,
+              80
+            ],
+            "asphalt": [
+              40,
+              40,
+              40
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "metal": [
+              200,
+              200,
+              210
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-CT-01_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.403,
+          "request_id": "acf72c86"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-CT-01"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7887658,
+          "longitude": -112.1585554
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-CT-01_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 92.0,
+              "building": 3.36,
+              "ground": 1.68,
+              "vegetation": 2.4
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-CT-01_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.429,
+            "request_id": "52bd81eb"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-CT-01"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-CT-02",
+      "centroid_lon": -112.1572585,
+      "centroid_lat": 33.7887658,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7887658,
+          "longitude": -112.1572585
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-CT-02_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "concrete": 64.05,
+            "bare_soil": 13.48,
+            "asphalt": 8.99,
+            "vegetation": 8.99,
+            "metal": 4.49
+          },
+          "legend": {
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "bare_soil": [
+              160,
+              120,
+              80
+            ],
+            "asphalt": [
+              40,
+              40,
+              40
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "metal": [
+              200,
+              200,
+              210
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-CT-02_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.444,
+          "request_id": "d0620c07"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-CT-02"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7887658,
+          "longitude": -112.1572585
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-CT-02_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 92.0,
+              "building": 3.36,
+              "ground": 1.68,
+              "vegetation": 2.4
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-CT-02_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.684,
+            "request_id": "f5b2c3ef"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-CT-02"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-CT-03",
+      "centroid_lon": -112.1585554,
+      "centroid_lat": 33.7894395,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7894395,
+          "longitude": -112.1585554
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-CT-03_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "metal": 57.32,
+            "concrete": 18.97,
+            "shadow": 14.23,
+            "vegetation": 4.74,
+            "other": 4.74
+          },
+          "legend": {
+            "metal": [
+              200,
+              200,
+              210
+            ],
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "shadow": [
+              30,
+              30,
+              30
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "other": [
+              120,
+              120,
+              120
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-CT-03_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.409,
+          "request_id": "b2375def"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-CT-03"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7894395,
+          "longitude": -112.1585554
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-CT-03_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 95.0,
+              "building": 3.0,
+              "ground": 1.5,
+              "vegetation": 0
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-CT-03_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.419,
+            "request_id": "4c46dfc7"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-CT-03"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-SUB-01",
+      "centroid_lon": -112.1552052,
+      "centroid_lat": 33.785689,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.785689,
+          "longitude": -112.1552052
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-SUB-01_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "concrete": 60.19,
+            "bare_soil": 14.93,
+            "asphalt": 9.95,
+            "vegetation": 9.95,
+            "metal": 4.98
+          },
+          "legend": {
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "bare_soil": [
+              160,
+              120,
+              80
+            ],
+            "asphalt": [
+              40,
+              40,
+              40
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "metal": [
+              200,
+              200,
+              210
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-SUB-01_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.282,
+          "request_id": "460d1199"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-SUB-01"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.785689,
+          "longitude": -112.1552052
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-SUB-01_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 95.0,
+              "building": 3.0,
+              "ground": 1.5,
+              "vegetation": 0
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-SUB-01_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.306,
+            "request_id": "03ed913a"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-SUB-01"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-SUB-02",
+      "centroid_lon": -112.1539083,
+      "centroid_lat": 33.785689,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.785689,
+          "longitude": -112.1539083
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-SUB-02_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "concrete": 63.32,
+            "bare_soil": 13.76,
+            "asphalt": 9.17,
+            "vegetation": 9.17,
+            "metal": 4.59
+          },
+          "legend": {
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "bare_soil": [
+              160,
+              120,
+              80
+            ],
+            "asphalt": [
+              40,
+              40,
+              40
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "metal": [
+              200,
+              200,
+              210
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-SUB-02_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.411,
+          "request_id": "b3aa97a2"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-SUB-02"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.785689,
+          "longitude": -112.1539083
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-SUB-02_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 95.0,
+              "building": 3.0,
+              "ground": 1.5,
+              "vegetation": 0
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-SUB-02_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.444,
+            "request_id": "5be60b91"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-SUB-02"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-SUB-03",
+      "centroid_lon": -112.1552052,
+      "centroid_lat": 33.7864975,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7864975,
+          "longitude": -112.1552052
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-SUB-03_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "metal": 55.82,
+            "concrete": 19.64,
+            "shadow": 14.73,
+            "vegetation": 4.91,
+            "other": 4.91
+          },
+          "legend": {
+            "metal": [
+              200,
+              200,
+              210
+            ],
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "shadow": [
+              30,
+              30,
+              30
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "other": [
+              120,
+              120,
+              120
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-SUB-03_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.337,
+          "request_id": "74e651c8"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-SUB-03"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7864975,
+          "longitude": -112.1552052
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-SUB-03_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 98.0,
+              "building": 3.0,
+              "ground": 1.5,
+              "vegetation": 0
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-SUB-03_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.6,
+            "request_id": "c00b20e9"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-SUB-03"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-BULK-01",
+      "centroid_lon": -112.1586635,
+      "centroid_lat": 33.7838026,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7838026,
+          "longitude": -112.1586635
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-BULK-01_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "concrete": 59.94,
+            "bare_soil": 15.02,
+            "asphalt": 10.02,
+            "vegetation": 10.02,
+            "metal": 5.01
+          },
+          "legend": {
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "bare_soil": [
+              160,
+              120,
+              80
+            ],
+            "asphalt": [
+              40,
+              40,
+              40
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "metal": [
+              200,
+              200,
+              210
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-BULK-01_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.273,
+          "request_id": "3df99854"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-BULK-01"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7838026,
+          "longitude": -112.1586635
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-BULK-01_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 86.0,
+              "building": 5.88,
+              "ground": 2.94,
+              "vegetation": 4.2
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-BULK-01_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.693,
+            "request_id": "fb568861"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-BULK-01"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-BULK-02",
+      "centroid_lon": -112.1575828,
+      "centroid_lat": 33.7838026,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7838026,
+          "longitude": -112.1575828
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-BULK-02_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "concrete": 62.54,
+            "bare_soil": 14.05,
+            "asphalt": 9.37,
+            "vegetation": 9.37,
+            "metal": 4.68
+          },
+          "legend": {
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "bare_soil": [
+              160,
+              120,
+              80
+            ],
+            "asphalt": [
+              40,
+              40,
+              40
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "metal": [
+              200,
+              200,
+              210
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-BULK-02_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.377,
+          "request_id": "96a93262"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-BULK-02"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7838026,
+          "longitude": -112.1575828
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-BULK-02_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 86.0,
+              "building": 5.88,
+              "ground": 2.94,
+              "vegetation": 4.2
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-BULK-02_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.502,
+            "request_id": "8103ba28"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-BULK-02"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-BULK-03",
+      "centroid_lon": -112.1586635,
+      "centroid_lat": 33.7844314,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7844314,
+          "longitude": -112.1586635
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-BULK-03_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "concrete": 40.0,
+            "bare_soil": 25.0,
+            "vegetation": 20.0,
+            "asphalt": 10.0,
+            "other": 5.0
+          },
+          "legend": {
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "bare_soil": [
+              160,
+              120,
+              80
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "asphalt": [
+              40,
+              40,
+              40
+            ],
+            "other": [
+              120,
+              120,
+              120
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-BULK-03_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.217,
+          "request_id": "0e8fe6cf"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-BULK-03"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7844314,
+          "longitude": -112.1586635
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-BULK-03_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 62.0,
+              "building": 15.96,
+              "ground": 7.98,
+              "vegetation": 11.4
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-BULK-03_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.301,
+            "request_id": "007a5979"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-BULK-03"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-CHEM-01",
+      "centroid_lon": -112.1672553,
+      "centroid_lat": 33.7830839,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7830839,
+          "longitude": -112.1672553
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-CHEM-01_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "concrete": 58.05,
+            "bare_soil": 15.73,
+            "asphalt": 10.49,
+            "vegetation": 10.49,
+            "metal": 5.24
+          },
+          "legend": {
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "bare_soil": [
+              160,
+              120,
+              80
+            ],
+            "asphalt": [
+              40,
+              40,
+              40
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "metal": [
+              200,
+              200,
+              210
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-CHEM-01_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.205,
+          "request_id": "04792476"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-CHEM-01"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7830839,
+          "longitude": -112.1672553
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-CHEM-01_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 86.0,
+              "building": 5.88,
+              "ground": 2.94,
+              "vegetation": 4.2
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-CHEM-01_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.643,
+            "request_id": "db52bd07"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-CHEM-01"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-CHEM-02",
+      "centroid_lon": -112.1662827,
+      "centroid_lat": 33.7830839,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7830839,
+          "longitude": -112.1662827
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-CHEM-02_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "concrete": 57.93,
+            "bare_soil": 15.78,
+            "asphalt": 10.52,
+            "vegetation": 10.52,
+            "metal": 5.26
+          },
+          "legend": {
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "bare_soil": [
+              160,
+              120,
+              80
+            ],
+            "asphalt": [
+              40,
+              40,
+              40
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "metal": [
+              200,
+              200,
+              210
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-CHEM-02_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.201,
+          "request_id": "00f281ad"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-CHEM-02"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7830839,
+          "longitude": -112.1662827
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-CHEM-02_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 86.0,
+              "building": 5.88,
+              "ground": 2.94,
+              "vegetation": 4.2
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-CHEM-02_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.387,
+            "request_id": "37aa0a5d"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-CHEM-02"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-CHEM-03",
+      "centroid_lon": -112.1672553,
+      "centroid_lat": 33.7837128,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7837128,
+          "longitude": -112.1672553
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-CHEM-03_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "concrete": 40.0,
+            "bare_soil": 25.0,
+            "vegetation": 20.0,
+            "asphalt": 10.0,
+            "other": 5.0
+          },
+          "legend": {
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "bare_soil": [
+              160,
+              120,
+              80
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "asphalt": [
+              40,
+              40,
+              40
+            ],
+            "other": [
+              120,
+              120,
+              120
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-CHEM-03_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.23,
+          "request_id": "1999259b"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-CHEM-03"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7837128,
+          "longitude": -112.1672553
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-CHEM-03_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 62.0,
+              "building": 15.96,
+              "ground": 7.98,
+              "vegetation": 11.4
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-CHEM-03_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.665,
+            "request_id": "e95e91e7"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-CHEM-03"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-ADMIN-01",
+      "centroid_lon": -112.1680118,
+      "centroid_lat": 33.7794458,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7794458,
+          "longitude": -112.1680118
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-ADMIN-01_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "concrete": 64.25,
+            "bare_soil": 13.41,
+            "asphalt": 8.94,
+            "vegetation": 8.94,
+            "metal": 4.47
+          },
+          "legend": {
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "bare_soil": [
+              160,
+              120,
+              80
+            ],
+            "asphalt": [
+              40,
+              40,
+              40
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "metal": [
+              200,
+              200,
+              210
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-ADMIN-01_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.453,
+          "request_id": "d8145bc3"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-ADMIN-01"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7794458,
+          "longitude": -112.1680118
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-ADMIN-01_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 86.0,
+              "building": 5.88,
+              "ground": 2.94,
+              "vegetation": 4.2
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-ADMIN-01_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.545,
+            "request_id": "9cdad591"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-ADMIN-01"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-ADMIN-02",
+      "centroid_lon": -112.1670392,
+      "centroid_lat": 33.7794458,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7794458,
+          "longitude": -112.1670392
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-ADMIN-02_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "concrete": 60.79,
+            "bare_soil": 14.7,
+            "asphalt": 9.8,
+            "vegetation": 9.8,
+            "metal": 4.9
+          },
+          "legend": {
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "bare_soil": [
+              160,
+              120,
+              80
+            ],
+            "asphalt": [
+              40,
+              40,
+              40
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "metal": [
+              200,
+              200,
+              210
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-ADMIN-02_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.305,
+          "request_id": "59bd2aff"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-ADMIN-02"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7794458,
+          "longitude": -112.1670392
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-ADMIN-02_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 86.0,
+              "building": 5.88,
+              "ground": 2.94,
+              "vegetation": 4.2
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-ADMIN-02_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.579,
+            "request_id": "b2914505"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-ADMIN-02"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-PARK-01",
+      "centroid_lon": -112.1516117,
+      "centroid_lat": 33.7808831,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7808831,
+          "longitude": -112.1516117
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-PARK-01_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "concrete": 60.59,
+            "bare_soil": 14.78,
+            "asphalt": 9.85,
+            "vegetation": 9.85,
+            "metal": 4.93
+          },
+          "legend": {
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "bare_soil": [
+              160,
+              120,
+              80
+            ],
+            "asphalt": [
+              40,
+              40,
+              40
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "metal": [
+              200,
+              200,
+              210
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-PARK-01_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.298,
+          "request_id": "5337758c"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-PARK-01"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7808831,
+          "longitude": -112.1516117
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-PARK-01_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 90.0,
+              "building": 4.2,
+              "ground": 2.1,
+              "vegetation": 3.0
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-PARK-01_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.608,
+            "request_id": "c5562805"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-PARK-01"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-PARK-02",
+      "centroid_lon": -112.1502608,
+      "centroid_lat": 33.7808831,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7808831,
+          "longitude": -112.1502608
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-PARK-02_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "concrete": 60.34,
+            "bare_soil": 14.87,
+            "asphalt": 9.91,
+            "vegetation": 9.91,
+            "metal": 4.96
+          },
+          "legend": {
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "bare_soil": [
+              160,
+              120,
+              80
+            ],
+            "asphalt": [
+              40,
+              40,
+              40
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ],
+            "metal": [
+              200,
+              200,
+              210
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-PARK-02_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.288,
+          "request_id": "4afb5731"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-PARK-02"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7808831,
+          "longitude": -112.1502608
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-PARK-02_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 90.0,
+              "building": 4.2,
+              "ground": 2.1,
+              "vegetation": 3.0
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-PARK-02_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.605,
+            "request_id": "c33d697a"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-PARK-02"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    },
+    {
+      "work_face_id": "WF-ROAD-01",
+      "centroid_lon": -112.1587716,
+      "centroid_lat": 33.7912137,
+      "satellite": {
+        "coordinates": {
+          "latitude": 33.7912137,
+          "longitude": -112.1587716
+        },
+        "image_year": 2024,
+        "original_image": {
+          "ref": "data/fixtures/twin/images/WF-ROAD-01_sat_original.png",
+          "media_type": "image/png"
+        },
+        "segmentation": {
+          "segments": {
+            "asphalt": 67.83,
+            "concrete": 13.79,
+            "bare_soil": 9.19,
+            "vegetation": 9.19
+          },
+          "legend": {
+            "asphalt": [
+              40,
+              40,
+              40
+            ],
+            "concrete": [
+              180,
+              180,
+              180
+            ],
+            "bare_soil": [
+              160,
+              120,
+              80
+            ],
+            "vegetation": [
+              34,
+              120,
+              50
+            ]
+          },
+          "mask_image": {
+            "ref": "data/fixtures/twin/images/WF-ROAD-01_sat_mask.png",
+            "media_type": "image/png"
+          },
+          "dimensions": {
+            "height": 350,
+            "width": 350
+          },
+          "processing_time_seconds": 0.476,
+          "request_id": "ebab2304"
+        },
+        "mode": "sat",
+        "fg_activity_id": "replay-sat-WF-ROAD-01"
+      },
+      "streetview": {
+        "coordinates": {
+          "latitude": 33.7912137,
+          "longitude": -112.1587716
+        },
+        "vertical_angle": 10.0,
+        "horizontal_angle": 90.0,
+        "back_view_requested": false,
+        "front": {
+          "original_image": {
+            "ref": "data/fixtures/twin/images/WF-ROAD-01_sv_original.png",
+            "media_type": "image/png"
+          },
+          "segmentation": {
+            "segments": {
+              "sky": 100.0,
+              "building": 3.0,
+              "ground": 1.5,
+              "vegetation": 0
+            },
+            "legend": {
+              "sky": [
+                135,
+                206,
+                235
+              ],
+              "building": [
+                100,
+                100,
+                100
+              ],
+              "ground": [
+                139,
+                119,
+                90
+              ],
+              "vegetation": [
+                34,
+                139,
+                34
+              ]
+            },
+            "mask_image": {
+              "ref": "data/fixtures/twin/images/WF-ROAD-01_sv_mask.png",
+              "media_type": "image/png"
+            },
+            "dimensions": {
+              "height": 640,
+              "width": 640
+            },
+            "processing_time_seconds": 0.43,
+            "request_id": "5328afbd"
+          },
+          "image_date": "2024-06-01"
+        },
+        "back": null,
+        "fg_activity_id": "replay-sv-WF-ROAD-01"
+      },
+      "capture_confidence": "high",
+      "notes": null
+    }
+  ],
+  "cached_forever": true,
+  "replay": true
+}

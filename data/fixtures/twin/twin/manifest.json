@@ -1,0 +1,19 @@
+{
+  "generated_at": "2026-08-22T17:44:23.189221+00:00",
+  "replay": true,
+  "n_work_faces": 40,
+  "hero_work_face_id": "WF-FAB2-07",
+  "chain_temperature_c": 39.9131,
+  "chain_date": "2024-08-15",
+  "chain_time": "14:00",
+  "chain_rule": "env_params and heat_intelligence temperature+date_time taken from heatmap fixture stats \u2014 never invented",
+  "confidence_counts": {
+    "high": 40
+  },
+  "outputs": {
+    "twin_bundle": "data/fixtures/twin/twin_bundle.json",
+    "env_params_chained": "data/fixtures/twin/env_params_chained.json",
+    "heat_intelligence_hero": "data/fixtures/twin/heat_intelligence_hero.json"
+  },
+  "cached_forever": true
+}
