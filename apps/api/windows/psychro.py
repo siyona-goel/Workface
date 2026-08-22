@@ -25,7 +25,14 @@ __all__ = [
     "dew_point_c", "wet_bulb_c", "heat_index_f",
     "evaporation_rate_lb_ft2_hr", "evaporation_verdict",
     "cure_rate", "cure_progress", "hours_to_service", "nurse_saul_maturity",
+    "wbgt_outdoor_c", "WBGT_METHOD",
 ]
+
+# The method label the evaluator flows into its reason string and the UI displays.
+# This is deliberately NOT "liljegren_2008": we implement a first-order globe
+# energy balance, not the Liljegren (2008) heat-and-mass-transfer solver. Naming
+# the method honestly is a requirement — do not relabel this as Liljegren.
+WBGT_METHOD = "workface_simplified_globe_v1"
 
 # Magnus-Tetens coefficients (Alduchov & Eskridge, 1996 refinement).
 _MAGNUS_A = 17.625
@@ -213,6 +220,53 @@ def hours_to_service(base_t_c: float, q10_segments: Sequence[Any],
     against the manufacturer's published cure-schedule points.
     """
     return hours_at_ref / cure_rate(base_t_c, q10_segments, ref_c)
+
+
+# --------------------------------------------------------------------------- #
+# Outdoor WBGT — simplified globe energy balance (NOT Liljegren 2008)
+# --------------------------------------------------------------------------- #
+
+# Day 10: ASSUMPTIONS.md — these coefficients feed the in-app assumptions page.
+# Keep them here so the assumptions generator can scrape one place.
+_GLOBE_SOLAR_COEFF = 0.15    # effective solar coupling of a 150 mm black globe (W/m2 -> K per W/m2/K)
+_GLOBE_H_R = 5.0             # linearised radiative coefficient, W/m2K
+_GLOBE_H_C_A = 5.7           # convective coefficient intercept, W/m2K
+_GLOBE_H_C_B = 3.8           # convective coefficient wind slope, W/m2K per m/s
+
+
+def wbgt_outdoor_c(t_air_c: float, rh_pct: float, wind_ms: float, ghi_w_m2: float,
+                   *, pressure_hpa: float | None = None) -> float:
+    """Outdoor wet-bulb globe temperature (deg C), OSHA Technical Manual III:4.
+
+        WBGT_out = 0.7*T_nwb + 0.2*T_globe + 0.1*T_air        (OSHA OTM III:4)
+
+    T_globe is modelled with a first-order black-globe energy balance rather than
+    the Liljegren et al. (2008) heat-and-mass-transfer solver — see WBGT_METHOD.
+    A 150 mm black globe balances absorbed shortwave against convective and
+    radiative loss:
+
+        T_globe = T_air + (k * GHI) / (h_c(V) + h_r)
+        h_c(V)  = 5.7 + 3.8*V   (V in m/s)      h_r = 5 W/m2K
+
+    Two simplifications we state rather than hide:
+      * **Natural** wet bulb T_nwb is substituted by the *thermodynamic* wet bulb
+        from `wet_bulb_c` (Stull 2011). Natural wet bulb runs a little warmer under
+        sun and low wind, so this is mildly non-conservative; it is labelled
+        `modelled` wherever it is used.
+      * The globe term is a lumped energy balance, not Liljegren. WBGT_METHOD names
+        it so the UI never presents it as Liljegren.
+
+    The one genuine advantage worth stating: OSHA's own calculator *estimates* the
+    solar irradiance via Kasten-Czeplak where it is not measured; FortyGuard gives
+    us GHI directly, so this globe term is better-conditioned than the free
+    calculator's, not worse. `pressure_hpa` is accepted for interface parity with
+    a future Liljegren port and is currently unused.
+    """
+    rh_for_wb = min(99.0, max(5.0, rh_pct))          # Stull fit is valid RH 5-99 %
+    t_nwb = wet_bulb_c(t_air_c, rh_for_wb)
+    h_c = _GLOBE_H_C_A + _GLOBE_H_C_B * max(0.0, wind_ms)
+    t_globe = t_air_c + (_GLOBE_SOLAR_COEFF * max(0.0, ghi_w_m2)) / (h_c + _GLOBE_H_R)
+    return 0.7 * t_nwb + 0.2 * t_globe + 0.1 * t_air_c
 
 
 def nurse_saul_maturity(series: Iterable[tuple[float, float]], t0_c: float = -10.0) -> float:

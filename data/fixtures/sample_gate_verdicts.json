@@ -1,0 +1,26 @@
+[
+  {
+    "decision": "approve",
+    "rule_id": "split_within_float_ok",
+    "reason": "Split keeps both activities inside their compliant windows and consumes 0.5 d of float, under the 3.0 d cap for a near-critical activity.",
+    "escalated": false,
+    "modified_params": null
+  },
+  {
+    "decision": "modify",
+    "rule_id": "split_within_float_ok",
+    "reason": "Shift approved with the solver's amended start: 06:10 rather than the proposed 05:00, so the pour clears the deck first. 0.8 d float consumed.",
+    "escalated": false,
+    "modified_params": {
+      "new_start": "2026-08-24T06:10:00-07:00",
+      "float_days_consumed": 0.8
+    }
+  },
+  {
+    "decision": "deny",
+    "rule_id": "max_float_days_consumed",
+    "reason": "Denied: the shift would spend 4.0 d of float on near-critical A-2006, over the 3.0 d cap. No compliant sequence preserves the milestone \u2014 escalating to the superintendent with the tradeoff.",
+    "escalated": true,
+    "modified_params": null
+  }
+]

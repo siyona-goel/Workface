@@ -12,6 +12,7 @@ from pathlib import Path
 
 import pytest
 
+from packages.schemas.agent_trace import AgentRun, GateDecision, GateVerdict, ProposalKind, StepType
 from packages.schemas.thermal_series import WorkFaceThermalSeries
 from packages.schemas.window_eval import WindowEval, WindowEvalBundle
 
@@ -100,3 +101,45 @@ def test_all_three_fixtures_are_committed_json() -> None:
         path = FIXTURES / name
         assert path.exists(), f"{name} missing — a fixture on someone's laptop is not a fixture"
         json.loads(path.read_text(encoding="utf-8"))  # well-formed JSON
+
+
+# --------------------------------------------------------------------------- #
+# Day-5 agent-trace fixtures — T1 builds the Trace view and escalation UI on these
+# --------------------------------------------------------------------------- #
+
+@pytest.fixture(scope="module")
+def agent_run() -> AgentRun:
+    return AgentRun.model_validate_json((FIXTURES / "sample_agent_run.json").read_text(encoding="utf-8"))
+
+
+@pytest.fixture(scope="module")
+def gate_verdicts() -> list[GateVerdict]:
+    raw = json.loads((FIXTURES / "sample_gate_verdicts.json").read_text(encoding="utf-8"))
+    return [GateVerdict.model_validate(v) for v in raw]
+
+
+def test_agent_run_validates_and_covers_both_beats(agent_run: AgentRun) -> None:
+    assert agent_run.resolved_count == 1 and agent_run.escalated_count == 1
+    # Beat (a): a conflict resolved with a split.
+    assert any(s.proposal and s.proposal.kind is ProposalKind.SPLIT for s in agent_run.steps)
+    # Beat (b): the deny -> escalate case, with a float-based rule named.
+    escalate = next(s for s in agent_run.steps if s.type is StepType.ESCALATE)
+    deny = next(s for s in agent_run.steps if s.gate and s.gate.decision is GateDecision.DENY)
+    assert deny.gate.escalated is True
+    assert deny.gate.rule_id == "max_float_days_consumed"
+    assert "float" in deny.gate.reason.lower()
+    assert escalate.conflict_id == deny.conflict_id
+
+
+def test_gate_verdicts_cover_approve_modify_deny(gate_verdicts: list[GateVerdict]) -> None:
+    decisions = {v.decision for v in gate_verdicts}
+    assert decisions == {GateDecision.APPROVE, GateDecision.MODIFY, GateDecision.DENY}
+    deny = next(v for v in gate_verdicts if v.decision is GateDecision.DENY)
+    assert deny.escalated is True and deny.rule_id  # the deny beat names its rule
+
+
+def test_agent_fixtures_are_committed_json() -> None:
+    for name in ("sample_agent_run.json", "sample_gate_verdicts.json"):
+        path = FIXTURES / name
+        assert path.exists(), f"{name} missing — a fixture on someone's laptop is not a fixture"
+        json.loads(path.read_text(encoding="utf-8"))
