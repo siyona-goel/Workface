@@ -19,12 +19,16 @@ from apps.api.windows.constraints import (
     binding_constraint,
     closed_intervals,
     evaluate_band,
+    evaluate_continuity,
+    evaluate_decay_clock,
+    evaluate_human,
     evaluate_offset,
     intersect,
+    productive_hours,
     to_intervals,
 )
 from apps.api.windows.registry import load_registry
-from packages.schemas.trade_window import BandSpec, OffsetSpec
+from packages.schemas.trade_window import BandSpec, ContinuitySpec, OffsetSpec
 from packages.schemas.window_eval import HourState, SeriesPoint
 
 TZ = timezone(timedelta(hours=-7))
@@ -171,3 +175,136 @@ def test_real_coating_row_binding_is_dew_point() -> None:
     offset_opens = [iv for iv in results["offset_dew_point"].intervals if 5 <= iv.start.hour <= 7]
     assert offset_opens, "expected the coating window to open between 05:00 and 07:00"
     assert offset_opens[0].start.hour in (5, 6, 7)
+
+
+# --------------------------------------------------------------------------- #
+# 8. Continuity — horizon truncation must be NO_DATA, never OPEN
+# --------------------------------------------------------------------------- #
+
+def test_continuity_truncation_is_no_data_never_open() -> None:
+    """A 24 h protected run requested on a 12 h series can never be confirmed: every
+    hour is NO_DATA, not OPEN. A short horizon must not paint a long window green."""
+    spec = ContinuitySpec(constraint_id="c", label="24 h run", citation_fragment="x",
+                          on="surface", t_min_c=4.0, run_hours=24.0)
+    series = [SeriesPoint(t_surf_c=10.0) for _ in range(12)]   # comfortably warm
+    ev = evaluate_continuity(series, spec, _ts(12))
+    assert all(h.state is HourState.NO_DATA for h in ev.per_hour)
+    assert not any(h.state is HourState.OPEN for h in ev.per_hour)
+
+
+# --------------------------------------------------------------------------- #
+# 9. Continuity — dual series (SFRM): ambient cold closes even when substrate warm
+# --------------------------------------------------------------------------- #
+
+def test_continuity_dual_series_ambient_closes_a_warm_substrate() -> None:
+    warm_sub, cold_air = 10.0, 2.0                            # substrate warm, ambient below 4 C
+    # substrate warm throughout; ambient dips at index 2 (inside the run of index 1).
+    air = [10.0, 10.0, cold_air, 10.0, 10.0]
+    series = [SeriesPoint(t_surf_c=warm_sub, t_air_c=a) for a in air]
+    ts = _ts(5)
+
+    dual = ContinuitySpec(constraint_id="c", label="substrate AND ambient", citation_fragment="x",
+                          on="surface", also_on="air", t_min_c=4.0, run_hours=1.0, lead_hours=0.0)
+    solo = ContinuitySpec(constraint_id="c", label="substrate only", citation_fragment="x",
+                          on="surface", t_min_c=4.0, run_hours=1.0, lead_hours=0.0)
+
+    ev_dual = evaluate_continuity(series, dual, ts)
+    ev_solo = evaluate_continuity(series, solo, ts)
+    # index 1's run [1,2] hits the cold ambient -> dual CLOSED; substrate-only stays OPEN.
+    assert ev_dual.per_hour[1].state is HourState.CLOSED
+    assert ev_solo.per_hour[1].state is HourState.OPEN
+
+
+def test_continuity_grouted_selects_longer_run() -> None:
+    spec = ContinuitySpec(constraint_id="c", label="masonry", citation_fragment="x",
+                          on="air", t_min_c=0.0, run_hours=24.0, grouted_run_hours=48.0)
+    warm = [SeriesPoint(t_air_c=5.0) for _ in range(30)]
+    ts = _ts(30)
+    # hour 0 can confirm a 24 h run (needs index 24) but not a 48 h run (needs index 48).
+    assert evaluate_continuity(warm, spec, ts).per_hour[0].state is HourState.OPEN
+    assert evaluate_continuity(warm, spec, ts, grouted=True).per_hour[0].state is HourState.NO_DATA
+
+
+# --------------------------------------------------------------------------- #
+# 10. Decay clock — asphalt inversion (hotter base -> more compaction minutes)
+#                    and out-of-range refusal to extrapolate
+# --------------------------------------------------------------------------- #
+
+def _base(temps: list[float]) -> list[SeriesPoint]:
+    return [SeriesPoint(t_base_material_c=t) for t in temps]
+
+
+def test_decay_asphalt_inversion_hotter_base_more_minutes() -> None:
+    """One trade's red is another's green: a hotter base yields MORE available
+    compaction minutes than a colder one (thin 25 mm lift). Asphalt runs opposite
+    to every other trade on the same tile in the same hour."""
+    spec = load_registry().get("hma_paving_surface_course").constraint("decay_compaction_window")
+    ev = evaluate_decay_clock(_base([40.0, 5.0]), spec, _ts(2), lift_mm=25)
+    hot_minutes, cold_minutes = ev.per_hour[0].margin, ev.per_hour[1].margin
+    assert hot_minutes > cold_minutes                        # the required inversion
+    assert ev.per_hour[0].state is HourState.OPEN
+    assert ev.margin_unit == "min"
+
+
+def test_decay_out_of_range_is_closed_not_extrapolated() -> None:
+    spec = load_registry().get("adhesive_anchor_epoxy").constraint("decay_working_time")
+    ev = evaluate_decay_clock(_base([60.0]), spec, _ts(1))    # qualified only to +40 C
+    assert ev.per_hour[0].state is HourState.CLOSED
+    assert "extrapolate" in ev.per_hour[0].reason
+
+
+def test_decay_minutes_required_gates_and_reports_margin() -> None:
+    spec = load_registry().get("adhesive_anchor_epoxy").constraint("decay_working_time")
+    # 40 C base -> ~10 min working time; a 15 min requirement closes it, a 5 min one does not.
+    ev = evaluate_decay_clock(_base([40.0]), spec, _ts(1), minutes_required=15.0)
+    assert ev.per_hour[0].state is HourState.CLOSED
+    ev2 = evaluate_decay_clock(_base([40.0]), spec, _ts(1), minutes_required=5.0)
+    assert ev2.per_hour[0].state is HourState.OPEN
+
+
+# --------------------------------------------------------------------------- #
+# 11. Human — WBGT bands, and heat never fully closes an hour
+# --------------------------------------------------------------------------- #
+
+def _human_wbgt_spec():
+    return load_registry().get("crew_heat_exposure").constraint("human_wbgt_work_rest")
+
+
+def test_human_wbgt_bands_map_to_work_fraction() -> None:
+    spec = _human_wbgt_spec()
+    series = [SeriesPoint(wbgt_c=w) for w in (27.4, 28.0, 29.5, 31.0)]
+    ev = evaluate_human(series, spec, _ts(4))
+    fractions = [h.productive_fraction for h in ev.per_hour]
+    assert fractions == pytest.approx([1.0, 0.75, 0.5, 0.25])
+    states = [h.state for h in ev.per_hour]
+    assert states == [HourState.OPEN, HourState.MARGINAL, HourState.MARGINAL, HourState.MARGINAL]
+    assert ev.margin_unit == "ratio"
+
+
+def test_human_never_closes() -> None:
+    """Neither the WBGT band map nor the heat-index triggers may return CLOSED —
+    heat shrinks a window, it does not close one."""
+    wbgt_spec = _human_wbgt_spec()
+    hi_spec = load_registry().get("crew_heat_exposure").constraint("human_osha_high_heat_trigger")
+    hostile = [SeriesPoint(t_air_c=48.0, rh_pct=60.0, wind_ms=0.5, ghi_w_m2=1000.0, wbgt_c=35.0)]
+    ev_wbgt = evaluate_human(hostile, wbgt_spec, _ts(1))
+    ev_hi = evaluate_human(hostile, hi_spec, _ts(1))
+    assert ev_wbgt.per_hour[0].state is not HourState.CLOSED
+    assert ev_hi.per_hour[0].state is not HourState.CLOSED
+
+
+def test_human_wbgt_modelled_when_series_lacks_it() -> None:
+    spec = _human_wbgt_spec()
+    # no wbgt_c, but air/RH/wind/GHI present -> modelled, reason names the method.
+    sp = SeriesPoint(t_air_c=42.0, rh_pct=24.0, wind_ms=1.0, ghi_w_m2=985.0)
+    ev = evaluate_human([sp], spec, _ts(1))
+    assert "modelled" in ev.per_hour[0].reason
+    assert ev.per_hour[0].state in (HourState.OPEN, HourState.MARGINAL)
+
+
+def test_productive_hours_applies_the_haircut() -> None:
+    """A five-hour window at a 25%% rest ratio is 3.75 productive crew-hours."""
+    ts = _ts(5)
+    per_hour = [HourVerdict(t, HourState.OPEN, productive_fraction=0.75) for t in ts]
+    iv = Interval(ts[0], ts[-1] + timedelta(hours=1))
+    assert productive_hours(iv, per_hour) == pytest.approx(3.75)
