@@ -111,6 +111,47 @@ fs.writeFileSync(
   JSON.stringify(payload, null, 2),
 );
 
+const ribbonPayload = {
+  run_id: ribbon.run_id,
+  generated_at: ribbon.generated_at,
+  horizon: ribbon.horizon,
+  site_id: ribbon.site_id,
+  contended_hours: ribbon.contended_hours,
+  totals: ribbon.totals,
+  evaluations: ribbon.evaluations.map((e) => ({
+    activity_id: e.activity_id,
+    activity_name: e.activity_name,
+    wbs: e.wbs,
+    trade_id: e.trade_id,
+    trade_display_name: e.trade_display_name,
+    work_face_id: e.work_face_id,
+    work_face_name: e.work_face_name,
+    verdict: e.verdict,
+    verdict_summary: e.verdict_summary,
+    binding_constraint: e.binding_constraint
+      ? {
+          type: e.binding_constraint.type,
+          label: e.binding_constraint.label,
+          mitigation_hint: e.binding_constraint.mitigation_hint,
+        }
+      : null,
+    scheduled: e.scheduled,
+    hours: e.hours.map((h) => ({
+      ts: h.ts,
+      state: h.state,
+      reason: h.reason,
+      binding_constraint_id: h.binding_constraint_id,
+      margin: h.margin,
+      margin_unit: h.margin_unit,
+    })),
+  })),
+};
+
+fs.writeFileSync(
+  path.join(outDir, "ribbon.json"),
+  JSON.stringify(ribbonPayload),
+);
+
 fs.copyFileSync(
   path.join(root, "data/project_demo/site.geojson"),
   path.join(outDir, "phoenix-site.json"),
@@ -122,4 +163,7 @@ fs.copyFileSync(
 
 console.log(
   `wrote console.json (${activities.length} activities, ${work_faces.length} faces, ${evaluations.length} evals)`,
+);
+console.log(
+  `wrote ribbon.json (${ribbonPayload.evaluations.length} lanes, ${ribbonPayload.evaluations[0]?.hours.length ?? 0} hours)`,
 );

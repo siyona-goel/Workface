@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import { ActivityTable } from "@/components/activity-table";
 import { ConsoleToolbar } from "@/components/console-toolbar";
 import { SiteMapLoader } from "@/components/site-map-loader";
+import { WindowRibbon } from "@/components/window-ribbon";
 import { WorkFaceList } from "@/components/work-face-list";
 import {
   VERDICTS,
@@ -30,6 +31,9 @@ export function SiteConsole() {
   const [selectedActivityId, setSelectedActivityId] = useState<string | null>(
     null,
   );
+  const [evalsOnly, setEvalsOnly] = useState(true);
+  const [heroOnly, setHeroOnly] = useState(false);
+  const [focusedFaceId, setFocusedFaceId] = useState<string | null>(null);
 
   const preVerdict = useMemo(
     () =>
@@ -75,13 +79,24 @@ export function SiteConsole() {
   }, [preVerdict]);
 
   function selectWorkFace(id: string | null) {
+    setFocusedFaceId(id);
     setFilters((f) => ({ ...f, workFaceId: id }));
   }
 
   function selectActivity(activity: Activity) {
     setSelectedActivityId(activity.id);
+    setFocusedFaceId(activity.work_face_id);
     setFilters((f) => ({ ...f, workFaceId: activity.work_face_id }));
   }
+
+  function selectLane(activityId: string) {
+    setSelectedActivityId(activityId);
+    const activity = consoleData.activities.find((a) => a.id === activityId);
+    const ev = consoleData.evaluations.find((e) => e.activity_id === activityId);
+    setFocusedFaceId(activity?.work_face_id ?? ev?.work_face_id ?? null);
+  }
+
+  const mapFaceId = filters.workFaceId ?? focusedFaceId;
 
   return (
     <div className="flex h-dvh min-h-0 flex-col bg-background text-foreground">
@@ -117,15 +132,15 @@ export function SiteConsole() {
         resultCount={rows.length}
       />
 
-      <div className="grid min-h-0 flex-[1.15] grid-cols-1 lg:grid-cols-[minmax(0,1fr)_280px]">
+      <div className="grid min-h-0 flex-[0.9] grid-cols-1 lg:grid-cols-[minmax(0,1fr)_280px]">
         <SiteMapLoader
-          selectedWorkFaceId={filters.workFaceId}
+          selectedWorkFaceId={mapFaceId}
           onSelectWorkFace={selectWorkFace}
           faceVerdict={faceVerdict}
         />
         <div className="hidden min-h-0 lg:block">
           <WorkFaceList
-            selectedId={filters.workFaceId}
+            selectedId={mapFaceId}
             onSelect={selectWorkFace}
             counts={faceCounts}
             faceVerdict={faceVerdict}
@@ -133,7 +148,20 @@ export function SiteConsole() {
         </div>
       </div>
 
-      <section className="min-h-0 flex-[0.95]">
+      <section className="flex min-h-[220px] min-w-0 flex-[1.2] flex-col">
+        <WindowRibbon
+          activities={rows}
+          filters={filters}
+          selectedId={selectedActivityId}
+          onSelectLane={selectLane}
+          evalsOnly={evalsOnly}
+          onEvalsOnlyChange={setEvalsOnly}
+          heroOnly={heroOnly}
+          onHeroOnlyChange={setHeroOnly}
+        />
+      </section>
+
+      <section className="min-h-0 flex-[0.7]">
         <ActivityTable
           activities={rows}
           selectedId={selectedActivityId}
