@@ -24,7 +24,7 @@
         "surface_class": "bare_concrete",
         "sky_view_factor": 0.88,
         "orientation_deg": null,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-FAB2",
         "notes": null
       },
       "geometry": {
@@ -71,7 +71,7 @@
         "surface_class": "bare_concrete",
         "sky_view_factor": 0.88,
         "orientation_deg": null,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-FAB2",
         "notes": null
       },
       "geometry": {
@@ -118,7 +118,7 @@
         "surface_class": "bare_concrete",
         "sky_view_factor": 0.88,
         "orientation_deg": null,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-FAB2",
         "notes": null
       },
       "geometry": {
@@ -165,7 +165,7 @@
         "surface_class": "bare_concrete",
         "sky_view_factor": 0.88,
         "orientation_deg": null,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-FAB2",
         "notes": null
       },
       "geometry": {
@@ -212,7 +212,7 @@
         "surface_class": "galvanised_steel",
         "sky_view_factor": 0.97,
         "orientation_deg": null,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-FAB2",
         "notes": null
       },
       "geometry": {
@@ -259,7 +259,7 @@
         "surface_class": "galvanised_steel",
         "sky_view_factor": 0.45,
         "orientation_deg": null,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-FAB2",
         "notes": null
       },
       "geometry": {
@@ -306,7 +306,7 @@
         "surface_class": "galvanised_steel",
         "sky_view_factor": 0.97,
         "orientation_deg": null,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-FAB2",
         "notes": null
       },
       "geometry": {
@@ -353,7 +353,7 @@
         "surface_class": "galvanised_steel",
         "sky_view_factor": 0.45,
         "orientation_deg": null,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-FAB2",
         "notes": null
       },
       "geometry": {
@@ -400,7 +400,7 @@
         "surface_class": "galvanised_steel",
         "sky_view_factor": 0.97,
         "orientation_deg": null,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-FAB2",
         "notes": null
       },
       "geometry": {
@@ -447,7 +447,7 @@
         "surface_class": "galvanised_steel",
         "sky_view_factor": 0.45,
         "orientation_deg": null,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-FAB2",
         "notes": null
       },
       "geometry": {
@@ -494,7 +494,7 @@
         "surface_class": "galvanised_steel",
         "sky_view_factor": 0.97,
         "orientation_deg": null,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-FAB2",
         "notes": null
       },
       "geometry": {
@@ -541,7 +541,7 @@
         "surface_class": "galvanised_steel",
         "sky_view_factor": 0.45,
         "orientation_deg": null,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-FAB2",
         "notes": null
       },
       "geometry": {
@@ -588,7 +588,7 @@
         "surface_class": "coated_steel",
         "sky_view_factor": 0.58,
         "orientation_deg": 0.0,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-FAB2",
         "notes": null
       },
       "geometry": {
@@ -635,7 +635,7 @@
         "surface_class": "coated_steel",
         "sky_view_factor": 0.58,
         "orientation_deg": 0.0,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-FAB2",
         "notes": null
       },
       "geometry": {
@@ -682,7 +682,7 @@
         "surface_class": "bare_concrete",
         "sky_view_factor": 0.92,
         "orientation_deg": null,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-UTIL",
         "notes": null
       },
       "geometry": {
@@ -729,7 +729,7 @@
         "surface_class": "bare_concrete",
         "sky_view_factor": 0.92,
         "orientation_deg": null,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-UTIL",
         "notes": null
       },
       "geometry": {
@@ -776,7 +776,7 @@
         "surface_class": "bare_concrete",
         "sky_view_factor": 0.92,
         "orientation_deg": null,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-UTIL",
         "notes": null
       },
       "geometry": {
@@ -823,7 +823,7 @@
         "surface_class": "galvanised_steel",
         "sky_view_factor": 0.95,
         "orientation_deg": null,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-UTIL",
         "notes": null
       },
       "geometry": {
@@ -870,7 +870,7 @@
         "surface_class": "galvanised_steel",
         "sky_view_factor": 0.95,
         "orientation_deg": null,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-UTIL",
         "notes": null
       },
       "geometry": {
@@ -917,7 +917,7 @@
         "surface_class": "bare_concrete",
         "sky_view_factor": 0.9,
         "orientation_deg": null,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-SOUTH",
         "notes": null
       },
       "geometry": {
@@ -964,7 +964,7 @@
         "surface_class": "bare_concrete",
         "sky_view_factor": 0.9,
         "orientation_deg": null,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-SOUTH",
         "notes": null
       },
       "geometry": {
@@ -1011,7 +1011,7 @@
         "surface_class": "bare_concrete",
         "sky_view_factor": 0.6,
         "orientation_deg": 0.0,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-SOUTH",
         "notes": null
       },
       "geometry": {
@@ -1058,7 +1058,7 @@
         "surface_class": "bare_concrete",
         "sky_view_factor": 0.6,
         "orientation_deg": 0.0,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-SOUTH",
         "notes": null
       },
       "geometry": {
@@ -1105,7 +1105,7 @@
         "surface_class": "bare_concrete",
         "sky_view_factor": 0.92,
         "orientation_deg": null,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-UTIL",
         "notes": null
       },
       "geometry": {
@@ -1152,7 +1152,7 @@
         "surface_class": "bare_concrete",
         "sky_view_factor": 0.92,
         "orientation_deg": null,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-UTIL",
         "notes": null
       },
       "geometry": {
@@ -1199,7 +1199,7 @@
         "surface_class": "galvanised_steel",
         "sky_view_factor": 0.95,
         "orientation_deg": null,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-UTIL",
         "notes": null
       },
       "geometry": {
@@ -1246,7 +1246,7 @@
         "surface_class": "bare_concrete",
         "sky_view_factor": 0.95,
         "orientation_deg": null,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-UTIL",
         "notes": null
       },
       "geometry": {
@@ -1293,7 +1293,7 @@
         "surface_class": "bare_concrete",
         "sky_view_factor": 0.95,
         "orientation_deg": null,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-UTIL",
         "notes": null
       },
       "geometry": {
@@ -1340,7 +1340,7 @@
         "surface_class": "galvanised_steel",
         "sky_view_factor": 0.98,
         "orientation_deg": null,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-UTIL",
         "notes": null
       },
       "geometry": {
@@ -1387,7 +1387,7 @@
         "surface_class": "bare_concrete",
         "sky_view_factor": 0.86,
         "orientation_deg": null,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-UTIL",
         "notes": null
       },
       "geometry": {
@@ -1434,7 +1434,7 @@
         "surface_class": "bare_concrete",
         "sky_view_factor": 0.86,
         "orientation_deg": null,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-UTIL",
         "notes": null
       },
       "geometry": {
@@ -1481,7 +1481,7 @@
         "surface_class": "cmu_masonry",
         "sky_view_factor": 0.62,
         "orientation_deg": 0.0,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-UTIL",
         "notes": null
       },
       "geometry": {
@@ -1528,7 +1528,7 @@
         "surface_class": "bare_concrete",
         "sky_view_factor": 0.86,
         "orientation_deg": null,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-SOUTH",
         "notes": null
       },
       "geometry": {
@@ -1575,7 +1575,7 @@
         "surface_class": "bare_concrete",
         "sky_view_factor": 0.86,
         "orientation_deg": null,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-SOUTH",
         "notes": null
       },
       "geometry": {
@@ -1622,7 +1622,7 @@
         "surface_class": "cmu_masonry",
         "sky_view_factor": 0.62,
         "orientation_deg": 0.0,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-SOUTH",
         "notes": null
       },
       "geometry": {
@@ -1669,7 +1669,7 @@
         "surface_class": "bare_concrete",
         "sky_view_factor": 0.86,
         "orientation_deg": null,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-SOUTH",
         "notes": null
       },
       "geometry": {
@@ -1716,7 +1716,7 @@
         "surface_class": "bare_concrete",
         "sky_view_factor": 0.86,
         "orientation_deg": null,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-SOUTH",
         "notes": null
       },
       "geometry": {
@@ -1763,7 +1763,7 @@
         "surface_class": "bare_concrete",
         "sky_view_factor": 0.9,
         "orientation_deg": null,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-PARK",
         "notes": null
       },
       "geometry": {
@@ -1810,7 +1810,7 @@
         "surface_class": "bare_concrete",
         "sky_view_factor": 0.9,
         "orientation_deg": null,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-PARK",
         "notes": null
       },
       "geometry": {
@@ -1857,7 +1857,7 @@
         "surface_class": "asphalt",
         "sky_view_factor": 1.0,
         "orientation_deg": null,
-        "tile_cluster_id": null,
+        "tile_cluster_id": "AOI-ROAD",
         "notes": null
       },
       "geometry": {

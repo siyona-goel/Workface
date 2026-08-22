@@ -26,7 +26,7 @@ export function ActivityTable({ activities, selectedId, onSelect }: Props) {
           Activities
         </h2>
         <p className="text-[10px] text-muted-foreground">
-          Window evals from T3 Day-1 fixtures · ribbon comes Day 4
+          {activities.length} in view · click a row to pin its work face
         </p>
       </div>
       <div className="min-h-0 flex-1 overflow-auto">
