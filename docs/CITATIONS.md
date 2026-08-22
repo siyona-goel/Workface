@@ -50,6 +50,21 @@ WORKFACE is not a heat alarm.
 
 ---
 
+## Surface-twin coefficients (Day 4.5 — `scripts/make_thermal_fixtures.py`)
+
+The per-work-face surface temperature is a first-order energy balance
+(WORKFACE_TECH_SPEC.md §6.2), `t_surf = t_air + (α·GHI − ε·Q_lw·(1−cloud/8))·ψ / (h_c(V)+h_r)`.
+Its coefficients are published ranges, not measurements — the model is labelled
+"model, not measurement" and does not replace the surface thermometer the standards require.
+
+| Coefficient | Value(s) | Source |
+|---|---|---|
+| Solar absorptivity α | asphalt 0.90 · bare concrete 0.60 · CMU 0.55 · coated steel 0.45 · **galvanised steel 0.30** | WORKFACE_TECH_SPEC §6.2; ASHRAE *Fundamentals* ch. 26 surface-property tables. Bright galvanised is a **low** absorber — it runs hot from near-zero thermal mass, not high absorption. |
+| Thermal emissivity ε | asphalt 0.93 · concrete/CMU 0.90 · coated steel 0.88 · **weathered galvanised steel 0.85** | ASHRAE *Fundamentals* ch. 26; Engineering Toolbox emissivity tables. Erected/weathered galvanising oxidises to a high-emissivity surface — the physical basis for the open deck's night radiative cooling. |
+| Convective/radiative coefficients | `h_c(V)=5.7+3.8·V` (V m/s), `h_r=5 W/m²K` | WORKFACE_TECH_SPEC §6.2 (McAdams-form flat-plate convection; linearised longwave). |
+| Clear-sky net longwave loss `Q_lw` | **130 W/m²** | Arid-climate radiative-cooling literature reports ~90–150 W/m² net longwave from high-ε horizontal surfaces under clear, dry skies. **The hero dawn closure sits on the upper half of this range and is fragile — see the Day-4.5 report's sensitivity note.** A humid monsoon dawn raises sky emissivity and *suppresses* this term, so 130 is generous, not conservative. |
+| Substrate thermal-mass damping | steel 1.0 · asphalt 0.70 · concrete/CMU 0.65 | Amplitude proxy for thermal lag: thin steel tracks its surface, a massive slab is buffered toward air. Stated as a simplification, not a lag model. |
+
 ## Rule for the deck
 
 Cite the **document you actually read**, not the standard behind it. Say *"BIA Technical Note 1,
