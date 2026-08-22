@@ -65,6 +65,30 @@ Its coefficients are published ranges, not measurements — the model is labelle
 | Clear-sky net longwave loss `Q_lw` | **130 W/m²** | Arid-climate radiative-cooling literature reports ~90–150 W/m² net longwave from high-ε horizontal surfaces under clear, dry skies. **The hero dawn closure sits on the upper half of this range and is fragile — see the Day-4.5 report's sensitivity note.** A humid monsoon dawn raises sky emissivity and *suppresses* this term, so 130 is generous, not conservative. |
 | Substrate thermal-mass damping | steel 1.0 · asphalt 0.70 · concrete/CMU 0.65 | Amplitude proxy for thermal lag: thin steel tracks its surface, a massive slab is buffered toward air. Stated as a simplification, not a lag model. |
 
+## Surface-twin coefficients from real segmentation (Day 6 — `apps/api/twin/surface.py`)
+
+Day 6 replaces the Day-4.5 guess (one α/ε per `surface_class` string) with the
+fraction-weighted mean of T2's real FortyGuard satellite land cover and the real
+streetview sky fraction. The α/ε tables are now keyed on the **segmentation
+model's own class taxonomy** (metal, concrete, shadow, vegetation, other), not on
+`surface_class`. New or changed entries below; the rest are as Day 4.5 above.
+
+| Coefficient | Value(s) | Source / policy |
+|---|---|---|
+| α by land-cover class | asphalt 0.90 · concrete (aged) 0.65 · **metal (galvanised) 0.25** · coated steel 0.45 · vegetation 0.75 · **bare_soil 0.75** | ASHRAE *Fundamentals* ch. 26 surface-property tables. `metal`→galvanised uses **0.25** (WORKFACE_T3_DAY56 §6 D1), slightly below Day-4.5's 0.30; both encode "bright galvanised is a low absorber." `bare_soil` **added** (dry desert soil, ASHRAE ch.26 soil range 0.70–0.80). |
+| ε by land-cover class | metal (galvanised) **parameter, default 0.85** · concrete 0.90 · coated steel 0.88 · vegetation 0.95 · bare_soil 0.92 | ASHRAE ch.26 / Engineering Toolbox. **ε(metal) is the single most load-bearing number in the project** and is a function argument, not a constant, so the D3 sensitivity runs at both ends: bright new galvanising ≈ 0.23, weathered/erected ≈ 0.85 (oxidised). Default assumes a **weathered** deck ("four months of Phoenix sun"). |
+| `other` class policy | α 0.60 · ε 0.90 | Policy default for a recognised-but-unclassified **material** (mid-range built surface). `other` is a material and keeps its mass; **`shadow` is not a material** and is dropped before renormalising (see below). |
+| `shadow` handling | **excluded, fractions renormalised** | `shadow` is an artefact of when the satellite image was taken. Averaging an absorptivity into it is meaningless, and treating it as reduced insolation would assert the shadow is present at *all* hours, which it is not. So it is removed and the remaining material fractions are renormalised. |
+| ψ (sky view factor) | front streetview `sky` % ÷ 100 | **Front hemisphere only** — `back` is empty on all 40 captures — so ψ is a single-hemisphere estimate presented as whole-sky, a real one-step **confidence downgrade** (§6.2 degrade-gracefully). The twin's sky % equals `work_faces.geojson`'s `sky_view_factor` only because T2's replay fixture was seeded from the same generator record; **this is not independent validation.** |
+
+**D3 sensitivity result (hero deck WF-FAB2-07, open deck ψ 0.97):** the dawn
+surface-minus-air undershoot is **−7.81 °C at ε 0.85 (weathered)** and only
+**−4.32 °C at ε 0.23 (bright)**. On the coating dew-point offset that is the
+difference between a **CLOSED dawn band and none at all**: the closure exists only
+for a weathered deck, and even then the worst margin is ~**−0.02 °C** — it is
+fragile to ε *and* to the 130 W/m² `Q_lw` (upper-half) assumption. Say "weathered
+galvanised deck, four months of Phoenix sun" and mean it.
+
 ## Rule for the deck
 
 Cite the **document you actually read**, not the standard behind it. Say *"BIA Technical Note 1,
