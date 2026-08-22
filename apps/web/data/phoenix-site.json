@@ -1,0 +1,59 @@
+{
+  "type": "FeatureCollection",
+  "name": "workface_site",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "site_id": "NPX-FAB-P2",
+        "site_name": "North Phoenix Advanced Packaging Facility \u2014 Phase 2",
+        "locality": "North Phoenix, Maricopa County, Arizona, USA",
+        "area_acres": 1100.1,
+        "area_km2": 4.452,
+        "tz": "America/Phoenix",
+        "utc_offset_hours": -7.0,
+        "dst": false,
+        "base_elevation_m": 462.0,
+        "geography_note": "Real North Phoenix industrial-corridor geography (I-17 / SR-303, Dove Valley). Structures and schedule are synthetic.",
+        "provenance": "Synthetic schedule, real geography, real standards."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -112.1712,
+              33.7772
+            ],
+            [
+              -112.1452624,
+              33.7772
+            ],
+            [
+              -112.1452624,
+              33.7915281
+            ],
+            [
+              -112.1487208,
+              33.7938637
+            ],
+            [
+              -112.1712,
+              33.7938637
+            ],
+            [
+              -112.1712,
+              33.7772
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import type { SiteMapProps } from "@/components/site-map";
 
 const SiteMap = dynamic(() => import("@/components/site-map"), {
   ssr: false,
@@ -11,6 +12,6 @@ const SiteMap = dynamic(() => import("@/components/site-map"), {
   ),
 });
 
-export function SiteMapLoader() {
-  return <SiteMap />;
+export function SiteMapLoader(props: SiteMapProps) {
+  return <SiteMap {...props} />;
 }
