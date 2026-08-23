@@ -131,17 +131,17 @@ export function WindowRibbon({
 
   return (
     <section className="flex min-h-0 flex-col border-t border-border/70 bg-card/15">
-      <div className="flex items-start justify-between gap-3 px-4 py-2">
+      <div className="flex flex-col gap-2 px-3 py-2 sm:px-4 lg:flex-row lg:items-start lg:justify-between lg:gap-3">
         <div className="min-w-0">
           <h2 className="text-[10px] font-medium tracking-[0.16em] text-muted-foreground uppercase">
             Window ribbon
           </h2>
-          <p className="text-[11px] text-muted-foreground">
+          <p className="hidden text-[11px] text-muted-foreground sm:block">
             {HORIZON_HOURS} h · {ribbonData.horizon.tz} · scheduled bar on the
             bands. If the bar is not on green, that is the problem.
           </p>
           {heroVisible >= 2 ? (
-            <p className="mt-0.5 text-[11px] text-cyan-200/90">
+            <p className="mt-0.5 hidden text-[11px] text-cyan-200/90 md:block">
               Hero pair pinned at top — same coating,{" "}
               {consoleData.hero_pair.separation_m} m apart,{" "}
               {consoleData.hero_pair.level}. Shaded stays open at 04:00; bare
@@ -149,7 +149,7 @@ export function WindowRibbon({
             </p>
           ) : null}
         </div>
-        <div className="flex shrink-0 items-center gap-3 text-[10px] text-muted-foreground">
+        <div className="flex flex-wrap items-center gap-2 text-[10px] text-muted-foreground sm:gap-3">
           <button
             type="button"
             aria-pressed={evalsOnly}
@@ -181,13 +181,15 @@ export function WindowRibbon({
               contention {contention}
             </span>
           ) : null}
-          <LegendSwatch state="open" />
-          <LegendSwatch state="marginal" />
-          <LegendSwatch state="closed" />
-          <LegendSwatch state="no_data" />
-          <span className="inline-flex items-center gap-1.5">
-            <span className="h-1.5 w-5 rounded-sm bg-slate-100" />
-            Scheduled
+          <span className="hidden items-center gap-2 sm:contents">
+            <LegendSwatch state="open" />
+            <LegendSwatch state="marginal" />
+            <LegendSwatch state="closed" />
+            <LegendSwatch state="no_data" />
+            <span className="inline-flex items-center gap-1.5">
+              <span className="h-1.5 w-5 rounded-sm bg-slate-100" />
+              Scheduled
+            </span>
           </span>
           <span className="font-mono tabular-nums">
             {formatUsd(ribbonData.totals.at_risk_usd)} at risk
@@ -202,9 +204,9 @@ export function WindowRibbon({
         </div>
       ) : (
         <div className="min-h-0 flex-1 overflow-auto">
-          <div className="min-w-[720px]">
+          <div className="min-w-[540px] sm:min-w-[720px]">
             <div className="sticky top-0 z-10 flex bg-background/95 backdrop-blur">
-              <div className="w-56 shrink-0 px-3 py-1 text-[10px] tracking-wider text-muted-foreground uppercase">
+              <div className="w-36 shrink-0 px-3 py-1 text-[10px] tracking-wider text-muted-foreground uppercase sm:w-56">
                 Activity
               </div>
               <div className="relative min-w-0 flex-1 pr-3">
@@ -240,7 +242,7 @@ export function WindowRibbon({
                     hero && "border-l-2 border-cyan-300/70",
                   )}
                 >
-                  <div className="flex w-56 shrink-0 flex-col justify-center px-3 py-1">
+                  <div className="flex w-36 shrink-0 flex-col justify-center px-3 py-1 sm:w-56">
                     <div className="flex items-center gap-2">
                       <span className="font-mono text-[10px] text-muted-foreground">
                         {lane.activity_id}
@@ -283,7 +285,10 @@ export function WindowRibbon({
       {hover ? (
         <div
           className="pointer-events-none fixed z-50 max-w-sm rounded-md border border-border bg-background px-2.5 py-2 text-xs shadow-lg"
-          style={{ left: hover.x + 14, top: hover.y + 14 }}
+          style={{
+            left: Math.min(hover.x + 14, window.innerWidth - 240),
+            top: Math.min(hover.y + 14, window.innerHeight - 120),
+          }}
         >
           <div className="flex items-center gap-2">
             <span
