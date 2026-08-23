@@ -189,7 +189,10 @@ def _demanded_productive_hours_on_day(ev, bar: ScheduledBar, day: str) -> float:
 # The loop
 # --------------------------------------------------------------------------- #
 
-def run_agent(lookahead_h: int = LOOKAHEAD_H, *, use_llm: bool = True) -> AgentRun:
+def run_agent(lookahead_h: int = LOOKAHEAD_H, *, use_llm: bool = True, return_evals: bool = False):
+    """Run the full loop and return the AgentRun. With return_evals=True, returns
+    (AgentRun, evals) so the unattended entry point can build the record chain from
+    the same evaluation (citations, series digests) without re-evaluating."""
     reg = load_registry()
     faces = _load_faces()
     thermal = _load_thermal()
@@ -314,6 +317,7 @@ def run_agent(lookahead_h: int = LOOKAHEAD_H, *, use_llm: bool = True) -> AgentR
     conflict_of = {aid: c for c in conflicts for aid in c.competing_activity_ids}
     resolved = 0
     escalated = 0
+    outcomes: dict[str, dict] = {}          # per-target action + gate verdict, for the record chain
 
     for aid in targets:
         ev = evals[aid]
@@ -327,6 +331,7 @@ def run_agent(lookahead_h: int = LOOKAHEAD_H, *, use_llm: bool = True) -> AgentR
         cid = conflict_of[aid].id if aid in conflict_of else None
         seq = _emit_attempts(steps, seq, ev, attempts, cid)
         outcome = attempts[-1]
+        outcomes[aid] = _outcome_record(attempts)
         if outcome.kind is ProposalKind.ESCALATE or outcome.escalated:
             escalated += 1
             if aid in conflict_of:
@@ -338,13 +343,16 @@ def run_agent(lookahead_h: int = LOOKAHEAD_H, *, use_llm: bool = True) -> AgentR
 
     model_name = get_model() if model_configured else MODEL_NAME
 
-    return AgentRun(
+    run = AgentRun(
         run_id=RUN_ID, site_id=SITE_ID, started_at=_now(0), finished_at=_now(6 + len(targets)),
         status=RunStatus.COMPLETED, model_name=model_name, lookahead_h=lookahead_h, tier="commit",
         scanned_count=len(in_window), flagged_count=len(flagged),
         conflicts_count=len(conflicts), resolved_count=resolved, escalated_count=escalated,
         conflicts=conflicts, steps=steps, replay=not model_configured,
     )
+    if return_evals:
+        return run, evals, outcomes
+    return run
 
 
 # --------------------------------------------------------------------------- #
@@ -373,6 +381,33 @@ def _resolution_targets(evals: dict, acts_by_id: dict, conflicts: list[Conflict]
     picked.sort(key=lambda x: (not acts_by_id[x].get("is_near_critical"),
                                acts_by_id[x].get("total_float_d") if acts_by_id[x].get("total_float_d") is not None else 1e9))
     return picked[:cap]
+
+
+def _outcome_record(attempts: list[Attempt]) -> dict:
+    """Distil one activity's ladder into the fields a record entry needs: the
+    action taken and the gate verdict that stands (the last one produced)."""
+    from packages.schemas.record import GateDecision as RecGateDecision
+    from packages.schemas.record import RecordAction
+
+    outcome = attempts[-1]
+    gate_dec = gate_rule = gate_reason = None
+    for att in attempts:
+        if att.verdict is not None:
+            gate_dec = RecGateDecision(att.verdict.decision.value)
+            gate_rule = att.verdict.rule_id
+            gate_reason = att.verdict.reason
+    try:
+        action = RecordAction(outcome.kind.value)       # shift/split/mitigate/rfi/escalate share values
+    except ValueError:                                  # pragma: no cover - defensive
+        action = RecordAction.NO_ACTION
+    return {
+        "action": action,
+        "gate_decision": gate_dec,
+        "gate_rule_id": gate_rule,
+        "gate_reason": gate_reason,
+        "proposal_summary": outcome.proposal.rationale[:600],
+        "approver": None,                               # auto-approved / routed to a human; no named approver in REPLAY
+    }
 
 
 def _emit_attempts(steps: list[AgentStep], seq: int, ev, attempts: list[Attempt],

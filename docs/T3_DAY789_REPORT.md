@@ -160,7 +160,61 @@ fixtures are untouched** (T1 is mid-build); adopt the live ids deliberately.
 
 ## Day 8 — actions + record
 
-_(pending)_
+### What shipped
+
+| Deliverable | File |
+|---|---|
+| 13-tool surface + gated enforcement | [tools.py](apps/api/agent/tools.py) |
+| Hash-chain record builder + verify | [record.py](apps/api/agent/record.py) |
+| Unattended entry point (run + chain + summary) | [unattended.py](apps/api/agent/unattended.py) |
+| Record payload handoff to T2 (#7) | [T3_RECORD_PAYLOAD_HANDOFF.md](docs/T3_RECORD_PAYLOAD_HANDOFF.md) |
+| Committed example chain | [record_chain_live.json](data/fixtures/record_chain_live.json) |
+| Tool tests (gated enforcement) | [test_tools.py](tests/test_tools.py) |
+| Record tests (canonical JSON + tampering) | [test_record.py](tests/test_record.py) |
+| Day-8 gate test (unattended run) | [test_unattended.py](tests/test_unattended.py) |
+
+### The three gated tools cannot be reached without a verdict
+
+`shift_activity`, `split_activity`, `notify_crew` each call `require_approval`
+first and raise `GateError` on a missing or non-approve `GateVerdict`.
+`test_tools.py` proves it (none/deny → raise; approve → run). The loop's own trace
+also satisfies this: `test_agent_loop.test_every_gated_act_has_a_preceding_gate_approval`.
+The demo-critical case — **A-1205's hold point can never be quietly resolved by a
+mitigation** — is enforced by the ladder pre-check and asserted in both test files.
+
+### The record chain
+
+- `entry.hash = sha256(canonical_json(payload) || prev_hash)`; genesis prev_hash =
+  64 zeros; one canonical hash (`packages/schemas/record.py`), never re-derived.
+- **series_digest reused** from `evaluate.py`'s `_series_digest` (via
+  `ev.provenance`), not recomputed — no second, differently-canonicalised hash.
+- **Canonical JSON is deterministic across a re-serialisation** (round-trip test),
+  and integral floats fold to ints (`compliant_hours: 3.0` → `3`) so the Python
+  worker and the JS browser hash identically.
+- **Tampering is caught:** mutate an entry's payload (or forge a hash) → `verify_chain`
+  returns False. Tested.
+- **Append-only:** no update/delete path; adding is building a new chain over one
+  more payload (the old hashes are unchanged — tested).
+- **Provenance carried through:** `clause_cited` (≥20, e.g. the full ACI 301/305
+  clause), `standard_ref`, `fg_activity_ids` reach every entry. **Caveat:**
+  `fg_activity_ids` is empty on faces whose series carried no FG handle in the
+  current bundle (e.g. WF-SUB-02 / A-1237) — a data-coverage gap flagged to T2, not
+  a schema issue.
+
+### The Day-8 gate
+
+`python -m apps.api.agent.unattended` → runs the whole loop with **zero manual
+steps**, writes `agent_run_live.json` + `record_chain_live.json` + `agent_run_summary.json`,
+and the **22-entry chain verifies** (`chain_verified=True`). This is exactly what T2's
+cron calls tomorrow. `test_unattended.py` is the gate in CI.
+
+- [x] All 13 tools implemented; the three gated ones unreachable without a verdict, proven by test
+- [x] `record.py` — hash chain, canonical JSON, `verify_chain`, tampering test that fails
+- [x] `clause_cited`, `standard_ref`, `fg_activity_ids` carried to every entry
+- [x] One entry point runs the full loop unattended and writes a chained record
+- [x] Record payload shape shipped to T2 with a committed example
+- [x] Fixtures T1 builds against untouched; id migration reported as a table (above)
+- [x] `pytest tests/ -q` green — **209 passed, 13 skipped** with `LLM_BASE_URL` unset
 
 ---
 

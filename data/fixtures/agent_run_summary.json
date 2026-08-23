@@ -1,0 +1,14 @@
+{
+  "run_id": "agent-2026-08-24-0000-commit-live",
+  "site_id": "NPX-FAB-P2",
+  "model_name": "none (deterministic proposer \u2014 fixed strategy order, no LLM)",
+  "scanned_count": 62,
+  "flagged_count": 22,
+  "conflicts_count": 11,
+  "resolved_count": 11,
+  "escalated_count": 1,
+  "record_entries": 22,
+  "chain_verified": true,
+  "head_hash": "aa5a593229771cc234ad1a86f9d5c4e9374dfb682e8852230a43a60e228efd6d",
+  "steps": 37
+}
