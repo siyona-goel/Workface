@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "title": "Assumptions & limitations",
+  "intro": "WORKFACE plans and records thermal work-windows. It is advisory and contractual — it does not certify, and it does not replace the field measurement the referenced standards require.",
+  "generated_by": "T3, Day 9 (Task J). Coefficient sensitivities computed from the current code.",
+  "limitations": [
+    {"id": "no_wind_field", "title": "No wind field", "body": "FortyGuard env_params carries no wind speed. Wind drives the evaporation rate, WBGT, the convective term in the surface model, and the TMS 602 masonry trigger. We take wind as a site-level scalar from a free feed — not spatially resolved.", "source": "WORKFACE_TECH_SPEC §12.1"},
+    {"id": "surface_model_is_a_model", "title": "The surface model is a model", "body": "A first-order energy balance calibrated from published absorptivity/emissivity ranges and validated for plausibility, not against a field probe. It does not replace the surface thermometer the standards require.", "source": "WORKFACE_TECH_SPEC §12.2"},
+    {"id": "twelve_hour_horizon", "title": "12-hour forecast horizon", "body": "Handled by the three-tier architecture. Tier 0 is a climatological probability, not a forecast — the UI must say so.", "source": "WORKFACE_TECH_SPEC §12.3"},
+    {"id": "registry_depth", "title": "Registry depth", "body": "12 trades, US practice, hand-curated (registry 2026.08.20-a). Real deployment needs the submittal-register integration for that project's approved product data sheets.", "source": "WORKFACE_TECH_SPEC §12.4"},
+    {"id": "advisory_only", "title": "Advisory, not certifying", "body": "WORKFACE plans and records; it does not certify and does not replace inspection or the engineer of record.", "source": "WORKFACE_TECH_SPEC §12.5"},
+    {"id": "sparse_imagery", "title": "Sparse imagery on greenfield", "body": "streetview and satellite coverage is thin on greenfield sites; coverage gaps degrade with a visible confidence downgrade (the twin steps down one level when the back hemisphere is unsegmented — all 40 demo captures).", "source": "WORKFACE_TECH_SPEC §12.6"},
+    {"id": "synthetic_schedule", "title": "The schedule is synthetic", "body": "The 328-activity P6 schedule is generated. The geography is real (Phoenix-area site) and the standards are real (SSPC-PA 1, ACI 301/305/305.1, TMS 602, OSHA heat guidance). Float, milestone dates and sequencing are illustrative.", "source": "T3 Day-9 addition"}
+  ],
+  "calibration": [
+    {"coefficient": "eps_weathered_galvanised_deck", "value": 0.85, "unit": "emissivity", "source": "ASHRAE Fundamentals ch.26 (weathered galvanised 0.7-0.9)", "sensitivity": "The knife-edge. Worst dawn offset margin on WF-FAB2-07: -0.02 C at eps=0.85 (closure holds by a hair) -> +3.47 C at eps=0.23 (bright galvanising, closure vanishes). Computed from current code.", "worst_dawn_margin_c_at_0_85": -0.02, "worst_dawn_margin_c_at_0_23": 3.47},
+    {"coefficient": "q_lw_clear_sky_net_longwave", "value": 130.0, "unit": "W/m2", "source": "arid-climate clear-sky net longwave (CITATIONS.md)", "sensitivity": "Same fragility as eps; the dawn closure scales linearly with it."},
+    {"coefficient": "dew_point_offset", "value": 2.8, "unit": "C", "source": "SSPC-PA 1 (AMPP)", "sensitivity": "Below the offset, coating is out-of-spec (RFI-only)."},
+    {"coefficient": "wbgt_work_fraction_bands", "value": [1.0, 0.75, 0.5, 0.25], "unit": "work fraction at WBGT >= 27.5/29.0/30.5 C", "source": "WORKFACE placeholder bands, pending ACGIH licence (ACGIH table copyrighted)", "sensitivity": "wbgt_rest_ratio_escalate fires below 0.5 work fraction (>50% rest)."},
+    {"coefficient": "sfrm_continuity_40f_24h", "value": {"run_hours": 24, "lead_hours": 24, "t_min_c": 4.0}, "unit": "h / C", "source": "manufacturer PDS / continuity practice", "sensitivity": "48 protected hours inside a 72 h horizon — only one window survives per face; the rest is NO_DATA (fail closed)."},
+    {"coefficient": "policy_thresholds", "value": {"max_float_days_consumed": 3.0, "max_float_fraction_consumed": 1.0, "forecast_max_age_h": 2.0, "night_start_hour": 19, "night_end_hour": 5}, "source": "config/policy.yaml", "sensitivity": "The fractional float cap catches a thin-float near-critical activity an absolute cap never could."},
+    {"coefficient": "crew_capacity", "value": "per-trade day-shift heads, 06:00-18:00", "source": "config/crews.yaml", "sensitivity": "Night-only compliant windows surface as crew-unavailable and route to a lit night-shift mitigation, never a silent night booking."}
+  ],
+  "closure_condition": "The dawn dew-point closure requires a clear, dry, calm dawn. A humid monsoon dawn does not close the window (more cloud shrinks the (1 - cloud/8) net-longwave term). The demo stands on a clear-sky August dawn."
+}

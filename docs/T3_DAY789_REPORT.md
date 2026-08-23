@@ -220,4 +220,82 @@ cron calls tomorrow. `test_unattended.py` is the gate in CI.
 
 ## Day 9 — calibration, assumptions, CP-SAT go/no-go
 
-_(pending)_
+Branch `aach-day9`.
+
+### §12 / Task I — the go/no-go, run before any Day-9 code
+
+Run at **2026-08-23T21:20:14Z** (machine clock; site-local demo horizon is 24 Aug):
+
+1. **`pytest tests/ -q` with `LLM_BASE_URL` unset — green?** ✅ **Yes** — 209 passed, 13 skipped.
+2. **Unattended entry point completes and writes a chain `verify_chain` accepts, zero manual steps?** ✅ **Yes** — `python -m apps.api.agent.unattended` → 22 entries, `chain_verified=True`.
+3. **A-1237 deny case still green, reason reads human?** ✅ **Yes** — `test_DENY_CASE_A1237_is_the_day7_gate` passes; reason is the milestone sentence quoted in §16.1.
+4. **T1 has the id migration table, T2 has the record payload shape?** ✅ **Yes** — migration table committed in this report (Day 7); T2 handoff committed as [T3_RECORD_PAYLOAD_HANDOFF.md](docs/T3_RECORD_PAYLOAD_HANDOFF.md) + example chain (Day 8).
+
+**All four yes → Task K (CP-SAT) was on the table.** See the decision below.
+
+### §16.9 — Task J calibration: the ε sensitivity, restated as a number
+
+Computed from the **current code** (`scripts/make_surface_fixtures.py --sensitivity` and
+a direct offset evaluation on the hero face WF-FAB2-07):
+
+| ε (galvanised deck) | Worst dawn `offset_dew_point` margin | Closure |
+|---|---|---|
+| **0.85 (weathered)** | **−0.02 °C** | holds — by a hair |
+| **0.23 (bright)** | **+3.47 °C** | vanishes entirely |
+
+**These have not moved since Day 5.** The whole dawn dew-point closure — the demo's
+hero beat — turns on ~0.02 °C at ε=0.85. It is the single most load-bearing number in
+the project, and it is now written into the app's assumptions page **before a judge
+finds it**. Q_lw = 130 W/m² carries the same linear fragility. The closure needs a
+**clear, dry, calm** dawn; a humid monsoon dawn does not close it.
+
+Full calibration table (ε, Q_lw, the 2.8 °C SSPC-PA 1 offset, the WBGT bands, the SFRM
+24 h/24 h continuity pair, and every `policy.yaml` / `crews.yaml` threshold) with value,
+source and sensitivity: [ASSUMPTIONS.md](docs/ASSUMPTIONS.md).
+
+### §13 / Task J — the assumptions page (shipped to T1)
+
+Shipped as **content T1 can drop in**, not a React component:
+- [docs/ASSUMPTIONS.md](docs/ASSUMPTIONS.md) — the page, prose + a calibration table.
+- [data/fixtures/assumptions.json](data/fixtures/assumptions.json) — the same content,
+  machine-readable (7 limitations + 7 calibration entries + the closure condition), so
+  T1 can render it as structured content in their surface.
+
+Contents: the six `WORKFACE_TECH_SPEC §12` limitations (no wind field; the surface model
+is a model; the 12-hour horizon; registry depth = 12 trades hand-curated; advisory not
+certifying; sparse greenfield imagery) **plus** the synthetic-schedule caveat (geography
+and standards are real) **and** the coefficient sensitivities above.
+
+### §14 / Task K — CP-SAT go/no-go: **deliberately not started**
+
+All four go/no-go answers were yes, so Task K was permitted. **Decision: do not start
+CP-SAT.** This is option (a) in the DoD — *"not started, deliberately, and said so"* —
+which `WORKFACE_SCHEDULE.md` and §14 explicitly call a **good** answer.
+
+Reasoning:
+- **The greedy packer is clean and the trace is clean** — the whole suite is green and
+  the Day-7/8 gates hold. §7.2's guard rail: *"If the greedy packer is working and the
+  trace is clean, do the deck instead."*
+- **The greedy packer already gives the CP-SAT prize for the SFRM case.** CP-SAT's real
+  value is provable infeasibility; the greedy packer already proves, in a named and
+  explainable way, that **only two of the four SFRM crews fit the single compliant 24 h
+  window** and the other two are `crew_unavailable` — the sentence that goes on a slide.
+- **The risk is asymmetric.** OR-Tools is a heavy new dependency added at feature-freeze;
+  the abandon criterion (§14: revert if it is not passing the same `test_sequencer.py`
+  suite by 18:00) exists precisely because *"a half-finished solver is how teams lose."*
+  Trading a green codebase for a marginal, hard-to-verify gain is the wrong bet here.
+- **Task J is worth more to a judge than a second solver** (§13) — so the effort went to
+  the calibration pass and the assumptions page, which Day 10 depends on.
+
+The greedy packer is behind a clean interface (`pack.pack`), so a future CP-SAT would
+slot in behind a config flag defaulting to greedy with a guarded import — the door is
+left open without paying the cost now.
+
+### Day-9 gate status
+
+- [x] The four go/no-go answers written down before any Day-9 code (above)
+- [x] Calibration pass complete — ε, Q_lw, 2.8 °C offset, WBGT bands, SFRM 24/24, and every `policy.yaml`/`crews.yaml` threshold have a value, a source and a sensitivity
+- [x] Assumptions page shipped to T1 in a drop-in form (markdown + JSON): §12's six limitations + the ε knife-edge + the synthetic-schedule caveat
+- [x] The unattended entry point runs with zero manual steps and the chain verifies
+- [x] CP-SAT: **(a) not started, deliberately, and said so** — never a half-built third state
+- [ ] Branch `aach-day9`, committed, not pushed *(committing now)*
