@@ -1,0 +1,245 @@
+{
+  "schema_version": "1.0.0",
+  "site_id": "NPX-FAB-P2",
+  "generated_for": "Day-7 mock site systems \u2014 agent action surface",
+  "tz": "America/Phoenix",
+  "crew_calendar": {
+    "default_heads": 24,
+    "days": {
+      "2026-08-24": {
+        "available_heads": 28,
+        "reserved": 8,
+        "blackout": false,
+        "notes": null
+      },
+      "2026-08-25": {
+        "available_heads": 28,
+        "reserved": 9,
+        "blackout": false,
+        "notes": null
+      },
+      "2026-08-26": {
+        "available_heads": 12,
+        "reserved": 10,
+        "blackout": false,
+        "notes": "half the structural crew on FAB1 outage support"
+      },
+      "2026-08-27": {
+        "available_heads": 28,
+        "reserved": 8,
+        "blackout": false,
+        "notes": null
+      },
+      "2026-08-28": {
+        "available_heads": 28,
+        "reserved": 9,
+        "blackout": false,
+        "notes": null
+      },
+      "2026-08-29": {
+        "available_heads": 28,
+        "reserved": 10,
+        "blackout": false,
+        "notes": null
+      },
+      "2026-08-30": {
+        "available_heads": 4,
+        "reserved": 0,
+        "blackout": true,
+        "notes": "Sunday \u2014 skeleton crew only"
+      }
+    }
+  },
+  "ready_mix": {
+    "plant": "Phoenix Plant 3",
+    "lead_time_h": 18,
+    "slots_by_day": {
+      "2026-08-24": [
+        {
+          "hour": 5,
+          "booked": false,
+          "plant": "Phoenix Plant 3"
+        },
+        {
+          "hour": 6,
+          "booked": false,
+          "plant": "Phoenix Plant 3"
+        },
+        {
+          "hour": 7,
+          "booked": true,
+          "plant": "Phoenix Plant 3"
+        },
+        {
+          "hour": 14,
+          "booked": false,
+          "plant": "Phoenix Plant 3"
+        },
+        {
+          "hour": 15,
+          "booked": true,
+          "plant": "Phoenix Plant 3"
+        }
+      ],
+      "2026-08-25": [
+        {
+          "hour": 5,
+          "booked": false,
+          "plant": "Phoenix Plant 3"
+        },
+        {
+          "hour": 6,
+          "booked": false,
+          "plant": "Phoenix Plant 3"
+        },
+        {
+          "hour": 7,
+          "booked": true,
+          "plant": "Phoenix Plant 3"
+        },
+        {
+          "hour": 14,
+          "booked": false,
+          "plant": "Phoenix Plant 3"
+        },
+        {
+          "hour": 15,
+          "booked": true,
+          "plant": "Phoenix Plant 3"
+        }
+      ],
+      "2026-08-26": [
+        {
+          "hour": 5,
+          "booked": false,
+          "plant": "Phoenix Plant 3"
+        },
+        {
+          "hour": 6,
+          "booked": false,
+          "plant": "Phoenix Plant 3"
+        },
+        {
+          "hour": 7,
+          "booked": true,
+          "plant": "Phoenix Plant 3"
+        },
+        {
+          "hour": 14,
+          "booked": false,
+          "plant": "Phoenix Plant 3"
+        },
+        {
+          "hour": 15,
+          "booked": true,
+          "plant": "Phoenix Plant 3"
+        }
+      ],
+      "2026-08-27": [
+        {
+          "hour": 5,
+          "booked": false,
+          "plant": "Phoenix Plant 3"
+        },
+        {
+          "hour": 6,
+          "booked": false,
+          "plant": "Phoenix Plant 3"
+        },
+        {
+          "hour": 7,
+          "booked": true,
+          "plant": "Phoenix Plant 3"
+        },
+        {
+          "hour": 14,
+          "booked": false,
+          "plant": "Phoenix Plant 3"
+        },
+        {
+          "hour": 15,
+          "booked": true,
+          "plant": "Phoenix Plant 3"
+        }
+      ],
+      "2026-08-28": [
+        {
+          "hour": 5,
+          "booked": false,
+          "plant": "Phoenix Plant 3"
+        },
+        {
+          "hour": 6,
+          "booked": false,
+          "plant": "Phoenix Plant 3"
+        },
+        {
+          "hour": 7,
+          "booked": true,
+          "plant": "Phoenix Plant 3"
+        },
+        {
+          "hour": 14,
+          "booked": false,
+          "plant": "Phoenix Plant 3"
+        },
+        {
+          "hour": 15,
+          "booked": true,
+          "plant": "Phoenix Plant 3"
+        }
+      ],
+      "2026-08-29": [
+        {
+          "hour": 6,
+          "booked": false,
+          "plant": "Phoenix Plant 3"
+        },
+        {
+          "hour": 10,
+          "booked": true,
+          "plant": "Phoenix Plant 3"
+        }
+      ],
+      "2026-08-30": [
+        {
+          "hour": 6,
+          "booked": false,
+          "plant": "Phoenix Plant 3"
+        },
+        {
+          "hour": 10,
+          "booked": true,
+          "plant": "Phoenix Plant 3"
+        }
+      ]
+    }
+  },
+  "lighting": {
+    "towers_total": 6,
+    "towers_free": 2,
+    "zones_covered": [
+      "FAB2",
+      "UTIL",
+      "SOUTH"
+    ],
+    "notes": "2 light plants on rent through 30 Aug; PARK/ROAD not covered at night"
+  },
+  "heated_enclosure": {
+    "units_total": 3,
+    "units_free": 1,
+    "max_coverage_m2_per_unit": 200.0,
+    "notes": "One 200 m\u00b2 heated tent free; two units already on FAB2 L1 cure"
+  },
+  "mitigation_ids": [
+    "shade_temporary",
+    "night_shift",
+    "evaporative_cooling",
+    "heated_enclosure",
+    "readymix_retimed",
+    "split_pour",
+    "preheat_substrate",
+    "crew_augment"
+  ],
+  "catalog_ref": "data/mitigations/catalog.json"
+}
