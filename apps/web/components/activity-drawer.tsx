@@ -53,7 +53,7 @@ export function ActivityDrawer({ activityId, open, onClose }: Props) {
         role="dialog"
         aria-modal="true"
         aria-labelledby="activity-drawer-title"
-        className="fixed inset-y-0 right-0 z-[60] flex w-full max-w-lg flex-col border-l border-border bg-background shadow-2xl"
+        className="fixed inset-y-0 right-0 z-[60] flex w-full max-w-full flex-col border-l border-border bg-background shadow-2xl sm:max-w-lg"
       >
         <header className="flex items-start justify-between gap-3 border-b border-border/70 px-4 py-3">
           <div className="min-w-0">

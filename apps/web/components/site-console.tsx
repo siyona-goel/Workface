@@ -104,29 +104,33 @@ export function SiteConsole() {
   const mapFaceId = filters.workFaceId ?? focusedFaceId;
 
   return (
-    <div className="flex h-dvh min-h-0 flex-col bg-background text-foreground">
-      <header className="flex items-center gap-4 border-b border-border/70 px-4 py-2.5">
-        <div className="flex min-w-0 shrink items-baseline gap-3">
+    <div className="flex min-h-dvh flex-col bg-background text-foreground lg:h-dvh lg:min-h-0 lg:overflow-hidden">
+      <header className="flex flex-wrap items-center gap-x-3 gap-y-1.5 border-b border-border/70 px-3 py-2 sm:px-4 sm:py-2.5">
+        <div className="flex min-w-0 items-baseline gap-3">
           <span className="shrink-0 text-sm font-semibold tracking-[0.22em]">
             WORKFACE
           </span>
-          <span className="hidden truncate text-xs text-muted-foreground sm:inline">
+          <span className="hidden truncate text-xs text-muted-foreground md:inline">
             {consoleData.project_name}
           </span>
         </div>
-        <div className="flex shrink-0 items-center gap-2 text-[11px] text-muted-foreground">
+        <div className="flex flex-wrap items-center gap-2 text-[11px] text-muted-foreground">
           <span className="rounded-sm border border-emerald-500/30 bg-emerald-500/10 px-1.5 py-0.5 font-medium tracking-wider text-emerald-200 uppercase">
             Replay
           </span>
-          <span className="font-mono">{consoleData.project_id}</span>
-          <span>data date {formatDay(consoleData.data_date)}</span>
-          <span>
+          <span className="hidden font-mono sm:inline">
+            {consoleData.project_id}
+          </span>
+          <span className="hidden md:inline">
+            data date {formatDay(consoleData.data_date)}
+          </span>
+          <span className="hidden lg:inline">
             lookahead {formatDay(consoleData.demo_window.start)}–
             {formatDay(consoleData.demo_window.end)}
           </span>
         </div>
-        <div className="ml-auto flex min-w-0 shrink-0 items-center gap-3">
-          <p className="hidden max-w-sm truncate text-[11px] text-muted-foreground xl:block">
+        <div className="ml-auto flex items-center gap-3">
+          <p className="hidden max-w-xs truncate text-[11px] text-muted-foreground xl:block">
             {consoleData.provenance}
           </p>
           <AppNav current="console" />
@@ -140,7 +144,7 @@ export function SiteConsole() {
         resultCount={rows.length}
       />
 
-      <div className="grid min-h-0 flex-[0.9] grid-cols-1 lg:grid-cols-[minmax(0,1fr)_280px]">
+      <div className="grid h-[42vw] min-h-[200px] max-h-[320px] shrink-0 grid-cols-1 lg:h-auto lg:max-h-none lg:min-h-0 lg:flex-[0.9] lg:grid-cols-[minmax(0,1fr)_280px]">
         <SiteMapLoader
           selectedWorkFaceId={mapFaceId}
           onSelectWorkFace={selectWorkFace}
@@ -156,7 +160,7 @@ export function SiteConsole() {
         </div>
       </div>
 
-      <section className="flex min-h-[220px] min-w-0 flex-[1.2] flex-col">
+      <section className="flex h-[360px] min-h-[280px] min-w-0 flex-col lg:h-auto lg:min-h-0 lg:flex-[1.2]">
         <WindowRibbon
           activities={rows}
           filters={filters}
@@ -169,7 +173,7 @@ export function SiteConsole() {
         />
       </section>
 
-      <section className="min-h-0 flex-[0.7]">
+      <section className="flex h-[300px] min-h-[240px] flex-col lg:h-auto lg:min-h-0 lg:flex-[0.7]">
         <ActivityTable
           activities={rows}
           selectedId={selectedActivityId}

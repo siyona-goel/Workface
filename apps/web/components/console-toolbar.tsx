@@ -17,7 +17,7 @@ type Props = {
 };
 
 const selectClass =
-  "h-8 max-w-[220px] truncate rounded-md border border-border bg-background/60 px-2 text-xs text-foreground outline-none focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40";
+  "h-8 w-full truncate rounded-md border border-border bg-background/60 px-2 text-xs text-foreground outline-none focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 sm:max-w-[220px]";
 
 export function ConsoleToolbar({
   filters,
@@ -35,9 +35,9 @@ export function ConsoleToolbar({
   }
 
   return (
-    <div className="flex flex-col gap-3 border-b border-border/70 bg-card/40 px-4 py-3">
-      <div className="flex items-end gap-3">
-        <label className="flex min-w-40 flex-col gap-1">
+    <div className="flex flex-col gap-2 border-b border-border/70 bg-card/40 px-3 py-2 sm:gap-3 sm:px-4 sm:py-3">
+      <div className="flex flex-wrap items-end gap-2 sm:gap-3 lg:flex-nowrap">
+        <label className="flex min-w-[140px] flex-1 flex-col gap-1 sm:max-w-[220px] sm:flex-none">
           <span className="text-[10px] font-medium tracking-[0.14em] text-muted-foreground uppercase">
             Trade
           </span>
@@ -57,7 +57,7 @@ export function ConsoleToolbar({
           </select>
         </label>
 
-        <label className="flex min-w-40 flex-col gap-1">
+        <label className="flex min-w-[140px] flex-1 flex-col gap-1 sm:max-w-[220px] sm:flex-none">
           <span className="text-[10px] font-medium tracking-[0.14em] text-muted-foreground uppercase">
             Work face
           </span>
@@ -81,7 +81,7 @@ export function ConsoleToolbar({
           </select>
         </label>
 
-        <div className="flex shrink-0 items-center gap-1.5 pb-0.5">
+        <div className="flex min-w-0 flex-wrap items-center gap-1.5 pb-0.5 lg:flex-1">
           {VERDICTS.map((v) => (
             <WindowChip
               key={v}
@@ -95,7 +95,7 @@ export function ConsoleToolbar({
           ))}
         </div>
 
-        <div className="ml-auto flex shrink-0 items-center gap-2 pb-0.5">
+        <div className="flex shrink-0 items-center gap-2 pb-0.5 lg:ml-auto">
           <Toggle
             pressed={filters.lookaheadOnly}
             onClick={() =>

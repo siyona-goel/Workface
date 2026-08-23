@@ -21,25 +21,39 @@ type Props = {
 export function ActivityTable({ activities, selectedId, onSelect }: Props) {
   return (
     <div className="flex h-full min-h-0 flex-col border-t border-border/70 bg-card/20">
-      <div className="flex items-baseline justify-between px-4 py-2">
+      <div className="flex items-baseline justify-between gap-2 px-3 py-2 sm:px-4">
         <h2 className="text-[10px] font-medium tracking-[0.16em] text-muted-foreground uppercase">
           Activities
         </h2>
-        <p className="text-[10px] text-muted-foreground">
-          {activities.length} in view · click a row to open the detail drawer
+        <p className="truncate text-[10px] text-muted-foreground">
+          {activities.length} in view
+          <span className="hidden sm:inline">
+            {" "}
+            · click a row to open the detail drawer
+          </span>
         </p>
       </div>
       <div className="min-h-0 flex-1 overflow-auto">
-        <table className="w-full min-w-[960px] border-collapse text-left text-[12px]">
+        <table className="w-full min-w-[520px] border-collapse text-left text-[12px] lg:min-w-[960px]">
           <thead className="sticky top-0 z-10 bg-background/95 text-[10px] font-medium tracking-wider text-muted-foreground uppercase backdrop-blur">
             <tr className="border-b border-border/70">
               <th className="px-3 py-2 font-medium">ID</th>
               <th className="px-3 py-2 font-medium">Activity</th>
-              <th className="px-3 py-2 font-medium">Trade</th>
-              <th className="px-3 py-2 font-medium">Work face</th>
-              <th className="px-3 py-2 font-medium">Planned</th>
-              <th className="px-3 py-2 font-medium">Dur</th>
-              <th className="px-3 py-2 font-medium">Float</th>
+              <th className="hidden px-3 py-2 font-medium md:table-cell">
+                Trade
+              </th>
+              <th className="hidden px-3 py-2 font-medium lg:table-cell">
+                Work face
+              </th>
+              <th className="hidden px-3 py-2 font-medium md:table-cell">
+                Planned
+              </th>
+              <th className="hidden px-3 py-2 font-medium sm:table-cell">
+                Dur
+              </th>
+              <th className="hidden px-3 py-2 font-medium lg:table-cell">
+                Float
+              </th>
               <th className="px-3 py-2 font-medium">Window</th>
               <th className="px-3 py-2 text-right font-medium">$ at risk</th>
             </tr>
@@ -90,29 +104,29 @@ export function ActivityTable({ activities, selectedId, onSelect }: Props) {
                       </div>
                     </td>
                     <td
-                      className="max-w-[160px] truncate px-3 py-2 align-top text-muted-foreground"
+                      className="hidden max-w-[160px] truncate px-3 py-2 align-top text-muted-foreground md:table-cell"
                       title={ev?.trade_display_name ?? tradeShort(a.trade_id)}
                     >
                       {tradeShort(a.trade_id)}
                     </td>
                     <td
-                      className="max-w-[180px] truncate px-3 py-2 align-top text-muted-foreground"
+                      className="hidden max-w-[180px] truncate px-3 py-2 align-top text-muted-foreground lg:table-cell"
                       title={faceName(a.work_face_id)}
                     >
                       {faceName(a.work_face_id)}
                     </td>
-                    <td className="whitespace-nowrap px-3 py-2 align-top font-mono text-[11px] text-muted-foreground">
+                    <td className="hidden whitespace-nowrap px-3 py-2 align-top font-mono text-[11px] text-muted-foreground md:table-cell">
                       {formatWhen(a.planned_start)}
                       <span className="block text-[10px] opacity-70">
                         → {formatWhen(a.planned_finish)}
                       </span>
                     </td>
-                    <td className="px-3 py-2 align-top font-mono text-[11px] text-muted-foreground">
+                    <td className="hidden px-3 py-2 align-top font-mono text-[11px] text-muted-foreground sm:table-cell">
                       {formatHours(a.duration_h)}
                     </td>
                     <td
                       className={cn(
-                        "px-3 py-2 align-top font-mono text-[11px]",
+                        "hidden px-3 py-2 align-top font-mono text-[11px] lg:table-cell",
                         a.total_float_d === 0
                           ? "text-red-300"
                           : "text-muted-foreground",

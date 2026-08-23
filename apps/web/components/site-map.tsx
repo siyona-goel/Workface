@@ -179,7 +179,7 @@ export default function SiteMap({
         <DeckGLOverlay layers={layers} />
       </Map>
 
-      <div className="pointer-events-none absolute bottom-3 left-3 rounded-md border border-border/60 bg-background/85 px-2.5 py-1.5 text-[10px] text-muted-foreground backdrop-blur">
+      <div className="pointer-events-none absolute bottom-3 left-3 hidden rounded-md border border-border/60 bg-background/85 px-2.5 py-1.5 text-[10px] text-muted-foreground backdrop-blur sm:block">
         40 work faces · North Phoenix campus · hero pair outlined
       </div>
 

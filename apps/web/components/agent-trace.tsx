@@ -78,8 +78,8 @@ export function AgentTrace() {
   }, [focusedId, visibleCount]);
 
   return (
-    <div className="flex h-dvh min-h-0 flex-col bg-background text-foreground">
-      <header className="flex items-center gap-4 border-b border-border/70 px-4 py-2.5">
+    <div className="flex min-h-dvh flex-col bg-background text-foreground lg:h-dvh lg:min-h-0 lg:overflow-hidden">
+      <header className="flex flex-wrap items-center gap-x-3 gap-y-1.5 border-b border-border/70 px-3 py-2 sm:px-4 sm:py-2.5">
         <div className="flex items-baseline gap-3">
           <span className="text-sm font-semibold tracking-[0.22em]">
             WORKFACE
@@ -88,12 +88,12 @@ export function AgentTrace() {
             Agent trace
           </span>
         </div>
-        <div className="flex shrink-0 items-center gap-2 text-[11px] text-muted-foreground">
+        <div className="flex flex-wrap items-center gap-2 text-[11px] text-muted-foreground">
           <span className="rounded-sm border border-emerald-500/30 bg-emerald-500/10 px-1.5 py-0.5 font-medium tracking-wider text-emerald-200 uppercase">
             Replay
           </span>
-          <span className="font-mono">{agentRun.run_id}</span>
-          <span>
+          <span className="hidden font-mono md:inline">{agentRun.run_id}</span>
+          <span className="hidden sm:inline">
             {agentRun.scanned_count} scanned · {agentRun.flagged_count} flagged ·{" "}
             {agentRun.conflicts_count} conflicts
           </span>
@@ -103,20 +103,20 @@ export function AgentTrace() {
         </div>
       </header>
 
-      <div className="grid min-h-0 flex-1 grid-cols-1 lg:grid-cols-[minmax(260px,320px)_minmax(0,1fr)]">
-        <aside className="min-h-0 overflow-y-auto border-b border-border/70 lg:border-r lg:border-b-0">
-          <div className="px-4 py-3">
+      <div className="flex min-h-0 flex-1 flex-col lg:grid lg:grid-cols-[minmax(240px,320px)_minmax(0,1fr)]">
+        <aside className="max-h-[220px] shrink-0 overflow-y-auto border-b border-border/70 lg:max-h-none lg:border-r lg:border-b-0">
+          <div className="px-3 py-3 sm:px-4">
             <h2 className="text-[10px] font-medium tracking-[0.16em] text-muted-foreground uppercase">
               Conflicts
             </h2>
-            <p className="mt-1 text-[11px] text-muted-foreground">
+            <p className="mt-1 hidden text-[11px] text-muted-foreground sm:block">
               Grouped by work face and shift. {agentRun.resolved_count} resolved
               · {agentRun.escalated_count} escalated.
             </p>
           </div>
-          <ul className="flex flex-col gap-2 px-4 pb-4">
+          <ul className="flex gap-2 overflow-x-auto px-3 pb-4 sm:px-4 lg:flex-col lg:overflow-x-visible">
             {agentRun.conflicts.map((conflict) => (
-              <li key={conflict.id}>
+              <li key={conflict.id} className="min-w-[220px] lg:min-w-0">
                 <ConflictCard
                   conflict={conflict}
                   pressed={focusedId === conflict.id}
@@ -128,7 +128,7 @@ export function AgentTrace() {
         </aside>
 
         <section className="flex min-h-0 flex-col">
-          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border/70 px-4 py-2">
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border/70 px-3 py-2 sm:px-4">
             <div>
               <h2 className="text-[10px] font-medium tracking-[0.16em] text-muted-foreground uppercase">
                 Agent trace
