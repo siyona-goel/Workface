@@ -183,6 +183,10 @@ fs.copyFileSync(
   path.join(root, "data/fixtures/cure_fit_macropoxy646.json"),
   path.join(outDir, "cure-fit.json"),
 );
+fs.copyFileSync(
+  path.join(root, "data/fixtures/sample_agent_run.json"),
+  path.join(outDir, "agent-run.json"),
+);
 
 console.log(
   `wrote console.json (${activities.length} activities, ${work_faces.length} faces, ${evaluations.length} evals)`,
