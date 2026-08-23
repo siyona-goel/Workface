@@ -17,6 +17,16 @@ export type RibbonHour = {
   binding_constraint_id: string | null;
   margin: number | null;
   margin_unit: string | null;
+  t_air_c?: number | null;
+  t_surf_c?: number | null;
+  t_dew_c?: number | null;
+};
+
+export type RibbonConstraint = {
+  constraint_id: string;
+  type: string;
+  label: string;
+  citation_fragment: string;
 };
 
 export type RibbonEval = {
@@ -29,6 +39,11 @@ export type RibbonEval = {
   work_face_name: string;
   verdict: Verdict;
   verdict_summary: string;
+  citation?: string;
+  standard_ref?: string;
+  advisory_notice?: string;
+  offset_delta_c?: number | null;
+  constraints?: RibbonConstraint[];
   binding_constraint: {
     type: string;
     label: string;
@@ -174,6 +189,9 @@ export function buildPlaceholderHours(): RibbonHour[] {
     binding_constraint_id: null,
     margin: null,
     margin_unit: null,
+    t_air_c: null,
+    t_surf_c: null,
+    t_dew_c: null,
   }));
 }
 

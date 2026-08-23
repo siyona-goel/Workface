@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 
+import { ActivityDrawer } from "@/components/activity-drawer";
 import { ActivityTable } from "@/components/activity-table";
 import { ConsoleToolbar } from "@/components/console-toolbar";
 import { SiteMapLoader } from "@/components/site-map-loader";
@@ -34,6 +35,7 @@ export function SiteConsole() {
   const [evalsOnly, setEvalsOnly] = useState(true);
   const [heroOnly, setHeroOnly] = useState(false);
   const [focusedFaceId, setFocusedFaceId] = useState<string | null>(null);
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   const preVerdict = useMemo(
     () =>
@@ -87,6 +89,7 @@ export function SiteConsole() {
     setSelectedActivityId(activity.id);
     setFocusedFaceId(activity.work_face_id);
     setFilters((f) => ({ ...f, workFaceId: activity.work_face_id }));
+    setDrawerOpen(true);
   }
 
   function selectLane(activityId: string) {
@@ -94,6 +97,7 @@ export function SiteConsole() {
     const activity = consoleData.activities.find((a) => a.id === activityId);
     const ev = consoleData.evaluations.find((e) => e.activity_id === activityId);
     setFocusedFaceId(activity?.work_face_id ?? ev?.work_face_id ?? null);
+    setDrawerOpen(true);
   }
 
   const mapFaceId = filters.workFaceId ?? focusedFaceId;
@@ -168,6 +172,12 @@ export function SiteConsole() {
           onSelect={selectActivity}
         />
       </section>
+
+      <ActivityDrawer
+        activityId={selectedActivityId}
+        open={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+      />
     </div>
   );
 }
