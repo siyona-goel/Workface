@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 
 import { ActivityDrawer } from "@/components/activity-drawer";
 import { ActivityTable } from "@/components/activity-table";
+import { AppNav } from "@/components/app-nav";
 import { ConsoleToolbar } from "@/components/console-toolbar";
 import { SiteMapLoader } from "@/components/site-map-loader";
 import { WindowRibbon } from "@/components/window-ribbon";
@@ -104,16 +105,16 @@ export function SiteConsole() {
 
   return (
     <div className="flex h-dvh min-h-0 flex-col bg-background text-foreground">
-      <header className="flex flex-wrap items-center gap-4 border-b border-border/70 px-4 py-2.5">
-        <div className="flex items-baseline gap-3">
-          <span className="text-sm font-semibold tracking-[0.22em]">
+      <header className="flex items-center gap-4 border-b border-border/70 px-4 py-2.5">
+        <div className="flex min-w-0 shrink items-baseline gap-3">
+          <span className="shrink-0 text-sm font-semibold tracking-[0.22em]">
             WORKFACE
           </span>
-          <span className="hidden text-xs text-muted-foreground sm:inline">
+          <span className="hidden truncate text-xs text-muted-foreground sm:inline">
             {consoleData.project_name}
           </span>
         </div>
-        <div className="flex flex-wrap items-center gap-2 text-[11px] text-muted-foreground">
+        <div className="flex shrink-0 items-center gap-2 text-[11px] text-muted-foreground">
           <span className="rounded-sm border border-emerald-500/30 bg-emerald-500/10 px-1.5 py-0.5 font-medium tracking-wider text-emerald-200 uppercase">
             Replay
           </span>
@@ -124,9 +125,12 @@ export function SiteConsole() {
             {formatDay(consoleData.demo_window.end)}
           </span>
         </div>
-        <p className="ml-auto hidden max-w-sm truncate text-[11px] text-muted-foreground lg:block">
-          {consoleData.provenance}
-        </p>
+        <div className="ml-auto flex min-w-0 shrink-0 items-center gap-3">
+          <p className="hidden max-w-sm truncate text-[11px] text-muted-foreground xl:block">
+            {consoleData.provenance}
+          </p>
+          <AppNav current="console" />
+        </div>
       </header>
 
       <ConsoleToolbar

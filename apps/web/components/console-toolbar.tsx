@@ -36,7 +36,7 @@ export function ConsoleToolbar({
 
   return (
     <div className="flex flex-col gap-3 border-b border-border/70 bg-card/40 px-4 py-3">
-      <div className="flex flex-wrap items-end gap-3">
+      <div className="flex items-end gap-3">
         <label className="flex min-w-40 flex-col gap-1">
           <span className="text-[10px] font-medium tracking-[0.14em] text-muted-foreground uppercase">
             Trade
@@ -81,7 +81,7 @@ export function ConsoleToolbar({
           </select>
         </label>
 
-        <div className="flex flex-wrap items-center gap-1.5 pb-0.5">
+        <div className="flex shrink-0 items-center gap-1.5 pb-0.5">
           {VERDICTS.map((v) => (
             <WindowChip
               key={v}
@@ -95,7 +95,7 @@ export function ConsoleToolbar({
           ))}
         </div>
 
-        <div className="ml-auto flex flex-wrap items-center gap-2 pb-0.5">
+        <div className="ml-auto flex shrink-0 items-center gap-2 pb-0.5">
           <Toggle
             pressed={filters.lookaheadOnly}
             onClick={() =>

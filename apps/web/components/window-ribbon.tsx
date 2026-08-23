@@ -131,8 +131,8 @@ export function WindowRibbon({
 
   return (
     <section className="flex min-h-0 flex-col border-t border-border/70 bg-card/15">
-      <div className="flex flex-wrap items-baseline justify-between gap-2 px-4 py-2">
-        <div>
+      <div className="flex items-start justify-between gap-3 px-4 py-2">
+        <div className="min-w-0">
           <h2 className="text-[10px] font-medium tracking-[0.16em] text-muted-foreground uppercase">
             Window ribbon
           </h2>
@@ -149,7 +149,7 @@ export function WindowRibbon({
             </p>
           ) : null}
         </div>
-        <div className="flex flex-wrap items-center gap-3 text-[10px] text-muted-foreground">
+        <div className="flex shrink-0 items-center gap-3 text-[10px] text-muted-foreground">
           <button
             type="button"
             aria-pressed={evalsOnly}
