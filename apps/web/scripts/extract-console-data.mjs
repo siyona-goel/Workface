@@ -66,6 +66,12 @@ const work_faces = sched.work_faces.map((w) => ({
   sky_view_factor: w.sky_view_factor,
 }));
 
+function offsetDeltaC(tradeId) {
+  const trade = tradesFile.trades.find((t) => t.trade_id === tradeId);
+  const offset = trade?.constraints?.find((c) => c.type === "offset");
+  return typeof offset?.delta_c === "number" ? offset.delta_c : null;
+}
+
 const evaluations = ribbon.evaluations.map((e) => ({
   activity_id: e.activity_id,
   verdict: e.verdict,
@@ -128,6 +134,16 @@ const ribbonPayload = {
     work_face_name: e.work_face_name,
     verdict: e.verdict,
     verdict_summary: e.verdict_summary,
+    citation: e.citation,
+    standard_ref: e.standard_ref,
+    advisory_notice: e.advisory_notice,
+    offset_delta_c: offsetDeltaC(e.trade_id),
+    constraints: (e.constraints ?? []).map((c) => ({
+      constraint_id: c.constraint_id,
+      type: c.type,
+      label: c.label,
+      citation_fragment: c.citation_fragment,
+    })),
     binding_constraint: e.binding_constraint
       ? {
           type: e.binding_constraint.type,
@@ -143,6 +159,9 @@ const ribbonPayload = {
       binding_constraint_id: h.binding_constraint_id,
       margin: h.margin,
       margin_unit: h.margin_unit,
+      t_air_c: h.values?.t_air_c ?? null,
+      t_surf_c: h.values?.t_surf_c ?? null,
+      t_dew_c: h.values?.t_dew_c ?? null,
     })),
   })),
 };
@@ -159,6 +178,10 @@ fs.copyFileSync(
 fs.copyFileSync(
   path.join(root, "data/project_demo/work_faces.geojson"),
   path.join(outDir, "work-faces.json"),
+);
+fs.copyFileSync(
+  path.join(root, "data/fixtures/cure_fit_macropoxy646.json"),
+  path.join(outDir, "cure-fit.json"),
 );
 
 console.log(
