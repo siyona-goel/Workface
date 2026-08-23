@@ -146,9 +146,44 @@ For GitHub Actions, put `LLM_BASE_URL`, `LLM_API_KEY` and `LLM_MODEL` in **repo 
 
 ---
 
-## 5. Path C — an OpenAI key
+## 5. Path C — Gemini
 
-**Will it work?** Yes, completely, with zero code change:
+Gemini publishes an **OpenAI-compatibility endpoint**, so it drops into the same three variables with no code change:
+
+```bash
+LLM_BASE_URL=https://generativelanguage.googleapis.com/v1beta/openai/
+LLM_API_KEY=<your AI Studio key>
+LLM_MODEL=gemini-3.7-flash
+```
+
+**The base URL is not something you fetch from a dashboard.** It is a fixed, published address — the shim Google runs so that OpenAI clients work unchanged. Type it exactly as above, trailing slash included. The only thing you get from `aistudio.google.com` is the **key**.
+
+**Model choice.** `gemini-3.7-flash` is Google's current Flash model and is explicitly built for agentic workflows and tool calling, which is precisely and only what this agent needs. If free-tier limits bite, `gemini-3.1-flash-lite` is the cheap, fast alternative and is well suited to high-frequency tool orchestration. Do not reach for a Pro model — the LLM's job here is picking a strategy and writing a paragraph, and paying for deeper reasoning buys nothing.
+
+**Tool calling works**, including `tool_choice="auto"`. Note that this is the opposite of Ollama, which ignores `tool_choice` entirely — one more reason to write the prompt so it never depends on forcing a tool.
+
+**Free-tier limits** vary by model and by account, and Google does not enumerate them in the docs any more. Check yours at `aistudio.google.com/rate-limit` before demo day, and size your run against them: the agent reasons over the flagged subset only (~40 activities), so one full run is tens of requests, not thousands. Requests-per-minute is the limit you are likelier to hit than requests-per-day — add a small retry-with-backoff and you will be fine.
+
+### The one thing to know before you demo on the free tier
+
+Google's API terms draw a hard line between paid and unpaid use. On the **free tier**:
+
+> *"Google uses the content you submit to the Services and any generated responses to provide, improve, and develop Google products and services and machine learning technologies"* — and *"human reviewers may read, annotate, and process your API input and output."*
+
+On the **paid tier**, the same terms say Google *doesn't* use your prompts or responses to improve its products.
+
+For this project the practical risk is nil — the schedule is synthetic and the geography is public. But it collides head-on with §10's pitch. If a judge asks *"so where does our schedule go?"*, the honest answer while running free-tier Gemini is: to Google, who may train on it and may have a human read it. That is a worse answer than paid OpenAI, not a better one.
+
+So: **fine for development, risky as the demo path.** Two ways to keep both:
+
+- Develop against Gemini free tier, then run the demo through Ollama locally or DeepInfra — the swap is one env var, which is the entire point of §10's design.
+- Or keep Gemini and change the script: stop claiming open-weight, and instead say *"the model is behind one environment variable — here it is pointed at Gemini, and on a customer's network it points at their own Llama."* That is true, still a good answer, and it is the sentence to have ready either way.
+
+---
+
+## 5b. Path D — an OpenAI key
+
+Same shape again:
 
 ```bash
 LLM_BASE_URL=https://api.openai.com/v1
@@ -156,15 +191,15 @@ LLM_API_KEY=sk-...
 LLM_MODEL=gpt-4o-mini
 ```
 
-That is the entire setup. Get the key from `platform.openai.com` → API keys, and note it is a *platform* key with its own billing — a ChatGPT Plus subscription is a different product and does not give you API access.
+Get the key from `platform.openai.com` → API keys, and note it is a *platform* key with its own billing — a ChatGPT Plus subscription is a different product and does not give you API access.
 
-**Should you?** Probably not as your demo path, and the reason is not cost.
+**Should you — or Gemini?** Probably not as your demo path, and for either of them the reason is not cost.
 
 §10 is one of the nine headline decisions in the tech spec, and it reads:
 
 > *WORKFACE runs entirely on open-weight models. A contractor's P6 schedule — activity durations, float, milestone dates, subcontractor sequencing — never leaves their network.*
 
-A project schedule is one of the most commercially sensitive documents a contractor owns; it is what their delay claim and their competitors' bids both turn on. "It runs on your infrastructure" is a procurement unlock for that buyer, and their IT *will* ask. Route the demo through OpenAI and the honest answer to "does our schedule leave our network?" becomes yes — and you have to stop saying the open-weight line, which is one of your strongest differentiators, for a model quality difference the agent's job barely exercises.
+A project schedule is one of the most commercially sensitive documents a contractor owns; it is what their delay claim and their competitors' bids both turn on. "It runs on your infrastructure" is a procurement unlock for that buyer, and their IT *will* ask. Route the demo through any closed hosted model and the honest answer to "does our schedule leave our network?" becomes yes — and you have to stop saying the open-weight line, which is one of your strongest differentiators, for a model quality difference the agent's job barely exercises.
 
 Cost is not the argument either way. §8.2 keeps the physics in Python, so you are looking at a few cents per run on any provider.
 
