@@ -1,0 +1,48 @@
+# WORKFACE — T3, Day 7. Crew capacity per trade per shift. Put this on a slide.
+#
+# This is the AUDITABLE DEFAULT the greedy packer packs against in CI (no site
+# feed required, no model required). It is derived from the crew_size values on
+# the demo activities (data/project_demo/activities.json) — see the comment on
+# each row for the observed min/median/max. T2's committed snapshot
+# (data/fixtures/site_systems.json, via MockSiteSystems) is the RUNTIME override;
+# this YAML is the thing you can read on one screen and reason about.
+#
+# `heads` is the number of tradespeople of that trade available on a single day
+# shift — i.e. how many can be committed across all faces that shift before the
+# trade is out of people. A trade whose typical crew is 6 and whose `heads` is 12
+# can run two crews concurrently on two faces; a third face that shift contends.
+# The packer subtracts the heads it has already committed that shift and denies a
+# placement whose crew_size would overrun `heads`.
+#
+# Consumed by apps/api/sequencer/pack.py (YamlCrewSource). Thresholds here have a
+# value, a source and a sensitivity recorded in docs/T3_DAY789_REPORT.md (Task J).
+
+schema_version: "1.0.0"
+site_id: "NPX-FAB-P2"
+tz: "America/Phoenix"
+
+# One day shift for the demo horizon. Night work is a human decision (policy rule
+# no_auto_night_work), so the default calendar packs the day shift only.
+shift:
+  start_hour: 6          # 06:00 site-local
+  end_hour: 18           # 18:00 site-local
+  days: [Mon, Tue, Wed, Thu, Fri, Sat]   # Sunday is skeleton crew (see site_systems.json)
+
+# Site-wide fallback when a trade is not listed below.
+default_heads: 12
+
+# Per-trade daily head capacity. `heads` ≈ two typical crews, so same-trade
+# activities on two faces fit a shift and a third contends — the contention the
+# demo narrates on the WHSE / BULK / CHEM faces.
+trades:
+  coating_epoxy_structural_steel:   { heads: 10, crew_typical: 5 }   # observed 4/5/5
+  sfrm_spray_applied_fireproofing:  { heads: 12, crew_typical: 6 }   # observed 6/6/6
+  concrete_cip_hot_weather:         { heads: 20, crew_typical: 10 }  # observed 6/10/12
+  concrete_cip_cold_weather:        { heads: 16, crew_typical: 8 }   # observed 6/8/10
+  adhesive_anchor_epoxy:            { heads:  6, crew_typical: 3 }   # observed 3/3/3
+  structural_welding_preheat:       { heads:  8, crew_typical: 4 }   # observed 4/4/4
+  sealant_silicone_weatherseal:     { heads:  8, crew_typical: 4 }   # observed 4/4/4
+  pavement_marking_waterborne:      { heads:  8, crew_typical: 4 }   # observed 4/4/4
+  masonry_cmu_hot_weather:          { heads: 16, crew_typical: 8 }   # observed 8/8/8
+  masonry_cmu_cold_weather:         { heads: 16, crew_typical: 8 }   # observed 8/8/8
+  hma_paving_surface_course:        { heads: 10, crew_typical: 10 }  # observed 10/10/10 — one crew only

@@ -1,0 +1,47 @@
+# WORKFACE — T3, Day 7. The policy gate thresholds. PUT THIS FILE ON A SLIDE.
+#
+# The agent PROPOSES; deterministic code (apps/api/agent/policy.py) DISPOSES.
+# A model cannot approve its own proposal, cannot edit this file, and cannot see
+# the gate's internals (§8.3, hard rule 2). Every threshold here has a value, a
+# source and a sensitivity recorded in docs/T3_DAY789_REPORT.md (Task J).
+#
+# RULE IDS ARE A CONTRACT WITH T1 (§2.6). `split_within_float_ok` and
+# `max_float_days_consumed` are keyed by T1's escalation UI and MUST NOT be
+# renamed. New rules may be added; these two may not change name.
+
+schema_version: "1.0.0"
+
+# --- float protection (rule: max_float_days_consumed) ---------------------------
+# TWO thresholds, because an absolute cap alone can NEVER fire on the activities
+# most in need of protection (§6.1): A-1237 has 0.6 d of float, so a 3.0 d cap is
+# unreachable. The fractional cap catches spending 100% of a thin float. The rule
+# fires on EITHER and the reason names which one tripped.
+max_float_days_consumed: 3.0        # absolute cap, in days, on a near-critical activity
+max_float_fraction_consumed: 1.0    # fraction of the activity's OWN float; 1.0 = consuming the
+                                    # WHOLE float (100%) trips the rule. Set below 1.0 to escalate
+                                    # sooner (e.g. 0.75 = escalate once three-quarters is gone).
+
+# --- crew heat load (rule: wbgt_rest_ratio_escalate) ----------------------------
+# Escalate when the crew would work a band requiring > 50% rest — i.e. a WBGT
+# work_fraction BELOW this. The WORKFACE placeholder bands (pending ACGIH licence)
+# put 25% work / 75% rest at WBGT >= 30.5 C; that band trips this rule.
+wbgt_min_work_fraction: 0.5
+
+# --- stale data (rule: fail_closed_on_stale_forecast) ---------------------------
+# A forecast series older than this, or missing, is not trusted — escalate, never
+# guess. Fail closed (§4.3 / hard rules).
+forecast_max_age_h: 2.0
+
+# --- night work (rule: no_auto_night_work) --------------------------------------
+# A placement whose start falls in [night_start_hour, night_end_hour) is night
+# work: lighting plan, noise ordinance and a second-shift crew are human calls.
+night_start_hour: 19                # 19:00 site-local
+night_end_hour: 5                   # 05:00 site-local
+
+# --- switches for the always-on hard stops --------------------------------------
+# These rules carry no numeric threshold; they fire on a boolean context flag.
+# Listed here so the whole gate is visible on one screen.
+guard_milestones: true              # no_move_past_milestone
+guard_precedence: true              # no_precedence_violation
+guard_hold_points: true             # no_move_inspection_hold_point
+guard_out_of_spec: true             # no_out_of_spec_application (RFI only, never auto-approve)

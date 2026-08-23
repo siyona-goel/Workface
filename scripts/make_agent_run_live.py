@@ -58,11 +58,14 @@ def print_diff(live: AgentRun) -> None:
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description="WORKFACE live agent loop (T3, Day 6)")
+    ap = argparse.ArgumentParser(description="WORKFACE live agent loop (T3, Day 6/7)")
     ap.add_argument("--diff", action="store_true")
+    ap.add_argument("--llm", action="store_true",
+                    help="use the configured model for PROPOSE (default: deterministic, so the "
+                         "committed fixture is reproducible and CI-stable)")
     args = ap.parse_args()
 
-    run = run_agent()
+    run = run_agent(use_llm=args.llm)
     text = run.model_dump_json(indent=2)
     AgentRun.model_validate_json(text)                 # must not raise
     LIVE.write_text(text + "\n", encoding="utf-8")
