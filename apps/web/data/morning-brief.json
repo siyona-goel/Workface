@@ -1,0 +1,149 @@
+{
+  "brief_id": "brief-2026-08-24-commit",
+  "generated_at": "2026-08-24T04:15:00-07:00",
+  "for_date": "2026-08-24",
+  "tz": "America/Phoenix",
+  "site_id": "NPX-FAB-P2",
+  "project_name": "North Phoenix Advanced Packaging Facility — Phase 2",
+  "recipient": {
+    "role": "Area foreman",
+    "name": "FAB2 structural crews"
+  },
+  "headline": "Five compliant hours — nine trades want them",
+  "weather_line": "Phoenix · 31 °C now · dawn dew-point convergence ~05:40",
+  "items": [
+    {
+      "id": "brief-window-b2",
+      "kind": "window",
+      "priority": "high",
+      "activity_id": "A-1059",
+      "location": "FAB2 L2 deck — bay B2 (shaded)",
+      "title": "Deck B2 coating",
+      "body": "High-build epoxy window opens 05:40, closes 09:20. Substrate stays ≥5 °F above dew through 09:10.",
+      "window": {
+        "opens": "05:40",
+        "closes": "09:20",
+        "date": "2026-08-24"
+      },
+      "scheduled_start": "10:18",
+      "status": "ready"
+    },
+    {
+      "id": "brief-shift-pour",
+      "kind": "shift",
+      "priority": "high",
+      "activity_id": "A-1205",
+      "location": "CT grade — bay A1",
+      "title": "Equipment pad pour",
+      "body": "Moved to 05:00 start to sit inside the ACI 305 evaporation window. City inspector hold point unchanged.",
+      "previous_start": "07:42",
+      "new_start": "05:00",
+      "status": "confirmed"
+    },
+    {
+      "id": "brief-hold-sfrm",
+      "kind": "hold",
+      "priority": "high",
+      "activity_id": "A-1088",
+      "location": "FAB2 L3 deck — bay A3",
+      "title": "Fireproofing on hold",
+      "body": "No compliant 24-hour run at ≥40 °F before Thursday 28 Aug. Heated enclosure request queued.",
+      "hold_until": "2026-08-28",
+      "status": "hold"
+    },
+    {
+      "id": "brief-window-c2",
+      "kind": "window",
+      "priority": "normal",
+      "activity_id": "A-1069",
+      "location": "FAB2 L2 deck — bay C2 (bare)",
+      "title": "Deck C2 coating — tomorrow",
+      "body": "Bare deck: window opens 05:00, closes 07:20 — 2 h 20 shorter than shaded B2. Plan for 25 Aug.",
+      "window": {
+        "opens": "05:00",
+        "closes": "07:20",
+        "date": "2026-08-25"
+      },
+      "scheduled_start": "09:30",
+      "status": "watch"
+    },
+    {
+      "id": "brief-escalation",
+      "kind": "escalation",
+      "priority": "normal",
+      "activity_id": "A-2006",
+      "location": "FAB2 L3 deck",
+      "title": "Superintendent review pending",
+      "body": "Coating slip would burn 4 d float on near-critical deck weld. Agent escalated — open Trace for the tradeoff.",
+      "status": "escalated"
+    }
+  ],
+  "stats": {
+    "at_risk_usd": 8042150,
+    "protected_usd": 1892880,
+    "activities_today": 12,
+    "notifications_queued": 4
+  },
+  "notification_queue": [
+    {
+      "id": "nq-1",
+      "template_id": "window_opens",
+      "activity_id": "A-1059",
+      "channel": "sms",
+      "crew": "coating_fab2_b2",
+      "status": "queued",
+      "vars": {
+        "trade_short": "Epoxy coating",
+        "location": "FAB2 L2 deck B2",
+        "opens": "05:40",
+        "closes": "09:20",
+        "call_time": "05:15",
+        "scheduled_start": "10:18"
+      }
+    },
+    {
+      "id": "nq-2",
+      "template_id": "shift_confirmed",
+      "activity_id": "A-1205",
+      "channel": "sms",
+      "crew": "concrete_ct",
+      "status": "queued",
+      "vars": {
+        "trade_short": "Hot-weather pour",
+        "activity_id": "A-1205",
+        "location": "CT grade A1",
+        "previous_start": "07:42",
+        "new_start": "05:00",
+        "reason": "Sits inside ACI 305 evaporation window."
+      }
+    },
+    {
+      "id": "nq-3",
+      "template_id": "hold_continuity",
+      "activity_id": "A-1088",
+      "channel": "push",
+      "crew": "fireproofing_fab2_l3",
+      "status": "queued",
+      "vars": {
+        "trade_short": "SFRM fireproofing",
+        "location": "FAB2 L3 deck A3",
+        "continuity_hours": "24",
+        "hold_until": "Thu 28 Aug",
+        "mitigation": "Heated enclosure request queued."
+      }
+    },
+    {
+      "id": "nq-4",
+      "template_id": "escalate_superintendent",
+      "activity_id": "A-2006",
+      "channel": "push",
+      "crew": "superintendent",
+      "status": "sent",
+      "vars": {
+        "activity_id": "A-2006",
+        "rule_id": "max_float_days_consumed",
+        "rationale": "Cheapest fix burns 4 d float on near-critical deck weld."
+      }
+    }
+  ]
+}
