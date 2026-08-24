@@ -1,0 +1,87 @@
+# T2 Day 8 — unattended agent worker
+# Runs every 4 hours (tech spec) and on manual dispatch.
+# REPLAY_MODE=true so CI never calls FortyGuard.
+
+name: agent-cron
+
+on:
+  schedule:
+    # Every 4 hours UTC
+    - cron: "0 */4 * * *"
+  workflow_dispatch:
+    inputs:
+      push_supabase:
+        description: "Push run + record chain to Supabase"
+        type: boolean
+        default: true
+      use_llm:
+        description: "Enable LLM propose step"
+        type: boolean
+        default: false
+
+concurrency:
+  group: agent-cron
+  cancel-in-progress: false
+
+jobs:
+  unattended:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    env:
+      REPLAY_MODE: "true"
+      MAX_FG_CALLS_PER_DAY: "0"
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+      LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
+      LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+      LLM_MODEL: ${{ secrets.LLM_MODEL }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: |
+            apps/api/requirements.txt
+            requirements-dev.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r apps/api/requirements.txt
+          pip install supabase python-dotenv
+
+      - name: Run unattended worker
+        id: worker
+        run: |
+          set -e
+          PUSH_FLAG=""
+          LLM_FLAG=""
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            if [ "${{ inputs.push_supabase }}" = "true" ]; then
+              PUSH_FLAG="--push-supabase --require-supabase"
+            fi
+            if [ "${{ inputs.use_llm }}" = "true" ]; then
+              LLM_FLAG="--llm"
+            fi
+          else
+            # scheduled runs always push when secrets exist
+            PUSH_FLAG="--push-supabase"
+          fi
+          python -m apps.api.agent.worker $PUSH_FLAG $LLM_FLAG
+
+      - name: Upload run artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: agent-run-${{ github.run_id }}
+          path: |
+            data/fixtures/agent_run_live.json
+            data/fixtures/record_chain_live.json
+            data/fixtures/agent_run_summary.json
+          if-no-files-found: warn

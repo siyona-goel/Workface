@@ -1,0 +1,23 @@
+{
+  "error": false,
+  "status_code": 200,
+  "message": "Completed",
+  "data": {
+    "activity_id": "replay-jan-2024-persistence-below",
+    "status": "Completed",
+    "result": {
+      "map_data": {
+        "type": "FeatureCollection",
+        "features": []
+      },
+      "stats_data": {}
+    }
+  },
+  "_meta": {
+    "analytic_type": "persistence",
+    "direction": "below",
+    "threshold_c": 4.0,
+    "month": "January",
+    "year": 2024
+  }
+}

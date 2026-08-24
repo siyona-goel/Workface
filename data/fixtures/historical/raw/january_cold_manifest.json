@@ -1,0 +1,391 @@
+{
+  "generated_at": "2026-08-24T08:05:20.956036+00:00",
+  "replay": true,
+  "purpose": "Day-9 January cold slide \u2014 persistence direction=below",
+  "year": 2024,
+  "month": 1,
+  "analytic_type": "persistence",
+  "direction": "below",
+  "threshold_c": 4.0,
+  "tile_cluster_id": "AOI-FAB2",
+  "n_tiles": 60,
+  "median_persistence_h": 6.72,
+  "raw": "data/fixtures/historical/raw/january_2024_persistence_below.json",
+  "window": {
+    "year": 2024,
+    "start_date": "2024-01-01",
+    "end_date": "2024-01-31",
+    "filter_type": 4,
+    "granularity_m": 100,
+    "analytic_type": "persistence",
+    "threshold_c": 4.0,
+    "direction": "below",
+    "units": "hour",
+    "tiles": [
+      {
+        "tile_id": "AOI-FAB2-jan-r00c00",
+        "centroid_lon": -112.1681756,
+        "centroid_lat": 33.7848226,
+        "value": 8.5
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r00c01",
+        "centroid_lon": -112.1667521,
+        "centroid_lat": 33.7848226,
+        "value": 6.41
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r00c02",
+        "centroid_lon": -112.1653286,
+        "centroid_lat": 33.7848226,
+        "value": 5.78
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r00c03",
+        "centroid_lon": -112.1639051,
+        "centroid_lat": 33.7848226,
+        "value": 11.41
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r00c04",
+        "centroid_lon": -112.1624815,
+        "centroid_lat": 33.7848226,
+        "value": 10.3
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r00c05",
+        "centroid_lon": -112.161058,
+        "centroid_lat": 33.7848226,
+        "value": 2.17
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r00c06",
+        "centroid_lon": -112.1596345,
+        "centroid_lat": 33.7848226,
+        "value": 11.71
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r01c00",
+        "centroid_lon": -112.1681756,
+        "centroid_lat": 33.7854435,
+        "value": 11.29
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r01c01",
+        "centroid_lon": -112.1667521,
+        "centroid_lat": 33.7854435,
+        "value": 5.05
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r01c02",
+        "centroid_lon": -112.1653286,
+        "centroid_lat": 33.7854435,
+        "value": 2.36
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r01c03",
+        "centroid_lon": -112.1639051,
+        "centroid_lat": 33.7854435,
+        "value": 6.58
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r01c04",
+        "centroid_lon": -112.1624815,
+        "centroid_lat": 33.7854435,
+        "value": 6.17
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r01c05",
+        "centroid_lon": -112.161058,
+        "centroid_lat": 33.7854435,
+        "value": 6.58
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r01c06",
+        "centroid_lon": -112.1596345,
+        "centroid_lat": 33.7854435,
+        "value": 4.8
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r02c00",
+        "centroid_lon": -112.1681756,
+        "centroid_lat": 33.7860643,
+        "value": 8.33
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r02c01",
+        "centroid_lon": -112.1667521,
+        "centroid_lat": 33.7860643,
+        "value": 8.23
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r02c02",
+        "centroid_lon": -112.1653286,
+        "centroid_lat": 33.7860643,
+        "value": 10.63
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r02c03",
+        "centroid_lon": -112.1639051,
+        "centroid_lat": 33.7860643,
+        "value": 9.94
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r02c04",
+        "centroid_lon": -112.1624815,
+        "centroid_lat": 33.7860643,
+        "value": 9.98
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r02c05",
+        "centroid_lon": -112.161058,
+        "centroid_lat": 33.7860643,
+        "value": 8.66
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r02c06",
+        "centroid_lon": -112.1596345,
+        "centroid_lat": 33.7860643,
+        "value": 2.06
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r03c00",
+        "centroid_lon": -112.1681756,
+        "centroid_lat": 33.7866852,
+        "value": 11.91
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r03c01",
+        "centroid_lon": -112.1667521,
+        "centroid_lat": 33.7866852,
+        "value": 11.45
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r03c02",
+        "centroid_lon": -112.1653286,
+        "centroid_lat": 33.7866852,
+        "value": 5.72
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r03c03",
+        "centroid_lon": -112.1639051,
+        "centroid_lat": 33.7866852,
+        "value": 6.49
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r03c04",
+        "centroid_lon": -112.1624815,
+        "centroid_lat": 33.7866852,
+        "value": 3.08
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r03c05",
+        "centroid_lon": -112.161058,
+        "centroid_lat": 33.7866852,
+        "value": 2.93
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r03c06",
+        "centroid_lon": -112.1596345,
+        "centroid_lat": 33.7866852,
+        "value": 7.45
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r04c00",
+        "centroid_lon": -112.1681756,
+        "centroid_lat": 33.787306,
+        "value": 3.98
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r04c01",
+        "centroid_lon": -112.1667521,
+        "centroid_lat": 33.787306,
+        "value": 8.97
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r04c02",
+        "centroid_lon": -112.1653286,
+        "centroid_lat": 33.787306,
+        "value": 5.33
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r04c03",
+        "centroid_lon": -112.1639051,
+        "centroid_lat": 33.787306,
+        "value": 10.99
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r04c04",
+        "centroid_lon": -112.1624815,
+        "centroid_lat": 33.787306,
+        "value": 7.58
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r04c05",
+        "centroid_lon": -112.161058,
+        "centroid_lat": 33.787306,
+        "value": 9.19
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r04c06",
+        "centroid_lon": -112.1596345,
+        "centroid_lat": 33.787306,
+        "value": 5.17
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r05c00",
+        "centroid_lon": -112.1681756,
+        "centroid_lat": 33.7879268,
+        "value": 11.85
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r05c01",
+        "centroid_lon": -112.1667521,
+        "centroid_lat": 33.7879268,
+        "value": 5.99
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r05c02",
+        "centroid_lon": -112.1653286,
+        "centroid_lat": 33.7879268,
+        "value": 4.96
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r05c03",
+        "centroid_lon": -112.1639051,
+        "centroid_lat": 33.7879268,
+        "value": 11.61
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r05c04",
+        "centroid_lon": -112.1624815,
+        "centroid_lat": 33.7879268,
+        "value": 8.96
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r05c05",
+        "centroid_lon": -112.161058,
+        "centroid_lat": 33.7879268,
+        "value": 5.14
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r05c06",
+        "centroid_lon": -112.1596345,
+        "centroid_lat": 33.7879268,
+        "value": 2.13
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r06c00",
+        "centroid_lon": -112.1681756,
+        "centroid_lat": 33.7885477,
+        "value": 3.79
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r06c01",
+        "centroid_lon": -112.1667521,
+        "centroid_lat": 33.7885477,
+        "value": 10.54
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r06c02",
+        "centroid_lon": -112.1653286,
+        "centroid_lat": 33.7885477,
+        "value": 5.85
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r06c03",
+        "centroid_lon": -112.1639051,
+        "centroid_lat": 33.7885477,
+        "value": 2.8
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r06c04",
+        "centroid_lon": -112.1624815,
+        "centroid_lat": 33.7885477,
+        "value": 4.33
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r06c05",
+        "centroid_lon": -112.161058,
+        "centroid_lat": 33.7885477,
+        "value": 7.2
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r06c06",
+        "centroid_lon": -112.1596345,
+        "centroid_lat": 33.7885477,
+        "value": 8.32
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r07c00",
+        "centroid_lon": -112.1681756,
+        "centroid_lat": 33.7891685,
+        "value": 6.72
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r07c01",
+        "centroid_lon": -112.1667521,
+        "centroid_lat": 33.7891685,
+        "value": 4.44
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r07c02",
+        "centroid_lon": -112.1653286,
+        "centroid_lat": 33.7891685,
+        "value": 8.68
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r07c03",
+        "centroid_lon": -112.1639051,
+        "centroid_lat": 33.7891685,
+        "value": 4.69
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r07c04",
+        "centroid_lon": -112.1624815,
+        "centroid_lat": 33.7891685,
+        "value": 3.87
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r07c05",
+        "centroid_lon": -112.161058,
+        "centroid_lat": 33.7891685,
+        "value": 8.4
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r07c06",
+        "centroid_lon": -112.1596345,
+        "centroid_lat": 33.7891685,
+        "value": 10.8
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r08c00",
+        "centroid_lon": -112.1681756,
+        "centroid_lat": 33.7897894,
+        "value": 7.98
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r08c01",
+        "centroid_lon": -112.1667521,
+        "centroid_lat": 33.7897894,
+        "value": 6.28
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r08c02",
+        "centroid_lon": -112.1653286,
+        "centroid_lat": 33.7897894,
+        "value": 2.76
+      },
+      {
+        "tile_id": "AOI-FAB2-jan-r08c03",
+        "centroid_lon": -112.1639051,
+        "centroid_lat": 33.7897894,
+        "value": 7.99
+      }
+    ],
+    "stats": null,
+    "fg_activity_id": "replay-jan-2024-persistence-below",
+    "note": "January persistence/below \u2014 cold floor, not heat ceiling. REPLAY synthetic for demo slide; replace with --live once."
+  },
+  "slide_line": "January 2024: tiles show multi-hour runs below 4.0 \u00b0C (persistence/below) \u2014 cold-weather protection, not a heat alarm."
+}

@@ -1,0 +1,50 @@
+%PDF-1.4
+1 0 obj<< /Type /Catalog /Pages 2 0 R >>endobj
+2 0 obj<< /Type /Pages /Kids [3 0 R] /Count 1 >>endobj
+3 0 obj<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>endobj
+4 0 obj<< /Length 1669 >>stream
+BT
+/F1 10 Tf
+50 770 Td
+14 TL
+(WORKFACE THERMAL CERTIFICATE) Tj
+T* (Certificate ID: CERT-agent-2026-08-24-000-d557d6) Tj
+T* (Site: NPX-FAB-P2    Issued: 2026-08-24T01:15:00.380226-07:00) Tj
+T* (Run: agent-2026-08-24-0000-commit-live) Tj
+T* () Tj
+T* (Activity: A-1182 ? Interior floor marking ? WHSE grade ? bay A1) Tj
+T* (Trade: Waterborne pavement marking ? traffic paint \(pavement_marking_waterborne\)) Tj
+T* (Work face: WF-WHSE-01 ? WHSE grade ? bay A1) Tj
+T* () Tj
+T* (Verdict: non_compliant) Tj
+T* (Binding constraint: band_surface_rising) Tj
+T* (Action: evaluate    Gate: None \(None\)) Tj
+T* (Gate reason: ?) Tj
+T* () Tj
+T* (Standard: Sherwin-Williams Sher-Flight PDS; MoDOT EPG 620.11; project DOT specification governs) Tj
+T* (Clause:) Tj
+T* (Sherwin-Williams Sher-Flight Waterborne Traffic Paint technical bulletin \(06/18\): minimum air and surface temperature 55 °F and rising; extended drying and reduced service life between 45 °F and 55 °F; do not apply below 45 °F; a uniform line at 14?16 mils wet 'should dry in 10 minutes or less'. MoDOT Engineering Policy Guide 620.11: '50 °Fahrenheit is the recommended minimum application temperature' on minor roads, 60 °F on major roads; a cold-weather formulation may be applied at 'air and surf) Tj
+T* () Tj
+T* (Series: 12/12 hours compliant \(certificate window\)) Tj
+T* (Record entries bound: 22) Tj
+T* (Chain head: aa5a593229771cc234ad1a86f9d5c4e9374dfb682e8852230a43a60e228efd6d) Tj
+T* (FG activity ids: ?) Tj
+T* (Heat intelligence PDF: data/fixtures/twin/heat_intelligence_hero.pdf) Tj
+T* () Tj
+T* (Advisory and contractual. Does not replace the field measurement the referenced standard requires.) Tj
+ET
+endstream
+endobj
+5 0 obj<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000056 00000 n 
+0000000111 00000 n 
+0000000235 00000 n 
+0000001954 00000 n 
+trailer<< /Size 6 /Root 1 0 R >>
+startxref
+2022
+%%EOF
