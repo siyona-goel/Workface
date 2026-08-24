@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.0.0",
+  "description": "Gated notify_crew message templates. Variables use {{snake_case}} placeholders.",
+  "templates": [
+    {
+      "id": "window_opens",
+      "label": "Window opens — crew dispatch",
+      "tool": "notify_crew",
+      "gated": true,
+      "channels": ["sms", "push"],
+      "max_length": 160,
+      "subject": "{{location}} — coating window",
+      "body": "{{trade_short}} on {{location}}: window opens {{opens}}, closes {{closes}}. Crew call {{call_time}}. Scheduled {{scheduled_start}}. Reply ACK.",
+      "sample_vars": {
+        "trade_short": "Epoxy coating",
+        "location": "FAB2 L2 deck B2",
+        "opens": "05:40",
+        "closes": "09:20",
+        "call_time": "05:15",
+        "scheduled_start": "10:18"
+      }
+    },
+    {
+      "id": "shift_confirmed",
+      "label": "Shift confirmed — pour moved",
+      "tool": "notify_crew",
+      "gated": true,
+      "channels": ["sms", "push", "radio"],
+      "max_length": 160,
+      "subject": "{{activity_id}} moved to {{new_start}}",
+      "body": "{{trade_short}} {{activity_id}} on {{location}} moved from {{previous_start}} to {{new_start}}. {{reason}} Hold points unchanged.",
+      "sample_vars": {
+        "trade_short": "Hot-weather pour",
+        "activity_id": "A-1205",
+        "location": "CT grade A1",
+        "previous_start": "07:42",
+        "new_start": "05:00",
+        "reason": "Sits inside ACI 305 evaporation window."
+      }
+    },
+    {
+      "id": "hold_continuity",
+      "label": "Hold — continuity window missing",
+      "tool": "notify_crew",
+      "gated": true,
+      "channels": ["sms", "push"],
+      "max_length": 160,
+      "subject": "HOLD {{location}} — {{trade_short}}",
+      "body": "{{trade_short}} on {{location}} ON HOLD. No compliant {{continuity_hours}} h run before {{hold_until}}. {{mitigation}} Do not mobilise until cleared.",
+      "sample_vars": {
+        "trade_short": "SFRM fireproofing",
+        "location": "FAB2 L3 deck A3",
+        "continuity_hours": "24",
+        "hold_until": "Thu 28 Aug",
+        "mitigation": "Heated enclosure request queued."
+      }
+    },
+    {
+      "id": "split_pass",
+      "label": "Split approved — two-pass coating",
+      "tool": "notify_crew",
+      "gated": true,
+      "channels": ["sms", "push"],
+      "max_length": 160,
+      "subject": "{{activity_id}} split around pour",
+      "body": "{{trade_short}} {{activity_id}} runs {{pass1_hours}} h at {{pass1_start}}, then {{pass2_hours}} h at {{pass2_start}}. Gate rule {{rule_id}}. Float spent {{float_days}} d.",
+      "sample_vars": {
+        "trade_short": "Epoxy coating",
+        "activity_id": "A-2009",
+        "pass1_hours": "2",
+        "pass1_start": "05:00",
+        "pass2_hours": "4",
+        "pass2_start": "08:00",
+        "rule_id": "split_within_float_ok",
+        "float_days": "0.5"
+      }
+    },
+    {
+      "id": "escalate_superintendent",
+      "label": "Escalation — superintendent review",
+      "tool": "escalate_to_superintendent",
+      "gated": false,
+      "channels": ["push", "email"],
+      "max_length": 320,
+      "subject": "Escalation — {{activity_id}}",
+      "body": "Policy gate denied {{rule_id}} on {{activity_id}}. {{rationale}} Open WORKFACE Trace for the full tradeoff.",
+      "sample_vars": {
+        "activity_id": "A-2006",
+        "rule_id": "max_float_days_consumed",
+        "rationale": "Cheapest fix burns 4 d float on near-critical deck weld."
+      }
+    },
+    {
+      "id": "crew_rest_warning",
+      "label": "WBGT — crew rest ratio",
+      "tool": "notify_crew",
+      "gated": true,
+      "channels": ["sms", "push"],
+      "max_length": 160,
+      "subject": "Heat stress — {{location}}",
+      "body": "WBGT {{wbgt_c}} °C on {{location}} at {{peak_time}}. Work/rest {{work_rest_ratio}}. Productive hours haircut {{haircut_pct}}%. Plan water + shade.",
+      "sample_vars": {
+        "location": "FAB2 L2 deck",
+        "wbgt_c": "32.1",
+        "peak_time": "14:30",
+        "work_rest_ratio": "50/50",
+        "haircut_pct": "38"
+      }
+    }
+  ]
+}
