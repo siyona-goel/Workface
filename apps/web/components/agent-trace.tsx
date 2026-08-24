@@ -181,7 +181,7 @@ export function AgentTrace() {
 
               <div ref={endRef} />
 
-              <p className="rounded-xl border border-border/70 bg-card/30 px-3.5 py-3 text-[11px] leading-relaxed text-muted-foreground">
+              <p className="rounded-lg border border-border/70 bg-card/25 px-3.5 py-3 text-[11px] leading-relaxed text-muted-foreground">
                 {streaming
                   ? `Streaming ${visibleCount} of ${run.steps.length} steps (${source === "live" ? "T3 live run" : "Day-5 fixtures"}).`
                   : channelStepCount > 0

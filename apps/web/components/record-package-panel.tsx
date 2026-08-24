@@ -2,14 +2,23 @@
 
 import {
   ACTION_LABEL,
-  VERDICT_TONE,
   clauseExcerpt,
   formatRecordWhen,
   truncateHash,
   type RecordEntry,
+  type RecordVerdict,
   type WorkPackage,
 } from "@/lib/record-data";
 import { formatUsd } from "@/lib/console-data";
+import {
+  GATE_RAIL,
+  GateVerdictPanel,
+  RECORD_VERDICT_RAIL,
+  RECORD_VERDICT_TEXT,
+  RecordVerdictLabel,
+  StatusRailCard,
+  StatusRailShell,
+} from "@/components/status-rail";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -34,34 +43,36 @@ export function RecordPackageList({ packages, selectedId, onSelect }: Props) {
               type="button"
               onClick={() => onSelect(pkg.activity_id)}
               className={cn(
-                "w-full rounded-lg border px-3 py-2.5 text-left transition-colors",
+                "relative w-full overflow-hidden rounded-lg border text-left transition-colors",
                 selectedId === pkg.activity_id
-                  ? "border-border bg-muted/50"
-                  : "border-transparent hover:border-border/60 hover:bg-muted/20",
+                  ? "border-border bg-muted/20"
+                  : "border-border/70 bg-card/25 hover:bg-muted/15",
               )}
             >
-              <div className="flex items-start justify-between gap-2">
-                <span className="text-[12px] font-medium leading-snug">
-                  {pkg.activity_name}
-                </span>
-                <span
-                  className={cn(
-                    "shrink-0 rounded-sm border px-1.5 py-0.5 text-[9px] font-medium tracking-wide uppercase",
-                    VERDICT_TONE[pkg.latest_verdict],
-                  )}
-                >
-                  {pkg.latest_verdict.replace("_", " ")}
-                </span>
+              <div
+                aria-hidden
+                className={cn(
+                  "absolute inset-y-0 left-0 w-[3px]",
+                  RECORD_VERDICT_RAIL[pkg.latest_verdict],
+                )}
+              />
+              <div className="py-2.5 pr-3 pl-4">
+                <div className="flex items-start justify-between gap-2">
+                  <span className="text-[12px] font-medium leading-snug text-foreground/95">
+                    {pkg.activity_name}
+                  </span>
+                  <RecordVerdictLabel verdict={pkg.latest_verdict} />
+                </div>
+                <p className="mt-1 font-mono text-[10px] text-muted-foreground">
+                  {pkg.activity_id} · {pkg.work_face_name}
+                </p>
+                <p className="mt-1 text-[11px] text-muted-foreground">
+                  {ACTION_LABEL[pkg.latest_action]}
+                  {pkg.at_risk_usd > 0
+                    ? ` · ${formatUsd(pkg.at_risk_usd)} at risk`
+                    : null}
+                </p>
               </div>
-              <p className="mt-1 font-mono text-[10px] text-muted-foreground">
-                {pkg.activity_id} · {pkg.work_face_name}
-              </p>
-              <p className="mt-1 text-[11px] text-muted-foreground">
-                {ACTION_LABEL[pkg.latest_action]}
-                {pkg.at_risk_usd > 0
-                  ? ` · ${formatUsd(pkg.at_risk_usd)} at risk`
-                  : null}
-              </p>
             </button>
           </li>
         ))}
@@ -72,6 +83,9 @@ export function RecordPackageList({ packages, selectedId, onSelect }: Props) {
 
 function TimelineEntry({ entry }: { entry: RecordEntry }) {
   const p = entry.payload;
+  const showGatePanel =
+    p.gate_decision != null && p.gate_rule_id != null && p.gate_reason != null;
+
   return (
     <li className="relative pl-6 pb-5 last:pb-0">
       <span
@@ -83,9 +97,12 @@ function TimelineEntry({ entry }: { entry: RecordEntry }) {
         className="absolute top-4 left-[10px] h-[calc(100%-8px)] w-px bg-border/70 last:hidden"
       />
 
-      <div className="rounded-xl border border-border/70 bg-card/30 px-3 py-3">
+      <StatusRailCard
+        railClass={RECORD_VERDICT_RAIL[p.verdict as RecordVerdict]}
+        innerClassName="py-3"
+      >
         <div className="flex flex-wrap items-baseline justify-between gap-2">
-          <p className="text-[12px] font-semibold">
+          <p className="text-[12px] font-semibold text-foreground/95">
             {ACTION_LABEL[p.action]}
             {p.gate_decision ? ` · gate ${p.gate_decision}` : null}
           </p>
@@ -94,27 +111,32 @@ function TimelineEntry({ entry }: { entry: RecordEntry }) {
           </time>
         </div>
 
-        <p
-          className={cn(
-            "mt-2 inline-flex rounded-sm border px-1.5 py-0.5 text-[10px] font-medium tracking-wide uppercase",
-            VERDICT_TONE[p.verdict],
-          )}
-        >
-          {p.verdict.replace("_", " ")}
-        </p>
+        <RecordVerdictLabel verdict={p.verdict as RecordVerdict} className="mt-2" />
 
         {p.proposal_summary ? (
-          <p className="mt-2 text-[12px] leading-relaxed">{p.proposal_summary}</p>
+          <p className="mt-2 text-[12px] leading-relaxed text-foreground/90">
+            {p.proposal_summary}
+          </p>
         ) : null}
 
-        {p.gate_rule_id ? (
-          <p className="mt-2 font-mono text-[11px] text-red-200">
+        {showGatePanel && p.gate_decision && p.gate_rule_id && p.gate_reason ? (
+          <GateVerdictPanel
+            gate={{
+              decision: p.gate_decision,
+              rule_id: p.gate_rule_id,
+              reason: p.gate_reason,
+              escalated: p.action === "escalate",
+              modified_params: null,
+            }}
+          />
+        ) : p.gate_rule_id ? (
+          <p className="mt-2 font-mono text-[11px] text-muted-foreground">
             rule_id: {p.gate_rule_id}
             {p.gate_reason ? ` — ${p.gate_reason}` : null}
           </p>
         ) : null}
 
-        <blockquote className="mt-3 border-l-2 border-border/80 pl-3 text-[11px] leading-relaxed text-muted-foreground italic">
+        <blockquote className="mt-3 border-l-2 border-border/70 pl-3 text-[11px] leading-relaxed text-muted-foreground italic">
           {clauseExcerpt(p.clause_cited, 280)}
         </blockquote>
 
@@ -126,11 +148,11 @@ function TimelineEntry({ entry }: { entry: RecordEntry }) {
         {p.usd_exposure ? (
           <p className="mt-2 text-[11px]">
             {p.usd_exposure.at_risk_usd > 0 ? (
-              <span className="text-red-200">
+              <span className={RECORD_VERDICT_TEXT.non_compliant}>
                 {formatUsd(p.usd_exposure.at_risk_usd)} at risk
               </span>
             ) : (
-              <span className="text-emerald-200">
+              <span className={RECORD_VERDICT_TEXT.compliant}>
                 {formatUsd(p.usd_exposure.protected_usd)} protected
               </span>
             )}
@@ -150,7 +172,7 @@ function TimelineEntry({ entry }: { entry: RecordEntry }) {
         <p className="mt-2 font-mono text-[10px] text-muted-foreground">
           seq {entry.seq} · hash {truncateHash(entry.hash, 6)}
         </p>
-      </div>
+      </StatusRailCard>
     </li>
   );
 }
@@ -164,9 +186,14 @@ export function RecordPackageTimeline({ pkg }: { pkg: WorkPackage | null }) {
     );
   }
 
+  const railClass =
+    pkg.entries.some((e) => e.payload.action === "escalate")
+      ? GATE_RAIL.deny
+      : RECORD_VERDICT_RAIL[pkg.latest_verdict];
+
   return (
     <div className="min-h-0">
-      <div className="mb-4">
+      <StatusRailShell railClass={railClass} innerClassName="py-4 mb-4">
         <h2 className="text-[10px] font-medium tracking-[0.16em] text-muted-foreground uppercase">
           Timeline
         </h2>
@@ -174,7 +201,7 @@ export function RecordPackageTimeline({ pkg }: { pkg: WorkPackage | null }) {
         <p className="mt-1 font-mono text-[11px] text-muted-foreground">
           {pkg.activity_id} · {pkg.trade_display_name} · {pkg.work_face_name}
         </p>
-      </div>
+      </StatusRailShell>
 
       <ol className="relative">
         {pkg.entries.map((entry) => (

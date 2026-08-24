@@ -7,6 +7,12 @@ import {
   type Conflict,
   type ConflictOutcome,
 } from "@/lib/trace-data";
+import {
+  CONFLICT_RAIL,
+  ConflictStatusLabel,
+  StatusRailButton,
+  StatusRailShell,
+} from "@/components/status-rail";
 import { cn } from "@/lib/utils";
 
 export const OUTCOME_LABEL: Record<ConflictOutcome, string> = {
@@ -25,37 +31,15 @@ type Props = {
 export function ConflictCard({ conflict, run, pressed, onToggle }: Props) {
   const outcome = conflictOutcome(conflict, run);
 
-  const className = cn(
-    "w-full rounded-xl border px-3 py-2.5 text-left transition-colors",
-    outcome === "escalated"
-      ? "border-red-300/45 bg-red-300/8"
-      : outcome === "open"
-        ? "border-amber-300/45 bg-amber-300/8"
-        : "border-emerald-300/35 bg-emerald-300/8",
-    pressed && "ring-1 ring-foreground/20",
-    onToggle && "cursor-pointer",
-  );
-
   const inner = (
     <>
       <div className="flex items-baseline justify-between gap-2">
         <span className="font-mono text-[10px] text-muted-foreground">
           {conflict.id} · {formatShiftDate(conflict.shift_date)}
         </span>
-        <span
-          className={cn(
-            "text-[10px] font-medium tracking-wide uppercase",
-            outcome === "escalated"
-              ? "text-red-200"
-              : outcome === "open"
-                ? "text-amber-200"
-                : "text-emerald-200",
-          )}
-        >
-          {OUTCOME_LABEL[outcome]}
-        </span>
+        <ConflictStatusLabel outcome={outcome} label={OUTCOME_LABEL[outcome]} />
       </div>
-      <p className="mt-1 text-[12px] font-medium leading-snug">
+      <p className="mt-1 text-[12px] font-medium leading-snug text-foreground/95">
         {formatCompeting(conflict.competing_activity_ids)}
       </p>
       <p className="mt-1 text-[11px] leading-snug text-muted-foreground">
@@ -67,18 +51,28 @@ export function ConflictCard({ conflict, run, pressed, onToggle }: Props) {
     </>
   );
 
+  const shellClass = cn(
+    pressed && "ring-1 ring-foreground/15 bg-muted/20",
+    onToggle && "cursor-pointer hover:bg-muted/15",
+  );
+
   if (!onToggle) {
-    return <div className={className}>{inner}</div>;
+    return (
+      <StatusRailShell railClass={CONFLICT_RAIL[outcome]} innerClassName="py-2.5">
+        {inner}
+      </StatusRailShell>
+    );
   }
 
   return (
-    <button
-      type="button"
+    <StatusRailButton
       onClick={onToggle}
       aria-pressed={pressed}
-      className={className}
+      railClass={CONFLICT_RAIL[outcome]}
+      innerClassName="py-2.5"
+      className={shellClass}
     >
       {inner}
-    </button>
+    </StatusRailButton>
   );
 }
