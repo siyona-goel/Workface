@@ -79,8 +79,8 @@ export function RecordView() {
 
         <RecordCounters chainVerified={chainVerified} />
 
-        <div className="grid min-h-0 gap-6 lg:grid-cols-[minmax(240px,300px)_minmax(0,1fr)] lg:items-start">
-          <aside className="rounded-xl border border-border/70 bg-background/40 p-3 sm:p-4">
+        <div className="grid gap-6 lg:grid-cols-[minmax(240px,280px)_minmax(0,1fr)] lg:items-start">
+          <aside className="rounded-xl border border-border/70 bg-background/40 p-3 sm:p-4 lg:sticky lg:top-4 lg:self-start">
             <RecordPackageList
               packages={packages}
               selectedId={selectedId}
@@ -88,17 +88,19 @@ export function RecordView() {
             />
           </aside>
 
-          <section className="min-h-0 rounded-xl border border-border/70 bg-background/40 p-4 sm:p-5">
-            <RecordPackageTimeline pkg={selected} />
-            {selected && isHeroPackage(selected.activity_id) ? (
-              <p className="mt-4 text-[11px] text-cyan-200">
-                Hero work face — heat intelligence PDF embedded below.
-              </p>
-            ) : null}
-          </section>
-        </div>
+          <div className="flex min-w-0 flex-col gap-6">
+            <section className="rounded-xl border border-border/70 bg-background/40 p-4 sm:p-5">
+              <RecordPackageTimeline pkg={selected} />
+              {selected && isHeroPackage(selected.activity_id) ? (
+                <p className="mt-4 text-[11px] text-cyan-200">
+                  Hero work face — heat intelligence PDF below.
+                </p>
+              ) : null}
+            </section>
 
-        <HeatIntelligenceEmbed />
+            <HeatIntelligenceEmbed />
+          </div>
+        </div>
       </div>
     </div>
   );

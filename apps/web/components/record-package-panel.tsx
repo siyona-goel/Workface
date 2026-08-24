@@ -27,7 +27,7 @@ export function RecordPackageList({ packages, selectedId, onSelect }: Props) {
       <p className="mt-1 text-[11px] text-muted-foreground">
         {packages.length} packages in the hash chain
       </p>
-      <ul className="mt-3 flex max-h-[420px] flex-col gap-1 overflow-y-auto lg:max-h-none">
+      <ul className="mt-3 flex max-h-[min(480px,52dvh)] flex-col gap-1 overflow-y-auto">
         {packages.map((pkg) => (
           <li key={pkg.activity_id}>
             <button
