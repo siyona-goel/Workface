@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "heat_intelligence": {
+    "pdf_url": "/documents/heat-intelligence-hero.pdf",
+    "title": "FortyGuard heat intelligence — hero work face",
+    "work_face_id": "WF-FAB2-07",
+    "work_face_name": "FAB2 L2 deck — bay C2 (bare)",
+    "activity_id": "A-1069",
+    "activity_name": "Structural steel high-build coating — FAB2 L2 deck — bay C2",
+    "fg_activity_id": "e28385da-9437-4918-bfbd-07acfa51e533",
+    "source_date": "2024-08-15",
+    "temperature_c": 39.9131,
+    "temperature_source": "heatmap_stats.mean",
+    "note": "T2 heat_intelligence PDF for the bare hero deck. Stored from the redacted fixture; download link not committed."
+  },
+  "exposure_totals": {
+    "at_risk_usd": 8042150,
+    "protected_usd": 1892880,
+    "basis": "Demo-window lanes from window_eval ribbon totals (same counters as Site Console)."
+  }
+}

@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 
-type NavId = "console" | "trace" | "conflicts" | "escalate" | "brief";
+type NavId = "console" | "trace" | "conflicts" | "escalate" | "brief" | "record";
 
 type Props = {
   current: NavId;
@@ -17,6 +17,7 @@ const items: { href: string; id: NavId; label: string }[] = [
   { href: "/conflicts", id: "conflicts", label: "Conflicts" },
   { href: "/escalate", id: "escalate", label: "Escalate" },
   { href: "/brief", id: "brief", label: "Brief" },
+  { href: "/record", id: "record", label: "Record" },
 ];
 
 export function AppNav({ current }: Props) {
