@@ -44,6 +44,11 @@ import json
 from datetime import datetime, timedelta
 from pathlib import Path
 
+from apps.api.agent.llm import get_model, is_configured
+from apps.api.agent.policy import load_policy
+from apps.api.agent.propose import Attempt, resolve_activity, strategy_order_for
+from apps.api.sequencer.pack import YamlCrewSource
+from apps.api.sitefeeds.sitesystems import MockSiteSystems
 from apps.api.windows import constraints as C
 from apps.api.windows.evaluate import evaluate_window
 from apps.api.windows.registry import load_registry
@@ -51,6 +56,9 @@ from packages.schemas.agent_trace import (
     AgentRun,
     AgentStep,
     Conflict,
+    GateVerdict,
+    Proposal,
+    ProposalKind,
     RunStatus,
     StepType,
     ToolCall,
@@ -72,8 +80,10 @@ ANCHOR = datetime(2026, 8, 24, 0, 0, tzinfo=TZ)             # demo window start
 HORIZON_END = ANCHOR + timedelta(hours=LOOKAHEAD_H)
 SITE_ID = "NPX-FAB-P2"
 RUN_ID = "agent-2026-08-24-0000-commit-live"
-# No LLM in the Day-6 loop — the gate is pure Python (§7). Stated honestly here.
-MODEL_NAME = "none (deterministic SCAN/EVALUATE/CONFLICT — no LLM in Day-6 loop)"
+# The deterministic proposer's name, used when LLM_BASE_URL is unset. When a model
+# IS configured, run_agent reports get_model() instead. The gate is ALWAYS pure
+# Python; the model only chooses a strategy, never a number (§7, §8.2).
+MODEL_NAME = "none (deterministic proposer — fixed strategy order, no LLM)"
 
 # Verdicts that count as "at risk / flagged" (§8.1 / the sample fixture's
 # definition). NO_DATA is a fail-closed data gap, not a risk flag — it is counted
@@ -101,6 +111,18 @@ def _load_faces() -> dict[str, dict]:
 def _load_thermal() -> dict[str, WorkFaceThermalSeries]:
     bundle = ThermalSeriesBundle.model_validate_json(THERMAL_BUNDLE.read_text(encoding="utf-8"))
     return {s.work_face_id: s for s in bundle.series}
+
+
+def _load_precedences() -> list[dict]:
+    return json.loads((DEMO / "activities.json").read_text(encoding="utf-8"))["precedences"]
+
+
+def _successor_map(preds: list[dict]) -> dict[str, list[str]]:
+    """activity_id -> the ids that depend on it (its FS successors)."""
+    out: dict[str, list[str]] = {}
+    for link in preds:
+        out.setdefault(link["pred_id"], []).append(link["activity_id"])
+    return out
 
 
 def list_activities_in_lookahead(lookahead_h: int = LOOKAHEAD_H) -> list[dict]:
@@ -167,10 +189,15 @@ def _demanded_productive_hours_on_day(ev, bar: ScheduledBar, day: str) -> float:
 # The loop
 # --------------------------------------------------------------------------- #
 
-def run_agent(lookahead_h: int = LOOKAHEAD_H) -> AgentRun:
+def run_agent(lookahead_h: int = LOOKAHEAD_H, *, use_llm: bool = True, return_evals: bool = False):
+    """Run the full loop and return the AgentRun. With return_evals=True, returns
+    (AgentRun, evals) so the unattended entry point can build the record chain from
+    the same evaluation (citations, series digests) without re-evaluating."""
     reg = load_registry()
     faces = _load_faces()
     thermal = _load_thermal()
+    acts_by_id = {a["id"]: a for a in _load_activities()}
+    succ_map = _successor_map(_load_precedences())
 
     steps: list[AgentStep] = []
     seq = 0
@@ -276,13 +303,165 @@ def run_agent(lookahead_h: int = LOOKAHEAD_H) -> AgentRun:
     ))
     seq += 1
 
-    return AgentRun(
-        run_id=RUN_ID, site_id=SITE_ID, started_at=_now(0), finished_at=_now(6),
-        status=RunStatus.COMPLETED, model_name=MODEL_NAME, lookahead_h=lookahead_h, tier="commit",
+    # --- PROPOSE + GATE + ACT/ESCALATE (Day 7, Task D) --------------------------
+    # The LLM (when configured) picks WHICH strategy to attempt first; the packer
+    # does the arithmetic and the pure-Python gate disposes. split → shift →
+    # mitigate → rfi → escalate. A deterministic proposer runs when no model is set,
+    # which keeps CI green (hard rule 4).
+    systems = MockSiteSystems()
+    crew = YamlCrewSource()
+    cfg = load_policy()
+    model_configured = use_llm and is_configured()
+
+    targets = _resolution_targets(evals, acts_by_id, conflicts)
+    conflict_of = {aid: c for c in conflicts for aid in c.competing_activity_ids}
+    resolved = 0
+    escalated = 0
+    outcomes: dict[str, dict] = {}          # per-target action + gate verdict, for the record chain
+
+    for aid in targets:
+        ev = evals[aid]
+        act = acts_by_id[aid]
+        successors = [acts_by_id[s] for s in succ_map.get(aid, []) if s in acts_by_id]
+        order = strategy_order_for(ev, act, use_llm=model_configured)
+        attempts = resolve_activity(
+            ev, act, successors=successors, anchor=ANCHOR,
+            systems=systems, crew=crew, cfg=cfg, strategy_order=order,
+        )
+        cid = conflict_of[aid].id if aid in conflict_of else None
+        seq = _emit_attempts(steps, seq, ev, attempts, cid)
+        outcome = attempts[-1]
+        outcomes[aid] = _outcome_record(attempts)
+        if outcome.kind is ProposalKind.ESCALATE or outcome.escalated:
+            escalated += 1
+            if aid in conflict_of:
+                conflict_of[aid].resolved_by_step_seq = seq - 1
+        elif outcome.resolved:
+            resolved += 1
+            if aid in conflict_of:
+                conflict_of[aid].resolved_by_step_seq = seq - 1
+
+    model_name = get_model() if model_configured else MODEL_NAME
+
+    run = AgentRun(
+        run_id=RUN_ID, site_id=SITE_ID, started_at=_now(0), finished_at=_now(6 + len(targets)),
+        status=RunStatus.COMPLETED, model_name=model_name, lookahead_h=lookahead_h, tier="commit",
         scanned_count=len(in_window), flagged_count=len(flagged),
-        conflicts_count=len(conflicts), resolved_count=0, escalated_count=0,
-        conflicts=conflicts, steps=steps, replay=True,
+        conflicts_count=len(conflicts), resolved_count=resolved, escalated_count=escalated,
+        conflicts=conflicts, steps=steps, replay=not model_configured,
     )
+    if return_evals:
+        return run, evals, outcomes
+    return run
+
+
+# --------------------------------------------------------------------------- #
+# Target selection + step emission for the PROPOSE/GATE/ACT stage
+# --------------------------------------------------------------------------- #
+
+def _resolution_targets(evals: dict, acts_by_id: dict, conflicts: list[Conflict],
+                        cap: int = 12) -> list[str]:
+    """The flagged activities worth a decision: near-critical or hold-point ones
+    (the demo beats), plus every conflict participant. Tightest float first, so
+    the agent spends its reasoning where the schedule is most fragile."""
+    picked: list[str] = []
+    seen: set[str] = set()
+    for aid, ev in evals.items():
+        if ev.verdict not in _FLAGGED:
+            continue
+        a = acts_by_id.get(aid, {})
+        if a.get("is_near_critical") or a.get("hold_point"):
+            picked.append(aid)
+            seen.add(aid)
+    for c in conflicts:
+        for aid in c.competing_activity_ids:
+            if aid not in seen and aid in evals:
+                picked.append(aid)
+                seen.add(aid)
+    picked.sort(key=lambda x: (not acts_by_id[x].get("is_near_critical"),
+                               acts_by_id[x].get("total_float_d") if acts_by_id[x].get("total_float_d") is not None else 1e9))
+    return picked[:cap]
+
+
+def _outcome_record(attempts: list[Attempt]) -> dict:
+    """Distil one activity's ladder into the fields a record entry needs: the
+    action taken and the gate verdict that stands (the last one produced)."""
+    from packages.schemas.record import GateDecision as RecGateDecision
+    from packages.schemas.record import RecordAction
+
+    outcome = attempts[-1]
+    gate_dec = gate_rule = gate_reason = None
+    for att in attempts:
+        if att.verdict is not None:
+            gate_dec = RecGateDecision(att.verdict.decision.value)
+            gate_rule = att.verdict.rule_id
+            gate_reason = att.verdict.reason
+    try:
+        action = RecordAction(outcome.kind.value)       # shift/split/mitigate/rfi/escalate share values
+    except ValueError:                                  # pragma: no cover - defensive
+        action = RecordAction.NO_ACTION
+    return {
+        "action": action,
+        "gate_decision": gate_dec,
+        "gate_rule_id": gate_rule,
+        "gate_reason": gate_reason,
+        "proposal_summary": outcome.proposal.rationale[:600],
+        "approver": None,                               # auto-approved / routed to a human; no named approver in REPLAY
+    }
+
+
+def _emit_attempts(steps: list[AgentStep], seq: int, ev, attempts: list[Attempt],
+                   conflict_id: str | None) -> int:
+    """Turn one activity's ladder into trace steps: a PROPOSE (and, for a gated
+    rung, a GATE) per attempt, then the ACT or ESCALATE outcome step."""
+    for att in attempts:
+        gated = att.gated
+        tool_calls = []
+        if att.kind in (ProposalKind.SPLIT, ProposalKind.SHIFT):
+            tool_calls = [ToolCall(tool=ToolName.PROPOSE_RESEQUENCE,
+                                   args={"activity_id": ev.activity_id, "kind": att.kind.value},
+                                   ok=True, result_summary=att.summary)]
+        steps.append(AgentStep(
+            seq=seq, type=StepType.PROPOSE, at=_now(6 + seq),
+            title=f"Propose {att.kind.value} for {ev.activity_id}",
+            detail=att.proposal.rationale, activity_ids=[ev.activity_id],
+            conflict_id=conflict_id, tool_calls=tool_calls, proposal=att.proposal,
+        ))
+        seq += 1
+        if gated and att.verdict is not None:
+            steps.append(AgentStep(
+                seq=seq, type=StepType.GATE, at=_now(6 + seq),
+                title=f"Gate: {att.verdict.decision.value} ({att.verdict.rule_id})",
+                detail=att.verdict.reason, activity_ids=[ev.activity_id],
+                conflict_id=conflict_id, gate=att.verdict,
+            ))
+            seq += 1
+
+    outcome = attempts[-1]
+    if outcome.kind is ProposalKind.ESCALATE or outcome.escalated:
+        steps.append(AgentStep(
+            seq=seq, type=StepType.ESCALATE, at=_now(6 + seq),
+            title=f"Escalate {ev.activity_id} to the superintendent",
+            detail=outcome.proposal.rationale if outcome.kind is ProposalKind.ESCALATE
+                   else f"{outcome.kind.value} denied — {outcome.verdict.reason if outcome.verdict else ''}",
+            activity_ids=[ev.activity_id], conflict_id=conflict_id,
+            tool_calls=[ToolCall(tool=ToolName.ESCALATE_TO_SUPERINTENDENT,
+                                 args={"activity_id": ev.activity_id}, ok=True,
+                                 result_summary="routed to a human with the tradeoff")],
+        ))
+        seq += 1
+    elif outcome.resolved:
+        steps.append(AgentStep(
+            seq=seq, type=StepType.ACT, at=_now(6 + seq),
+            title=f"Act: {outcome.tool.value} on {ev.activity_id}",
+            detail=f"{outcome.summary}"
+                   + (f" — gate approved ({outcome.verdict.rule_id})" if outcome.verdict else ""),
+            activity_ids=[ev.activity_id], conflict_id=conflict_id,
+            tool_calls=[ToolCall(tool=outcome.tool, args={"activity_id": ev.activity_id},
+                                 ok=True, gated=outcome.gated, result_summary=outcome.summary)],
+        ))
+        seq += 1
+    return seq
 
 
 __all__ = ["run_agent", "list_activities_in_lookahead", "get_work_face_thermal",
