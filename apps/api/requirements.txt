@@ -4,3 +4,4 @@ python-dotenv>=1.0
 PyYAML>=6.0
 pytest>=8.0
 openai>=1.40
+supabase>=2.0
