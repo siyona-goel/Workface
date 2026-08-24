@@ -155,7 +155,7 @@ def test_real_capture_derives_and_is_downgraded_to_medium():
     inheriting the capture's claimed high. This asserts the PATH, not agreement."""
     from packages.schemas.twin_segmentation import TwinCaptureBundle
     from pathlib import Path
-    p = Path(__file__).resolve().parents[1] / "data" / "fixtures" / "twin" / "twin" / "twin_bundle.json"
+    p = Path(__file__).resolve().parents[1] / "data" / "fixtures" / "twin" / "twin_bundle.json"
     bundle = TwinCaptureBundle.model_validate_json(p.read_text(encoding="utf-8"))
     hero = next(c for c in bundle.captures if c.work_face_id == "WF-FAB2-07")
     coeff = derive_coefficients(hero)
