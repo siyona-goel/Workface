@@ -6,6 +6,7 @@ import { ActivityDrawer } from "@/components/activity-drawer";
 import { ActivityTable } from "@/components/activity-table";
 import { AppNav } from "@/components/app-nav";
 import { ConsoleToolbar } from "@/components/console-toolbar";
+import { ModeBadge, channelHint } from "@/components/mode-badge";
 import { SiteMapLoader } from "@/components/site-map-loader";
 import { WindowRibbon } from "@/components/window-ribbon";
 import { WorkFaceList } from "@/components/work-face-list";
@@ -21,6 +22,7 @@ import {
   type ConsoleFilters,
   type Verdict,
 } from "@/lib/console-data";
+import { useAgentChannel, useAgentSource } from "@/lib/use-agent-events";
 
 export function SiteConsole() {
   const [filters, setFilters] = useState<ConsoleFilters>({
@@ -102,6 +104,8 @@ export function SiteConsole() {
   }
 
   const mapFaceId = filters.workFaceId ?? focusedFaceId;
+  const source = useAgentSource();
+  const { channelState } = useAgentChannel();
 
   return (
     <div className="flex min-h-dvh flex-col bg-background text-foreground lg:h-dvh lg:min-h-0 lg:overflow-hidden">
@@ -115,8 +119,15 @@ export function SiteConsole() {
           </span>
         </div>
         <div className="flex flex-wrap items-center gap-2 text-[11px] text-muted-foreground">
-          <span className="rounded-sm border border-emerald-500/30 bg-emerald-500/10 px-1.5 py-0.5 font-medium tracking-wider text-emerald-200 uppercase">
-            Replay
+          <ModeBadge source={source} channelState={channelState} />
+          <span className={channelHint(channelState)}>
+            {channelState === "subscribed"
+              ? "subscribed"
+              : channelState === "connecting"
+                ? "connecting"
+                : channelState === "error"
+                  ? "channel error"
+                  : "channel off"}
           </span>
           <span className="hidden font-mono sm:inline">
             {consoleData.project_id}

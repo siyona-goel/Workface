@@ -187,6 +187,14 @@ fs.copyFileSync(
   path.join(root, "data/fixtures/sample_agent_run.json"),
   path.join(outDir, "agent-run.json"),
 );
+fs.copyFileSync(
+  path.join(root, "data/fixtures/agent_run_live.json"),
+  path.join(outDir, "agent-run-live.json"),
+);
+fs.copyFileSync(
+  path.join(root, "data/fixtures/sample_gate_verdicts.json"),
+  path.join(outDir, "gate-verdicts.json"),
+);
 
 console.log(
   `wrote console.json (${activities.length} activities, ${work_faces.length} faces, ${evaluations.length} evals)`,

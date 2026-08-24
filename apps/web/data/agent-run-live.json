@@ -1,0 +1,1927 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "agent-2026-08-24-0000-commit-live",
+  "site_id": "NPX-FAB-P2",
+  "started_at": "2026-08-24T00:00:00-07:00",
+  "finished_at": "2026-08-24T00:00:18-07:00",
+  "status": "completed",
+  "model_name": "none (deterministic proposer — fixed strategy order, no LLM)",
+  "lookahead_h": 72,
+  "tier": "commit",
+  "scanned_count": 62,
+  "flagged_count": 22,
+  "conflicts_count": 11,
+  "resolved_count": 11,
+  "escalated_count": 1,
+  "conflicts": [
+    {
+      "id": "C1",
+      "work_face_id": "WF-BULK-01",
+      "shift_date": "2026-08-25",
+      "competing_activity_ids": [
+        "A-1248",
+        "A-1249"
+      ],
+      "compliant_hours": 12.0,
+      "demanded_hours": 24.0,
+      "description": "2 activities on WF-BULK-01 compete for the 2026-08-25 shift: 24 productive hours demanded against 12 open hours.",
+      "resolved_by_step_seq": 8
+    },
+    {
+      "id": "C2",
+      "work_face_id": "WF-BULK-01",
+      "shift_date": "2026-08-26",
+      "competing_activity_ids": [
+        "A-1249",
+        "A-1250"
+      ],
+      "compliant_hours": 9.0,
+      "demanded_hours": 24.0,
+      "description": "2 activities on WF-BULK-01 compete for the 2026-08-26 shift: 24 productive hours demanded against 9 open hours.",
+      "resolved_by_step_seq": 13
+    },
+    {
+      "id": "C3",
+      "work_face_id": "WF-BULK-02",
+      "shift_date": "2026-08-25",
+      "competing_activity_ids": [
+        "A-1256",
+        "A-1257"
+      ],
+      "compliant_hours": 12.0,
+      "demanded_hours": 24.0,
+      "description": "2 activities on WF-BULK-02 compete for the 2026-08-25 shift: 24 productive hours demanded against 12 open hours.",
+      "resolved_by_step_seq": 24
+    },
+    {
+      "id": "C4",
+      "work_face_id": "WF-BULK-02",
+      "shift_date": "2026-08-26",
+      "competing_activity_ids": [
+        "A-1257",
+        "A-1258"
+      ],
+      "compliant_hours": 9.0,
+      "demanded_hours": 15.0,
+      "description": "2 activities on WF-BULK-02 compete for the 2026-08-26 shift: 15 productive hours demanded against 9 open hours.",
+      "resolved_by_step_seq": 29
+    },
+    {
+      "id": "C5",
+      "work_face_id": "WF-BULK-03",
+      "shift_date": "2026-08-25",
+      "competing_activity_ids": [
+        "A-1264",
+        "A-1265",
+        "A-1266"
+      ],
+      "compliant_hours": 12.0,
+      "demanded_hours": 24.0,
+      "description": "3 activities on WF-BULK-03 compete for the 2026-08-25 shift: 24 productive hours demanded against 12 open hours.",
+      "resolved_by_step_seq": 21
+    },
+    {
+      "id": "C6",
+      "work_face_id": "WF-CHEM-01",
+      "shift_date": "2026-08-24",
+      "competing_activity_ids": [
+        "A-1272",
+        "A-1273"
+      ],
+      "compliant_hours": 12.0,
+      "demanded_hours": 24.0,
+      "description": "2 activities on WF-CHEM-01 compete for the 2026-08-24 shift: 24 productive hours demanded against 12 open hours.",
+      "resolved_by_step_seq": null
+    },
+    {
+      "id": "C7",
+      "work_face_id": "WF-CHEM-01",
+      "shift_date": "2026-08-25",
+      "competing_activity_ids": [
+        "A-1273",
+        "A-1274"
+      ],
+      "compliant_hours": 9.0,
+      "demanded_hours": 24.0,
+      "description": "2 activities on WF-CHEM-01 compete for the 2026-08-25 shift: 24 productive hours demanded against 9 open hours.",
+      "resolved_by_step_seq": null
+    },
+    {
+      "id": "C8",
+      "work_face_id": "WF-CHEM-02",
+      "shift_date": "2026-08-24",
+      "competing_activity_ids": [
+        "A-1280",
+        "A-1281"
+      ],
+      "compliant_hours": 12.0,
+      "demanded_hours": 24.0,
+      "description": "2 activities on WF-CHEM-02 compete for the 2026-08-24 shift: 24 productive hours demanded against 12 open hours.",
+      "resolved_by_step_seq": 36
+    },
+    {
+      "id": "C9",
+      "work_face_id": "WF-CHEM-02",
+      "shift_date": "2026-08-25",
+      "competing_activity_ids": [
+        "A-1281",
+        "A-1282"
+      ],
+      "compliant_hours": 9.0,
+      "demanded_hours": 24.0,
+      "description": "2 activities on WF-CHEM-02 compete for the 2026-08-25 shift: 24 productive hours demanded against 9 open hours.",
+      "resolved_by_step_seq": null
+    },
+    {
+      "id": "C10",
+      "work_face_id": "WF-WHSE-03",
+      "shift_date": "2026-08-24",
+      "competing_activity_ids": [
+        "A-1194",
+        "A-1195"
+      ],
+      "compliant_hours": 17.0,
+      "demanded_hours": 24.0,
+      "description": "2 activities on WF-WHSE-03 compete for the 2026-08-24 shift: 24 productive hours demanded against 17 open hours.",
+      "resolved_by_step_seq": null
+    },
+    {
+      "id": "C11",
+      "work_face_id": "WF-WHSE-04",
+      "shift_date": "2026-08-24",
+      "competing_activity_ids": [
+        "A-1201",
+        "A-1202"
+      ],
+      "compliant_hours": 17.0,
+      "demanded_hours": 24.0,
+      "description": "2 activities on WF-WHSE-04 compete for the 2026-08-24 shift: 24 productive hours demanded against 17 open hours.",
+      "resolved_by_step_seq": null
+    }
+  ],
+  "steps": [
+    {
+      "seq": 0,
+      "type": "scan",
+      "at": "2026-08-24T00:00:00-07:00",
+      "title": "Scanned 62 activities in the 72 h lookahead",
+      "detail": "Listed every activity whose planned window intersects the 72 h horizon from 2026-08-24 00:00 for site NPX-FAB-P2. 37 are thermal-sensitive with a trade.",
+      "activity_ids": [],
+      "conflict_id": null,
+      "tool_calls": [
+        {
+          "tool": "list_activities_in_lookahead",
+          "args": {
+            "lookahead_h": 72
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "62 in horizon, 37 thermal-sensitive",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        }
+      ],
+      "proposal": null,
+      "gate": null,
+      "record_seq": null
+    },
+    {
+      "seq": 1,
+      "type": "evaluate",
+      "at": "2026-08-24T00:00:03-07:00",
+      "title": "Flagged 22 of 37 evaluated as at-risk",
+      "detail": "Ran the deterministic window engine (thermal twin -> evaluate_window) on each. 22 are at_risk / non_compliant / insufficient_window. 8 returned no_data (fail-closed — mostly continuity runs that extend past the 72 h horizon); counted separately, not as flagged.",
+      "activity_ids": [
+        "A-1182",
+        "A-1186",
+        "A-1187",
+        "A-1194",
+        "A-1201",
+        "A-1205",
+        "A-1206",
+        "A-1213",
+        "A-1220",
+        "A-1237",
+        "A-1248",
+        "A-1249",
+        "A-1250",
+        "A-1256",
+        "A-1257",
+        "A-1264",
+        "A-1265",
+        "A-1272",
+        "A-1273",
+        "A-1280",
+        "A-1281",
+        "A-1288"
+      ],
+      "conflict_id": null,
+      "tool_calls": [
+        {
+          "tool": "get_work_face_thermal",
+          "args": {
+            "work_face_id": "WF-FAB2-06"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "72 h series, confidence high",
+          "fg_activity_ids": [
+            "fg-heatmap-FAB2-0001",
+            "fg-envparams-FAB2-0001"
+          ],
+          "latency_ms": null
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-1059"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict compliant; binding band_air_application",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        },
+        {
+          "tool": "get_work_face_thermal",
+          "args": {
+            "work_face_id": "WF-FAB2-07"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "72 h series, confidence high",
+          "fg_activity_ids": [
+            "fg-heatmap-FAB2-0001",
+            "fg-envparams-FAB2-0001"
+          ],
+          "latency_ms": null
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-1069"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict compliant; binding band_air_application",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        },
+        {
+          "tool": "get_work_face_thermal",
+          "args": {
+            "work_face_id": "WF-FAB2-08"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "72 h series, confidence high",
+          "fg_activity_ids": [
+            "fg-heatmap-FAB2-0001",
+            "fg-envparams-FAB2-0001"
+          ],
+          "latency_ms": null
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-1079"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict compliant; binding band_air_application",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        },
+        {
+          "tool": "get_work_face_thermal",
+          "args": {
+            "work_face_id": "WF-FAB2-09"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "72 h series, confidence high",
+          "fg_activity_ids": [
+            "fg-heatmap-FAB2-0001",
+            "fg-envparams-FAB2-0001"
+          ],
+          "latency_ms": null
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-1088"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict no_data; binding continuity_40f_24h",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        },
+        {
+          "tool": "get_work_face_thermal",
+          "args": {
+            "work_face_id": "WF-FAB2-10"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "72 h series, confidence high",
+          "fg_activity_ids": [
+            "fg-heatmap-FAB2-0001",
+            "fg-envparams-FAB2-0001"
+          ],
+          "latency_ms": null
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-1098"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict no_data; binding continuity_40f_24h",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        },
+        {
+          "tool": "get_work_face_thermal",
+          "args": {
+            "work_face_id": "WF-FAB2-11"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "72 h series, confidence high",
+          "fg_activity_ids": [
+            "fg-heatmap-FAB2-0001",
+            "fg-envparams-FAB2-0001"
+          ],
+          "latency_ms": null
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-1108"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict no_data; binding continuity_40f_24h",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        },
+        {
+          "tool": "get_work_face_thermal",
+          "args": {
+            "work_face_id": "WF-FAB2-12"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "72 h series, confidence high",
+          "fg_activity_ids": [
+            "fg-heatmap-FAB2-0001",
+            "fg-envparams-FAB2-0001"
+          ],
+          "latency_ms": null
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-1118"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict no_data; binding continuity_40f_24h",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        },
+        {
+          "tool": "get_work_face_thermal",
+          "args": {
+            "work_face_id": "WF-WHSE-01"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "72 h series, confidence high",
+          "fg_activity_ids": [
+            "fg-heatmap-WHSE-0001",
+            "fg-envparams-WHSE-0001"
+          ],
+          "latency_ms": null
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-1181"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict no_data; binding continuity_40f_24h",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-1182"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict non_compliant; binding band_surface_rising",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        },
+        {
+          "tool": "get_work_face_thermal",
+          "args": {
+            "work_face_id": "WF-WHSE-02"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "72 h series, confidence high",
+          "fg_activity_ids": [
+            "fg-heatmap-WHSE-0001",
+            "fg-envparams-WHSE-0001"
+          ],
+          "latency_ms": null
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-1186"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict at_risk; binding band_prequalified_preheat",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-1187"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict at_risk; binding band_surface_application",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-1188"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict no_data; binding continuity_40f_24h",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        },
+        {
+          "tool": "get_work_face_thermal",
+          "args": {
+            "work_face_id": "WF-WHSE-03"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "72 h series, confidence high",
+          "fg_activity_ids": [
+            "fg-heatmap-WHSE-0001",
+            "fg-envparams-WHSE-0001"
+          ],
+          "latency_ms": null
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-1194"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict at_risk; binding band_surface_application",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-1195"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict no_data; binding continuity_40f_24h",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        },
+        {
+          "tool": "get_work_face_thermal",
+          "args": {
+            "work_face_id": "WF-WHSE-04"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "72 h series, confidence high",
+          "fg_activity_ids": [
+            "fg-heatmap-WHSE-0001",
+            "fg-envparams-WHSE-0001"
+          ],
+          "latency_ms": null
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-1201"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict at_risk; binding band_surface_application",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-1202"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict no_data; binding continuity_40f_24h",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        },
+        {
+          "tool": "get_work_face_thermal",
+          "args": {
+            "work_face_id": "WF-CT-01"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "72 h series, confidence high",
+          "fg_activity_ids": [
+            "fg-heatmap-CT-0001",
+            "fg-envparams-CT-0001"
+          ],
+          "latency_ms": null
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-1205"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict at_risk; binding composite_evaporation_rate",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-1206"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict at_risk; binding band_base_material_installation",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        },
+        {
+          "tool": "get_work_face_thermal",
+          "args": {
+            "work_face_id": "WF-CT-02"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "72 h series, confidence high",
+          "fg_activity_ids": [
+            "fg-heatmap-CT-0001",
+            "fg-envparams-CT-0001"
+          ],
+          "latency_ms": null
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-1213"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict at_risk; binding band_base_material_installation",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        },
+        {
+          "tool": "get_work_face_thermal",
+          "args": {
+            "work_face_id": "WF-CT-03"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "72 h series, confidence high",
+          "fg_activity_ids": [
+            "fg-heatmap-CT-0001",
+            "fg-envparams-CT-0001"
+          ],
+          "latency_ms": null
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-1220"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict at_risk; binding band_base_material_installation",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        },
+        {
+          "tool": "get_work_face_thermal",
+          "args": {
+            "work_face_id": "WF-SUB-02"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "72 h series, confidence high",
+          "fg_activity_ids": [
+            "fg-heatmap-SUB-0001",
+            "fg-envparams-SUB-0001"
+          ],
+          "latency_ms": null
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-1237"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict at_risk; binding offset_dew_point",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        },
+        {
+          "tool": "get_work_face_thermal",
+          "args": {
+            "work_face_id": "WF-BULK-01"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "72 h series, confidence high",
+          "fg_activity_ids": [
+            "fg-heatmap-BULK-0001",
+            "fg-envparams-BULK-0001"
+          ],
+          "latency_ms": null
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-1248"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict at_risk; binding band_hot_weather_trigger_tier1",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-1249"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict at_risk; binding band_concrete_discharge_max",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-1250"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict at_risk; binding band_prequalified_preheat",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        },
+        {
+          "tool": "get_work_face_thermal",
+          "args": {
+            "work_face_id": "WF-BULK-02"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "72 h series, confidence high",
+          "fg_activity_ids": [
+            "fg-heatmap-BULK-0001",
+            "fg-envparams-BULK-0001"
+          ],
+          "latency_ms": null
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-1256"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict at_risk; binding band_hot_weather_trigger_tier1",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-1257"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict at_risk; binding band_concrete_discharge_max",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-1258"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict compliant; binding band_prequalified_preheat",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        },
+        {
+          "tool": "get_work_face_thermal",
+          "args": {
+            "work_face_id": "WF-BULK-03"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "72 h series, confidence high",
+          "fg_activity_ids": [
+            "fg-heatmap-BULK-0001",
+            "fg-envparams-BULK-0001"
+          ],
+          "latency_ms": null
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-1264"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict at_risk; binding band_hot_weather_trigger_tier1",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-1265"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict non_compliant; binding band_concrete_discharge_max",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-1266"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict compliant; binding band_prequalified_preheat",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        },
+        {
+          "tool": "get_work_face_thermal",
+          "args": {
+            "work_face_id": "WF-CHEM-01"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "72 h series, confidence high",
+          "fg_activity_ids": [
+            "fg-heatmap-CHEM-0001",
+            "fg-envparams-CHEM-0001"
+          ],
+          "latency_ms": null
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-1272"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict at_risk; binding band_hot_weather_trigger_tier1",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-1273"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict at_risk; binding band_concrete_discharge_max",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-1274"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict compliant; binding band_prequalified_preheat",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        },
+        {
+          "tool": "get_work_face_thermal",
+          "args": {
+            "work_face_id": "WF-CHEM-02"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "72 h series, confidence high",
+          "fg_activity_ids": [
+            "fg-heatmap-CHEM-0001",
+            "fg-envparams-CHEM-0001"
+          ],
+          "latency_ms": null
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-1280"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict at_risk; binding band_hot_weather_trigger_tier1",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-1281"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict at_risk; binding band_concrete_discharge_max",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-1282"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict compliant; binding band_prequalified_preheat",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        },
+        {
+          "tool": "get_work_face_thermal",
+          "args": {
+            "work_face_id": "WF-CHEM-03"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "72 h series, confidence high",
+          "fg_activity_ids": [
+            "fg-heatmap-CHEM-0001",
+            "fg-envparams-CHEM-0001"
+          ],
+          "latency_ms": null
+        },
+        {
+          "tool": "evaluate_window",
+          "args": {
+            "activity_id": "A-1288"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "verdict at_risk; binding band_hot_weather_trigger_tier1",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        }
+      ],
+      "proposal": null,
+      "gate": null,
+      "record_seq": null
+    },
+    {
+      "seq": 2,
+      "type": "conflict",
+      "at": "2026-08-24T00:00:05-07:00",
+      "title": "11 conflict(s) across 7 work face(s)",
+      "detail": "Grouped the evaluated activities by work face and shift; emitted a conflict wherever the productive hours demanded exceed the open hours available.",
+      "activity_ids": [
+        "A-1194",
+        "A-1195",
+        "A-1201",
+        "A-1202",
+        "A-1248",
+        "A-1249",
+        "A-1250",
+        "A-1256",
+        "A-1257",
+        "A-1258",
+        "A-1264",
+        "A-1265",
+        "A-1266",
+        "A-1272",
+        "A-1273",
+        "A-1274",
+        "A-1280",
+        "A-1281",
+        "A-1282"
+      ],
+      "conflict_id": null,
+      "tool_calls": [],
+      "proposal": null,
+      "gate": null,
+      "record_seq": null
+    },
+    {
+      "seq": 3,
+      "type": "propose",
+      "at": "2026-08-24T00:00:09-07:00",
+      "title": "Propose shift for A-1237",
+      "detail": "Shift A-1237 to its earliest compliant window (24 Aug 06:00), consuming 0.539 d of its 0.6 d float.",
+      "activity_ids": [
+        "A-1237"
+      ],
+      "conflict_id": null,
+      "tool_calls": [
+        {
+          "tool": "propose_resequence",
+          "args": {
+            "activity_id": "A-1237",
+            "kind": "shift"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "shift to 24 Aug 06:00 (0.539 d float)",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        }
+      ],
+      "proposal": {
+        "kind": "shift",
+        "activity_ids": [
+          "A-1237"
+        ],
+        "rationale": "Shift A-1237 to its earliest compliant window (24 Aug 06:00), consuming 0.539 d of its 0.6 d float.",
+        "solver_payload": {
+          "start": "2026-08-24T06:00:00-07:00",
+          "finish": "2026-08-24T12:18:00-07:00"
+        },
+        "float_days_consumed": 0.539,
+        "projected_verdict": null
+      },
+      "gate": null,
+      "record_seq": null
+    },
+    {
+      "seq": 4,
+      "type": "gate",
+      "at": "2026-08-24T00:00:10-07:00",
+      "title": "Gate: approve (within_policy)",
+      "detail": "Placement holds every constraint and consumes 0.539 d of float, under the 3 d cap (90% of its 0.6 d). Approved.",
+      "activity_ids": [
+        "A-1237"
+      ],
+      "conflict_id": null,
+      "tool_calls": [],
+      "proposal": null,
+      "gate": {
+        "decision": "approve",
+        "rule_id": "within_policy",
+        "reason": "Placement holds every constraint and consumes 0.539 d of float, under the 3 d cap (90% of its 0.6 d). Approved.",
+        "escalated": false,
+        "modified_params": null
+      },
+      "record_seq": null
+    },
+    {
+      "seq": 5,
+      "type": "act",
+      "at": "2026-08-24T00:00:11-07:00",
+      "title": "Act: shift_activity on A-1237",
+      "detail": "shift to 24 Aug 06:00 (0.539 d float) — gate approved (within_policy)",
+      "activity_ids": [
+        "A-1237"
+      ],
+      "conflict_id": null,
+      "tool_calls": [
+        {
+          "tool": "shift_activity",
+          "args": {
+            "activity_id": "A-1237"
+          },
+          "ok": true,
+          "gated": true,
+          "result_summary": "shift to 24 Aug 06:00 (0.539 d float)",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        }
+      ],
+      "proposal": null,
+      "gate": null,
+      "record_seq": null
+    },
+    {
+      "seq": 6,
+      "type": "propose",
+      "at": "2026-08-24T00:00:12-07:00",
+      "title": "Propose shift for A-1248",
+      "detail": "Shift A-1248 to its earliest compliant window (24 Aug 06:00), consuming 0 d of its 104.16 d float.",
+      "activity_ids": [
+        "A-1248"
+      ],
+      "conflict_id": "C1",
+      "tool_calls": [
+        {
+          "tool": "propose_resequence",
+          "args": {
+            "activity_id": "A-1248",
+            "kind": "shift"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "shift to 24 Aug 06:00 (0 d float)",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        }
+      ],
+      "proposal": {
+        "kind": "shift",
+        "activity_ids": [
+          "A-1248"
+        ],
+        "rationale": "Shift A-1248 to its earliest compliant window (24 Aug 06:00), consuming 0 d of its 104.16 d float.",
+        "solver_payload": {
+          "start": "2026-08-24T06:00:00-07:00",
+          "finish": "2026-08-24T15:24:00-07:00"
+        },
+        "float_days_consumed": 0.0,
+        "projected_verdict": null
+      },
+      "gate": null,
+      "record_seq": null
+    },
+    {
+      "seq": 7,
+      "type": "gate",
+      "at": "2026-08-24T00:00:13-07:00",
+      "title": "Gate: approve (within_policy)",
+      "detail": "Placement holds every constraint and consumes 0 d of float. Approved.",
+      "activity_ids": [
+        "A-1248"
+      ],
+      "conflict_id": "C1",
+      "tool_calls": [],
+      "proposal": null,
+      "gate": {
+        "decision": "approve",
+        "rule_id": "within_policy",
+        "reason": "Placement holds every constraint and consumes 0 d of float. Approved.",
+        "escalated": false,
+        "modified_params": null
+      },
+      "record_seq": null
+    },
+    {
+      "seq": 8,
+      "type": "act",
+      "at": "2026-08-24T00:00:14-07:00",
+      "title": "Act: shift_activity on A-1248",
+      "detail": "shift to 24 Aug 06:00 (0 d float) — gate approved (within_policy)",
+      "activity_ids": [
+        "A-1248"
+      ],
+      "conflict_id": "C1",
+      "tool_calls": [
+        {
+          "tool": "shift_activity",
+          "args": {
+            "activity_id": "A-1248"
+          },
+          "ok": true,
+          "gated": true,
+          "result_summary": "shift to 24 Aug 06:00 (0 d float)",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        }
+      ],
+      "proposal": null,
+      "gate": null,
+      "record_seq": null
+    },
+    {
+      "seq": 9,
+      "type": "propose",
+      "at": "2026-08-24T00:00:15-07:00",
+      "title": "Propose mitigate for A-1249",
+      "detail": "Request 'Shift work to night (lighting required)' (lead 12 h, $1200/day) — available per the site systems, and it addresses the binding Concrete temperature at discharge ≤ 35 °C (95 °F).",
+      "activity_ids": [
+        "A-1249"
+      ],
+      "conflict_id": "C2",
+      "tool_calls": [],
+      "proposal": {
+        "kind": "mitigate",
+        "activity_ids": [
+          "A-1249"
+        ],
+        "rationale": "Request 'Shift work to night (lighting required)' (lead 12 h, $1200/day) — available per the site systems, and it addresses the binding Concrete temperature at discharge ≤ 35 °C (95 °F).",
+        "solver_payload": null,
+        "float_days_consumed": null,
+        "projected_verdict": null
+      },
+      "gate": null,
+      "record_seq": null
+    },
+    {
+      "seq": 10,
+      "type": "act",
+      "at": "2026-08-24T00:00:16-07:00",
+      "title": "Act: request_mitigation on A-1249",
+      "detail": "request night_shift (Shift work to night (lighting required))",
+      "activity_ids": [
+        "A-1249"
+      ],
+      "conflict_id": "C2",
+      "tool_calls": [
+        {
+          "tool": "request_mitigation",
+          "args": {
+            "activity_id": "A-1249"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "request night_shift (Shift work to night (lighting required))",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        }
+      ],
+      "proposal": null,
+      "gate": null,
+      "record_seq": null
+    },
+    {
+      "seq": 11,
+      "type": "propose",
+      "at": "2026-08-24T00:00:17-07:00",
+      "title": "Propose shift for A-1250",
+      "detail": "Shift A-1250 to its earliest compliant window (24 Aug 06:00), consuming 0 d of its 104.16 d float.",
+      "activity_ids": [
+        "A-1250"
+      ],
+      "conflict_id": "C2",
+      "tool_calls": [
+        {
+          "tool": "propose_resequence",
+          "args": {
+            "activity_id": "A-1250",
+            "kind": "shift"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "shift to 24 Aug 06:00 (0 d float)",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        }
+      ],
+      "proposal": {
+        "kind": "shift",
+        "activity_ids": [
+          "A-1250"
+        ],
+        "rationale": "Shift A-1250 to its earliest compliant window (24 Aug 06:00), consuming 0 d of its 104.16 d float.",
+        "solver_payload": {
+          "start": "2026-08-24T06:00:00-07:00",
+          "finish": "2026-08-24T13:12:00-07:00"
+        },
+        "float_days_consumed": 0.0,
+        "projected_verdict": null
+      },
+      "gate": null,
+      "record_seq": null
+    },
+    {
+      "seq": 12,
+      "type": "gate",
+      "at": "2026-08-24T00:00:18-07:00",
+      "title": "Gate: approve (within_policy)",
+      "detail": "Placement holds every constraint and consumes 0 d of float. Approved.",
+      "activity_ids": [
+        "A-1250"
+      ],
+      "conflict_id": "C2",
+      "tool_calls": [],
+      "proposal": null,
+      "gate": {
+        "decision": "approve",
+        "rule_id": "within_policy",
+        "reason": "Placement holds every constraint and consumes 0 d of float. Approved.",
+        "escalated": false,
+        "modified_params": null
+      },
+      "record_seq": null
+    },
+    {
+      "seq": 13,
+      "type": "act",
+      "at": "2026-08-24T00:00:19-07:00",
+      "title": "Act: shift_activity on A-1250",
+      "detail": "shift to 24 Aug 06:00 (0 d float) — gate approved (within_policy)",
+      "activity_ids": [
+        "A-1250"
+      ],
+      "conflict_id": "C2",
+      "tool_calls": [
+        {
+          "tool": "shift_activity",
+          "args": {
+            "activity_id": "A-1250"
+          },
+          "ok": true,
+          "gated": true,
+          "result_summary": "shift to 24 Aug 06:00 (0 d float)",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        }
+      ],
+      "proposal": null,
+      "gate": null,
+      "record_seq": null
+    },
+    {
+      "seq": 14,
+      "type": "propose",
+      "at": "2026-08-24T00:00:20-07:00",
+      "title": "Propose shift for A-1264",
+      "detail": "Shift A-1264 to its earliest compliant window (24 Aug 06:00), consuming 0 d of its 104.67 d float.",
+      "activity_ids": [
+        "A-1264"
+      ],
+      "conflict_id": "C5",
+      "tool_calls": [
+        {
+          "tool": "propose_resequence",
+          "args": {
+            "activity_id": "A-1264",
+            "kind": "shift"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "shift to 24 Aug 06:00 (0 d float)",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        }
+      ],
+      "proposal": {
+        "kind": "shift",
+        "activity_ids": [
+          "A-1264"
+        ],
+        "rationale": "Shift A-1264 to its earliest compliant window (24 Aug 06:00), consuming 0 d of its 104.67 d float.",
+        "solver_payload": {
+          "start": "2026-08-24T06:00:00-07:00",
+          "finish": "2026-08-24T16:06:00-07:00"
+        },
+        "float_days_consumed": 0.0,
+        "projected_verdict": null
+      },
+      "gate": null,
+      "record_seq": null
+    },
+    {
+      "seq": 15,
+      "type": "gate",
+      "at": "2026-08-24T00:00:21-07:00",
+      "title": "Gate: approve (within_policy)",
+      "detail": "Placement holds every constraint and consumes 0 d of float. Approved.",
+      "activity_ids": [
+        "A-1264"
+      ],
+      "conflict_id": "C5",
+      "tool_calls": [],
+      "proposal": null,
+      "gate": {
+        "decision": "approve",
+        "rule_id": "within_policy",
+        "reason": "Placement holds every constraint and consumes 0 d of float. Approved.",
+        "escalated": false,
+        "modified_params": null
+      },
+      "record_seq": null
+    },
+    {
+      "seq": 16,
+      "type": "act",
+      "at": "2026-08-24T00:00:22-07:00",
+      "title": "Act: shift_activity on A-1264",
+      "detail": "shift to 24 Aug 06:00 (0 d float) — gate approved (within_policy)",
+      "activity_ids": [
+        "A-1264"
+      ],
+      "conflict_id": "C5",
+      "tool_calls": [
+        {
+          "tool": "shift_activity",
+          "args": {
+            "activity_id": "A-1264"
+          },
+          "ok": true,
+          "gated": true,
+          "result_summary": "shift to 24 Aug 06:00 (0 d float)",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        }
+      ],
+      "proposal": null,
+      "gate": null,
+      "record_seq": null
+    },
+    {
+      "seq": 17,
+      "type": "propose",
+      "at": "2026-08-24T00:00:23-07:00",
+      "title": "Propose mitigate for A-1265",
+      "detail": "Request 'Shift work to night (lighting required)' (lead 12 h, $1200/day) — available per the site systems, and it addresses the binding Concrete temperature at discharge ≤ 35 °C (95 °F).",
+      "activity_ids": [
+        "A-1265"
+      ],
+      "conflict_id": "C5",
+      "tool_calls": [],
+      "proposal": {
+        "kind": "mitigate",
+        "activity_ids": [
+          "A-1265"
+        ],
+        "rationale": "Request 'Shift work to night (lighting required)' (lead 12 h, $1200/day) — available per the site systems, and it addresses the binding Concrete temperature at discharge ≤ 35 °C (95 °F).",
+        "solver_payload": null,
+        "float_days_consumed": null,
+        "projected_verdict": null
+      },
+      "gate": null,
+      "record_seq": null
+    },
+    {
+      "seq": 18,
+      "type": "act",
+      "at": "2026-08-24T00:00:24-07:00",
+      "title": "Act: request_mitigation on A-1265",
+      "detail": "request night_shift (Shift work to night (lighting required))",
+      "activity_ids": [
+        "A-1265"
+      ],
+      "conflict_id": "C5",
+      "tool_calls": [
+        {
+          "tool": "request_mitigation",
+          "args": {
+            "activity_id": "A-1265"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "request night_shift (Shift work to night (lighting required))",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        }
+      ],
+      "proposal": null,
+      "gate": null,
+      "record_seq": null
+    },
+    {
+      "seq": 19,
+      "type": "propose",
+      "at": "2026-08-24T00:00:25-07:00",
+      "title": "Propose shift for A-1266",
+      "detail": "Shift A-1266 to its earliest compliant window (24 Aug 06:00), consuming 0 d of its 104.67 d float.",
+      "activity_ids": [
+        "A-1266"
+      ],
+      "conflict_id": "C5",
+      "tool_calls": [
+        {
+          "tool": "propose_resequence",
+          "args": {
+            "activity_id": "A-1266",
+            "kind": "shift"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "shift to 24 Aug 06:00 (0 d float)",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        }
+      ],
+      "proposal": {
+        "kind": "shift",
+        "activity_ids": [
+          "A-1266"
+        ],
+        "rationale": "Shift A-1266 to its earliest compliant window (24 Aug 06:00), consuming 0 d of its 104.67 d float.",
+        "solver_payload": {
+          "start": "2026-08-24T06:00:00-07:00",
+          "finish": "2026-08-24T13:06:00-07:00"
+        },
+        "float_days_consumed": 0.0,
+        "projected_verdict": null
+      },
+      "gate": null,
+      "record_seq": null
+    },
+    {
+      "seq": 20,
+      "type": "gate",
+      "at": "2026-08-24T00:00:26-07:00",
+      "title": "Gate: approve (within_policy)",
+      "detail": "Placement holds every constraint and consumes 0 d of float. Approved.",
+      "activity_ids": [
+        "A-1266"
+      ],
+      "conflict_id": "C5",
+      "tool_calls": [],
+      "proposal": null,
+      "gate": {
+        "decision": "approve",
+        "rule_id": "within_policy",
+        "reason": "Placement holds every constraint and consumes 0 d of float. Approved.",
+        "escalated": false,
+        "modified_params": null
+      },
+      "record_seq": null
+    },
+    {
+      "seq": 21,
+      "type": "act",
+      "at": "2026-08-24T00:00:27-07:00",
+      "title": "Act: shift_activity on A-1266",
+      "detail": "shift to 24 Aug 06:00 (0 d float) — gate approved (within_policy)",
+      "activity_ids": [
+        "A-1266"
+      ],
+      "conflict_id": "C5",
+      "tool_calls": [
+        {
+          "tool": "shift_activity",
+          "args": {
+            "activity_id": "A-1266"
+          },
+          "ok": true,
+          "gated": true,
+          "result_summary": "shift to 24 Aug 06:00 (0 d float)",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        }
+      ],
+      "proposal": null,
+      "gate": null,
+      "record_seq": null
+    },
+    {
+      "seq": 22,
+      "type": "propose",
+      "at": "2026-08-24T00:00:28-07:00",
+      "title": "Propose shift for A-1256",
+      "detail": "Shift A-1256 to its earliest compliant window (24 Aug 06:00), consuming 0 d of its 105.41 d float.",
+      "activity_ids": [
+        "A-1256"
+      ],
+      "conflict_id": "C3",
+      "tool_calls": [
+        {
+          "tool": "propose_resequence",
+          "args": {
+            "activity_id": "A-1256",
+            "kind": "shift"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "shift to 24 Aug 06:00 (0 d float)",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        }
+      ],
+      "proposal": {
+        "kind": "shift",
+        "activity_ids": [
+          "A-1256"
+        ],
+        "rationale": "Shift A-1256 to its earliest compliant window (24 Aug 06:00), consuming 0 d of its 105.41 d float.",
+        "solver_payload": {
+          "start": "2026-08-24T06:00:00-07:00",
+          "finish": "2026-08-24T14:30:00-07:00"
+        },
+        "float_days_consumed": 0.0,
+        "projected_verdict": null
+      },
+      "gate": null,
+      "record_seq": null
+    },
+    {
+      "seq": 23,
+      "type": "gate",
+      "at": "2026-08-24T00:00:29-07:00",
+      "title": "Gate: approve (within_policy)",
+      "detail": "Placement holds every constraint and consumes 0 d of float. Approved.",
+      "activity_ids": [
+        "A-1256"
+      ],
+      "conflict_id": "C3",
+      "tool_calls": [],
+      "proposal": null,
+      "gate": {
+        "decision": "approve",
+        "rule_id": "within_policy",
+        "reason": "Placement holds every constraint and consumes 0 d of float. Approved.",
+        "escalated": false,
+        "modified_params": null
+      },
+      "record_seq": null
+    },
+    {
+      "seq": 24,
+      "type": "act",
+      "at": "2026-08-24T00:00:30-07:00",
+      "title": "Act: shift_activity on A-1256",
+      "detail": "shift to 24 Aug 06:00 (0 d float) — gate approved (within_policy)",
+      "activity_ids": [
+        "A-1256"
+      ],
+      "conflict_id": "C3",
+      "tool_calls": [
+        {
+          "tool": "shift_activity",
+          "args": {
+            "activity_id": "A-1256"
+          },
+          "ok": true,
+          "gated": true,
+          "result_summary": "shift to 24 Aug 06:00 (0 d float)",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        }
+      ],
+      "proposal": null,
+      "gate": null,
+      "record_seq": null
+    },
+    {
+      "seq": 25,
+      "type": "propose",
+      "at": "2026-08-24T00:00:31-07:00",
+      "title": "Propose mitigate for A-1257",
+      "detail": "Request 'Shift work to night (lighting required)' (lead 12 h, $1200/day) — available per the site systems, and it addresses the binding Concrete temperature at discharge ≤ 35 °C (95 °F).",
+      "activity_ids": [
+        "A-1257"
+      ],
+      "conflict_id": "C4",
+      "tool_calls": [],
+      "proposal": {
+        "kind": "mitigate",
+        "activity_ids": [
+          "A-1257"
+        ],
+        "rationale": "Request 'Shift work to night (lighting required)' (lead 12 h, $1200/day) — available per the site systems, and it addresses the binding Concrete temperature at discharge ≤ 35 °C (95 °F).",
+        "solver_payload": null,
+        "float_days_consumed": null,
+        "projected_verdict": null
+      },
+      "gate": null,
+      "record_seq": null
+    },
+    {
+      "seq": 26,
+      "type": "act",
+      "at": "2026-08-24T00:00:32-07:00",
+      "title": "Act: request_mitigation on A-1257",
+      "detail": "request night_shift (Shift work to night (lighting required))",
+      "activity_ids": [
+        "A-1257"
+      ],
+      "conflict_id": "C4",
+      "tool_calls": [
+        {
+          "tool": "request_mitigation",
+          "args": {
+            "activity_id": "A-1257"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "request night_shift (Shift work to night (lighting required))",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        }
+      ],
+      "proposal": null,
+      "gate": null,
+      "record_seq": null
+    },
+    {
+      "seq": 27,
+      "type": "propose",
+      "at": "2026-08-24T00:00:33-07:00",
+      "title": "Propose shift for A-1258",
+      "detail": "Shift A-1258 to its earliest compliant window (24 Aug 06:00), consuming 0 d of its 105.41 d float.",
+      "activity_ids": [
+        "A-1258"
+      ],
+      "conflict_id": "C4",
+      "tool_calls": [
+        {
+          "tool": "propose_resequence",
+          "args": {
+            "activity_id": "A-1258",
+            "kind": "shift"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "shift to 24 Aug 06:00 (0 d float)",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        }
+      ],
+      "proposal": {
+        "kind": "shift",
+        "activity_ids": [
+          "A-1258"
+        ],
+        "rationale": "Shift A-1258 to its earliest compliant window (24 Aug 06:00), consuming 0 d of its 105.41 d float.",
+        "solver_payload": {
+          "start": "2026-08-24T06:00:00-07:00",
+          "finish": "2026-08-24T13:12:00-07:00"
+        },
+        "float_days_consumed": 0.0,
+        "projected_verdict": null
+      },
+      "gate": null,
+      "record_seq": null
+    },
+    {
+      "seq": 28,
+      "type": "gate",
+      "at": "2026-08-24T00:00:34-07:00",
+      "title": "Gate: approve (within_policy)",
+      "detail": "Placement holds every constraint and consumes 0 d of float. Approved.",
+      "activity_ids": [
+        "A-1258"
+      ],
+      "conflict_id": "C4",
+      "tool_calls": [],
+      "proposal": null,
+      "gate": {
+        "decision": "approve",
+        "rule_id": "within_policy",
+        "reason": "Placement holds every constraint and consumes 0 d of float. Approved.",
+        "escalated": false,
+        "modified_params": null
+      },
+      "record_seq": null
+    },
+    {
+      "seq": 29,
+      "type": "act",
+      "at": "2026-08-24T00:00:35-07:00",
+      "title": "Act: shift_activity on A-1258",
+      "detail": "shift to 24 Aug 06:00 (0 d float) — gate approved (within_policy)",
+      "activity_ids": [
+        "A-1258"
+      ],
+      "conflict_id": "C4",
+      "tool_calls": [
+        {
+          "tool": "shift_activity",
+          "args": {
+            "activity_id": "A-1258"
+          },
+          "ok": true,
+          "gated": true,
+          "result_summary": "shift to 24 Aug 06:00 (0 d float)",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        }
+      ],
+      "proposal": null,
+      "gate": null,
+      "record_seq": null
+    },
+    {
+      "seq": 30,
+      "type": "propose",
+      "at": "2026-08-24T00:00:36-07:00",
+      "title": "Propose shift for A-1205",
+      "detail": "Attempt to resequence A-1205 — blocked before any placement.",
+      "activity_ids": [
+        "A-1205"
+      ],
+      "conflict_id": null,
+      "tool_calls": [
+        {
+          "tool": "propose_resequence",
+          "args": {
+            "activity_id": "A-1205",
+            "kind": "shift"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "blocked: no_move_inspection_hold_point",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        }
+      ],
+      "proposal": {
+        "kind": "shift",
+        "activity_ids": [
+          "A-1205"
+        ],
+        "rationale": "Attempt to resequence A-1205 — blocked before any placement.",
+        "solver_payload": null,
+        "float_days_consumed": null,
+        "projected_verdict": null
+      },
+      "gate": null,
+      "record_seq": null
+    },
+    {
+      "seq": 31,
+      "type": "gate",
+      "at": "2026-08-24T00:00:37-07:00",
+      "title": "Gate: deny (no_move_inspection_hold_point)",
+      "detail": "Denied: this activity carries an inspection hold point — \"City of Phoenix inspector — reinforcing & embed inspection prior to pour\". An inspection gate is a human coordination, not a resequencing the agent can make. Escalating.",
+      "activity_ids": [
+        "A-1205"
+      ],
+      "conflict_id": null,
+      "tool_calls": [],
+      "proposal": null,
+      "gate": {
+        "decision": "deny",
+        "rule_id": "no_move_inspection_hold_point",
+        "reason": "Denied: this activity carries an inspection hold point — \"City of Phoenix inspector — reinforcing & embed inspection prior to pour\". An inspection gate is a human coordination, not a resequencing the agent can make. Escalating.",
+        "escalated": true,
+        "modified_params": null
+      },
+      "record_seq": null
+    },
+    {
+      "seq": 32,
+      "type": "propose",
+      "at": "2026-08-24T00:00:38-07:00",
+      "title": "Propose escalate for A-1205",
+      "detail": "Escalating A-1205 (Equipment pad pour — CT grade — bay A1) to the superintendent. Binding constraint: ACI 305 evaporation rate ≤ 0.2 lb/ft²/hr. Tried: shift → Denied: this activity carries an inspection hold point — \"City of Phoenix inspector — reinforcing & embed inspection prior to pour\". An inspection gate is a human coordination, not a resequencing the agent can make. Escalating.. No option is acceptable without a human tradeoff — the decision to spend contractual float, move a hold point or a milestone, or run out-of-spec work is not the agent's.",
+      "activity_ids": [
+        "A-1205"
+      ],
+      "conflict_id": null,
+      "tool_calls": [],
+      "proposal": {
+        "kind": "escalate",
+        "activity_ids": [
+          "A-1205"
+        ],
+        "rationale": "Escalating A-1205 (Equipment pad pour — CT grade — bay A1) to the superintendent. Binding constraint: ACI 305 evaporation rate ≤ 0.2 lb/ft²/hr. Tried: shift → Denied: this activity carries an inspection hold point — \"City of Phoenix inspector — reinforcing & embed inspection prior to pour\". An inspection gate is a human coordination, not a resequencing the agent can make. Escalating.. No option is acceptable without a human tradeoff — the decision to spend contractual float, move a hold point or a milestone, or run out-of-spec work is not the agent's.",
+        "solver_payload": null,
+        "float_days_consumed": null,
+        "projected_verdict": null
+      },
+      "gate": null,
+      "record_seq": null
+    },
+    {
+      "seq": 33,
+      "type": "escalate",
+      "at": "2026-08-24T00:00:39-07:00",
+      "title": "Escalate A-1205 to the superintendent",
+      "detail": "Escalating A-1205 (Equipment pad pour — CT grade — bay A1) to the superintendent. Binding constraint: ACI 305 evaporation rate ≤ 0.2 lb/ft²/hr. Tried: shift → Denied: this activity carries an inspection hold point — \"City of Phoenix inspector — reinforcing & embed inspection prior to pour\". An inspection gate is a human coordination, not a resequencing the agent can make. Escalating.. No option is acceptable without a human tradeoff — the decision to spend contractual float, move a hold point or a milestone, or run out-of-spec work is not the agent's.",
+      "activity_ids": [
+        "A-1205"
+      ],
+      "conflict_id": null,
+      "tool_calls": [
+        {
+          "tool": "escalate_to_superintendent",
+          "args": {
+            "activity_id": "A-1205"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "routed to a human with the tradeoff",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        }
+      ],
+      "proposal": null,
+      "gate": null,
+      "record_seq": null
+    },
+    {
+      "seq": 34,
+      "type": "propose",
+      "at": "2026-08-24T00:00:40-07:00",
+      "title": "Propose shift for A-1280",
+      "detail": "Shift A-1280 to its earliest compliant window (24 Aug 06:00), consuming 1.422 d of its 105.85 d float.",
+      "activity_ids": [
+        "A-1280"
+      ],
+      "conflict_id": "C8",
+      "tool_calls": [
+        {
+          "tool": "propose_resequence",
+          "args": {
+            "activity_id": "A-1280",
+            "kind": "shift"
+          },
+          "ok": true,
+          "gated": false,
+          "result_summary": "shift to 24 Aug 06:00 (1.422 d float)",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        }
+      ],
+      "proposal": {
+        "kind": "shift",
+        "activity_ids": [
+          "A-1280"
+        ],
+        "rationale": "Shift A-1280 to its earliest compliant window (24 Aug 06:00), consuming 1.422 d of its 105.85 d float.",
+        "solver_payload": {
+          "start": "2026-08-24T06:00:00-07:00",
+          "finish": "2026-08-24T15:54:00-07:00"
+        },
+        "float_days_consumed": 1.422,
+        "projected_verdict": null
+      },
+      "gate": null,
+      "record_seq": null
+    },
+    {
+      "seq": 35,
+      "type": "gate",
+      "at": "2026-08-24T00:00:41-07:00",
+      "title": "Gate: approve (within_policy)",
+      "detail": "Placement holds every constraint and consumes 1.422 d of float (1% of its 105.85 d). Approved.",
+      "activity_ids": [
+        "A-1280"
+      ],
+      "conflict_id": "C8",
+      "tool_calls": [],
+      "proposal": null,
+      "gate": {
+        "decision": "approve",
+        "rule_id": "within_policy",
+        "reason": "Placement holds every constraint and consumes 1.422 d of float (1% of its 105.85 d). Approved.",
+        "escalated": false,
+        "modified_params": null
+      },
+      "record_seq": null
+    },
+    {
+      "seq": 36,
+      "type": "act",
+      "at": "2026-08-24T00:00:42-07:00",
+      "title": "Act: shift_activity on A-1280",
+      "detail": "shift to 24 Aug 06:00 (1.422 d float) — gate approved (within_policy)",
+      "activity_ids": [
+        "A-1280"
+      ],
+      "conflict_id": "C8",
+      "tool_calls": [
+        {
+          "tool": "shift_activity",
+          "args": {
+            "activity_id": "A-1280"
+          },
+          "ok": true,
+          "gated": true,
+          "result_summary": "shift to 24 Aug 06:00 (1.422 d float)",
+          "fg_activity_ids": [],
+          "latency_ms": null
+        }
+      ],
+      "proposal": null,
+      "gate": null,
+      "record_seq": null
+    }
+  ],
+  "replay": true
+}

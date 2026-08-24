@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+
 import { AgentTrace } from "@/components/agent-trace";
 
 export const metadata = {
@@ -7,5 +9,9 @@ export const metadata = {
 };
 
 export default function TracePage() {
-  return <AgentTrace />;
+  return (
+    <Suspense>
+      <AgentTrace />
+    </Suspense>
+  );
 }

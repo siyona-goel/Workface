@@ -1,5 +1,6 @@
 import agentRunJson from "@/data/agent-run.json";
-import { faceName } from "@/lib/console-data";
+import liveRunJson from "@/data/agent-run-live.json";
+import { consoleData, faceName } from "@/lib/console-data";
 
 export const STEP_TYPES = [
   "scan",
@@ -93,6 +94,13 @@ export type AgentRun = {
 };
 
 export const agentRun = agentRunJson as AgentRun;
+export const liveAgentRun = liveRunJson as AgentRun;
+
+export type AgentSource = "fixture" | "live";
+
+export function runForSource(source: AgentSource): AgentRun {
+  return source === "live" ? liveAgentRun : agentRun;
+}
 
 /** Hand-written fixture IDs — not in activities.json. Labels from the T3 narrative. */
 export const TRACE_ACTIVITY_LABEL: Record<string, string> = {
@@ -123,12 +131,16 @@ export const GATE_DECISION_LABEL: Record<GateDecision, string> = {
 
 export type ConflictOutcome = "resolved" | "escalated" | "open";
 
-export function conflictById(id: string) {
-  return agentRun.conflicts.find((c) => c.id === id);
+export function conflictById(id: string, run: AgentRun = agentRun) {
+  return run.conflicts.find((c) => c.id === id);
 }
 
 export function activityLabel(id: string) {
-  return TRACE_ACTIVITY_LABEL[id] ?? id;
+  return (
+    TRACE_ACTIVITY_LABEL[id] ??
+    consoleData.activities.find((a) => a.id === id)?.name ??
+    id
+  );
 }
 
 export function formatCompeting(ids: string[]) {
@@ -147,8 +159,11 @@ export function formatShiftDate(ymd: string) {
   });
 }
 
-export function conflictOutcome(conflict: Conflict): ConflictOutcome {
-  const steps = agentRun.steps.filter((s) => s.conflict_id === conflict.id);
+export function conflictOutcome(
+  conflict: Conflict,
+  run: AgentRun = agentRun,
+): ConflictOutcome {
+  const steps = run.steps.filter((s) => s.conflict_id === conflict.id);
   if (steps.some((s) => s.type === "escalate" || s.gate?.escalated)) {
     return "escalated";
   }
