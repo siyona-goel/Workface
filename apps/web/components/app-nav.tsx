@@ -23,14 +23,17 @@ const items: { href: string; id: NavId; label: string }[] = [
 export function AppNav({ current }: Props) {
   const params = useSearchParams();
   const src = params.get("src");
+  const debug = params.get("debug");
 
   return (
     <nav className="flex items-center gap-0.5 rounded-md border border-border/70 p-0.5">
       {items.map((item) => {
+        const next = new URLSearchParams();
+        if (src) next.set("src", src);
+        if (debug) next.set("debug", debug);
+        const qs = next.toString();
         const href =
-          src && item.href !== "/"
-            ? `${item.href}?src=${src}`
-            : item.href;
+          qs && item.href !== "/" ? `${item.href}?${qs}` : item.href;
         return (
           <Link
             key={item.id}
