@@ -1,10 +1,12 @@
 import Link from "next/link";
 
+import { StatusRailCard, NEUTRAL_RAIL } from "@/components/status-rail";
 import {
   ITEM_KIND_LABEL,
   ITEM_STATUS_LABEL,
   PRIORITY_ORDER,
   formatBriefDate,
+  formatBriefHoldUntil,
   formatBriefTime,
   morningBrief,
   type BriefItem,
@@ -12,72 +14,106 @@ import {
 } from "@/lib/morning-brief";
 import { cn } from "@/lib/utils";
 
-const KIND_TONE: Record<BriefItemKind, string> = {
-  window: "border-emerald-400/35 bg-emerald-400/8",
-  shift: "border-sky-400/35 bg-sky-400/8",
-  hold: "border-amber-400/40 bg-amber-400/10",
-  escalation: "border-red-400/40 bg-red-400/10",
-  weather: "border-border/70 bg-muted/20",
+const KIND_RAIL: Record<BriefItemKind, string> = {
+  window: "bg-emerald-500",
+  shift: "bg-sky-500",
+  hold: "bg-amber-500",
+  escalation: "bg-red-500",
+  weather: NEUTRAL_RAIL,
 };
 
-const STATUS_TONE: Record<string, string> = {
-  ready: "text-emerald-200",
-  confirmed: "text-sky-200",
-  hold: "text-amber-200",
+const KIND_TEXT: Record<BriefItemKind, string> = {
+  window: "text-emerald-400",
+  shift: "text-sky-400",
+  hold: "text-amber-400",
+  escalation: "text-red-400",
+  weather: "text-muted-foreground",
+};
+
+const STATUS_TEXT: Record<string, string> = {
+  ready: "text-emerald-400",
+  confirmed: "text-sky-400",
+  hold: "text-amber-400",
   watch: "text-muted-foreground",
-  escalated: "text-red-200",
+  escalated: "text-red-400",
 };
 
 function BriefItemCard({ item }: { item: BriefItem }) {
+  const isEscalation = item.kind === "escalation";
+
   return (
-    <article
-      className={cn(
-        "rounded-xl border px-3.5 py-3",
-        KIND_TONE[item.kind],
-      )}
+    <StatusRailCard
+      railClass={KIND_RAIL[item.kind]}
+      innerClassName="py-3"
+      className="rounded-lg"
     >
       <div className="flex items-start justify-between gap-2">
         <div className="min-w-0">
-          <p className="text-[10px] font-medium tracking-[0.14em] text-muted-foreground uppercase">
+          <p
+            className={cn(
+              "text-[10px] font-semibold tracking-[0.14em] uppercase",
+              KIND_TEXT[item.kind],
+            )}
+          >
             {ITEM_KIND_LABEL[item.kind]}
           </p>
-          <h3 className="mt-0.5 text-[15px] font-semibold leading-snug">
+          <h3 className="mt-0.5 text-[15px] font-semibold leading-snug text-foreground/95">
             {item.title}
           </h3>
         </div>
         <span
           className={cn(
-            "shrink-0 text-[10px] font-medium tracking-wide uppercase",
-            STATUS_TONE[item.status] ?? "text-muted-foreground",
+            "shrink-0 text-[10px] font-semibold tracking-[0.14em] uppercase",
+            STATUS_TEXT[item.status] ?? "text-muted-foreground",
           )}
         >
           {ITEM_STATUS_LABEL[item.status] ?? item.status}
         </span>
       </div>
-      <p className="mt-2 text-[13px] leading-relaxed">{item.body}</p>
+
+      <p
+        className={cn(
+          "mt-2 text-[13px] leading-relaxed",
+          isEscalation
+            ? "rounded-md border border-red-950/30 bg-red-950/12 px-2.5 py-2 text-foreground/90"
+            : "text-foreground/90",
+        )}
+      >
+        {item.body}
+      </p>
+
       <p className="mt-2 font-mono text-[10px] text-muted-foreground">
         {item.activity_id} · {item.location}
       </p>
+
       {item.window ? (
-        <p className="mt-1.5 text-[12px] text-emerald-100/90">
-          Window {item.window.opens}–{item.window.closes}
+        <p className="mt-1.5 text-[12px] text-muted-foreground">
+          Window{" "}
+          <span className={KIND_TEXT.window}>
+            {item.window.opens}–{item.window.closes}
+          </span>
           {item.scheduled_start
             ? ` · scheduled ${item.scheduled_start}`
             : null}
         </p>
       ) : null}
+
       {item.new_start ? (
-        <p className="mt-1.5 text-[12px] text-sky-100/90">
+        <p className="mt-1.5 text-[12px] text-muted-foreground">
           {item.previous_start ? `${item.previous_start} → ` : null}
-          {item.new_start}
+          <span className={KIND_TEXT.shift}>{item.new_start}</span>
         </p>
       ) : null}
+
       {item.hold_until ? (
-        <p className="mt-1.5 text-[12px] text-amber-100/90">
-          Earliest clear: {item.hold_until.slice(5).replace("-", " ")}
+        <p className="mt-1.5 text-[12px] text-muted-foreground">
+          Earliest clear:{" "}
+          <span className={KIND_TEXT.hold}>
+            {formatBriefHoldUntil(item.hold_until)}
+          </span>
         </p>
       ) : null}
-    </article>
+    </StatusRailCard>
   );
 }
 
@@ -136,7 +172,7 @@ export function BriefPhone() {
               <span className="text-[11px] font-semibold tracking-[0.2em]">
                 WORKFACE
               </span>
-              <span className="rounded-full bg-violet-500/15 px-2 py-0.5 text-[9px] font-medium tracking-wide text-violet-200 uppercase">
+              <span className="rounded-sm border border-border/70 bg-card/30 px-2 py-0.5 text-[9px] font-semibold tracking-[0.12em] text-violet-400 uppercase">
                 Brief
               </span>
             </div>
@@ -159,16 +195,23 @@ export function BriefPhone() {
               <BriefItemCard key={item.id} item={item} />
             ))}
 
-            <footer className="rounded-xl border border-border/60 bg-card/30 px-3 py-3 text-[11px] leading-relaxed text-muted-foreground">
-              <p>{morningBrief.stats.activities_today} activities today ·</p>
-              <p>
+            <StatusRailCard
+              railClass={NEUTRAL_RAIL}
+              innerClassName="py-3"
+              className="rounded-lg"
+            >
+              <p className="text-[11px] leading-relaxed text-muted-foreground">
+                {morningBrief.stats.activities_today} activities today ·{" "}
                 {morningBrief.notification_queue.filter((n) => n.status === "queued").length}{" "}
                 crew notifications queued
               </p>
-              <Link href="/trace" className="mt-2 inline-block underline">
+              <Link
+                href="/trace"
+                className="mt-2 inline-block text-[11px] text-foreground/80 underline"
+              >
                 Open agent trace
               </Link>
-            </footer>
+            </StatusRailCard>
           </div>
 
           {/* Home indicator */}
