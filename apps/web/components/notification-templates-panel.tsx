@@ -14,6 +14,29 @@ import {
 } from "@/lib/notification-templates";
 import { cn } from "@/lib/utils";
 
+function VarsList({ vars }: { vars: Record<string, string> }) {
+  return (
+    <div className="rounded-lg border border-border/70 bg-card/40 px-3 py-2.5">
+      <p className="text-[10px] font-medium tracking-[0.14em] text-muted-foreground uppercase">
+        Sample vars
+      </p>
+      <dl className="mt-2 space-y-1.5">
+        {Object.entries(vars).map(([key, value]) => (
+          <div
+            key={key}
+            className="grid grid-cols-[minmax(0,8rem)_1fr] items-baseline gap-2"
+          >
+            <dt className="font-mono text-[10px] text-muted-foreground">
+              {`{{${key}}}`}
+            </dt>
+            <dd className="min-w-0 text-[12px] leading-snug">{value}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  );
+}
+
 function TemplatePreview({
   template,
   vars,
@@ -132,31 +155,35 @@ export function NotificationTemplatesPanel() {
 
         <div className="min-h-0 rounded-xl border border-border/70 bg-background/40 p-3 sm:p-4">
           <div className="mb-3 flex flex-wrap items-center gap-2">
-            <button
-              type="button"
-              onClick={() => setUseQueue(true)}
-              className={cn(
-                "rounded-sm px-2 py-0.5 text-[11px] font-medium",
-                useQueue
-                  ? "bg-muted text-foreground"
-                  : "text-muted-foreground hover:text-foreground",
-              )}
-            >
-              Brief queue
-            </button>
-            <button
-              type="button"
-              onClick={() => setUseQueue(false)}
-              className={cn(
-                "rounded-sm px-2 py-0.5 text-[11px] font-medium",
-                !useQueue
-                  ? "bg-muted text-foreground"
-                  : "text-muted-foreground hover:text-foreground",
-              )}
-            >
-              Sample vars
-            </button>
-            {queueMatch ? (
+            <div className="flex items-center gap-0.5 rounded-md border border-border/70 p-0.5">
+              <button
+                type="button"
+                aria-pressed={useQueue}
+                onClick={() => setUseQueue(true)}
+                className={cn(
+                  "rounded-sm px-2 py-0.5 text-[11px] font-medium",
+                  useQueue
+                    ? "bg-muted text-foreground"
+                    : "text-muted-foreground hover:text-foreground",
+                )}
+              >
+                Brief queue
+              </button>
+              <button
+                type="button"
+                aria-pressed={!useQueue}
+                onClick={() => setUseQueue(false)}
+                className={cn(
+                  "rounded-sm px-2 py-0.5 text-[11px] font-medium",
+                  !useQueue
+                    ? "bg-muted text-foreground"
+                    : "text-muted-foreground hover:text-foreground",
+                )}
+              >
+                Sample vars
+              </button>
+            </div>
+            {useQueue && queueMatch ? (
               <span className="text-[10px] text-muted-foreground">
                 {queueMatch.activity_id} · {queueMatch.channel} ·{" "}
                 {queueMatch.status}
@@ -165,10 +192,24 @@ export function NotificationTemplatesPanel() {
               <span className="text-[10px] text-muted-foreground">
                 No queued message for this template today
               </span>
-            ) : null}
+            ) : (
+              <span className="text-[10px] text-muted-foreground">
+                Catalog fill · {Object.keys(selected.sample_vars).length} vars
+              </span>
+            )}
           </div>
 
-          <TemplatePreview template={selected} vars={vars} />
+          {useQueue && !queueMatch ? (
+            <p className="rounded-lg border border-dashed border-border/70 px-3 py-6 text-center text-[13px] text-muted-foreground">
+              Nothing in today&apos;s brief queue for this template. Open
+              Sample vars to preview the catalog fill.
+            </p>
+          ) : (
+            <div className="flex min-h-0 flex-col gap-3">
+              {!useQueue ? <VarsList vars={selected.sample_vars} /> : null}
+              <TemplatePreview template={selected} vars={vars} />
+            </div>
+          )}
 
           <details className="mt-4 border-t border-border/60 pt-3">
             <summary className="cursor-pointer text-[11px] text-muted-foreground">
