@@ -88,8 +88,8 @@ export function ConflictView() {
                 className={cn(
                   "rounded-md border px-2 py-0.5 text-[11px] font-medium",
                   filter === id
-                    ? "border-primary/40 bg-primary/15 text-foreground"
-                    : "border-border text-muted-foreground hover:bg-muted/40",
+                    ? "border-border bg-muted/30 text-foreground"
+                    : "border-border/70 text-muted-foreground hover:bg-muted/15",
                 )}
               >
                 {id === "all" ? "All" : OUTCOME_LABEL[id]} {counts[id]}

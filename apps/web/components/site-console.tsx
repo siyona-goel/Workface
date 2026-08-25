@@ -6,7 +6,6 @@ import { ActivityDrawer } from "@/components/activity-drawer";
 import { ActivityTable } from "@/components/activity-table";
 import { AppNav } from "@/components/app-nav";
 import { ConsoleToolbar } from "@/components/console-toolbar";
-import { ModeBadge, channelHint } from "@/components/mode-badge";
 import { SiteMapLoader } from "@/components/site-map-loader";
 import { WindowRibbon } from "@/components/window-ribbon";
 import { WorkFaceList } from "@/components/work-face-list";
@@ -22,7 +21,6 @@ import {
   type ConsoleFilters,
   type Verdict,
 } from "@/lib/console-data";
-import { useAgentChannel, useAgentSource } from "@/lib/use-agent-events";
 
 export function SiteConsole() {
   const [filters, setFilters] = useState<ConsoleFilters>({
@@ -104,46 +102,20 @@ export function SiteConsole() {
   }
 
   const mapFaceId = filters.workFaceId ?? focusedFaceId;
-  const source = useAgentSource();
-  const { channelState } = useAgentChannel();
 
   return (
     <div className="flex min-h-dvh flex-col bg-background text-foreground lg:h-dvh lg:min-h-0 lg:overflow-hidden">
-      <header className="flex flex-wrap items-center gap-x-3 gap-y-1.5 border-b border-border/70 px-3 py-2 sm:px-4 sm:py-2.5">
-        <div className="flex min-w-0 items-baseline gap-3">
+      <header className="flex items-center gap-x-3 border-b border-border/70 px-3 py-2 sm:px-4 sm:py-2.5">
+        <div className="flex min-w-0 items-baseline gap-2.5">
           <span className="shrink-0 text-sm font-semibold tracking-[0.22em]">
             WORKFACE
           </span>
-          <span className="hidden truncate text-xs text-muted-foreground md:inline">
-            {consoleData.project_name}
-          </span>
-        </div>
-        <div className="flex flex-wrap items-center gap-2 text-[11px] text-muted-foreground">
-          <ModeBadge source={source} channelState={channelState} />
-          <span className={channelHint(channelState)}>
-            {channelState === "subscribed"
-              ? "subscribed"
-              : channelState === "connecting"
-                ? "connecting"
-                : channelState === "error"
-                  ? "channel error"
-                  : "channel off"}
-          </span>
-          <span className="hidden font-mono sm:inline">
-            {consoleData.project_id}
-          </span>
-          <span className="hidden md:inline">
-            data date {formatDay(consoleData.data_date)}
-          </span>
-          <span className="hidden lg:inline">
-            lookahead {formatDay(consoleData.demo_window.start)}–
+          <span className="truncate text-xs text-muted-foreground">
+            North Phoenix · {formatDay(consoleData.demo_window.start)}–
             {formatDay(consoleData.demo_window.end)}
           </span>
         </div>
-        <div className="ml-auto flex items-center gap-3">
-          <p className="hidden max-w-xs truncate text-[11px] text-muted-foreground xl:block">
-            {consoleData.provenance}
-          </p>
+        <div className="ml-auto shrink-0">
           <AppNav current="console" />
         </div>
       </header>

@@ -53,8 +53,8 @@ export function RecordView() {
           </span>
         </div>
         <div className="flex flex-wrap items-center gap-2 text-[11px] text-muted-foreground">
-          <span className="rounded-sm border border-cyan-400/35 bg-cyan-400/10 px-1.5 py-0.5 font-medium tracking-wider text-cyan-200 uppercase">
-            Tier 2
+          <span className="rounded-sm border border-border/70 bg-card/30 px-1.5 py-0.5 font-medium tracking-wider uppercase">
+            <span className="text-cyan-400">Tier 2</span>
           </span>
           <span className="hidden md:inline">
             {recordChain.site_id} · generated{" "}
@@ -92,7 +92,7 @@ export function RecordView() {
             <section className="rounded-xl border border-border/70 bg-background/40 p-4 sm:p-5">
               <RecordPackageTimeline pkg={selected} />
               {selected && isHeroPackage(selected.activity_id) ? (
-                <p className="mt-4 text-[11px] text-cyan-200">
+                <p className="mt-4 text-[11px] text-muted-foreground">
                   Hero work face — heat intelligence PDF below.
                 </p>
               ) : null}

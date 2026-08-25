@@ -5,40 +5,46 @@ import {
   type AgentStep,
   type StepType,
 } from "@/lib/trace-data";
+import {
+  GATE_RAIL,
+  GATE_TEXT,
+  GateVerdictPanel,
+  NEUTRAL_RAIL,
+  StatusRailShell,
+} from "@/components/status-rail";
 import { cn } from "@/lib/utils";
 
-const TYPE_TONE: Record<StepType, string> = {
-  scan: "border-border/70 bg-card/40",
-  evaluate: "border-border/70 bg-card/40",
-  conflict: "border-amber-300/55 bg-amber-300/10",
-  propose: "border-sky-300/40 bg-sky-300/8",
-  gate: "border-border/70 bg-card/40",
-  act: "border-emerald-300/45 bg-emerald-300/8",
-  verify: "border-emerald-300/35 bg-card/40",
-  record: "border-border/70 bg-card/40",
-  escalate: "border-red-300/55 bg-red-300/10",
+const STEP_RAIL: Partial<Record<StepType, string>> = {
+  conflict: "bg-amber-500",
+  propose: "bg-sky-500",
+  act: "bg-emerald-500",
+  escalate: "bg-red-500",
 };
 
-function cardTone(step: AgentStep) {
-  if (step.type === "gate" && step.gate?.decision === "deny") {
-    return "border-red-300/55 bg-red-300/10";
-  }
-  if (step.type === "gate" && step.gate?.decision === "approve") {
-    return "border-emerald-300/45 bg-emerald-300/8";
-  }
-  if (step.type === "gate" && step.gate?.decision === "modify") {
-    return "border-amber-300/45 bg-amber-300/8";
-  }
-  return TYPE_TONE[step.type];
+const STEP_TEXT: Partial<Record<StepType, string>> = {
+  conflict: "text-amber-400",
+  propose: "text-sky-400",
+  act: "text-emerald-400",
+  escalate: "text-red-400",
+};
+
+function stepRailClass(step: AgentStep) {
+  if (step.type === "gate" && step.gate) return GATE_RAIL[step.gate.decision];
+  return STEP_RAIL[step.type] ?? NEUTRAL_RAIL;
 }
 
-function typeLabel(step: AgentStep) {
-  if (step.type === "conflict") return "Conflict detected — grouped";
-  if (step.type === "escalate") return "Escalate — policy gate denied";
+function stepTypeLabel(step: AgentStep) {
+  if (step.type === "conflict") return "Conflict detected";
+  if (step.type === "escalate") return "Denied — escalated";
   if (step.type === "gate" && step.gate) {
-    return `Gate — ${GATE_DECISION_LABEL[step.gate.decision]}`;
+    return GATE_DECISION_LABEL[step.gate.decision];
   }
   return STEP_TYPE_LABEL[step.type];
+}
+
+function stepLabelTone(step: AgentStep) {
+  if (step.type === "gate" && step.gate) return GATE_TEXT[step.gate.decision];
+  return STEP_TEXT[step.type] ?? "text-muted-foreground";
 }
 
 type Props = {
@@ -47,22 +53,28 @@ type Props = {
 
 export function TraceStepCard({ step }: Props) {
   return (
-    <article
+    <StatusRailShell
       id={`step-${step.seq}`}
-      className={cn(
-        "animate-in fade-in slide-in-from-top-2 rounded-xl border px-3.5 py-3 duration-300",
-        cardTone(step),
-      )}
+      railClass={stepRailClass(step)}
+      innerClassName="py-3"
+      className="animate-in fade-in slide-in-from-top-2 duration-300"
     >
       <header className="flex flex-wrap items-baseline justify-between gap-2">
-        <h3 className="text-[11px] font-semibold tracking-[0.14em] uppercase">
-          {typeLabel(step)}
+        <h3
+          className={cn(
+            "text-[10px] font-semibold tracking-[0.14em] uppercase",
+            stepLabelTone(step),
+          )}
+        >
+          {stepTypeLabel(step)}
         </h3>
         <time className="font-mono text-[10px] text-muted-foreground">
           {step.at.slice(11, 19)}
         </time>
       </header>
-      <p className="mt-1.5 text-[13px] font-medium leading-snug">{step.title}</p>
+      <p className="mt-1.5 text-[13px] font-medium leading-snug text-foreground/95">
+        {step.title}
+      </p>
       {step.detail ? (
         <p className="mt-1 text-[12px] leading-relaxed text-muted-foreground">
           {step.detail}
@@ -78,7 +90,7 @@ export function TraceStepCard({ step }: Props) {
       ) : null}
 
       {step.proposal ? (
-        <blockquote className="mt-2 border-l-2 border-sky-300/50 pl-3 text-[12px] leading-relaxed text-foreground/90">
+        <blockquote className="mt-2 border-l-2 border-border/70 pl-3 text-[12px] leading-relaxed text-foreground/90">
           {step.proposal.rationale}
           {step.proposal.float_days_consumed != null ? (
             <span className="mt-1 block font-mono text-[10px] text-muted-foreground">
@@ -91,14 +103,7 @@ export function TraceStepCard({ step }: Props) {
         </blockquote>
       ) : null}
 
-      {step.gate ? (
-        <div className="mt-2 rounded-md border border-border/50 bg-background/40 px-2.5 py-2">
-          <p className="text-[12px] leading-relaxed">{step.gate.reason}</p>
-          <p className="mt-1 font-mono text-[10px] text-muted-foreground">
-            rule_id: {step.gate.rule_id}
-          </p>
-        </div>
-      ) : null}
+      {step.gate ? <GateVerdictPanel gate={step.gate} /> : null}
 
       {step.tool_calls.length > 0 ? (
         <ul className="mt-2 flex flex-col gap-1">
@@ -108,13 +113,17 @@ export function TraceStepCard({ step }: Props) {
               className="flex flex-wrap items-baseline gap-x-2 font-mono text-[10px] text-muted-foreground"
             >
               <span className="text-foreground/80">{call.tool}</span>
-              {call.gated ? <span className="text-amber-200">gated</span> : null}
+              {call.gated ? (
+                <span className="text-[10px] font-semibold tracking-[0.12em] text-amber-400 uppercase">
+                  gated
+                </span>
+              ) : null}
               {call.result_summary ? <span>{call.result_summary}</span> : null}
               {call.latency_ms != null ? <span>{call.latency_ms} ms</span> : null}
             </li>
           ))}
         </ul>
       ) : null}
-    </article>
+    </StatusRailShell>
   );
 }

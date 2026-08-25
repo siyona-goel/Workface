@@ -5,26 +5,24 @@ import { useSearchParams } from "next/navigation";
 
 import { AppNav } from "@/components/app-nav";
 import { SourceToggle } from "@/components/source-toggle";
-import { escalationsFromRun, primaryEscalation, sampleGateVerdicts } from "@/lib/escalations";
 import {
-  GATE_DECISION_LABEL,
-  activityLabel,
-  type GateDecision,
-} from "@/lib/trace-data";
+  GATE_RAIL,
+  GATE_TEXT,
+  GateStatusLabel,
+  GateVerdictPanel,
+  StatusRailCard,
+} from "@/components/status-rail";
+import { escalationsFromRun, primaryEscalation, sampleGateVerdicts } from "@/lib/escalations";
+import { activityLabel } from "@/lib/trace-data";
 import { useAgentEvents } from "@/lib/use-agent-events";
 import { cn } from "@/lib/utils";
-
-const DECISION_TONE: Record<GateDecision, string> = {
-  approve: "border-emerald-300/45 bg-emerald-300/8",
-  modify: "border-amber-300/45 bg-amber-300/8",
-  deny: "border-red-300/55 bg-red-300/10",
-};
 
 export function EscalationView() {
   const { source, run, channelState } = useAgentEvents();
   const params = useSearchParams();
   const selected = primaryEscalation(run, params.get("c"));
   const all = escalationsFromRun(run);
+  const selectedDecision = selected?.gate?.decision ?? "deny";
 
   return (
     <div className="flex min-h-dvh flex-col bg-background text-foreground">
@@ -38,8 +36,8 @@ export function EscalationView() {
           </span>
         </div>
         <div className="flex flex-wrap items-center gap-2 text-[11px] text-muted-foreground">
-          <span className="rounded-sm border border-red-400/40 bg-red-400/10 px-1.5 py-0.5 font-medium tracking-wider text-red-200 uppercase">
-            Gate denied
+          <span className="rounded-sm border border-border/70 bg-card/30 px-1.5 py-0.5 font-medium tracking-wider uppercase">
+            <span className={GATE_TEXT.deny}>Gate denied</span>
           </span>
           <span>{run.escalated_count} routed to a human</span>
         </div>
@@ -51,11 +49,11 @@ export function EscalationView() {
 
       <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-6 px-3 py-4 sm:px-4">
         {selected ? (
-          <article className="rounded-xl border border-red-300/45 bg-red-300/8 px-4 py-4">
+          <StatusRailCard railClass={GATE_RAIL[selectedDecision]} innerClassName="py-4">
             <p className="text-[10px] font-medium tracking-[0.16em] text-muted-foreground uppercase">
-              Escalation — policy gate denied
+              Escalation — policy gate
             </p>
-            <h1 className="mt-1 text-base font-semibold">
+            <h1 className="mt-1 text-base font-semibold tracking-tight">
               {selected.escalate?.title ?? "Routed to the superintendent"}
             </h1>
             <p className="mt-2 font-mono text-[11px] text-muted-foreground">
@@ -67,33 +65,20 @@ export function EscalationView() {
                 : null}
             </p>
             {selected.escalate?.detail || selected.propose?.proposal?.rationale ? (
-              <p className="mt-3 text-[13px] leading-relaxed">
+              <p className="mt-3 text-[13px] leading-relaxed text-foreground/90">
                 {selected.escalate?.detail ??
                   selected.propose?.proposal?.rationale}
               </p>
             ) : null}
 
             {selected.gate ? (
-              <div className="mt-4 rounded-lg border border-red-300/40 bg-background/50 px-3 py-3">
-                <p className="text-[10px] font-medium tracking-[0.16em] text-muted-foreground uppercase">
-                  Gate verdict
-                </p>
-                <p className="mt-1 text-sm font-semibold">
-                  {GATE_DECISION_LABEL[selected.gate.decision]}
-                </p>
-                <p className="mt-2 text-[13px] leading-relaxed">
-                  {selected.gate.reason}
-                </p>
-                <p className="mt-2 font-mono text-[12px] text-red-200">
-                  rule_id: {selected.gate.rule_id}
-                </p>
-              </div>
+              <GateVerdictPanel gate={selected.gate} />
             ) : (
               <p className="mt-4 text-[12px] text-muted-foreground">
                 No gate payload on this escalation step.
               </p>
             )}
-          </article>
+          </StatusRailCard>
         ) : (
           <p className="py-10 text-center text-sm text-muted-foreground">
             No escalation in this run.
@@ -106,31 +91,49 @@ export function EscalationView() {
               All escalations
             </h2>
             <ul className="mt-2 flex flex-col gap-2">
-              {all.map((item) => (
-                <li key={item.id}>
-                  <Link
-                    href={`/escalate?c=${item.id}&src=${source}`}
-                    className={cn(
-                      "block rounded-lg border px-3 py-2 text-[12px]",
-                      selected?.id === item.id
-                        ? "border-red-300/50 bg-red-300/10"
-                        : "border-border/70 hover:bg-muted/30",
-                    )}
-                  >
-                    <span className="font-mono text-[10px] text-muted-foreground">
-                      {item.id}
-                    </span>
-                    <span className="mt-0.5 block">
-                      {item.escalate?.title ?? item.gate?.rule_id ?? item.id}
-                    </span>
-                    {item.gate ? (
-                      <span className="mt-0.5 block font-mono text-[10px] text-muted-foreground">
-                        {item.gate.rule_id}
-                      </span>
-                    ) : null}
-                  </Link>
-                </li>
-              ))}
+              {all.map((item) => {
+                const decision = item.gate?.decision ?? "deny";
+                const isSelected = selected?.id === item.id;
+                return (
+                  <li key={item.id}>
+                    <Link
+                      href={`/escalate?c=${item.id}&src=${source}`}
+                      className={cn(
+                        "relative block overflow-hidden rounded-lg border bg-card/25 transition-colors",
+                        isSelected
+                          ? "border-border bg-muted/20"
+                          : "border-border/70 hover:bg-muted/15",
+                      )}
+                    >
+                      <div
+                        aria-hidden
+                        className={cn(
+                          "absolute inset-y-0 left-0 w-[3px]",
+                          GATE_RAIL[decision],
+                        )}
+                      />
+                      <div className="py-2.5 pr-3 pl-4 text-[12px]">
+                        <div className="flex flex-wrap items-center justify-between gap-2">
+                          <span className="font-mono text-[10px] text-muted-foreground">
+                            {item.id}
+                          </span>
+                          {item.gate ? (
+                            <GateStatusLabel decision={item.gate.decision} />
+                          ) : null}
+                        </div>
+                        <span className="mt-0.5 block text-foreground/90">
+                          {item.escalate?.title ?? item.gate?.rule_id ?? item.id}
+                        </span>
+                        {item.gate ? (
+                          <span className="mt-0.5 block font-mono text-[10px] text-muted-foreground">
+                            rule_id: {item.gate.rule_id}
+                          </span>
+                        ) : null}
+                      </div>
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </section>
         ) : null}
@@ -145,27 +148,23 @@ export function EscalationView() {
           </p>
           <ul className="mt-3 flex flex-col gap-2">
             {sampleGateVerdicts.map((verdict) => (
-              <li
-                key={`${verdict.decision}-${verdict.rule_id}-${verdict.reason.slice(0, 24)}`}
-                className={cn(
-                  "rounded-xl border px-3 py-3",
-                  DECISION_TONE[verdict.decision],
-                )}
-              >
-                <div className="flex flex-wrap items-baseline justify-between gap-2">
-                  <span className="text-[12px] font-semibold">
-                    {GATE_DECISION_LABEL[verdict.decision]}
-                  </span>
-                  <span className="font-mono text-[11px] text-muted-foreground">
-                    rule_id: {verdict.rule_id}
-                  </span>
-                </div>
-                <p className="mt-1.5 text-[12px] leading-relaxed">
-                  {verdict.reason}
-                </p>
-                {verdict.escalated ? (
-                  <p className="mt-1 text-[11px] text-red-200">Routed to a human</p>
-                ) : null}
+              <li key={`${verdict.decision}-${verdict.rule_id}-${verdict.reason.slice(0, 24)}`}>
+                <StatusRailCard railClass={GATE_RAIL[verdict.decision]}>
+                  <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+                    <GateStatusLabel decision={verdict.decision} />
+                    <span className="font-mono text-[11px] text-muted-foreground">
+                      rule_id: {verdict.rule_id}
+                    </span>
+                  </div>
+                  <p className="mt-2 text-[12px] leading-relaxed text-foreground/90">
+                    {verdict.reason}
+                  </p>
+                  {verdict.escalated ? (
+                    <p className="mt-2 text-[10px] font-medium tracking-[0.12em] text-muted-foreground uppercase">
+                      Routed to a human
+                    </p>
+                  ) : null}
+                </StatusRailCard>
               </li>
             ))}
           </ul>

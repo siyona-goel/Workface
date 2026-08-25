@@ -80,8 +80,19 @@ const briefTime = new Intl.DateTimeFormat("en-GB", {
   hour12: false,
 });
 
+const briefShortDay = new Intl.DateTimeFormat("en-GB", {
+  timeZone: morningBrief.tz,
+  weekday: "short",
+  day: "numeric",
+  month: "short",
+});
+
 export function formatBriefDate(iso: string) {
   return briefDay.format(new Date(iso));
+}
+
+export function formatBriefHoldUntil(iso: string) {
+  return briefShortDay.format(new Date(iso));
 }
 
 export function formatBriefTime(iso: string) {
