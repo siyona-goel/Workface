@@ -186,7 +186,7 @@ export function AgentTrace() {
                   ? `Streaming ${visibleCount} of ${run.steps.length} steps (${source === "live" ? "T3 live run" : "Day-5 fixtures"}).`
                   : channelStepCount > 0
                     ? `${channelStepCount} live step${channelStepCount === 1 ? "" : "s"} arrived on the Supabase channel.`
-                    : `Replay complete. Default is Day-5 fixtures. Live run is T3's gated loop. Channel ${channelState === "subscribed" ? "is subscribed" : "is idle until keys are set"}.`}
+                    : "Replay complete. Default is Day-5 fixtures. Live run is T3's gated loop."}
               </p>
             </div>
           </div>
