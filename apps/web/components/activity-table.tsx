@@ -20,7 +20,7 @@ type Props = {
 
 export function ActivityTable({ activities, selectedId, onSelect }: Props) {
   return (
-    <div className="flex h-full min-h-0 flex-col border-t border-border/70 bg-card/20">
+    <div className="flex h-full min-h-0 flex-col bg-card/20">
       <div className="flex items-baseline justify-between gap-2 px-3 py-2 sm:px-4">
         <h2 className="text-[10px] font-medium tracking-[0.16em] text-muted-foreground uppercase">
           Activities

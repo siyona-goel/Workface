@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
-import { AppNav } from "@/components/app-nav";
+import { AppNav, WorkfaceHomeLink } from "@/components/app-nav";
 import { SourceToggle } from "@/components/source-toggle";
 import {
   GATE_RAIL,
@@ -28,9 +28,7 @@ export function EscalationView() {
     <div className="flex min-h-dvh flex-col bg-background text-foreground">
       <header className="flex flex-wrap items-center gap-x-3 gap-y-1.5 border-b border-border/70 px-3 py-2 sm:px-4 sm:py-2.5">
         <div className="flex items-baseline gap-3">
-          <span className="text-sm font-semibold tracking-[0.22em]">
-            WORKFACE
-          </span>
+          <WorkfaceHomeLink />
           <span className="hidden text-xs text-muted-foreground sm:inline">
             Escalation
           </span>

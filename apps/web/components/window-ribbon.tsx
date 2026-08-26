@@ -130,7 +130,7 @@ export function WindowRibbon({
   }
 
   return (
-    <section className="flex min-h-0 flex-col border-t border-border/70 bg-card/15">
+    <section className="flex h-full min-h-0 flex-col bg-card/15">
       <div className="flex flex-col gap-2 px-3 py-2 sm:px-4 lg:flex-row lg:items-start lg:justify-between lg:gap-3">
         <div className="min-w-0">
           <h2 className="text-[10px] font-medium tracking-[0.16em] text-muted-foreground uppercase">
