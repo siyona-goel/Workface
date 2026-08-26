@@ -17,7 +17,7 @@ type Props = {
 };
 
 const selectClass =
-  "h-8 w-full truncate rounded-md border border-border bg-background/60 px-2 text-xs text-foreground outline-none focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 sm:max-w-[220px]";
+  "h-8 w-full truncate rounded-md border border-border bg-background/60 px-2 text-xs text-foreground outline-none focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40";
 
 export function ConsoleToolbar({
   filters,
@@ -36,8 +36,8 @@ export function ConsoleToolbar({
 
   return (
     <div className="flex flex-col gap-2 border-b border-border/70 bg-card/40 px-3 py-2 sm:gap-3 sm:px-4 sm:py-3">
-      <div className="flex flex-wrap items-end gap-2 sm:gap-3 lg:flex-nowrap">
-        <label className="flex min-w-[140px] flex-1 flex-col gap-1 sm:max-w-[220px] sm:flex-none">
+      <div className="flex flex-nowrap items-end gap-2 overflow-x-auto sm:gap-3">
+        <label className="flex w-[140px] shrink-0 flex-col gap-1 sm:w-[180px]">
           <span className="text-[10px] font-medium tracking-[0.14em] text-muted-foreground uppercase">
             Trade
           </span>
@@ -57,7 +57,7 @@ export function ConsoleToolbar({
           </select>
         </label>
 
-        <label className="flex min-w-[140px] flex-1 flex-col gap-1 sm:max-w-[220px] sm:flex-none">
+        <label className="flex w-[140px] shrink-0 flex-col gap-1 sm:w-[180px]">
           <span className="text-[10px] font-medium tracking-[0.14em] text-muted-foreground uppercase">
             Work face
           </span>
@@ -81,7 +81,7 @@ export function ConsoleToolbar({
           </select>
         </label>
 
-        <div className="flex min-w-0 flex-wrap items-center gap-1.5 pb-0.5 lg:flex-1">
+        <div className="flex min-w-0 flex-1 flex-nowrap items-center gap-1.5 pb-0.5">
           {VERDICTS.map((v) => (
             <WindowChip
               key={v}
@@ -93,28 +93,27 @@ export function ConsoleToolbar({
               onToggle={() => toggleVerdict(v)}
             />
           ))}
-        </div>
-
-        <div className="flex shrink-0 items-center gap-2 pb-0.5 lg:ml-auto">
-          <Toggle
-            pressed={filters.lookaheadOnly}
-            onClick={() =>
-              onChange({ ...filters, lookaheadOnly: !filters.lookaheadOnly })
-            }
-          >
-            24–27 Aug lookahead
-          </Toggle>
-          <Toggle
-            pressed={filters.thermalOnly}
-            onClick={() =>
-              onChange({ ...filters, thermalOnly: !filters.thermalOnly })
-            }
-          >
-            Thermal only
-          </Toggle>
-          <span className="font-mono text-[11px] text-muted-foreground tabular-nums">
-            {resultCount} shown
-          </span>
+          <div className="ml-auto flex shrink-0 items-center gap-2">
+            <Toggle
+              pressed={filters.lookaheadOnly}
+              onClick={() =>
+                onChange({ ...filters, lookaheadOnly: !filters.lookaheadOnly })
+              }
+            >
+              24–27 Aug lookahead
+            </Toggle>
+            <Toggle
+              pressed={filters.thermalOnly}
+              onClick={() =>
+                onChange({ ...filters, thermalOnly: !filters.thermalOnly })
+              }
+            >
+              Thermal only
+            </Toggle>
+            <span className="font-mono text-[11px] whitespace-nowrap text-muted-foreground tabular-nums">
+              {resultCount} shown
+            </span>
+          </div>
         </div>
       </div>
     </div>
@@ -136,7 +135,7 @@ function Toggle({
       aria-pressed={pressed}
       onClick={onClick}
       className={cn(
-        "h-7 rounded-md border px-2 text-[11px] font-medium transition-colors",
+        "h-7 shrink-0 whitespace-nowrap rounded-md border px-2 text-[11px] font-medium transition-colors",
         pressed
           ? "border-primary/40 bg-primary/15 text-foreground"
           : "border-border text-muted-foreground hover:bg-muted/40",

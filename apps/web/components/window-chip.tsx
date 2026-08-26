@@ -18,17 +18,17 @@ export function WindowChip({
   static: isStatic,
 }: Props) {
   const className = cn(
-    "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-medium tracking-wide transition-colors",
+    "inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border px-2.5 py-1 text-[11px] font-medium tracking-wide transition-colors",
     VERDICT_CHIP[verdict],
     !isStatic && "hover:brightness-110",
   );
 
   const inner = (
     <>
-      <span className={cn("size-1.5 rounded-full", VERDICT_DOT[verdict])} />
-      {VERDICT_LABEL[verdict]}
+      <span className={cn("size-1.5 shrink-0 rounded-full", VERDICT_DOT[verdict])} />
+      <span className="whitespace-nowrap">{VERDICT_LABEL[verdict]}</span>
       {count != null ? (
-        <span className="font-mono text-[10px] tabular-nums opacity-70">
+        <span className="min-w-[2ch] font-mono text-[10px] tabular-nums opacity-70">
           {count}
         </span>
       ) : null}
