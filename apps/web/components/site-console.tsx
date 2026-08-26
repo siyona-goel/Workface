@@ -1,11 +1,12 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 
 import { ActivityDrawer } from "@/components/activity-drawer";
 import { ActivityTable } from "@/components/activity-table";
-import { AppNav } from "@/components/app-nav";
+import { AppNav, WorkfaceHomeLink } from "@/components/app-nav";
 import { ConsoleToolbar } from "@/components/console-toolbar";
+import { RowResizeHandle } from "@/components/row-resize-handle";
 import { SiteMapLoader } from "@/components/site-map-loader";
 import { WindowRibbon } from "@/components/window-ribbon";
 import { WorkFaceList } from "@/components/work-face-list";
@@ -22,6 +23,18 @@ import {
   type Verdict,
 } from "@/lib/console-data";
 
+const PANE_MIN_PX = 140;
+const HANDLE_PX = 8;
+const DEFAULT_PANE_SHARES = {
+  map: 0.9,
+  ribbon: 1.2,
+  activities: 0.7,
+};
+
+function clamp(n: number, min: number, max: number) {
+  return Math.min(max, Math.max(min, n));
+}
+
 export function SiteConsole() {
   const [filters, setFilters] = useState<ConsoleFilters>({
     tradeId: null,
@@ -37,6 +50,9 @@ export function SiteConsole() {
   const [heroOnly, setHeroOnly] = useState(false);
   const [focusedFaceId, setFocusedFaceId] = useState<string | null>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [paneShares, setPaneShares] = useState(DEFAULT_PANE_SHARES);
+  const [resizingPanes, setResizingPanes] = useState(false);
+  const panesRef = useRef<HTMLDivElement>(null);
 
   const preVerdict = useMemo(
     () =>
@@ -103,13 +119,59 @@ export function SiteConsole() {
 
   const mapFaceId = filters.workFaceId ?? focusedFaceId;
 
+  const resizeMapRibbon = useCallback((clientY: number) => {
+    const el = panesRef.current;
+    if (!el) return;
+    const ribbonEl = el.children[2] as HTMLElement | undefined;
+    const activitiesEl = el.children[4] as HTMLElement | undefined;
+    if (!ribbonEl || !activitiesEl) return;
+    const rect = el.getBoundingClientRect();
+    const content = rect.height - HANDLE_PX * 2;
+    if (content <= 0) return;
+    const mapPx = clamp(
+      clientY - rect.top,
+      PANE_MIN_PX,
+      content - PANE_MIN_PX * 2,
+    );
+    const rest = content - mapPx;
+    const ribbonH = ribbonEl.getBoundingClientRect().height;
+    const activitiesH = activitiesEl.getBoundingClientRect().height;
+    const restShare = ribbonH + activitiesH;
+    const ribbonRatio = restShare > 0 ? ribbonH / restShare : 0.63;
+    const ribbonPx = clamp(rest * ribbonRatio, PANE_MIN_PX, rest - PANE_MIN_PX);
+    setPaneShares({
+      map: mapPx,
+      ribbon: ribbonPx,
+      activities: rest - ribbonPx,
+    });
+  }, []);
+
+  const resizeRibbonActivities = useCallback((clientY: number) => {
+    const el = panesRef.current;
+    if (!el) return;
+    const mapEl = el.children[0] as HTMLElement | undefined;
+    if (!mapEl) return;
+    const rect = el.getBoundingClientRect();
+    const content = rect.height - HANDLE_PX * 2;
+    if (content <= 0) return;
+    const mapPx = mapEl.getBoundingClientRect().height;
+    const ribbonPx = clamp(
+      clientY - mapEl.getBoundingClientRect().bottom,
+      PANE_MIN_PX,
+      content - mapPx - PANE_MIN_PX,
+    );
+    setPaneShares({
+      map: mapPx,
+      ribbon: ribbonPx,
+      activities: content - mapPx - ribbonPx,
+    });
+  }, []);
+
   return (
-    <div className="flex min-h-dvh flex-col bg-background text-foreground lg:h-dvh lg:min-h-0 lg:overflow-hidden">
-      <header className="flex items-center gap-x-3 border-b border-border/70 px-3 py-2 sm:px-4 sm:py-2.5">
+    <div className="flex h-dvh min-h-0 flex-col overflow-hidden bg-background text-foreground">
+      <header className="flex shrink-0 items-center gap-x-3 border-b border-border/70 px-3 py-2 sm:px-4 sm:py-2.5">
         <div className="flex min-w-0 items-baseline gap-2.5">
-          <span className="shrink-0 text-sm font-semibold tracking-[0.22em]">
-            WORKFACE
-          </span>
+          <WorkfaceHomeLink />
           <span className="truncate text-xs text-muted-foreground">
             North Phoenix · {formatDay(consoleData.demo_window.start)}–
             {formatDay(consoleData.demo_window.end)}
@@ -120,49 +182,75 @@ export function SiteConsole() {
         </div>
       </header>
 
-      <ConsoleToolbar
-        filters={filters}
-        onChange={setFilters}
-        verdictCounts={verdictCounts}
-        resultCount={rows.length}
-      />
-
-      <div className="grid h-[42vw] min-h-[200px] max-h-[320px] shrink-0 grid-cols-1 lg:h-auto lg:max-h-none lg:min-h-0 lg:flex-[0.9] lg:grid-cols-[minmax(0,1fr)_280px]">
-        <SiteMapLoader
-          selectedWorkFaceId={mapFaceId}
-          onSelectWorkFace={selectWorkFace}
-          faceVerdict={faceVerdict}
+      <div className="shrink-0">
+        <ConsoleToolbar
+          filters={filters}
+          onChange={setFilters}
+          verdictCounts={verdictCounts}
+          resultCount={rows.length}
         />
-        <div className="hidden min-h-0 lg:block">
-          <WorkFaceList
-            selectedId={mapFaceId}
-            onSelect={selectWorkFace}
-            counts={faceCounts}
+      </div>
+
+      <div
+        ref={panesRef}
+        className="grid min-h-0 flex-1"
+        style={{
+          gridTemplateRows: `${paneShares.map}fr ${HANDLE_PX}px ${paneShares.ribbon}fr ${HANDLE_PX}px ${paneShares.activities}fr`,
+        }}
+      >
+        <div className="grid h-full min-h-0 grid-cols-1 overflow-hidden lg:grid-cols-[minmax(0,1fr)_280px]">
+          <SiteMapLoader
+            selectedWorkFaceId={mapFaceId}
+            onSelectWorkFace={selectWorkFace}
             faceVerdict={faceVerdict}
+          />
+          <div className="hidden min-h-0 lg:block">
+            <WorkFaceList
+              selectedId={mapFaceId}
+              onSelect={selectWorkFace}
+              counts={faceCounts}
+              faceVerdict={faceVerdict}
+            />
+          </div>
+        </div>
+
+        <RowResizeHandle
+          label="Resize map and window ribbon"
+          onResize={resizeMapRibbon}
+          onDragChange={setResizingPanes}
+        />
+
+        <div className="min-h-0 min-w-0 overflow-hidden">
+          <WindowRibbon
+            activities={rows}
+            filters={filters}
+            selectedId={selectedActivityId}
+            onSelectLane={selectLane}
+            evalsOnly={evalsOnly}
+            onEvalsOnlyChange={setEvalsOnly}
+            heroOnly={heroOnly}
+            onHeroOnlyChange={setHeroOnly}
+          />
+        </div>
+
+        <RowResizeHandle
+          label="Resize window ribbon and activities"
+          onResize={resizeRibbonActivities}
+          onDragChange={setResizingPanes}
+        />
+
+        <div className="min-h-0 overflow-hidden">
+          <ActivityTable
+            activities={rows}
+            selectedId={selectedActivityId}
+            onSelect={selectActivity}
           />
         </div>
       </div>
 
-      <section className="flex h-[360px] min-h-[280px] min-w-0 flex-col lg:h-auto lg:min-h-0 lg:flex-[1.2]">
-        <WindowRibbon
-          activities={rows}
-          filters={filters}
-          selectedId={selectedActivityId}
-          onSelectLane={selectLane}
-          evalsOnly={evalsOnly}
-          onEvalsOnlyChange={setEvalsOnly}
-          heroOnly={heroOnly}
-          onHeroOnlyChange={setHeroOnly}
-        />
-      </section>
-
-      <section className="flex h-[300px] min-h-[240px] flex-col lg:h-auto lg:min-h-0 lg:flex-[0.7]">
-        <ActivityTable
-          activities={rows}
-          selectedId={selectedActivityId}
-          onSelect={selectActivity}
-        />
-      </section>
+      {resizingPanes ? (
+        <div className="fixed inset-0 z-50 cursor-row-resize" />
+      ) : null}
 
       <ActivityDrawer
         activityId={selectedActivityId}

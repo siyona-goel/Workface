@@ -20,6 +20,18 @@ const items: { href: string; id: NavId; label: string }[] = [
   { href: "/record", id: "record", label: "Record" },
 ];
 
+export function WorkfaceHomeLink() {
+  return (
+    <Link
+      href="/"
+      aria-label="Back to Console"
+      className="shrink-0 text-sm font-semibold tracking-[0.22em] hover:opacity-80"
+    >
+      WORKFACE
+    </Link>
+  );
+}
+
 export function AppNav({ current }: Props) {
   const params = useSearchParams();
   const src = params.get("src");
