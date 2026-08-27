@@ -1,6 +1,14 @@
 "use client";
 
-import { useMemo, useState, type MouseEvent } from "react";
+import {
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
+  type KeyboardEvent,
+  type MouseEvent,
+  type PointerEvent,
+} from "react";
 
 import { WindowChip } from "@/components/window-chip";
 import {
@@ -8,16 +16,18 @@ import {
   HOUR_STATE_FILL,
   HOUR_STATE_FILL_DIM,
   HOUR_STATE_LABEL,
-  contendedLabel,
   evalMatchesFilters,
   formatTick,
   formatTickHour,
   heroRole,
+  horizonHourStarts,
   isHeroLane,
   laneFromActivity,
   laneFromEval,
   mergeBands,
   ribbonData,
+  shiftPlayheadTs,
+  snapToHourTs,
   sortLanes,
   type HourState,
   type RibbonHour,
@@ -46,6 +56,8 @@ type Props = {
   onEvalsOnlyChange: (value: boolean) => void;
   heroOnly: boolean;
   onHeroOnlyChange: (value: boolean) => void;
+  playheadTs: string;
+  onPlayheadChange: (ts: string) => void;
 };
 
 type Hover = {
@@ -64,13 +76,20 @@ export function WindowRibbon({
   onEvalsOnlyChange,
   heroOnly,
   onHeroOnlyChange,
+  playheadTs,
+  onPlayheadChange,
 }: Props) {
   const [hover, setHover] = useState<Hover | null>(null);
+  const [dragging, setDragging] = useState(false);
+  const axisRef = useRef<SVGSVGElement>(null);
 
   const t0 = Date.parse(ribbonData.horizon.start);
   const t1 = Date.parse(ribbonData.horizon.end);
   const span = t1 - t0;
   const stepMs = ribbonData.horizon.step_minutes * 60_000;
+  const hourStarts = horizonHourStarts();
+  const playheadIndex = Math.max(0, hourStarts.indexOf(playheadTs));
+  const playheadPct = span > 0 ? ((Date.parse(playheadTs) - t0) / span) * 100 : 0;
 
   const lanes = useMemo(() => {
     const fromEvals = ribbonData.evaluations
@@ -86,7 +105,6 @@ export function WindowRibbon({
     return sortLanes([...fromEvals, ...extras]);
   }, [activities, evalsOnly, filters, heroOnly]);
 
-  const contention = contendedLabel(ribbonData.contended_hours);
   const heroVisible = lanes.filter((l) => isHeroLane(l.activity_id)).length;
 
   const ticks = useMemo(() => {
@@ -102,6 +120,53 @@ export function WindowRibbon({
     }
     return out;
   }, [t0, t1]);
+
+  const tsFromClientX = useCallback(
+    (clientX: number) => {
+      const el = axisRef.current;
+      if (!el) return playheadTs;
+      const rect = el.getBoundingClientRect();
+      if (rect.width <= 0) return playheadTs;
+      const x = Math.min(rect.width, Math.max(0, clientX - rect.left));
+      return snapToHourTs(t0 + (x / rect.width) * span);
+    },
+    [playheadTs, span, t0],
+  );
+
+  const onAxisPointerDown = (event: PointerEvent<SVGSVGElement>) => {
+    event.preventDefault();
+    event.currentTarget.setPointerCapture(event.pointerId);
+    setDragging(true);
+    onPlayheadChange(tsFromClientX(event.clientX));
+  };
+
+  const onAxisPointerMove = (event: PointerEvent<SVGSVGElement>) => {
+    if (!event.currentTarget.hasPointerCapture(event.pointerId)) return;
+    onPlayheadChange(tsFromClientX(event.clientX));
+  };
+
+  const onAxisPointerUp = (event: PointerEvent<SVGSVGElement>) => {
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    }
+    setDragging(false);
+  };
+
+  const onPlayheadKeyDown = (event: KeyboardEvent<SVGSVGElement>) => {
+    if (event.key === "ArrowLeft" || event.key === "ArrowDown") {
+      event.preventDefault();
+      onPlayheadChange(shiftPlayheadTs(playheadTs, -1));
+    } else if (event.key === "ArrowRight" || event.key === "ArrowUp") {
+      event.preventDefault();
+      onPlayheadChange(shiftPlayheadTs(playheadTs, 1));
+    } else if (event.key === "Home") {
+      event.preventDefault();
+      onPlayheadChange(hourStarts[0] ?? playheadTs);
+    } else if (event.key === "End") {
+      event.preventDefault();
+      onPlayheadChange(hourStarts[hourStarts.length - 1] ?? playheadTs);
+    }
+  };
 
   function onLaneMove(
     event: MouseEvent<SVGSVGElement>,
@@ -130,15 +195,20 @@ export function WindowRibbon({
   }
 
   return (
-    <section className="flex h-full min-h-0 flex-col bg-card/15">
+    <section
+      className={cn(
+        "flex h-full min-h-0 flex-col bg-card/15",
+        dragging && "select-none",
+      )}
+    >
       <div className="flex flex-col gap-2 px-3 py-2 sm:px-4 lg:flex-row lg:items-start lg:justify-between lg:gap-3">
         <div className="min-w-0">
           <h2 className="text-[10px] font-medium tracking-[0.16em] text-muted-foreground uppercase">
             Window ribbon
           </h2>
           <p className="hidden text-[11px] text-muted-foreground sm:block">
-            {HORIZON_HOURS} h · {ribbonData.horizon.tz} · scheduled bar on the
-            bands. If the bar is not on green, that is the problem.
+            {HORIZON_HOURS} h · {ribbonData.horizon.tz} · drag the playhead —
+            the map shows this hour. Scheduled bar on the bands.
           </p>
           {heroVisible >= 2 ? (
             <p className="mt-0.5 hidden text-[11px] text-cyan-200/90 md:block">
@@ -150,6 +220,12 @@ export function WindowRibbon({
           ) : null}
         </div>
         <div className="flex flex-wrap items-center gap-2 text-[10px] text-muted-foreground sm:gap-3">
+          <span className="rounded-md border border-slate-100/25 bg-slate-100/10 px-2 py-0.5 font-mono text-[11px] text-slate-100 tabular-nums">
+            {formatTick(playheadTs)}
+            <span className="ml-1.5 text-[10px] text-muted-foreground">
+              {ribbonData.horizon.tz}
+            </span>
+          </span>
           <button
             type="button"
             aria-pressed={evalsOnly}
@@ -176,11 +252,6 @@ export function WindowRibbon({
           >
             Hero pair
           </button>
-          {contention ? (
-            <span className="rounded-sm border border-violet-300/30 bg-violet-300/10 px-1.5 py-0.5 text-violet-200">
-              contention {contention}
-            </span>
-          ) : null}
           <span className="hidden items-center gap-2 sm:contents">
             <LegendSwatch state="open" />
             <LegendSwatch state="marginal" />
@@ -204,25 +275,46 @@ export function WindowRibbon({
         </div>
       ) : (
         <div className="min-h-0 flex-1 overflow-auto">
-          <div className="min-w-[540px] sm:min-w-[720px]">
+          <div className="relative min-w-[540px] sm:min-w-[720px]">
             <div className="sticky top-0 z-10 flex bg-background/95 backdrop-blur">
               <div className="w-36 shrink-0 px-3 py-1 text-[10px] tracking-wider text-muted-foreground uppercase sm:w-56">
                 Activity
               </div>
               <div className="relative min-w-0 flex-1 pr-3">
-                <svg
-                  width="100%"
-                  height={AXIS_H}
-                  className="block"
-                  aria-hidden
-                >
-                  <AxisTicks
-                    ticks={ticks}
-                    t0={t0}
-                    span={span}
-                    contended={ribbonData.contended_hours}
+                <div className="relative">
+                  <svg
+                    ref={axisRef}
+                    width="100%"
+                    height={AXIS_H}
+                    className="block cursor-ew-resize touch-none outline-none focus-visible:ring-1 focus-visible:ring-slate-100/40"
+                    role="slider"
+                    tabIndex={0}
+                    aria-label="Selected hour on the window ribbon"
+                    aria-valuemin={0}
+                    aria-valuemax={Math.max(0, hourStarts.length - 1)}
+                    aria-valuenow={playheadIndex}
+                    aria-valuetext={formatTick(playheadTs)}
+                    onPointerDown={onAxisPointerDown}
+                    onPointerMove={onAxisPointerMove}
+                    onPointerUp={onAxisPointerUp}
+                    onPointerCancel={onAxisPointerUp}
+                    onKeyDown={onPlayheadKeyDown}
+                  >
+                    <AxisTicks
+                      ticks={ticks}
+                      t0={t0}
+                      span={span}
+                      contended={ribbonData.contended_hours}
+                      playheadTs={playheadTs}
+                      stepMs={stepMs}
+                    />
+                  </svg>
+                  <div
+                    className="pointer-events-none absolute top-[18px] size-0 -translate-x-1/2 border-x-[5px] border-t-[6px] border-x-transparent border-t-slate-100"
+                    style={{ left: `${playheadPct}%` }}
+                    aria-hidden
                   />
-                </svg>
+                </div>
               </div>
             </div>
 
@@ -268,6 +360,7 @@ export function WindowRibbon({
                       t1={t1}
                       span={span}
                       stepMs={stepMs}
+                      playheadTs={playheadTs}
                       hoverHour={
                         hover?.laneId === lane.activity_id ? hover.hour : null
                       }
@@ -278,6 +371,38 @@ export function WindowRibbon({
                 </button>
               );
             })}
+
+            <div
+              className="pointer-events-none absolute top-0 right-3 bottom-0 left-36 z-[15] sm:left-56"
+              aria-hidden
+            >
+              <div
+                className="absolute top-0 bottom-0 w-px bg-slate-100/85"
+                style={{ left: `${playheadPct}%` }}
+              />
+              <div
+                className={cn(
+                  "pointer-events-auto absolute top-0 z-20 h-full w-3 -translate-x-1/2 cursor-ew-resize touch-none",
+                  dragging && "cursor-grabbing",
+                )}
+                style={{ left: `${playheadPct}%` }}
+                onPointerDown={(event) => {
+                  event.preventDefault();
+                  event.stopPropagation();
+                  event.currentTarget.setPointerCapture(event.pointerId);
+                  setDragging(true);
+                  onPlayheadChange(tsFromClientX(event.clientX));
+                }}
+                onPointerMove={(event) => {
+                  if (!event.currentTarget.hasPointerCapture(event.pointerId)) {
+                    return;
+                  }
+                  onPlayheadChange(tsFromClientX(event.clientX));
+                }}
+                onPointerUp={() => setDragging(false)}
+                onPointerCancel={() => setDragging(false)}
+              />
+            </div>
           </div>
         </div>
       )}
@@ -334,12 +459,18 @@ function AxisTicks({
   t0,
   span,
   contended,
+  playheadTs,
+  stepMs,
 }: {
   ticks: { t: number; label: string; major: boolean }[];
   t0: number;
   span: number;
   contended: string[];
+  playheadTs: string;
+  stepMs: number;
 }) {
+  const playheadX = ((Date.parse(playheadTs) - t0) / span) * 100;
+  const playheadW = (stepMs / span) * 100;
   return (
     <>
       {contended.map((iso) => {
@@ -355,6 +486,13 @@ function AxisTicks({
           />
         );
       })}
+      <rect
+        x={`${playheadX}%`}
+        y={0}
+        width={`${playheadW}%`}
+        height={AXIS_H}
+        fill="rgba(248,250,252,0.12)"
+      />
       {ticks.map((tick) => {
         const x = ((tick.t - t0) / span) * 100;
         return (
@@ -380,6 +518,14 @@ function AxisTicks({
           </g>
         );
       })}
+      <line
+        x1={`${playheadX}%`}
+        x2={`${playheadX}%`}
+        y1={0}
+        y2={AXIS_H}
+        stroke="rgb(248 250 252)"
+        strokeWidth={1.5}
+      />
     </>
   );
 }
@@ -390,6 +536,7 @@ function LaneSvg({
   t1,
   span,
   stepMs,
+  playheadTs,
   hoverHour,
   onMove,
   onLeave,
@@ -399,6 +546,7 @@ function LaneSvg({
   t1: number;
   span: number;
   stepMs: number;
+  playheadTs: string;
   hoverHour: RibbonHour | null;
   onMove: (event: MouseEvent<SVGSVGElement>) => void;
   onLeave: () => void;
@@ -407,6 +555,8 @@ function LaneSvg({
     () => mergeBands(lane.hours, stepMs),
     [lane.hours, stepMs],
   );
+  const playheadX = ((Date.parse(playheadTs) - t0) / span) * 100;
+  const playheadW = (stepMs / span) * 100;
 
   return (
     <svg
@@ -443,6 +593,15 @@ function LaneSvg({
           }
         />
       ))}
+      <rect
+        x={`${playheadX}%`}
+        y={BAND_Y - 1}
+        width={`${playheadW}%`}
+        height={BAND_H + 2}
+        fill="rgba(248,250,252,0.10)"
+        stroke="rgba(248,250,252,0.55)"
+        strokeWidth={1}
+      />
       <ScheduledBar t0={t0} t1={t1} span={span} start={lane.scheduled.start} finish={lane.scheduled.finish} />
       {hoverHour ? (
         <rect

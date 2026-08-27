@@ -102,6 +102,109 @@ export const HOUR_STATE_FILL_DIM: Record<HourState, string> = {
   no_data: "#a1a1aa55",
 };
 
+/** Lower is worse. `no_data` is absence of an eval, not a thermal close. */
+export const HOUR_STATE_RANK: Record<HourState, number> = {
+  closed: 0,
+  marginal: 1,
+  open: 2,
+  no_data: 3,
+};
+
+export const HOUR_STATE_DOT: Record<HourState, string> = {
+  open: "bg-emerald-300",
+  marginal: "bg-amber-300",
+  closed: "bg-red-300",
+  no_data: "bg-zinc-400",
+};
+
+/** deck.gl RGBA aligned with `HOUR_STATE_FILL`. */
+export const HOUR_STATE_FILL_RGBA: Record<
+  HourState,
+  [number, number, number, number]
+> = {
+  open: [110, 231, 183, 160],
+  marginal: [252, 211, 77, 165],
+  closed: [252, 165, 165, 175],
+  no_data: [161, 161, 170, 70],
+};
+
+export function worstHourState(states: HourState[]): HourState {
+  return states.reduce<HourState>(
+    (worst, s) => (HOUR_STATE_RANK[s] < HOUR_STATE_RANK[worst] ? s : worst),
+    "no_data",
+  );
+}
+
+export function horizonHourStarts(): string[] {
+  const hours = ribbonData.evaluations[0]?.hours ?? [];
+  return hours.map((hour) => hour.ts);
+}
+
+export function defaultPlayheadTs(): string {
+  const stamps = horizonHourStarts();
+  const contended = ribbonData.contended_hours[0];
+  if (contended) {
+    if (stamps.includes(contended)) return contended;
+    return snapToHourTs(Date.parse(contended));
+  }
+  return stamps[0] ?? ribbonData.horizon.start;
+}
+
+export function snapToHourTs(ms: number): string {
+  const stamps = horizonHourStarts();
+  if (stamps.length === 0) return ribbonData.horizon.start;
+  let best = stamps[0];
+  let bestDist = Infinity;
+  for (const ts of stamps) {
+    const dist = Math.abs(Date.parse(ts) - ms);
+    if (dist < bestDist) {
+      bestDist = dist;
+      best = ts;
+    }
+  }
+  return best;
+}
+
+export function shiftPlayheadTs(ts: string, deltaHours: number): string {
+  const stamps = horizonHourStarts();
+  if (stamps.length === 0) return ts;
+  const i = stamps.indexOf(ts);
+  const idx = i < 0 ? 0 : i;
+  return stamps[Math.min(stamps.length - 1, Math.max(0, idx + deltaHours))];
+}
+
+export function hourStateAt(hours: RibbonHour[], ts: string): HourState {
+  const exact = hours.find((hour) => hour.ts === ts);
+  if (exact) return exact.state;
+  const t = Date.parse(ts);
+  const stepMs = ribbonData.horizon.step_minutes * 60_000;
+  for (const hour of hours) {
+    const start = Date.parse(hour.ts);
+    if (t >= start && t < start + stepMs) return hour.state;
+  }
+  return "no_data";
+}
+
+/** Worst hour-state on each work face at `ts`, among evals matching toolbar filters. */
+export function faceHourStatesAt(
+  ts: string,
+  filters: ConsoleFilters,
+): Record<string, HourState> {
+  const byFace = new Map<string, HourState[]>();
+  for (const ev of ribbonData.evaluations) {
+    if (!evalMatchesFilters(ev, filters)) continue;
+    const list = byFace.get(ev.work_face_id) ?? [];
+    list.push(hourStateAt(ev.hours, ts));
+    byFace.set(ev.work_face_id, list);
+  }
+  const out: Record<string, HourState> = {};
+  for (const face of consoleData.work_faces) {
+    const list = byFace.get(face.id);
+    out[face.id] = list ? worstHourState(list) : "no_data";
+  }
+  return out;
+}
+
 const activityById = new Map(consoleData.activities.map((a) => [a.id, a]));
 const evalById = new Map(ribbonData.evaluations.map((e) => [e.activity_id, e]));
 
@@ -132,15 +235,6 @@ export function heroRole(workFaceId: string): "shaded" | "bare" | null {
   if (workFaceId === consoleData.hero_pair.shaded) return "shaded";
   if (workFaceId === consoleData.hero_pair.bare) return "bare";
   return null;
-}
-
-export function contendedLabel(hours: string[]) {
-  if (hours.length === 0) return null;
-  const first = formatTickHour(hours[0]);
-  const lastMs = Date.parse(hours[hours.length - 1]) + 60 * 60 * 1000;
-  const last = formatTickHour(new Date(lastMs).toISOString());
-  const day = formatTick(hours[0]).replace(/\s+\d{2}:\d{2}$/, "");
-  return `${day} ${first}–${last}`;
 }
 
 export function ribbonEvalFor(activityId: string) {

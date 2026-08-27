@@ -8,8 +8,14 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import { DeckGLOverlay } from "@/components/deck-gl-overlay";
 import phoenixSite from "@/data/phoenix-site.json";
 import workFacesJson from "@/data/work-faces.json";
-import { consoleData, VERDICT_LABEL, type Verdict } from "@/lib/console-data";
-import { VERDICT_FILL } from "@/lib/verdicts";
+import { consoleData } from "@/lib/console-data";
+import {
+  HOUR_STATE_FILL_RGBA,
+  HOUR_STATE_LABEL,
+  formatTick,
+  ribbonData,
+  type HourState,
+} from "@/lib/ribbon-data";
 import type { FeatureCollection } from "@/lib/site-map-data";
 
 export type WorkFaceFeatureProps = {
@@ -22,7 +28,8 @@ export type WorkFaceFeatureProps = {
 export type SiteMapProps = {
   selectedWorkFaceId: string | null;
   onSelectWorkFace: (id: string | null) => void;
-  faceVerdict: Record<string, Verdict>;
+  faceHourState: Record<string, HourState>;
+  playheadTs: string;
 };
 
 const CAMPUS_VIEW = {
@@ -36,13 +43,14 @@ type HoverInfo = {
   y: number;
   name: string;
   id: string;
-  verdict: Verdict;
+  state: HourState;
 };
 
 export default function SiteMap({
   selectedWorkFaceId,
   onSelectWorkFace,
-  faceVerdict,
+  faceHourState,
+  playheadTs,
 }: SiteMapProps) {
   const token = process.env.NEXT_PUBLIC_MAPBOX_TOKEN ?? "";
   const [hover, setHover] = useState<HoverInfo | null>(null);
@@ -78,8 +86,8 @@ export default function SiteMap({
         stroked: true,
         getFillColor: (f) => {
           const id = f.properties?.id;
-          const verdict = (id && faceVerdict[id]) || "no_data";
-          const fill = VERDICT_FILL[verdict];
+          const state = (id && faceHourState[id]) || "no_data";
+          const fill = HOUR_STATE_FILL_RGBA[state];
           if (id && id === selectedWorkFaceId) {
             return [fill[0], fill[1], fill[2], 230];
           }
@@ -112,7 +120,7 @@ export default function SiteMap({
         autoHighlight: true,
         highlightColor: [255, 255, 255, 50],
         updateTriggers: {
-          getFillColor: [selectedWorkFaceId, faceVerdict],
+          getFillColor: [selectedWorkFaceId, faceHourState],
           getLineColor: [selectedWorkFaceId],
           getLineWidth: [selectedWorkFaceId],
         },
@@ -127,7 +135,7 @@ export default function SiteMap({
             y: info.y,
             name: p.name,
             id: p.id,
-            verdict: faceVerdict[p.id] ?? "no_data",
+            state: faceHourState[p.id] ?? "no_data",
           });
         },
         onClick: (info) => {
@@ -137,7 +145,7 @@ export default function SiteMap({
         },
       }),
     ],
-    [faceVerdict, onSelectWorkFace, selectedWorkFaceId],
+    [faceHourState, onSelectWorkFace, selectedWorkFaceId],
   );
 
   if (!token) {
@@ -180,7 +188,8 @@ export default function SiteMap({
       </Map>
 
       <div className="pointer-events-none absolute bottom-3 left-3 hidden rounded-md border border-border/60 bg-background/85 px-2.5 py-1.5 text-[10px] text-muted-foreground backdrop-blur sm:block">
-        40 work faces · North Phoenix campus · hero pair outlined
+        {formatTick(playheadTs)} · {ribbonData.horizon.tz} · faces colored by hour
+        state
       </div>
 
       {hover ? (
@@ -190,7 +199,7 @@ export default function SiteMap({
         >
           <div className="font-medium">{hover.name}</div>
           <div className="font-mono text-[10px] text-muted-foreground">
-            {hover.id} · {VERDICT_LABEL[hover.verdict]}
+            {hover.id} · {HOUR_STATE_LABEL[hover.state]} · {formatTick(playheadTs)}
           </div>
         </div>
       ) : null}

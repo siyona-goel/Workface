@@ -17,11 +17,14 @@ import {
   formatDay,
   sortActivities,
   verdictOf,
-  worstVerdict,
   type Activity,
   type ConsoleFilters,
   type Verdict,
 } from "@/lib/console-data";
+import {
+  defaultPlayheadTs,
+  faceHourStatesAt,
+} from "@/lib/ribbon-data";
 
 const PANE_MIN_PX = 140;
 const HANDLE_PX = 8;
@@ -48,6 +51,7 @@ export function SiteConsole() {
   );
   const [evalsOnly, setEvalsOnly] = useState(true);
   const [heroOnly, setHeroOnly] = useState(false);
+  const [playheadTs, setPlayheadTs] = useState(defaultPlayheadTs);
   const [focusedFaceId, setFocusedFaceId] = useState<string | null>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [paneShares, setPaneShares] = useState(DEFAULT_PANE_SHARES);
@@ -85,17 +89,17 @@ export function SiteConsole() {
     return counts;
   }, [rows]);
 
-  const faceVerdict = useMemo(() => {
-    const byFace = new Map<string, Verdict[]>();
-    for (const a of preVerdict) {
-      const list = byFace.get(a.work_face_id) ?? [];
-      list.push(verdictOf(a));
-      byFace.set(a.work_face_id, list);
-    }
-    const out: Record<string, Verdict> = {};
-    for (const [id, list] of byFace) out[id] = worstVerdict(list);
-    return out;
-  }, [preVerdict]);
+  const faceHourState = useMemo(
+    () =>
+      faceHourStatesAt(playheadTs, {
+        tradeId: filters.tradeId,
+        workFaceId: filters.workFaceId,
+        verdicts: new Set(),
+        lookaheadOnly: false,
+        thermalOnly: false,
+      }),
+    [filters.tradeId, filters.workFaceId, playheadTs],
+  );
 
   function selectWorkFace(id: string | null) {
     setFocusedFaceId(id);
@@ -202,14 +206,15 @@ export function SiteConsole() {
           <SiteMapLoader
             selectedWorkFaceId={mapFaceId}
             onSelectWorkFace={selectWorkFace}
-            faceVerdict={faceVerdict}
+            faceHourState={faceHourState}
+            playheadTs={playheadTs}
           />
           <div className="hidden min-h-0 lg:block">
             <WorkFaceList
               selectedId={mapFaceId}
               onSelect={selectWorkFace}
               counts={faceCounts}
-              faceVerdict={faceVerdict}
+              faceHourState={faceHourState}
             />
           </div>
         </div>
@@ -230,6 +235,8 @@ export function SiteConsole() {
             onEvalsOnlyChange={setEvalsOnly}
             heroOnly={heroOnly}
             onHeroOnlyChange={setHeroOnly}
+            playheadTs={playheadTs}
+            onPlayheadChange={setPlayheadTs}
           />
         </div>
 
