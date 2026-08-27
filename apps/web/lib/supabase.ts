@@ -20,4 +20,3 @@ export function getSupabase() {
 }
 
 export const AGENT_CHANNEL = "workface-agent";
-export const AGENT_STEP_EVENT = "step";

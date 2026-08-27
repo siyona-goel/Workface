@@ -173,8 +173,7 @@ export function EscalationView() {
           <span className="font-medium text-foreground">Live run</span> to use
           the gated loop T3 merged (`agent_run_live.json`). The Supabase channel{" "}
           <span className="font-mono">workface-agent</span> listens for{" "}
-          <span className="font-mono">agent_step</span> inserts and broadcast{" "}
-          <span className="font-mono">step</span> events.
+          <span className="font-mono">agent_step</span> inserts.
         </p>
       </div>
     </div>

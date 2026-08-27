@@ -27,7 +27,6 @@ export function AgentTrace() {
     channelStepCount,
     replay,
     showAll,
-    pushTestEvent,
   } = useAgentEvents();
   const [focusedId, setFocusedId] = useState<string | null>(null);
   const endRef = useRef<HTMLDivElement>(null);
@@ -112,14 +111,6 @@ export function AgentTrace() {
               </p>
             </div>
             <div className="flex items-center gap-2">
-              <Button
-                variant="outline"
-                size="xs"
-                onClick={() => void pushTestEvent()}
-                disabled={channelState !== "subscribed"}
-              >
-                Push test event
-              </Button>
               <Button variant="outline" size="xs" onClick={replay}>
                 Replay stream
               </Button>

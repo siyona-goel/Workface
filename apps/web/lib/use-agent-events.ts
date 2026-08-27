@@ -1,14 +1,9 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import type { RealtimeChannel } from "@supabase/supabase-js";
 
-import {
-  AGENT_CHANNEL,
-  AGENT_STEP_EVENT,
-  tryGetSupabase,
-} from "@/lib/supabase";
+import { AGENT_CHANNEL, tryGetSupabase } from "@/lib/supabase";
 import {
   runForSource,
   streamDelayMs,
@@ -73,7 +68,6 @@ function upsertStep(steps: AgentStep[], incoming: AgentStep) {
 export function useAgentChannel() {
   const [channelState, setChannelState] = useState<ChannelState>("off");
   const [channelSteps, setChannelSteps] = useState<AgentStep[]>([]);
-  const channelRef = useRef<RealtimeChannel | null>(null);
 
   useEffect(() => {
     const sb = tryGetSupabase();
@@ -83,7 +77,7 @@ export function useAgentChannel() {
     }
     setChannelState("connecting");
     const channel = sb
-      .channel(AGENT_CHANNEL, { config: { broadcast: { self: true } } })
+      .channel(AGENT_CHANNEL)
       .on(
         "postgres_changes",
         { event: "INSERT", schema: "public", table: "agent_step" },
@@ -92,48 +86,26 @@ export function useAgentChannel() {
           if (step) setChannelSteps((cur) => upsertStep(cur, step));
         },
       )
-      .on("broadcast", { event: AGENT_STEP_EVENT }, ({ payload }) => {
-        const step = payload as AgentStep;
-        if (step && typeof step.seq === "number") {
-          setChannelSteps((cur) => upsertStep(cur, step));
-        }
-      })
       .subscribe((status) => {
         if (status === "SUBSCRIBED") setChannelState("subscribed");
         else if (status === "CHANNEL_ERROR" || status === "TIMED_OUT") {
           setChannelState("error");
         } else setChannelState("connecting");
       });
-    channelRef.current = channel;
 
     return () => {
-      channelRef.current = null;
       void sb.removeChannel(channel);
     };
   }, []);
 
-  async function sendTestEvent(step: AgentStep) {
-    const channel = channelRef.current;
-    if (!channel) return false;
-    const result = await channel.send({
-      type: "broadcast",
-      event: AGENT_STEP_EVENT,
-      payload: {
-        ...step,
-        title: `[realtime] ${step.title}`,
-      },
-    });
-    return result === "ok";
-  }
-
-  return { channelState, channelSteps, sendTestEvent };
+  return { channelState, channelSteps };
 }
 
 export function useAgentEvents() {
   const source = useAgentSource();
   const setSource = useSetAgentSource();
   const run: AgentRun = runForSource(source);
-  const { channelState, channelSteps, sendTestEvent } = useAgentChannel();
+  const { channelState, channelSteps } = useAgentChannel();
 
   const [visibleCount, setVisibleCount] = useState(0);
   const [generation, setGeneration] = useState(0);
@@ -171,15 +143,6 @@ export function useAgentEvents() {
     setVisibleCount(run.steps.length);
   }
 
-  async function pushTestEvent() {
-    const step =
-      run.steps.find((s) => s.type === "escalate") ??
-      run.steps.find((s) => s.gate?.escalated) ??
-      run.steps[0];
-    if (!step) return false;
-    return sendTestEvent(step);
-  }
-
   return {
     source,
     setSource,
@@ -191,6 +154,5 @@ export function useAgentEvents() {
     channelStepCount: channelSteps.length,
     replay,
     showAll,
-    pushTestEvent,
   };
 }
