@@ -1,6 +1,6 @@
 # WORKFACE
 
-**Trade windows at the work face — not the airport.**
+**Trade windows at the work face, not the airport.**
 
 A coating spec is not “it was 95 °F.” It is a **window**: substrate ≥ 5 °F above dew point, RH ≤ 85%, an unbroken cure run, a band that closes at different hours on two bays of the same slab, 187.5 m apart. Every trade on a site has a different one, and every one is written against the temperature *at the work face*, not the regional forecast.
 
@@ -504,9 +504,9 @@ Three-person hackathon team, split by surface:
 
 | Role | Owned |
 | ---- | ----- |
-| **Siyona** | Product surface — Next.js console, ribbon, map, Trace / Record / Brief |
-| **Ky** | External services — FortyGuard client, fixtures, credits, cron, certificate export |
-| **Aashma** | Domain — registry, evaluators, twin, sequencer, policy gate, record chain |
+| **👻 Siyona** | Product surface — Next.js console, ribbon, map, Trace / Record / Brief |
+| **🌻 Ky** | External services — FortyGuard client, fixtures, credits, cron, certificate export |
+| **🦦 Aashma** | Domain — registry, evaluators, twin, sequencer, policy gate, record chain |
 
 ---
 
