@@ -87,18 +87,27 @@ export const HOUR_STATE_LABEL: Record<HourState, string> = {
   no_data: "No data",
 };
 
-/** Pastel fills aligned with the window-state chips (emerald / amber / red / zinc 300). */
+/**
+ * Fills for the ribbon bands, aligned with VERDICT_FILL in `lib/verdicts.ts` so
+ * the ribbon, the verdict chips and the deck.gl work-face polygons all paint the
+ * same amber/red family.
+ *
+ * These were emerald/amber/red-300 pastels. At a 1 h cell width the amber-300
+ * pastel sat at a 1.06:1 luminance ratio against the open mint — identical
+ * brightness, so a marginal hour read as green after video compression and was
+ * invisible to a deuteranopic viewer. amber-500 / red-500 carry the difference.
+ */
 export const HOUR_STATE_FILL: Record<HourState, string> = {
   open: "#6ee7b7",
-  marginal: "#fcd34d",
-  closed: "#fca5a5",
+  marginal: "#f59e0b",
+  closed: "#ef4444",
   no_data: "#a1a1aa",
 };
 
 export const HOUR_STATE_FILL_DIM: Record<HourState, string> = {
   open: "#6ee7b7aa",
-  marginal: "#fcd34daa",
-  closed: "#fca5a5aa",
+  marginal: "#f59e0baa",
+  closed: "#ef4444aa",
   no_data: "#a1a1aa55",
 };
 

@@ -4,7 +4,6 @@ import { useMemo, useState, type MouseEvent } from "react";
 
 import { WindowChip } from "@/components/window-chip";
 import {
-  HORIZON_HOURS,
   HOUR_STATE_FILL,
   HOUR_STATE_FILL_DIM,
   HOUR_STATE_LABEL,
@@ -37,6 +36,34 @@ const BAND_H = 18;
 const BAR_H = 7;
 const AXIS_H = 28;
 
+/**
+ * Horizon presets. The full 72 h view is the default; "dawn" narrows to the
+ * morning of 25 Aug so the hero pair's dew-point hours are wide enough to read.
+ *
+ * At 72 h a 1 h cell is ~7 px at this component's min width and ~23 px on a
+ * full-width 1080p console — three of them in a green lane are easy to miss. At
+ * 10 h the same cell is ~48 px / ~168 px. The window deliberately runs to 12:00
+ * rather than stopping at dawn so the 09:30 scheduled bar is still on screen;
+ * clip before it and `ScheduledBar` returns null, losing the "if the bar is not
+ * on green, that is the problem" read.
+ */
+const ZOOM_PRESETS = {
+  full: {
+    label: "72 h",
+    start: ribbonData.horizon.start,
+    end: ribbonData.horizon.end,
+    tickHours: 6,
+  },
+  dawn: {
+    label: "Dawn 25 Aug",
+    start: "2026-08-25T02:00:00-07:00",
+    end: "2026-08-25T12:00:00-07:00",
+    tickHours: 1,
+  },
+} as const;
+
+type ZoomKey = keyof typeof ZOOM_PRESETS;
+
 type Props = {
   activities: Activity[];
   filters: ConsoleFilters;
@@ -66,9 +93,11 @@ export function WindowRibbon({
   onHeroOnlyChange,
 }: Props) {
   const [hover, setHover] = useState<Hover | null>(null);
+  const [zoom, setZoom] = useState<ZoomKey>("full");
 
-  const t0 = Date.parse(ribbonData.horizon.start);
-  const t1 = Date.parse(ribbonData.horizon.end);
+  const preset = ZOOM_PRESETS[zoom];
+  const t0 = Date.parse(preset.start);
+  const t1 = Date.parse(preset.end);
   const span = t1 - t0;
   const stepMs = ribbonData.horizon.step_minutes * 60_000;
 
@@ -91,7 +120,8 @@ export function WindowRibbon({
 
   const ticks = useMemo(() => {
     const out: { t: number; label: string; major: boolean }[] = [];
-    for (let t = t0; t <= t1; t += 6 * 60 * 60 * 1000) {
+    const tickStep = preset.tickHours * 60 * 60 * 1000;
+    for (let t = t0; t <= t1; t += tickStep) {
       const iso = new Date(t).toISOString();
       const hour = formatTickHour(iso);
       out.push({
@@ -101,7 +131,7 @@ export function WindowRibbon({
       });
     }
     return out;
-  }, [t0, t1]);
+  }, [t0, t1, preset.tickHours]);
 
   function onLaneMove(
     event: MouseEvent<SVGSVGElement>,
@@ -137,7 +167,7 @@ export function WindowRibbon({
             Window ribbon
           </h2>
           <p className="hidden text-[11px] text-muted-foreground sm:block">
-            {HORIZON_HOURS} h · {ribbonData.horizon.tz} · scheduled bar on the
+            {Math.round(span / 3_600_000)} h · {ribbonData.horizon.tz} · scheduled bar on the
             bands. If the bar is not on green, that is the problem.
           </p>
           {heroVisible >= 2 ? (
@@ -175,6 +205,19 @@ export function WindowRibbon({
             )}
           >
             Hero pair
+          </button>
+          <button
+            type="button"
+            aria-pressed={zoom === "dawn"}
+            onClick={() => setZoom(zoom === "dawn" ? "full" : "dawn")}
+            className={cn(
+              "h-6 rounded-md border px-2 text-[11px] font-medium",
+              zoom === "dawn"
+                ? "border-amber-500/50 bg-amber-500/15 text-amber-100"
+                : "border-border text-muted-foreground",
+            )}
+          >
+            {ZOOM_PRESETS.dawn.label}
           </button>
           {contention ? (
             <span className="rounded-sm border border-violet-300/30 bg-violet-300/10 px-1.5 py-0.5 text-violet-200">
@@ -443,6 +486,28 @@ function LaneSvg({
           }
         />
       ))}
+      {/*
+        A marginal or closed hour is one cell wide. Outlining it at full lane
+        height catches the eye without widening the band itself — drawing a 1 h
+        cell as 2.5 h to make it visible would misstate the window on a tool
+        whose own notice says it is advisory. no_data is skipped: those lanes are
+        no_data end to end, so an outline would just box the whole row.
+      */}
+      {bands
+        .filter((band) => band.state !== "open" && band.state !== "no_data")
+        .map((band, i) => (
+          <rect
+            key={`edge-${band.startMs}-${i}`}
+            x={`${((band.startMs - t0) / span) * 100}%`}
+            y={2}
+            width={`${((band.endMs - band.startMs) / span) * 100}%`}
+            height={LANE_H - 4}
+            rx={2}
+            fill="none"
+            stroke={HOUR_STATE_FILL[band.state]}
+            strokeWidth={1.25}
+          />
+        ))}
       <ScheduledBar t0={t0} t1={t1} span={span} start={lane.scheduled.start} finish={lane.scheduled.finish} />
       {hoverHour ? (
         <rect
