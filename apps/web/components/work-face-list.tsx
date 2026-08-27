@@ -1,19 +1,23 @@
-import { consoleData, faceName, type Verdict } from "@/lib/console-data";
-import { VERDICT_DOT } from "@/lib/verdicts";
+import { consoleData, faceName } from "@/lib/console-data";
+import {
+  HOUR_STATE_DOT,
+  HOUR_STATE_LABEL,
+  type HourState,
+} from "@/lib/ribbon-data";
 import { cn } from "@/lib/utils";
 
 type Props = {
   selectedId: string | null;
   onSelect: (id: string | null) => void;
   counts: Record<string, number>;
-  faceVerdict: Record<string, Verdict>;
+  faceHourState: Record<string, HourState>;
 };
 
 export function WorkFaceList({
   selectedId,
   onSelect,
   counts,
-  faceVerdict,
+  faceHourState,
 }: Props) {
   const groups = groupFaces();
 
@@ -36,7 +40,7 @@ export function WorkFaceList({
             <ul>
               {faces.map((face) => {
                 const n = counts[face.id] ?? 0;
-                const verdict = faceVerdict[face.id] ?? "no_data";
+                const state = faceHourState[face.id] ?? "no_data";
                 const selected = selectedId === face.id;
                 const hero =
                   face.id === consoleData.hero_pair.bare ||
@@ -46,6 +50,7 @@ export function WorkFaceList({
                     <button
                       type="button"
                       onClick={() => onSelect(selected ? null : face.id)}
+                      title={HOUR_STATE_LABEL[state]}
                       className={cn(
                         "flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left transition-colors",
                         selected
@@ -57,7 +62,7 @@ export function WorkFaceList({
                       <span
                         className={cn(
                           "size-1.5 shrink-0 rounded-full",
-                          VERDICT_DOT[verdict],
+                          HOUR_STATE_DOT[state],
                         )}
                       />
                       <span className="min-w-0 flex-1">
