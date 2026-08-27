@@ -5,7 +5,7 @@
   "started_at": "2026-08-24T00:00:00-07:00",
   "finished_at": "2026-08-24T00:00:18-07:00",
   "status": "completed",
-  "model_name": "none (deterministic proposer — fixed strategy order, no LLM)",
+  "model_name": "qwen3:8b",
   "lookahead_h": 72,
   "tier": "commit",
   "scanned_count": 62,
@@ -1923,5 +1923,5 @@
       "record_seq": null
     }
   ],
-  "replay": true
+  "replay": false
 }

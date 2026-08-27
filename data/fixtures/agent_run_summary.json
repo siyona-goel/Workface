@@ -1,7 +1,7 @@
 {
   "run_id": "agent-2026-08-24-0000-commit-live",
   "site_id": "NPX-FAB-P2",
-  "model_name": "none (deterministic proposer \u2014 fixed strategy order, no LLM)",
+  "model_name": "qwen3:8b",
   "scanned_count": 62,
   "flagged_count": 22,
   "conflicts_count": 11,
