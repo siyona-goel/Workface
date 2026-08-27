@@ -114,11 +114,14 @@ config/                   policy.yaml, crews.yaml, budget.yaml
 data/
   project_demo/           328 activities, 40 work faces, site geometry
   trade_windows.json      12-trade registry with citations
-  fixtures/               frozen FortyGuard / wind / agent / record
+  fixtures/               frozen FortyGuard / wind / agent / record / assumptions
   aoi/                    tile clusters (≤ 5 heatmap polygons)
-  exports/                sample certificate
-tests/                    24 pytest modules
-docs/                     this file, ASSUMPTIONS, CITATIONS, LLM_SETUP, PILOT
+  mitigations/            mitigation catalog read by request_mitigation
+  exports/                sample certificate (JSON / CSV / PDF)
+scripts/                  make_* fixture builders · freeze_fixtures · check_fixtures
+tests/                    25 pytest modules
+docs/                     this file, ASSUMPTIONS, CITATIONS, FORTYGUARD_API_USAGE,
+                          LLM_SETUP, PILOT, T3 reports
 .github/workflows/        ci.yml (pytest) · agent-cron.yml (every 4 h, replay)
 ```
 
@@ -404,7 +407,9 @@ Export: `python -m apps.api.export.certificate` → JSON / CSV / one-page adviso
 
 ## 13. Frontend
 
-Next.js 16, React 19, Tailwind 4, deck.gl 9 over Mapbox GL (`dark-v11`), Recharts for `T_air` / `T_surf` / `T_dew` and the Macropoxy 646 Q10 cure-fit plot.
+Next.js 16, React 19, Tailwind 4, deck.gl 9 over Mapbox GL (`dark-v11`), Recharts for the `T_air` / `T_surf` / `T_dew` series and the Macropoxy 646 Q10 cure-fit plot.
+
+Six routes, one shared nav (`components/app-nav.tsx`), which carries `?src=` and `?debug=` across links so a demo never loses its source selection by clicking a tab.
 
 | Route | View | Audience |
 | ----- | ---- | -------- |
@@ -415,13 +420,47 @@ Next.js 16, React 19, Tailwind 4, deck.gl 9 over Mapbox GL (`dark-v11`), Rechart
 | `/brief` | Morning Brief — phone-sized go / hold / shift cards | area foreman |
 | `/record` | The Record — hash chain + thermal certificate | warranty / claims |
 
-Data is **committed JSON** in `apps/web/data/`. `NEXT_PUBLIC_AGENT_SOURCE` and `?src=` switch Trace between the narrative fixture and the T3 gated-loop run. Mapbox token is required only for the map; everything else renders without it.
+There is no `/assumptions` route. `docs/ASSUMPTIONS.md` and `data/fixtures/assumptions.json` exist but nothing in `apps/web` reads them; the in-product honesty surface is the `advisory_notice` and cited clause rendered per evaluation in the activity drawer and on every record entry.
 
-Supabase is optional. Missing `NEXT_PUBLIC_SUPABASE_*` leaves the realtime channel in state `off`; Trace still streams from JSON. When keys exist, `useAgentEvents` subscribes to channel `workface-agent`, event `step`.
+### 13.1 Site Console (`/`)
+
+Three stacked panes — map, window ribbon, activity table — separated by drag handles (`row-resize-handle.tsx`). Pane sizes are session state with a 140 px floor on each, so a presenter can grow the ribbon on a projector without a rebuild. `console-toolbar.tsx` filters by trade, work face, verdict chip, lookahead-only and thermally-sensitive-only, and reports the surviving row count.
+
+**The playhead is the spine of this page.** `window-ribbon.tsx` renders one lane per evaluation over the 72 h horizon at `step_minutes` resolution, and the time axis is a `role="slider"` the user drags (pointer) or steps (arrow keys, Home / End). Its value is a single `playheadTs` held in `site-console.tsx` and pushed down to every pane:
+
+- **The map recolours to that hour.** `faceHourStatesAt(ts, filters)` in `lib/ribbon-data.ts` takes the *worst* hour-state across the evaluations on each face at `ts`, and `site-map.tsx` fills the deck.gl work-face polygons from `HOUR_STATE_FILL_RGBA`. The map is therefore a view of one hour, not a static verdict roll-up — scrubbing the ribbon animates the site through the dawn.
+- **The work-face list beside the map** takes the same `faceHourState` record, so the list and the polygons can never disagree.
+- **A vertical rule tracks the playhead** down the axis and through every lane, and the header shows the selected hour in site-local time.
+
+`defaultPlayheadTs()` opens the console on `ribbon.contended_hours[0]` — the first hour the run found contended — rather than on the start of the horizon.
+
+Two lane filters sit in the ribbon header: **Evals only** (hide lanes with no window evaluation) and **Hero pair** (WF-FAB2-06 / WF-FAB2-07 coating only). The hero lanes are pinned to the top by `sortLanes` and carry a cyan left border and a `shaded` / `bare` tag. Lane bands are merged runs of equal state (`mergeBands`), each non-open band gets a full-height outline rect so a 1 h cell survives video compression, and the scheduled bar is drawn over the bands so "the bar is not on green" is the read. Hovering a cell raises that hour's own reason string, binding constraint id, margin, and `t_air` / `t_surf` / `t_dew`. The header also totals `usd_exposure` across visible lanes.
+
+Clicking a lane or a table row opens `activity-drawer.tsx`: the Recharts thermal chart with the dew-point offset band drawn where the trade has one, the binding constraint, the cited clause, the advisory notice, and the cure-fit plot for coating activities.
+
+### 13.2 Trace, conflicts, escalate
+
+`/trace` renders the step log as cards (`trace-step-card.tsx`). `source-toggle.tsx` — shared by `/trace`, `/conflicts` and `/escalate` — flips between the Day-5 narrative fixture (**Fixtures**) and the live gated run (**Live run**). The `Replay` / `Live file` / `Realtime` mode badge inside that toggle is **hidden unless `?debug=1`**; by default a viewer sees only the two source buttons, so nothing on screen announces replay mode on its own. `/conflicts` lists the run's conflicts as demanded-vs-compliant hour cards on a status rail. `/escalate` shows the denying rule id, the reason text, and the written trade-off routed to the superintendent, plus a policy-surface panel and the Supabase channel state.
+
+### 13.3 Brief
+
+`/brief` is a phone-width column of go / hold / shift cards for one foreman's day, plus at-risk and protected exposure, a notification-templates panel (`templates/notifications.json`, the `notify_crew` bodies with sample vars and copy-to-clipboard), and a link back into the trace.
+
+### 13.4 Record
+
+`/record` groups the chain into work packages, defaulting to **A-1205** — the escalated pour — verifies the chain head **in the browser** with Web Crypto against the same `payload ‖ prev_hash` concatenation Python used, shows integrity counters, and embeds the FortyGuard heat-intelligence PDF for the hero face.
+
+### 13.5 Data and modes
+
+Data is **committed JSON** in `apps/web/data/`. `NEXT_PUBLIC_AGENT_SOURCE` and `?src=` switch Trace between the narrative fixture and the T3 gated-loop run. The Mapbox token is required only for the map; every other route renders without it.
+
+Supabase is optional. Missing `NEXT_PUBLIC_SUPABASE_*` leaves the realtime channel in state `off` and Trace still streams from JSON. When keys exist, `useAgentEvents` subscribes to channel `workface-agent`, event `step`.
 
 There is no `vercel.json`. Hosted at [workface.vercel.app](https://workface.vercel.app/). Vercel never runs the agent.
 
----
+### 13.6 Colour
+
+`HOUR_STATE_FILL` / `HOUR_STATE_FILL_RGBA` (`lib/ribbon-data.ts`) and `VERDICT_*` (`lib/verdicts.ts`) currently both sit on the Tailwind `-300` pastel family. `open #6ee7b7` against `marginal #fcd34d` is a **1.06:1** luminance contrast: the two read as the same brightness under video compression and to a deuteranopic viewer. The band outlines added to `window-ribbon.tsx` carry the distinction today. If the ribbon is ever filmed and the marginal cells read as green, the fix is to move `marginal` to `#f59e0b` and `closed` to `#ef4444` — the values `VERDICT_FILL` already uses for the deck.gl polygons — in both files at once, so the ribbon and the map stay aligned.
 
 ## 14. External services
 
@@ -497,7 +536,13 @@ data/project_demo/      schedule + geometry the worker reads
 
 The two JSON trees are not the same path. Regenerating live fixtures (`python -m apps.api.agent.worker`) updates `data/fixtures/`; the console's `apps/web/data/agent-run-live.json` is a copy that must be refreshed for the hosted UI to change.
 
-`scripts/make_*.py` generate ribbon, thermal, surface, and agent-run fixtures so T1 could build against stable shapes before the loop existed. The narrative `agent-run.json` is still the `?src=fixture` Trace source.
+`scripts/make_*.py` generate ribbon, thermal, surface, and agent-run fixtures so T1 could build against stable shapes before the loop existed. The narrative `agent-run.json` is still the `?src=fixture` Trace source. `scripts/freeze_fixtures.py` stamps the freeze manifest (`data/FIXTURE_FREEZE.md`) and `scripts/check_fixtures.py` re-checks it; there is **no** one-command `rebuild_fixtures.py`, so a rebuild is still a sequence of `make_*` invocations.
+
+### 17.1 Two thermal bundles are on disk
+
+`data/fixtures/sample_thermal_bundle.json` and `sample_thermal_bundle_derived.json` both exist. **`apps/web/data/ribbon.json` derives from the non-derived one.** The difference is visible at the hero pair: on the shipped ribbon the pre-dawn cells on A-1069 / WF-FAB2-07 are `marginal` at a **+0.18 °C** offset margin and *no coating lane in the fixture ever reaches `closed`*. The derived bundle is what would turn those cells red.
+
+Nothing should quote a coating **closing time**. `tests/test_fixtures.py::test_hero_is_the_real_bare_deck_coating_lane` asserts the shipped behaviour — the lane verdict is `compliant` and the dawn thinning lives in the ribbon cells, not the verdict — and says so in its own docstring. Adopting the derived bundle moves those assertions; deleting it removes the ambiguity. Either is fine; leaving both on disk with the UI silently on one of them is the state to get out of.
 
 ---
 
@@ -517,7 +562,7 @@ The two JSON trees are not the same path. Regenerating live fixtures (`python -m
 
 ## 19. Testing surface
 
-24 modules under `tests/`. Physics and policy are unit-tested Python on purpose.
+25 modules under `tests/`. Physics and policy are unit-tested Python on purpose. Baseline with `LLM_BASE_URL` unset: **209 passed, 13 skipped**.
 
 | Area | Modules |
 | ---- | ------- |
@@ -551,6 +596,7 @@ Explicitly out of scope (unchanged): P6 write-back, multi-project portfolios, BI
 | --- | -------------- |
 | [README](../README.md) | Problem, demo script, quickstart, limitations |
 | [ASSUMPTIONS.md](ASSUMPTIONS.md) | Coefficients, sensitivities, what the model does not know |
+| [FORTYGUARD_API_USAGE.md](FORTYGUARD_API_USAGE.md) | Which five endpoints, live vs replay, credit spend |
 | [CITATIONS.md](CITATIONS.md) | Standards and PDS sources behind the registry |
 | [LLM_SETUP.md](LLM_SETUP.md) | Pointing the proposer at Ollama or a hosted `/v1` |
 | [PILOT.md](PILOT.md) | 90-day single-GC engagement: integration surface, success metrics, what we refuse to claim |
