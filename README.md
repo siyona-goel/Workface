@@ -139,7 +139,7 @@ flowchart LR
 
 ## Key Features
 
-- **Window ribbon.** One lane per activity over a 72 h horizon. Green where every constraint is satisfied, amber where one is marginal, red where it fails, with the reason on hover. The scheduled bar sits on top — when it is not on the green, you can see the problem without reading a number.
+- **Window ribbon.** One lane per activity over a 72 h horizon. Green where every constraint is satisfied, amber where one is marginal, red where it fails, with the reason on hover. A playhead on the time axis sets the hour; the campus map recolors with it. The scheduled bar sits on top — when it is not on the green, you can see the problem without reading a number.
 - **Hero pair on the same slab.** WF-FAB2-07 (bare, sky-view 0.97) and WF-FAB2-06 (shaded, sky-view 0.45) are **187.5 m** apart on the FAB2 L2 deck. Same coating, same day-window family, windows that differ by more than two hours. The regional forecast is one number for both.
 - **Seven constraint types, not seven copies of “too hot.”** Band, dew-point offset, continuity run, Q10 cure clock, composite evaporation rate, decay / compaction clock, and human WBGT work/rest. Concrete touches three of them; coating is an offset problem; SFRM is a 24 h continuity problem.
 - **Cross-trade contention.** Conflicts are emitted only where productive demand exceeds open hours on a face+shift — the pour/coating collision on WF-FAB2-11 is the canonical case (5 compliant hours, 12 demanded).
@@ -273,7 +273,7 @@ Three temporal tiers, only the last two of which are on the demo surfaces:
 
 Demo site: **North Phoenix Advanced Packaging Facility — Phase 2** (`NPX-FAB-P2`). Geography is real. The 328-activity schedule is generated (`seed: 20260820`). Standards are real. The 24–27 Aug 2026 window is the commit horizon.
 
-**1. Open the Console.** Forty work faces colour by worst verdict. Cyan outlines mark the hero pair on FAB2 L2.
+**1. Open the Console.** Forty work faces colour by window state at the ribbon playhead (open / marginal / closed), not by the 72 h verdict. Cyan outlines mark the hero pair on FAB2 L2. Drag the playhead — the map follows. At **04:00** the shaded bay stays open and the bare bay goes marginal.
 
 **2. Read the ribbon, not a forecast.** Shaded bay B2 (WF-FAB2-06, A-1059, high-build epoxy): window opens **05:40**, closes **09:20**. Bare bay C2 (WF-FAB2-07, A-1069), 187.5 m away: window opens **05:00**, closes **07:20**. Click a lane → T_air / T_surf / T_dew with the SSPC-PA 1 + 2.8 °C offset drawn as a band, Macropoxy 646 clause quoted inline.
 
