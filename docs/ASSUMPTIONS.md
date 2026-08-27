@@ -3,8 +3,15 @@
 *WORKFACE plans and records thermal work-windows. It is advisory and contractual —
 it does not certify, and it does not replace the field measurement the referenced
 standards require. Publishing this list is deliberate: it is the clearest signal
-that this is a product, not a demo. — content for T1 to drop into the app
-(also machine-readable at [`assumptions.json`](../data/fixtures/assumptions.json)).*
+that this is a product, not a demo.*
+
+*This file and its machine-readable twin
+[`assumptions.json`](../data/fixtures/assumptions.json) are **not yet rendered by
+the console** — there is no `/assumptions` route in `apps/web`. In the product the
+honesty surface is the per-evaluation `advisory_notice` and cited clause in the
+activity drawer and on every record entry. Anything spoken in a demo about "the
+assumptions are listed in the app" should point there, or at this file, until a
+route exists.*
 
 ## What the model does not know
 
@@ -45,7 +52,7 @@ current code, not asserted.
 
 | Coefficient | Value | Source | Sensitivity |
 |---|---|---|---|
-| **ε — weathered galvanised deck** | **0.85** | ASHRAE Fundamentals ch. 26 (weathered galvanised 0.7–0.9) | **This is the knife-edge.** The hero dawn dew-point closure is the `ε·Q_lw` undershoot. Worst dawn offset margin on WF-FAB2-07: **−0.02 °C at ε=0.85** (closure holds by a hair) → **+3.47 °C at ε=0.23** (bright galvanising — closure vanishes entirely). The whole closure turns on this one number. |
+| **ε — weathered galvanised deck** | **0.85** | ASHRAE Fundamentals ch. 26 (weathered galvanised 0.7–0.9) | **This is the knife-edge.** The hero dawn dew-point behaviour is the `ε·Q_lw` undershoot. Sensitivity computed from `apps/api/twin/surface.py` on WF-FAB2-07: worst dawn offset margin **−0.02 °C at ε=0.85** → **+3.47 °C at ε=0.23** (bright galvanising — the effect vanishes entirely). Same linear fragility on `Q_lw`. See the note below on which margin the shipped fixture carries. |
 | **Q_lw — clear-sky net longwave loss** | **130 W/m²** | Arid-climate clear-sky net longwave (cited in CITATIONS.md) | Same fragility as ε — the dawn closure scales linearly with it. |
 | **Dew-point offset** | **2.8 °C (5 °F)** | SSPC-PA 1 (AMPP) — surface must be ≥ dew point + offset | Below the offset, coating is out-of-spec (RFI-only). |
 | **WBGT work/rest bands** | 1.0 / 0.75 / 0.5 / 0.25 work fraction at ≥27.5 / 29.0 / 30.5 °C | **WORKFACE placeholder bands, pending ACGIH licence** (ACGIH table is copyrighted) | The `wbgt_rest_ratio_escalate` gate fires below 0.5 work fraction (>50% rest). |
@@ -60,3 +67,25 @@ open deck radiates hardest to the sky and the surface undershoots the dew point.
 **humid monsoon dawn does not close the window** (more cloud → less net longwave
 loss → the `(1 − cloud/8)` term shrinks the undershoot). The demo stands on a
 clear-sky August dawn; say so.
+
+### Which margin the shipped demo actually shows
+
+The **−0.02 °C** above is a sensitivity computed directly from the surface model. It
+is **not** the number the deployed console displays. `apps/web/data/ribbon.json`
+derives from `sample_thermal_bundle.json` (not the `_derived` variant), and on that
+fixture the hero bare deck A-1069 / WF-FAB2-07 shows:
+
+- 69 hours `open`, **3 `marginal`, 0 `closed`** across the 72 h horizon; lane verdict `compliant`
+- the three marginal cells are 04:00 on 24, 25 and 26 Aug, binding `offset_dew_point`, margin **+0.18 °C**
+- cell values `t_air` 30.0 °C, `t_surf` 22.39 °C, `t_dew` 19.41 °C — the surface running **7.61 °C below air**
+- the shaded neighbour A-1059 / WF-FAB2-06: **72 of 72 hours open**
+
+So the honest demo claim is *"the open deck runs seven degrees colder than the air and
+comes within two tenths of a degree of the coating limit, while its shaded neighbour
+never gets close"* — a **thinning** window, not a closing one. No coating lane in the
+shipped fixture ever reaches `closed`, and no opening or closing time for the hero
+pair should be quoted anywhere. Adopting `sample_thermal_bundle_derived.json` is what
+would change that; see ARCHITECTURE §17.1.
+
+Do not say the −0.02 °C figure aloud in a demo. It invites a precision question the
+model cannot answer, and the qualitative version is the stronger claim.
